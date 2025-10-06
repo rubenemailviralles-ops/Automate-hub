@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useMobileHover } from './hooks/useMobileHover';
+import { useRemoveBoltBranding } from './hooks/useRemoveBoltBranding';
 import Header from './components/Header';
 import Home from './pages/Home';
 import WebsiteCreation from './pages/WebsiteCreation';
@@ -32,6 +33,9 @@ function ScrollToTop() {
 function App() {
   // Initialize mobile hover effects
   useMobileHover();
+  
+  // Remove external branding overlays
+  useRemoveBoltBranding();
 
   return (
     <Router>

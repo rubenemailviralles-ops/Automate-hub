@@ -9,6 +9,37 @@
       /* Hide common Bolt branding selectors early */
       [data-bolt-branding], .bolt-branding, .bolt__branding, .bolt-badge, .bolt-footer-branding, .bolt-made-by,
       a[href*="bolt.new"] { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+
+      /* Chatbot theming overrides: set bubbles and launcher to mobile blue */
+      #VG_OVERLAY_CONTAINER [class*="welcome"],
+      #VG_OVERLAY_CONTAINER [class*="Welcome"],
+      #VG_OVERLAY_CONTAINER [class*="bubble"],
+      #VG_OVERLAY_CONTAINER [class*="Bubble"],
+      #VG_OVERLAY_CONTAINER [class*="message"],
+      #VG_OVERLAY_CONTAINER [class*="Message"],
+      #VG_OVERLAY_CONTAINER [class*="chip"],
+      #VG_OVERLAY_CONTAINER [class*="Chip"] {
+        background-color: #3b82f6 !important; /* Tailwind blue-500 */
+        border-color: #3b82f6 !important;
+        color: #ffffff !important;
+      }
+      #VG_OVERLAY_CONTAINER [class*="launcher"],
+      #VG_OVERLAY_CONTAINER [class*="Launcher"],
+      #VG_OVERLAY_CONTAINER button {
+        background-color: #3b82f6 !important;
+        border-color: #3b82f6 !important;
+        color: #ffffff !important;
+      }
+      #VG_OVERLAY_CONTAINER svg [fill],
+      #VG_OVERLAY_CONTAINER svg path {
+        fill: #ffffff !important;
+        stroke: #ffffff !important;
+      }
+      /* Subtle gradient for nicer look on larger bubbles */
+      #VG_OVERLAY_CONTAINER [class*="bubble"],
+      #VG_OVERLAY_CONTAINER [class*="message"] {
+        background-image: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+      }
     </style>
   </head>
   <body>

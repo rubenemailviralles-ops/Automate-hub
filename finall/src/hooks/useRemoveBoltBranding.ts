@@ -7,6 +7,7 @@ const brandingSelectors = [
   '.bolt-badge',
   '.bolt-footer-branding',
   '.bolt-made-by',
+  'a[href*="bolt.new"]',
 ];
 
 const brandingPhrases = ['made in bolt', 'powered by bolt', 'built with bolt'];
@@ -18,14 +19,22 @@ const hideElement = (element: HTMLElement) => {
   element.setAttribute('aria-hidden', 'true');
 };
 
+const forEachNodeAndShadow = (root: Node, callback: (el: Element) => void) => {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
+  let current = walker.currentNode as Element | null;
+  while (current) {
+    callback(current);
+    const anyEl = current as any;
+    if (anyEl && anyEl.shadowRoot) {
+      forEachNodeAndShadow(anyEl.shadowRoot, callback);
+    }
+    current = walker.nextNode() as Element | null;
+  }
+};
+
 export const useRemoveBoltBranding = () =>
   useEffect(() => {
     if (typeof document === 'undefined') {
-      return;
-    }
-
-    const body = document.body;
-    if (!body) {
       return;
     }
 
@@ -33,16 +42,18 @@ export const useRemoveBoltBranding = () =>
 
     const scanForBranding = () => {
       brandingSelectors.forEach((selector) => {
-        body.querySelectorAll(selector).forEach((node) => hideElement(node as HTMLElement));
+        forEachNodeAndShadow(document, (el) => {
+          if (typeof (el as any).matches === 'function' && el.matches(selector)) {
+            hideElement(el as HTMLElement);
+          }
+        });
       });
 
-      const possibleNodes = body.querySelectorAll('a, span, div, footer, section');
-      possibleNodes.forEach((node) => {
-        const text = node.textContent?.trim().toLowerCase() ?? '';
+      forEachNodeAndShadow(document, (el) => {
+        const text = (el.textContent || '').trim().toLowerCase();
         if (!text) return;
-
         if (brandingPhrases.some((phrase) => text.includes(phrase))) {
-          const target = (node.closest('[class]') as HTMLElement) ?? (node as HTMLElement);
+          const target = (el.closest('[class]') as HTMLElement) ?? (el as HTMLElement);
           hideElement(target);
         }
       });
@@ -58,7 +69,7 @@ export const useRemoveBoltBranding = () =>
     scheduleScan();
 
     const observer = new MutationObserver(scheduleScan);
-    observer.observe(body, { childList: true, subtree: true });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
 
     return () => {
       if (rafId) {

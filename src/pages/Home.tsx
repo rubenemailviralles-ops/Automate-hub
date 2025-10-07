@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowRight, Sparkles, Globe, Database, Phone, Mail, BarChart3 } from 'lucide-react';
 import CTASection from '../components/CTASection';
+import Calculator from '../components/Calculator';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -129,6 +130,8 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Calculator Section */}
+      <Calculator />
 
       <CTASection />
     </div>

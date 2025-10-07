@@ -26,37 +26,21 @@ const Contact = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="py-24 seamless-section relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight">
-              Get In
-              <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Touch
-              </span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed">
-              Ready to automate your business operations? Let's discuss how our AI solutions can help 
-              increase your productivity and reduce costs.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
-      <section className="py-24 seamless-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Contact Info */}
-            <div>
-              <h2 className="text-3xl font-bold mb-6 text-white">
-                Let's Start the Conversation
-              </h2>
-              <p className="text-lg text-gray-400 mb-8 leading-relaxed">
-                We're here to help you understand how automation can transform your business. 
-                Reach out to us and let's explore the possibilities together.
+      <section className="py-12 seamless-section relative overflow-hidden min-h-screen flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            {/* Contact Info - Left Side */}
+            <div className="lg:pr-8">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">
+                Get In
+                <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  Touch
+                </span>
+              </h1>
+              <p className="text-base text-gray-400 mb-8 leading-relaxed">
+                Ready to automate your business operations? Let's discuss how our AI solutions can help
+                increase your productivity and reduce costs.
               </p>
 
               <div className="space-y-4">
@@ -93,8 +77,8 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Contact Form */}
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-6">
+            {/* Contact Form - Right Side */}
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:sticky lg:top-24">
               <h3 className="text-2xl font-bold mb-6 text-white">Send Us a Message</h3>
               
               <form onSubmit={handleSubmit} className="space-y-4">

@@ -137,71 +137,82 @@ const ConsultationBooking = () => {
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
-      <section className="py-24 seamless-section relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center">
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm animate-fade-in">
-              <Calendar className="w-5 h-5 text-blue-400 mr-2" />
-              <span className="text-blue-400 font-medium">Free Consultation Booking</span>
-            </div>
-
-            <h1 className="text-5xl md:text-6xl font-bold mb-8 text-white leading-tight animate-fade-in-up delay-200">
-              Book Your Free
-              <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Strategy Session
-              </span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-400">
-              Ready to transform your business with AI automation? Schedule a personalized consultation where we'll 
-              We'll respond within 24 hours during business hours to schedule your consultation
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12 animate-fade-in-up delay-600">
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">100% Free</h3>
-                <p className="text-gray-400 text-sm">No hidden costs or obligations</p>
+      {/* Split Screen Hero with Form */}
+      <section className="min-h-screen py-12 seamless-section relative overflow-hidden flex items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            {/* Left Side - Content */}
+            <div className="animate-slide-in-left">
+              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-6 backdrop-blur-sm">
+                <Calendar className="w-4 h-4 text-blue-400 mr-2" />
+                <span className="text-blue-400 font-medium text-sm">Free Consultation</span>
               </div>
 
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <Calendar className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">30 Minutes</h3>
-                <p className="text-gray-400 text-sm">Focused strategy session</p>
-              </div>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
+                Book Your Free
+                <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  Strategy Session
+                </span>
+              </h1>
 
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Custom Plan</h3>
-                <p className="text-gray-400 text-sm">Tailored recommendations</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Booking Form Section */}
-      <section id="consultation-form" className="py-24 seamless-section">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12">
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-white mb-4">Schedule Your Consultation</h2>
-              <p className="text-gray-400">
-                Fill out the form below and we'll contact you within 24 hours to schedule your free consultation.
+              <p className="text-base text-gray-400 mb-8 leading-relaxed">
+                Ready to transform your business with AI automation? Schedule a personalized consultation and we'll respond within 24 hours to set up your session.
               </p>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold mb-1">100% Free</h3>
+                    <p className="text-gray-400 text-sm">No hidden costs or obligations</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold mb-1">30 Minute Session</h3>
+                    <p className="text-gray-400 text-sm">Focused strategy discussion</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold mb-1">Custom Plan</h3>
+                    <p className="text-gray-400 text-sm">Tailored recommendations for your business</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-xl p-4">
+                <p className="text-gray-300 text-sm">
+                  <span className="text-white font-bold">What you'll get:</span> Expert insights, automation roadmap, ROI analysis, and clear next steps—all in one session.
+                </p>
+              </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Right Side - Form */}
+            <div className="animate-slide-in-right">
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm shadow-2xl">
+                <div className="mb-6">
+                  <h2 className="text-2xl font-bold text-white mb-2">Schedule Your Consultation</h2>
+                  <p className="text-gray-400 text-sm">
+                    Fill out the form and we'll contact you within 24 hours.
+                  </p>
+                </div>
+
+                <form onSubmit={handleSubmit} className="space-y-4">
               {/* Full Name */}
               <div>
-                <label htmlFor="fullName" className="block text-sm font-medium text-gray-400 mb-3">
+                <label htmlFor="fullName" className="block text-sm font-medium text-gray-400 mb-2">
                   Full Name *
                 </label>
                 <input
@@ -210,21 +221,21 @@ const ConsultationBooking = () => {
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
-                  className={`w-full px-5 py-4 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                  className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
                     errors.fullName 
                       ? 'border-red-500 focus:border-red-400' 
                       : 'border-white/20 focus:border-white/40'
                   }`}
-                  placeholder="Enter your full name"
+                  placeholder="John Doe"
                 />
                 {errors.fullName && (
-                  <p className="text-red-400 text-sm mt-2">{errors.fullName}</p>
+                  <p className="text-red-400 text-xs mt-1">{errors.fullName}</p>
                 )}
               </div>
 
               {/* Email Address */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-3">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
                   Email Address *
                 </label>
                 <input
@@ -233,21 +244,21 @@ const ConsultationBooking = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`w-full px-5 py-4 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                  className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
                     errors.email 
                       ? 'border-red-500 focus:border-red-400' 
                       : 'border-white/20 focus:border-white/40'
                   }`}
-                  placeholder="Enter your email address"
+                  placeholder="john@company.com"
                 />
                 {errors.email && (
-                  <p className="text-red-400 text-sm mt-2">{errors.email}</p>
+                  <p className="text-red-400 text-xs mt-1">{errors.email}</p>
                 )}
               </div>
 
               {/* Phone Number */}
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-3">
+                <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-2">
                   Phone Number *
                 </label>
                 <input
@@ -256,21 +267,21 @@ const ConsultationBooking = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className={`w-full px-5 py-4 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                  className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
                     errors.phone 
                       ? 'border-red-500 focus:border-red-400' 
                       : 'border-white/20 focus:border-white/40'
                   }`}
-                  placeholder="Enter your phone number"
+                  placeholder="+1 (555) 123-4567"
                 />
                 {errors.phone && (
-                  <p className="text-red-400 text-sm mt-2">{errors.phone}</p>
+                  <p className="text-red-400 text-xs mt-1">{errors.phone}</p>
                 )}
               </div>
 
               {/* Company Name */}
               <div>
-                <label htmlFor="companyName" className="block text-sm font-medium text-gray-400 mb-3">
+                <label htmlFor="companyName" className="block text-sm font-medium text-gray-400 mb-2">
                   Company Name *
                 </label>
                 <input
@@ -279,21 +290,21 @@ const ConsultationBooking = () => {
                   name="companyName"
                   value={formData.companyName}
                   onChange={handleChange}
-                  className={`w-full px-5 py-4 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                  className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
                     errors.companyName 
                       ? 'border-red-500 focus:border-red-400' 
                       : 'border-white/20 focus:border-white/40'
                   }`}
-                  placeholder="Enter your company name"
+                  placeholder="Your Company Inc."
                 />
                 {errors.companyName && (
-                  <p className="text-red-400 text-sm mt-2">{errors.companyName}</p>
+                  <p className="text-red-400 text-xs mt-1">{errors.companyName}</p>
                 )}
               </div>
 
               {/* Area of Service */}
               <div>
-                <label htmlFor="areaOfService" className="block text-sm font-medium text-gray-400 mb-3">
+                <label htmlFor="areaOfService" className="block text-sm font-medium text-gray-400 mb-2">
                   Area of Service *
                 </label>
                 <div className="relative">
@@ -302,13 +313,13 @@ const ConsultationBooking = () => {
                     name="areaOfService"
                     value={formData.areaOfService}
                     onChange={handleChange}
-                    className={`w-full px-5 py-5 bg-black border rounded-xl text-white focus:outline-none transition-all appearance-none cursor-pointer leading-normal ${
+                    className={`w-full px-4 py-3 bg-black border rounded-xl text-white focus:outline-none transition-all appearance-none cursor-pointer ${
                       errors.areaOfService 
                         ? 'border-red-500 focus:border-red-400' 
                         : 'border-white/20 focus:border-white/40'
                     }`}
                   >
-                    <option value="">Select the service you're interested in</option>
+                    <option value="">Select a service</option>
                     {serviceOptions.map((service) => (
                       <option key={service.value} value={service.value}>
                         {service.label}
@@ -316,82 +327,22 @@ const ConsultationBooking = () => {
                     ))}
                   </select>
                   <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
-                    <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>
                 {errors.areaOfService && (
-                  <p className="text-red-400 text-sm mt-2">{errors.areaOfService}</p>
+                  <p className="text-red-400 text-xs mt-1">{errors.areaOfService}</p>
                 )}
 
-                {/* Selected Service Preview */}
-                {selectedService && selectedService.value !== 'full-automation' && (
-                  <div className="mt-4 p-4 bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-xl">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                        <selectedService.icon className="w-5 h-5 text-white" />
-                      </div>
-                      <div>
-                        <h4 className="text-white font-semibold">{selectedService.label}</h4>
-                        <p className="text-gray-400 text-sm">{selectedService.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Full Automation Preview with All Icons */}
-                {selectedService && selectedService.value === 'full-automation' && (
-                  <div className="mt-4 p-6 bg-gradient-to-r from-purple-500/10 to-pink-600/10 border border-purple-500/30 rounded-xl">
-                    <div className="text-center mb-4">
-                      <h4 className="text-white font-semibold text-lg mb-2">Full Automation</h4>
-                      <p className="text-gray-400 text-sm">Complete business automation solution</p>
-                    </div>
-                    
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                      <div className="flex flex-col items-center space-y-2">
-                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                          <Globe className="w-6 h-6 text-white" />
-                        </div>
-                        <span className="text-white text-xs font-medium text-center">Website Creation</span>
-                      </div>
-                      
-                      <div className="flex flex-col items-center space-y-2">
-                        <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
-                          <Database className="w-6 h-6 text-white" />
-                        </div>
-                        <span className="text-white text-xs font-medium text-center">CRM Integration</span>
-                      </div>
-                      
-                      <div className="flex flex-col items-center space-y-2">
-                        <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
-                          <Phone className="w-6 h-6 text-white" />
-                        </div>
-                        <span className="text-white text-xs font-medium text-center">AI Phone Callers</span>
-                      </div>
-                      
-                      <div className="flex flex-col items-center space-y-2">
-                        <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-lg flex items-center justify-center">
-                          <Mail className="w-6 h-6 text-white" />
-                        </div>
-                        <span className="text-white text-xs font-medium text-center">Email Outreach</span>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-4 pt-4 border-t border-white/20">
-                      <p className="text-gray-300 text-sm text-center">
-                        <span className="text-white font-bold">All-in-one solution:</span> Website + CRM + AI Phone + Email automation
-                      </p>
-                    </div>
-                  </div>
-                )}
               </div>
 
               {/* Submit Button */}
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`w-full px-8 py-5 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center shadow-2xl ${
+                className={`w-full px-6 py-4 rounded-xl font-bold transition-all duration-300 flex items-center justify-center shadow-lg mt-6 ${
                   isSubmitting
                     ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
                     : 'bg-white text-black hover:bg-gray-100 hover-pop-button'
@@ -400,17 +351,23 @@ const ConsultationBooking = () => {
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin mr-2"></div>
-                    Booking Your Consultation...
+                    Booking...
                   </>
                 ) : (
                   <>
                     <Send className="mr-2 w-5 h-5" />
-                    Book My Free Consultation
+                    Book Free Consultation
                   </>
                 )}
               </button>
 
+              <p className="text-gray-500 text-xs text-center mt-4">
+                By submitting, you agree to our privacy policy. We'll never share your information.
+              </p>
             </form>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

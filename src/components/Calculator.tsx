@@ -50,17 +50,29 @@ const Calculator = () => {
               Your Current Situation
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div>
                 <label className="block text-white font-medium mb-3">
                   Number of Employees
                 </label>
                 <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  value={employees}
+                  onChange={(e) => setEmployees(parseInt(e.target.value))}
+                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider mb-3"
+                  style={{
+                    background: `linear-gradient(to right, #10b981 0%, #10b981 ${employees}%, rgba(255,255,255,0.2) ${employees}%, rgba(255,255,255,0.2) 100%)`
+                  }}
+                />
+                <input
                   type="number"
                   value={employees}
-                  onChange={(e) => setEmployees(Math.max(1, parseInt(e.target.value) || 1))}
+                  onChange={(e) => setEmployees(Math.max(1, Math.min(100, parseInt(e.target.value) || 1)))}
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-green-400 focus:outline-none transition-colors"
                   min="1"
+                  max="100"
                 />
                 <div className="mt-2 text-sm text-gray-400">{employees} employees</div>
               </div>
@@ -69,14 +81,28 @@ const Calculator = () => {
                 <label className="block text-white font-medium mb-3">
                   Average Annual Salary
                 </label>
+                <input
+                  type="range"
+                  min="10000"
+                  max="200000"
+                  step="1000"
+                  value={salary}
+                  onChange={(e) => setSalary(parseInt(e.target.value))}
+                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider mb-3"
+                  style={{
+                    background: `linear-gradient(to right, #10b981 0%, #10b981 ${((salary - 10000) / 190000) * 100}%, rgba(255,255,255,0.2) ${((salary - 10000) / 190000) * 100}%, rgba(255,255,255,0.2) 100%)`
+                  }}
+                />
                 <div className="relative">
                   <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white">$</span>
                   <input
                     type="number"
                     value={salary}
-                    onChange={(e) => setSalary(Math.max(1, parseInt(e.target.value) || 1))}
+                    onChange={(e) => setSalary(Math.max(10000, Math.min(200000, parseInt(e.target.value) || 10000)))}
                     className="w-full bg-white/10 border border-white/20 rounded-lg pl-8 pr-4 py-3 text-white focus:border-green-400 focus:outline-none transition-colors"
-                    min="1"
+                    min="10000"
+                    max="200000"
+                    step="1000"
                   />
                 </div>
                 <div className="mt-2 text-sm text-gray-400">{formatCurrency(salary)} per year</div>
@@ -87,12 +113,23 @@ const Calculator = () => {
                   Manual Hours Per Week (Per Employee)
                 </label>
                 <input
+                  type="range"
+                  min="1"
+                  max="60"
+                  value={hoursPerWeek}
+                  onChange={(e) => setHoursPerWeek(parseInt(e.target.value))}
+                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider mb-3"
+                  style={{
+                    background: `linear-gradient(to right, #10b981 0%, #10b981 ${(hoursPerWeek / 60) * 100}%, rgba(255,255,255,0.2) ${(hoursPerWeek / 60) * 100}%, rgba(255,255,255,0.2) 100%)`
+                  }}
+                />
+                <input
                   type="number"
                   value={hoursPerWeek}
-                  onChange={(e) => setHoursPerWeek(Math.max(1, parseInt(e.target.value) || 1))}
+                  onChange={(e) => setHoursPerWeek(Math.max(1, Math.min(60, parseInt(e.target.value) || 1)))}
                   className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-green-400 focus:outline-none transition-colors"
                   min="1"
-                  max="168"
+                  max="60"
                 />
                 <div className="mt-2 text-sm text-gray-400">{hoursPerWeek} hours/week</div>
               </div>

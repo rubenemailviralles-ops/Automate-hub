@@ -28,32 +28,32 @@ const Calculator = () => {
   };
 
   return (
-    <section className="py-24 seamless-section">
+    <section className="py-8 md:py-24 seamless-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500/20 to-emerald-600/20 border border-green-500/30 rounded-full mb-8 backdrop-blur-sm animate-fade-in">
-            <CalculatorIcon className="w-5 h-5 text-green-400 mr-2" />
-            <span className="text-green-400 font-medium">ROI Calculator</span>
+        <div className="text-center mb-6 md:mb-12">
+          <div className="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-green-500/20 to-emerald-600/20 border border-green-500/30 rounded-full mb-4 md:mb-8 backdrop-blur-sm animate-fade-in">
+            <CalculatorIcon className="w-4 h-4 md:w-5 md:h-5 text-green-400 mr-2" />
+            <span className="text-green-400 font-medium text-sm md:text-base">ROI Calculator</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white animate-fade-in-up">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-6 text-white animate-fade-in-up">
             Calculate Your Potential Savings
           </h2>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in-up delay-200">
+          <p className="text-sm md:text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in-up delay-200">
             See how much you could save by automating manual processes with AI
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto">
           {/* Input Section */}
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-8 animate-slide-in-left">
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
-              <DollarSign className="w-6 h-6 mr-2 text-green-400" />
+          <div className="bg-white/5 border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-8 animate-slide-in-left">
+            <h3 className="text-lg md:text-2xl font-bold text-white mb-4 md:mb-6 flex items-center">
+              <DollarSign className="w-5 h-5 md:w-6 md:h-6 mr-2 text-green-400" />
               Your Current Situation
             </h3>
             
-            <div className="space-y-8">
+            <div className="space-y-4 md:space-y-8">
               <div>
-                <label className="block text-white font-medium mb-3">
+                <label className="block text-white font-medium mb-2 md:mb-3 text-sm md:text-base">
                   Number of Employees
                 </label>
                 <input
@@ -62,7 +62,7 @@ const Calculator = () => {
                   max="100"
                   value={employees}
                   onChange={(e) => setEmployees(parseInt(e.target.value))}
-                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider mb-3"
+                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider mb-2 md:mb-3"
                   style={{
                     background: `linear-gradient(to right, #10b981 0%, #10b981 ${employees}%, rgba(255,255,255,0.2) ${employees}%, rgba(255,255,255,0.2) 100%)`
                   }}
@@ -71,15 +71,15 @@ const Calculator = () => {
                   type="number"
                   value={employees}
                   onChange={(e) => setEmployees(Math.max(1, Math.min(100, parseInt(e.target.value) || 1)))}
-                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-green-400 focus:outline-none transition-colors"
+                  className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 md:px-4 md:py-3 text-white text-sm md:text-base focus:border-green-400 focus:outline-none transition-colors"
                   min="1"
                   max="100"
                 />
-                <div className="mt-2 text-sm text-gray-400">{employees} employees</div>
+                <div className="mt-1 md:mt-2 text-xs md:text-sm text-gray-400">{employees} employees</div>
               </div>
 
               <div>
-                <label className="block text-white font-medium mb-3">
+                <label className="block text-white font-medium mb-2 md:mb-3 text-sm md:text-base">
                   Average Annual Salary
                 </label>
                 <input
@@ -89,29 +89,29 @@ const Calculator = () => {
                   step="1000"
                   value={salary}
                   onChange={(e) => setSalary(parseInt(e.target.value))}
-                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider mb-3"
+                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider mb-2 md:mb-3"
                   style={{
                     background: `linear-gradient(to right, #10b981 0%, #10b981 ${((salary - 10000) / 190000) * 100}%, rgba(255,255,255,0.2) ${((salary - 10000) / 190000) * 100}%, rgba(255,255,255,0.2) 100%)`
                   }}
                 />
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white">$</span>
+                  <span className="absolute left-3 md:left-4 top-1/2 transform -translate-y-1/2 text-white text-sm md:text-base">$</span>
                   <input
                     type="number"
                     value={salary}
                     onChange={(e) => setSalary(Math.max(10000, Math.min(200000, parseInt(e.target.value) || 10000)))}
-                    className="w-full bg-white/10 border border-white/20 rounded-lg pl-8 pr-4 py-3 text-white focus:border-green-400 focus:outline-none transition-colors"
+                    className="w-full bg-white/10 border border-white/20 rounded-lg pl-7 md:pl-8 pr-3 md:pr-4 py-2 md:py-3 text-white text-sm md:text-base focus:border-green-400 focus:outline-none transition-colors"
                     min="10000"
                     max="200000"
                     step="1000"
                   />
                 </div>
-                <div className="mt-2 text-sm text-gray-400">{formatCurrency(salary)} per year</div>
+                <div className="mt-1 md:mt-2 text-xs md:text-sm text-gray-400">{formatCurrency(salary)} per year</div>
               </div>
 
               <div>
-                <label className="block text-white font-medium mb-3">
-                  Manual Hours Per Week (Per Employee)
+                <label className="block text-white font-medium mb-2 md:mb-3 text-sm md:text-base">
+                  Manual Hours Per Week
                 </label>
                 <input
                   type="range"
@@ -119,7 +119,7 @@ const Calculator = () => {
                   max="60"
                   value={hoursPerWeek}
                   onChange={(e) => setHoursPerWeek(parseInt(e.target.value))}
-                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider mb-3"
+                  className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider mb-2 md:mb-3"
                   style={{
                     background: `linear-gradient(to right, #10b981 0%, #10b981 ${(hoursPerWeek / 60) * 100}%, rgba(255,255,255,0.2) ${(hoursPerWeek / 60) * 100}%, rgba(255,255,255,0.2) 100%)`
                   }}
@@ -128,60 +128,61 @@ const Calculator = () => {
                   type="number"
                   value={hoursPerWeek}
                   onChange={(e) => setHoursPerWeek(Math.max(1, Math.min(60, parseInt(e.target.value) || 1)))}
-                  className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white focus:border-green-400 focus:outline-none transition-colors"
+                  className="w-full bg-white/10 border border-white/20 rounded-lg px-3 py-2 md:px-4 md:py-3 text-white text-sm md:text-base focus:border-green-400 focus:outline-none transition-colors"
                   min="1"
                   max="60"
                 />
-                <div className="mt-2 text-sm text-gray-400">{hoursPerWeek} hours/week</div>
+                <div className="mt-1 md:mt-2 text-xs md:text-sm text-gray-400">{hoursPerWeek} hours/week</div>
               </div>
             </div>
           </div>
 
           {/* Results Section */}
-          <div className="space-y-6 animate-slide-in-right">
+          <div className="space-y-3 md:space-y-6 animate-slide-in-right">
             {/* Current Costs */}
-            <div className="bg-gradient-to-br from-red-500/10 to-orange-600/10 border border-red-500/30 rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">
+            <div className="bg-gradient-to-br from-red-500/10 to-orange-600/10 border border-red-500/30 rounded-xl md:rounded-2xl p-4 md:p-8">
+              <h3 className="text-base md:text-2xl font-bold text-white mb-3 md:mb-6">
                 Annual Cost of Manual Processes
               </h3>
-              <div className="text-5xl font-bold text-white mb-4">
+              <div className="text-3xl md:text-5xl font-bold text-white mb-3 md:mb-4">
                 {formatCurrency(annualManualCost)}
               </div>
-              <div className="grid grid-cols-2 gap-4 text-gray-300">
+              <div className="grid grid-cols-2 gap-2 md:gap-4 text-gray-300">
                 <div>
-                  <div className="text-sm text-gray-400">Monthly</div>
-                  <div className="text-xl font-semibold">{formatCurrency(monthlyManualCost)}</div>
+                  <div className="text-xs md:text-sm text-gray-400">Monthly</div>
+                  <div className="text-sm md:text-xl font-semibold">{formatCurrency(monthlyManualCost)}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-400">Weekly</div>
-                  <div className="text-xl font-semibold">{formatCurrency(weeklyManualCost)}</div>
+                  <div className="text-xs md:text-sm text-gray-400">Weekly</div>
+                  <div className="text-sm md:text-xl font-semibold">{formatCurrency(weeklyManualCost)}</div>
                 </div>
               </div>
             </div>
 
             {/* Potential Savings */}
-            <div className="bg-gradient-to-br from-green-500/10 to-emerald-600/10 border border-green-500/30 rounded-2xl p-8 animate-pulse-slow">
-              <h3 className="text-2xl font-bold text-white mb-2 flex items-center">
-                <TrendingUp className="w-6 h-6 mr-2 text-green-400" />
-                Potential Annual Savings with AI Automation
+            <div className="bg-gradient-to-br from-green-500/10 to-emerald-600/10 border border-green-500/30 rounded-xl md:rounded-2xl p-4 md:p-8 animate-pulse-slow">
+              <h3 className="text-base md:text-2xl font-bold text-white mb-2 flex items-center">
+                <TrendingUp className="w-5 h-5 md:w-6 md:h-6 mr-2 text-green-400" />
+                <span className="hidden md:inline">Potential Annual Savings with AI</span>
+                <span className="md:hidden">Annual Savings with AI</span>
               </h3>
-              <div className="text-sm text-green-400 mb-4">Save up to 75% on manual processes</div>
-              <div className="text-5xl font-bold text-green-400 mb-4">
+              <div className="text-xs md:text-sm text-green-400 mb-2 md:mb-4">Save up to 75% on manual processes</div>
+              <div className="text-3xl md:text-5xl font-bold text-green-400 mb-3 md:mb-4">
                 {formatCurrency(annualSavings)}
               </div>
-              <div className="grid grid-cols-2 gap-4 text-gray-300">
+              <div className="grid grid-cols-2 gap-2 md:gap-4 text-gray-300">
                 <div>
-                  <div className="text-sm text-gray-400">Monthly Savings</div>
-                  <div className="text-xl font-semibold text-green-400">{formatCurrency(monthlySavings)}</div>
+                  <div className="text-xs md:text-sm text-gray-400">Monthly Savings</div>
+                  <div className="text-sm md:text-xl font-semibold text-green-400">{formatCurrency(monthlySavings)}</div>
                 </div>
                 <div>
-                  <div className="text-sm text-gray-400">Weekly Savings</div>
-                  <div className="text-xl font-semibold text-green-400">{formatCurrency(weeklySavings)}</div>
+                  <div className="text-xs md:text-sm text-gray-400">Weekly Savings</div>
+                  <div className="text-sm md:text-xl font-semibold text-green-400">{formatCurrency(weeklySavings)}</div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-lg p-4 text-center">
+            <div className="bg-white/5 border border-white/10 rounded-lg p-3 md:p-4 text-center hidden md:block">
               <p className="text-gray-400 text-sm">
                 🚀 Start automating today and see real results in weeks, not months
               </p>

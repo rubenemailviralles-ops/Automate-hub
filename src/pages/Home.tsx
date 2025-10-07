@@ -93,7 +93,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {services.map((service, index) => {
               const Icon = service.icon;
               const animationDelay = `delay-${200 + (index * 100)}`;

@@ -7,7 +7,8 @@ const Calculator = () => {
   const [hoursPerWeek, setHoursPerWeek] = useState(40);
 
   // Calculate costs
-  const hourlyRate = salary / 52 / hoursPerWeek;
+  // Assume standard 2080 work hours per year (40 hours/week × 52 weeks)
+  const hourlyRate = salary / 2080;
   const weeklyManualCost = employees * hourlyRate * hoursPerWeek;
   const monthlyManualCost = weeklyManualCost * 4.33;
   const annualManualCost = weeklyManualCost * 52;

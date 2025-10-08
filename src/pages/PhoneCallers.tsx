@@ -52,15 +52,20 @@ const PhoneCallers = () => {
       <section className="py-24 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-8 text-white">
-              AI Phone Agent In Action
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Watch how our AI handles incoming calls professionally and captures every opportunity
-            </p>
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl font-bold mb-8 text-white">
+                AI Phone Agent In Action
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                Watch how our AI handles incoming calls professionally and captures every opportunity
+              </p>
+            </ScrollReveal>
           </div>
 
-          <div className="bg-gradient-to-br from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-3xl p-8 max-w-6xl mx-auto">
+          <ScrollReveal delay={200}>
+            <div className="bg-gradient-to-br from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-3xl p-8 max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               {/* Phone Call Simulation */}
               <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 relative overflow-hidden">
@@ -172,23 +177,25 @@ const PhoneCallers = () => {
               </div>
             </div>
 
-            <div className="text-center mt-8">
-              <div className="flex items-center justify-center space-x-6 text-gray-300">
-                <div className="flex items-center space-x-2">
-                  <Clock className="w-4 h-4 text-green-500" />
-                  <span>24/7 Available</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-blue-500" />
-                  <span>100% Professional</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <TrendingUp className="w-4 h-4 text-purple-500" />
-                  <span>68% Conversion Rate</span>
+            <ScrollReveal delay={300}>
+              <div className="text-center mt-8">
+                <div className="flex items-center justify-center space-x-6 text-gray-300">
+                  <div className="flex items-center space-x-2">
+                    <Clock className="w-4 h-4 text-green-500" />
+                    <span>24/7 Available</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="w-4 h-4 text-blue-500" />
+                    <span>100% Professional</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <TrendingUp className="w-4 h-4 text-purple-500" />
+                    <span>68% Conversion Rate</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </ScrollReveal>
+          </ScrollReveal>
         </div>
       </section>
 

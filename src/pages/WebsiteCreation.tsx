@@ -52,15 +52,20 @@ const WebsiteCreation = () => {
       <section className="py-24 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-8 text-white">
-              See It In Action
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Watch how our websites convert visitors into customers with AI-powered features
-            </p>
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl font-bold mb-8 text-white">
+                See It In Action
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                Watch how our websites convert visitors into customers with AI-powered features
+              </p>
+            </ScrollReveal>
           </div>
 
-          <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-3xl p-8 max-w-5xl mx-auto">
+          <ScrollReveal delay={200}>
+            <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-3xl p-8 max-w-5xl mx-auto">
             <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
               {/* Mock Browser Header */}
               <div className="bg-gray-100 px-4 py-3 flex items-center space-x-2">
@@ -125,14 +130,16 @@ const WebsiteCreation = () => {
               </div>
             </div>
 
-            <div className="text-center mt-8">
-              <p className="text-gray-300 text-lg">
-                ✨ <span className="text-white font-bold">Mobile-optimized</span> • 
-                <span className="text-white font-bold"> SEO-ready</span> • 
-                <span className="text-white font-bold"> Conversion-focused</span> ✨
-              </p>
-            </div>
-          </div>
+            <ScrollReveal delay={300}>
+              <div className="text-center mt-8">
+                <p className="text-gray-300 text-lg">
+                  ✨ <span className="text-white font-bold">Mobile-optimized</span> • 
+                  <span className="text-white font-bold"> SEO-ready</span> • 
+                  <span className="text-white font-bold"> Conversion-focused</span> ✨
+                </p>
+              </div>
+            </ScrollReveal>
+          </ScrollReveal>
         </div>
       </section>
 

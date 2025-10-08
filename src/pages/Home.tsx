@@ -97,7 +97,9 @@ const Home = () => {
         </div>
       </section>
 
-      <Calculator />
+      <ScrollReveal delay={0}>
+        <Calculator />
+      </ScrollReveal>
 
       {/* Services Section */}
       <section className="py-16 seamless-section">

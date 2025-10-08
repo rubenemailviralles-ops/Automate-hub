@@ -50,9 +50,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
         transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
-        transitionDelay: `${delay}ms`,
-        width: '100%',
-        height: '100%'
+        transitionDelay: `${delay}ms`
       }}
     >
       {children}

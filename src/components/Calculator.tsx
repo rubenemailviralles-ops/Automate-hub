@@ -84,14 +84,14 @@ const Calculator = () => {
                 </label>
                 <input
                   type="range"
-                  min="10000"
-                  max="200000"
+                  min="1000"
+                  max="100000"
                   step="1000"
                   value={salary}
                   onChange={(e) => setSalary(parseInt(e.target.value))}
                   className="w-full h-2 bg-white/20 rounded-lg appearance-none cursor-pointer slider mb-2 md:mb-3"
                   style={{
-                    background: `linear-gradient(to right, #10b981 0%, #10b981 ${((salary - 10000) / 190000) * 100}%, rgba(255,255,255,0.2) ${((salary - 10000) / 190000) * 100}%, rgba(255,255,255,0.2) 100%)`
+                    background: `linear-gradient(to right, #10b981 0%, #10b981 ${((salary - 1000) / 99000) * 100}%, rgba(255,255,255,0.2) ${((salary - 1000) / 99000) * 100}%, rgba(255,255,255,0.2) 100%)`
                   }}
                 />
                 <div className="relative">
@@ -99,10 +99,10 @@ const Calculator = () => {
                   <input
                     type="number"
                     value={salary}
-                    onChange={(e) => setSalary(Math.max(10000, Math.min(200000, parseInt(e.target.value) || 10000)))}
+                    onChange={(e) => setSalary(Math.max(1000, Math.min(100000, parseInt(e.target.value) || 1000)))}
                     className="w-full bg-white/10 border border-white/20 rounded-lg pl-7 md:pl-8 pr-3 md:pr-4 py-2 md:py-3 text-white text-sm md:text-base focus:border-green-400 focus:outline-none transition-colors"
-                    min="10000"
-                    max="200000"
+                    min="1000"
+                    max="100000"
                     step="1000"
                   />
                 </div>

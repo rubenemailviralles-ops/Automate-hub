@@ -1,5 +1,7 @@
 import React from 'react';
 import { Cookie, Settings, Eye, Shield, BarChart3, Target } from 'lucide-react';
+import ScrollReveal from '../components/ScrollReveal';
+import TypeWriter from '../components/TypeWriter';
 
 const CookiePolicy = () => {
   return (
@@ -13,22 +15,30 @@ const CookiePolicy = () => {
               <span className="text-orange-400 font-medium">Cookie Usage & Tracking</span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              Cookie
+            <TypeWriter 
+              text="Cookie" 
+              as="h1"
+              className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight"
+              delay={100}
+            >
               <span className="block bg-gradient-to-r from-orange-400 to-red-400 bg-clip-text text-transparent">
                 Policy
               </span>
-            </h1>
+            </TypeWriter>
 
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Learn about how we use cookies and similar technologies to improve your experience on our website.
-            </p>
-
-            <div className="bg-gradient-to-r from-orange-500/10 to-red-600/10 border border-orange-500/30 rounded-2xl p-6 max-w-2xl mx-auto">
-              <p className="text-gray-300">
-                <strong className="text-white">Last Updated:</strong> January 1, 2025
+            <ScrollReveal delay={200}>
+              <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
+                Learn about how we use cookies and similar technologies to improve your experience on our website.
               </p>
-            </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={300}>
+              <div className="bg-gradient-to-r from-orange-500/10 to-red-600/10 border border-orange-500/30 rounded-2xl p-6 max-w-2xl mx-auto">
+                <p className="text-gray-300">
+                  <strong className="text-white">Last Updated:</strong> January 1, 2025
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -37,29 +47,35 @@ const CookiePolicy = () => {
       <section className="py-24 seamless-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Eye className="w-8 h-8 text-white" />
+            <ScrollReveal delay={100}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Eye className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Transparency</h3>
+                <p className="text-gray-400 text-sm">We clearly explain what cookies we use and why we use them.</p>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Transparency</h3>
-              <p className="text-gray-400 text-sm">We clearly explain what cookies we use and why we use them.</p>
-            </div>
+            </ScrollReveal>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Settings className="w-8 h-8 text-white" />
+            <ScrollReveal delay={200}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Settings className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Your Control</h3>
+                <p className="text-gray-400 text-sm">You can manage and control cookie settings through your browser.</p>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Your Control</h3>
-              <p className="text-gray-400 text-sm">You can manage and control cookie settings through your browser.</p>
-            </div>
+            </ScrollReveal>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-white" />
+            <ScrollReveal delay={300}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Shield className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Privacy First</h3>
+                <p className="text-gray-400 text-sm">We respect your privacy and only use necessary cookies for functionality.</p>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Privacy First</h3>
-              <p className="text-gray-400 text-sm">We respect your privacy and only use necessary cookies for functionality.</p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -67,8 +83,9 @@ const CookiePolicy = () => {
       {/* Cookie Policy Content */}
       <section className="py-24 seamless-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-12">
-            <div className="prose prose-invert max-w-none">
+          <ScrollReveal delay={0}>
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-12">
+              <div className="prose prose-invert max-w-none">
               
               <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
                 <Cookie className="w-8 h-8 mr-3" />
@@ -251,8 +268,9 @@ const CookiePolicy = () => {
                 </p>
               </div>
 
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

@@ -54,12 +54,11 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
   return (
     <Component 
       ref={elementRef as any} 
-      className={`${className} transition-all duration-700 ease-out ${
-        isVisible 
-          ? 'opacity-100 translate-y-0' 
-          : 'opacity-0 translate-y-8'
-      }`}
+      className={className}
       style={{ 
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+        transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
         transitionDelay: `${delay}ms`
       }}
     >

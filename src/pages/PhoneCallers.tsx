@@ -1,6 +1,7 @@
 import React from 'react';
 import { Phone, Clock, TrendingUp, Shield, CheckCircle, ArrowRight, Users, BarChart3 } from 'lucide-react';
 import CTASection from '../components/CTASection';
+import TypeWriter from '../components/TypeWriter';
 
 const PhoneCallers = () => {
   return (
@@ -15,9 +16,9 @@ const PhoneCallers = () => {
             </div>
 
             <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              Never Miss a
+              <TypeWriter text="Never Miss a" speed={80} delay={200} />
               <span className="block bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                Profitable Call
+                <TypeWriter text="Profitable Call" speed={80} delay={1000} />
               </span>
             </h1>
 

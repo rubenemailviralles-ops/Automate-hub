@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Send, Phone, Mail } from 'lucide-react';
+import TypeWriter from '../components/TypeWriter';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -33,9 +34,9 @@ const Contact = () => {
             {/* Contact Info - Left Side */}
             <div className="lg:pr-8">
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">
-                Get In
+                <TypeWriter text="Get In" speed={70} delay={200} />
                 <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  Touch
+                  <TypeWriter text="Touch" speed={70} delay={800} />
                 </span>
               </h1>
               <p className="text-base text-gray-400 mb-8 leading-relaxed">

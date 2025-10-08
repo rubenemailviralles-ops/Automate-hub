@@ -1,6 +1,7 @@
 import React from 'react';
 import { Globe, Smartphone, Search, Zap, Palette, Code } from 'lucide-react';
 import CTASection from '../components/CTASection';
+import TypeWriter from '../components/TypeWriter';
 
 const WebsiteCreation = () => {
   return (
@@ -15,9 +16,9 @@ const WebsiteCreation = () => {
             </div>
 
             <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              Websites That
+              <TypeWriter text="Websites That" speed={80} delay={200} />
               <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Convert Visitors
+                <TypeWriter text="Convert Visitors" speed={80} delay={1000} />
               </span>
             </h1>
 

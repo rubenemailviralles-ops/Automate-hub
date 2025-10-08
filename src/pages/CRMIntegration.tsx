@@ -1,6 +1,7 @@
 import React from 'react';
 import { Database, Zap, BarChart3, Users, Workflow, Shield, MessageSquare, Calendar, Headphones, Ticket, Clock, ArrowRight } from 'lucide-react';
 import CTASection from '../components/CTASection';
+import TypeWriter from '../components/TypeWriter';
 
 const CRMIntegration = () => {
   return (
@@ -14,9 +15,9 @@ const CRMIntegration = () => {
             </div>
 
             <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              Unify Your
+              <TypeWriter text="Unify Your" speed={80} delay={200} />
               <span className="block bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Customer Data
+                <TypeWriter text="Customer Data" speed={80} delay={1000} />
               </span>
             </h1>
 

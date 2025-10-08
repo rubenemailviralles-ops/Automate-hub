@@ -13,7 +13,7 @@ const AboutUs = () => {
             <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
               <TypeWriter text="About" speed={40} delay={100} />
               <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                <TypeWriter text="Automate Hub" speed={40} delay={400} />
+                <TypeWriter text="Automate Hub" speed={40} delay={500} />
               </span>
             </h1>
 

@@ -36,7 +36,7 @@ const Contact = () => {
               <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">
                 <TypeWriter text="Get In" speed={35} delay={100} />
                 <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  <TypeWriter text="Touch" speed={35} delay={400} />
+                  <TypeWriter text="Touch" speed={35} delay={500} />
                 </span>
               </h1>
               <p className="text-base text-gray-400 mb-8 leading-relaxed">

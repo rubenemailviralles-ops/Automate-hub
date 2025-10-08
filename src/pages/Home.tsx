@@ -68,14 +68,17 @@ const Home = () => {
                 delay={100}
                 onComplete={() => setShowSecondLine(true)}
               />
-              {showSecondLine && (
-                <span className="block bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+              <span 
+                className="block bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent transition-opacity duration-700"
+                style={{ opacity: showSecondLine ? 1 : 0 }}
+              >
+                {showSecondLine && (
                   <TypeWriter 
                     text="Business Growth" 
                     speed={35}
                   />
-                </span>
-              )}
+                )}
+              </span>
             </h1>
 
             <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-400">
@@ -109,11 +112,15 @@ const Home = () => {
                 onComplete={() => setShowSubheading(true)}
               />
             </h2>
-            {showSubheading && (
-              <p className="text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in-up">
-                Comprehensive automation services designed to transform every aspect of your business operations.
-              </p>
-            )}
+            <p 
+              className="text-lg text-gray-400 max-w-3xl mx-auto transition-all duration-700"
+              style={{ 
+                opacity: showSubheading ? 1 : 0,
+                transform: showSubheading ? 'translateY(0)' : 'translateY(10px)'
+              }}
+            >
+              {showSubheading && "Comprehensive automation services designed to transform every aspect of your business operations."}
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">

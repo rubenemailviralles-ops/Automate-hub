@@ -18,7 +18,7 @@ const WebsiteCreation = () => {
             <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
               <TypeWriter text="Websites That" speed={40} delay={100} />
               <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                <TypeWriter text="Convert Visitors" speed={40} delay={600} />
+                <TypeWriter text="Convert Visitors" speed={40} delay={700} />
               </span>
             </h1>
 

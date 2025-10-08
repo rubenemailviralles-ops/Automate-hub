@@ -291,66 +291,72 @@ const PhoneCallers = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-3xl font-bold text-white mb-6">Without AI Phone Agents:</h3>
-              <ul className="space-y-4 text-gray-400">
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-3">✗</span>
-                  Many calls go unanswered
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-3">✗</span>
-                  Missed business opportunities
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-3">✗</span>
-                  Inconsistent customer experience
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-3">✗</span>
-                  Manual lead qualification
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-3">✗</span>
-                  Limited business hours
-                </li>
-              </ul>
-            </div>
+            <ScrollReveal delay={100}>
+              <div>
+                <h3 className="text-3xl font-bold text-white mb-6">Without AI Phone Agents:</h3>
+                <ul className="space-y-4 text-gray-400">
+                  <li className="flex items-start">
+                    <span className="text-red-500 mr-3">✗</span>
+                    Many calls go unanswered
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-500 mr-3">✗</span>
+                    Missed business opportunities
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-500 mr-3">✗</span>
+                    Inconsistent customer experience
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-500 mr-3">✗</span>
+                    Manual lead qualification
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-500 mr-3">✗</span>
+                    Limited business hours
+                  </li>
+                </ul>
+              </div>
+            </ScrollReveal>
 
-            <div>
-              <h3 className="text-3xl font-bold text-white mb-6">After AI Phone Agents:</h3>
-              <ul className="space-y-4 text-gray-400">
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
-                  Consistent call answering
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
-                  Better lead capture
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
-                  Perfect brand consistency
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
-                  Automated lead qualification
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
-                  24/7/365 availability
-                </li>
-              </ul>
-            </div>
+            <ScrollReveal delay={200}>
+              <div>
+                <h3 className="text-3xl font-bold text-white mb-6">After AI Phone Agents:</h3>
+                <ul className="space-y-4 text-gray-400">
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3">✓</span>
+                    Consistent call answering
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3">✓</span>
+                    Better lead capture
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3">✓</span>
+                    Perfect brand consistency
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3">✓</span>
+                    Automated lead qualification
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3">✓</span>
+                    24/7/365 availability
+                  </li>
+                </ul>
+              </div>
+            </ScrollReveal>
           </div>
 
-          <div className="mt-16 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-2xl p-12 text-center">
-            <h3 className="text-3xl font-bold text-white mb-4">Key Benefits</h3>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Our AI phone agents help businesses provide better customer service, capture more leads, 
-              and operate more efficiently with 24/7 availability and consistent professional responses.
-            </p>
-          </div>
+          <ScrollReveal delay={300}>
+            <div className="mt-16 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-2xl p-12 text-center">
+              <h3 className="text-3xl font-bold text-white mb-4">Key Benefits</h3>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                Our AI phone agents help businesses provide better customer service, capture more leads, 
+                and operate more efficiently with 24/7 availability and consistent professional responses.
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

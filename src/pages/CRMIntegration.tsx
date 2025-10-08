@@ -210,37 +210,37 @@ const CRMIntegration = () => {
               <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
                   <MessageSquare className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-white">AI Chatbot Integration</h3>
-              <p className="text-gray-400 mb-6">
-                Deploy intelligent AI chatbots that engage visitors, qualify leads, and drive conversions around the clock. 
-                Turn every website visitor into a potential customer with conversations that convert 24/7.
-              </p>
-              <div className="bg-gradient-to-r from-green-500/10 to-blue-600/10 border border-green-500/30 rounded-xl p-6 mb-6">
-                <p className="text-gray-300">
-                  Our AI chatbots don't just answer questions - they <span className="text-white font-bold">actively sell</span> your products and services, 
-                  handling objections and guiding prospects through your entire sales funnel.
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-white">AI Chatbot Integration</h3>
+                <p className="text-gray-400 mb-6">
+                  Deploy intelligent AI chatbots that engage visitors, qualify leads, and drive conversions around the clock. 
+                  Turn every website visitor into a potential customer with conversations that convert 24/7.
                 </p>
+                <div className="bg-gradient-to-r from-green-500/10 to-blue-600/10 border border-green-500/30 rounded-xl p-6 mb-6">
+                  <p className="text-gray-300">
+                    Our AI chatbots don't just answer questions - they <span className="text-white font-bold">actively sell</span> your products and services, 
+                    handling objections and guiding prospects through your entire sales funnel.
+                  </p>
+                </div>
+                <ul className="space-y-3 text-gray-400">
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3">✓</span>
+                    Natural Language Processing for human-like conversations
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3">✓</span>
+                    24/7 availability with instant responses
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3">✓</span>
+                    Automatic lead qualification and scoring
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-3">✓</span>
+                    Personalized experiences based on visitor behavior
+                  </li>
+                </ul>
               </div>
-              <ul className="space-y-3 text-gray-400">
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
-                  Natural Language Processing for human-like conversations
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
-                  24/7 availability with instant responses
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
-                  Automatic lead qualification and scoring
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-3">✓</span>
-                  Personalized experiences based on visitor behavior
-                </li>
-              </ul>
-            </div>
             </ScrollReveal>
 
             {/* Appointment Setting */}
@@ -248,37 +248,37 @@ const CRMIntegration = () => {
               <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
                   <Calendar className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-white">Automated Appointment Setting</h3>
-              <p className="text-gray-400 mb-6">
-                Transform your scheduling process with AI that books appointments while you sleep. Intelligent calendar 
-                management that maximizes your availability and minimizes no-shows.
-              </p>
-              <div className="bg-gradient-to-r from-teal-500/10 to-green-600/10 border border-teal-500/30 rounded-xl p-6 mb-6">
-                <p className="text-gray-300">
-                  Our AI doesn't just schedule appointments - it <span className="text-white font-bold">optimizes your entire calendar</span> for 
-                  maximum productivity, automatically handling rescheduling, follow-ups, and no-show prevention.
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-white">Automated Appointment Setting</h3>
+                <p className="text-gray-400 mb-6">
+                  Transform your scheduling process with AI that books appointments while you sleep. Intelligent calendar 
+                  management that maximizes your availability and minimizes no-shows.
                 </p>
+                <div className="bg-gradient-to-r from-teal-500/10 to-green-600/10 border border-teal-500/30 rounded-xl p-6 mb-6">
+                  <p className="text-gray-300">
+                    Our AI doesn't just schedule appointments - it <span className="text-white font-bold">optimizes your entire calendar</span> for 
+                    maximum productivity, automatically handling rescheduling, follow-ups, and no-show prevention.
+                  </p>
+                </div>
+                <ul className="space-y-3 text-gray-400">
+                  <li className="flex items-start">
+                    <span className="text-teal-500 mr-3">✓</span>
+                    Smart scheduling with optimal time suggestions
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-teal-500 mr-3">✓</span>
+                    Multi-person coordination for group meetings
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-teal-500 mr-3">✓</span>
+                    Automatic confirmations and reminders
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-teal-500 mr-3">✓</span>
+                    No-show prevention with 80% reduction rate
+                  </li>
+                </ul>
               </div>
-              <ul className="space-y-3 text-gray-400">
-                <li className="flex items-start">
-                  <span className="text-teal-500 mr-3">✓</span>
-                  Smart scheduling with optimal time suggestions
-                </li>
-                <li className="flex items-start">
-                  <span className="text-teal-500 mr-3">✓</span>
-                  Multi-person coordination for group meetings
-                </li>
-                <li className="flex items-start">
-                  <span className="text-teal-500 mr-3">✓</span>
-                  Automatic confirmations and reminders
-                </li>
-                <li className="flex items-start">
-                  <span className="text-teal-500 mr-3">✓</span>
-                  No-show prevention with 80% reduction rate
-                </li>
-              </ul>
-            </div>
             </ScrollReveal>
 
             {/* Customer Support */}
@@ -286,37 +286,37 @@ const CRMIntegration = () => {
               <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
                   <Headphones className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-white">AI Customer Support</h3>
-              <p className="text-gray-400 mb-6">
-                Transform your customer support with AI-powered ticket management, instant responses, and intelligent 
-                routing that ensures every customer gets the help they need, when they need it.
-              </p>
-              <div className="bg-gradient-to-r from-orange-500/10 to-red-600/10 border border-orange-500/30 rounded-xl p-6 mb-6">
-                <p className="text-gray-300">
-                  Our AI support system resolves <span className="text-white font-bold">80% of tickets automatically</span> while seamlessly 
-                  escalating complex issues to human agents with full context and suggested solutions.
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-white">AI Customer Support</h3>
+                <p className="text-gray-400 mb-6">
+                  Transform your customer support with AI-powered ticket management, instant responses, and intelligent 
+                  routing that ensures every customer gets the help they need, when they need it.
                 </p>
+                <div className="bg-gradient-to-r from-orange-500/10 to-red-600/10 border border-orange-500/30 rounded-xl p-6 mb-6">
+                  <p className="text-gray-300">
+                    Our AI support system resolves <span className="text-white font-bold">80% of tickets automatically</span> while seamlessly 
+                    escalating complex issues to human agents with full context and suggested solutions.
+                  </p>
+                </div>
+                <ul className="space-y-3 text-gray-400">
+                  <li className="flex items-start">
+                    <span className="text-orange-500 mr-3">✓</span>
+                    Smart ticket categorization and routing
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-orange-500 mr-3">✓</span>
+                    Instant responses to common questions
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-orange-500 mr-3">✓</span>
+                    Multi-channel support integration
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-orange-500 mr-3">✓</span>
+                    Performance analytics and insights
+                  </li>
+                </ul>
               </div>
-              <ul className="space-y-3 text-gray-400">
-                <li className="flex items-start">
-                  <span className="text-orange-500 mr-3">✓</span>
-                  Smart ticket categorization and routing
-                </li>
-                <li className="flex items-start">
-                  <span className="text-orange-500 mr-3">✓</span>
-                  Instant responses to common questions
-                </li>
-                <li className="flex items-start">
-                  <span className="text-orange-500 mr-3">✓</span>
-                  Multi-channel support integration
-                </li>
-                <li className="flex items-start">
-                  <span className="text-orange-500 mr-3">✓</span>
-                  Performance analytics and insights
-                </li>
-              </ul>
-            </div>
             </ScrollReveal>
           </div>
         </div>

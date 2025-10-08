@@ -10,10 +10,12 @@ const EmailOutreach = () => {
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500/20 to-rose-600/20 border border-pink-500/30 rounded-full mb-8 backdrop-blur-sm">
-              <Mail className="w-5 h-5 text-pink-400 mr-2" />
-              <span className="text-pink-400 font-medium">AI Email Outreach</span>
-            </div>
+            <ScrollReveal delay={0}>
+              <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500/20 to-rose-600/20 border border-pink-500/30 rounded-full mb-8 backdrop-blur-sm">
+                <Mail className="w-5 h-5 text-pink-400 mr-2" />
+                <span className="text-pink-400 font-medium">AI Email Outreach</span>
+              </div>
+            </ScrollReveal>
 
             <TypeWriter 
               text="Emails That" 
@@ -33,12 +35,14 @@ const EmailOutreach = () => {
               </p>
             </ScrollReveal>
 
-            <div className="bg-gradient-to-r from-pink-500/10 to-rose-600/10 border border-pink-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
-              <p className="text-gray-300 text-lg">
-                Our AI writes <span className="text-white font-bold">hyper-personalized emails</span> at scale, analyzing each prospect's 
-                digital footprint to craft messages that feel like they were written by a human who knows them personally.
-              </p>
-            </div>
+            <ScrollReveal delay={300}>
+              <div className="bg-gradient-to-r from-pink-500/10 to-rose-600/10 border border-pink-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
+                <p className="text-gray-300 text-lg">
+                  Our AI writes <span className="text-white font-bold">hyper-personalized emails</span> at scale, analyzing each prospect's 
+                  digital footprint to craft messages that feel like they were written by a human who knows them personally.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

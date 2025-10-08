@@ -11,10 +11,12 @@ const WebsiteCreation = () => {
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm">
-              <Globe className="w-5 h-5 text-blue-400 mr-2" />
-              <span className="text-blue-400 font-medium">Professional Web Development</span>
-            </div>
+            <ScrollReveal delay={0}>
+              <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm">
+                <Globe className="w-5 h-5 text-blue-400 mr-2" />
+                <span className="text-blue-400 font-medium">Professional Web Development</span>
+              </div>
+            </ScrollReveal>
 
             <TypeWriter 
               text="Websites That" 
@@ -34,12 +36,14 @@ const WebsiteCreation = () => {
               </p>
             </ScrollReveal>
 
-            <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
-              <p className="text-gray-300 text-lg">
-                Our websites integrate AI chatbots, automated lead capture, and conversion optimization from day one - 
-                turning your site into a <span className="text-white font-bold">24/7 sales machine</span>.
-              </p>
-            </div>
+            <ScrollReveal delay={300}>
+              <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
+                <p className="text-gray-300 text-lg">
+                  Our websites integrate AI chatbots, automated lead capture, and conversion optimization from day one - 
+                  turning your site into a <span className="text-white font-bold">24/7 sales machine</span>.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

@@ -10,10 +10,12 @@ const CRMIntegration = () => {
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500/20 to-pink-600/20 border border-purple-500/30 rounded-full mb-8 backdrop-blur-sm">
-              <Database className="w-5 h-5 text-purple-400 mr-2" />
-              <span className="text-purple-400 font-medium">CRM Integration & Automation</span>
-            </div>
+            <ScrollReveal delay={0}>
+              <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500/20 to-pink-600/20 border border-purple-500/30 rounded-full mb-8 backdrop-blur-sm">
+                <Database className="w-5 h-5 text-purple-400 mr-2" />
+                <span className="text-purple-400 font-medium">CRM Integration & Automation</span>
+              </div>
+            </ScrollReveal>
 
             <TypeWriter 
               text="Unify Your" 
@@ -33,12 +35,14 @@ const CRMIntegration = () => {
               </p>
             </ScrollReveal>
 
-            <div className="bg-gradient-to-r from-purple-500/10 to-pink-600/10 border border-purple-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
-              <p className="text-gray-300 text-lg">
-                Our AI-powered integrations don't just connect your systems - they <span className="text-white font-bold">intelligently automate</span> your 
-                entire customer journey, from first contact to closed deal.
-              </p>
-            </div>
+            <ScrollReveal delay={300}>
+              <div className="bg-gradient-to-r from-purple-500/10 to-pink-600/10 border border-purple-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
+                <p className="text-gray-300 text-lg">
+                  Our AI-powered integrations don't just connect your systems - they <span className="text-white font-bold">intelligently automate</span> your 
+                  entire customer journey, from first contact to closed deal.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

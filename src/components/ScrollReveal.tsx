@@ -20,9 +20,8 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !isVisible) {
-            setIsVisible(true);
-          }
+          // Animate in when entering viewport, animate out when leaving
+          setIsVisible(entry.isIntersecting);
         });
       },
       {
@@ -40,7 +39,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
         observer.unobserve(currentElement);
       }
     };
-  }, [isVisible]);
+  }, []);
 
   return (
     <div 

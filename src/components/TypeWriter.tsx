@@ -28,11 +28,14 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !isVisible) {
+          // Animate in when entering viewport, animate out when leaving
+          if (entry.isIntersecting) {
             setIsVisible(true);
             if (onComplete) {
               setTimeout(onComplete, 600); // Call onComplete after animation
             }
+          } else {
+            setIsVisible(false);
           }
         });
       },
@@ -51,7 +54,7 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
         observer.unobserve(currentElement);
       }
     };
-  }, [isVisible, onComplete]);
+  }, [onComplete]);
 
   return (
     <Component 

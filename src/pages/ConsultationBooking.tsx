@@ -169,42 +169,50 @@ const ConsultationBooking = () => {
               </ScrollReveal>
 
               <div className="space-y-4 mb-8">
-                <div className="flex items-start space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-5 h-5 text-white" />
+                <ScrollReveal delay={300}>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold mb-1">100% Free</h3>
+                      <p className="text-gray-400 text-sm">No hidden costs or obligations</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-white font-bold mb-1">100% Free</h3>
-                    <p className="text-gray-400 text-sm">No hidden costs or obligations</p>
-                  </div>
-                </div>
+                </ScrollReveal>
 
-                <div className="flex items-start space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Calendar className="w-5 h-5 text-white" />
+                <ScrollReveal delay={400}>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Calendar className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold mb-1">30 Minute Session</h3>
+                      <p className="text-gray-400 text-sm">Focused strategy discussion</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-white font-bold mb-1">30 Minute Session</h3>
-                    <p className="text-gray-400 text-sm">Focused strategy discussion</p>
-                  </div>
-                </div>
+                </ScrollReveal>
 
-                <div className="flex items-start space-x-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-5 h-5 text-white" />
+                <ScrollReveal delay={500}>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-5 h-5 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold mb-1">Custom Plan</h3>
+                      <p className="text-gray-400 text-sm">Tailored recommendations for your business</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-white font-bold mb-1">Custom Plan</h3>
-                    <p className="text-gray-400 text-sm">Tailored recommendations for your business</p>
-                  </div>
-                </div>
+                </ScrollReveal>
               </div>
 
-              <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-xl p-4">
-                <p className="text-gray-300 text-sm">
-                  <span className="text-white font-bold">What you'll get:</span> Expert insights, automation roadmap, ROI analysis, and clear next steps—all in one session.
-                </p>
-              </div>
+              <ScrollReveal delay={600}>
+                <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-xl p-4">
+                  <p className="text-gray-300 text-sm">
+                    <span className="text-white font-bold">What you'll get:</span> Expert insights, automation roadmap, ROI analysis, and clear next steps—all in one session.
+                  </p>
+                </div>
+              </ScrollReveal>
             </div>
 
             {/* Right Side - Form */}
@@ -384,86 +392,98 @@ const ConsultationBooking = () => {
       <section className="py-24 seamless-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-8 text-white">
-              What to Expect From Your Consultation
-            </h2>
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl font-bold mb-8 text-white">
+                What to Expect From Your Consultation
+              </h2>
+            </ScrollReveal>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                1
+            <ScrollReveal delay={100}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
+                  1
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Discovery Call</h3>
+                <p className="text-gray-400">
+                  We'll discuss your current challenges, goals, and business processes to understand your needs.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Discovery Call</h3>
-              <p className="text-gray-400">
-                We'll discuss your current challenges, goals, and business processes to understand your needs.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                2
+            <ScrollReveal delay={200}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
+                  2
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Custom Analysis</h3>
+                <p className="text-gray-400">
+                  We'll analyze your specific situation and identify the best automation opportunities for your business.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Custom Analysis</h3>
-              <p className="text-gray-400">
-                We'll analyze your specific situation and identify the best automation opportunities for your business.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                3
+            <ScrollReveal delay={300}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
+                  3
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Strategy Recommendations</h3>
+                <p className="text-gray-400">
+                  Get a clear roadmap with specific recommendations tailored to your business and budget.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Strategy Recommendations</h3>
-              <p className="text-gray-400">
-                Get a clear roadmap with specific recommendations tailored to your business and budget.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                4
+            <ScrollReveal delay={400}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
+                  4
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Next Steps</h3>
+                <p className="text-gray-400">
+                  We'll outline clear next steps, timeline, and investment required to achieve your automation goals.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Next Steps</h3>
-              <p className="text-gray-400">
-                We'll outline clear next steps, timeline, and investment required to achieve your automation goals.
-              </p>
-            </div>
+            </ScrollReveal>
           </div>
 
-          <div className="mt-16 bg-gradient-to-r from-green-500/10 to-blue-600/10 border border-green-500/30 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-bold text-white mb-4">Why Book a Consultation?</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-              <ul className="space-y-3 text-gray-400">
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                  Get expert insights into your automation potential
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                  Understand exactly how AI can help your specific business
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                  Learn about ROI and cost savings opportunities
-                </li>
-              </ul>
-              <ul className="space-y-3 text-gray-400">
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                  Receive a custom automation roadmap
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                  No pressure sales - just helpful guidance
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                  Connect with automation experts who understand your industry
-                </li>
-              </ul>
+          <ScrollReveal delay={500}>
+            <div className="mt-16 bg-gradient-to-r from-green-500/10 to-blue-600/10 border border-green-500/30 rounded-2xl p-8 text-center">
+              <h3 className="text-2xl font-bold text-white mb-4">Why Book a Consultation?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <ul className="space-y-3 text-gray-400">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    Get expert insights into your automation potential
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    Understand exactly how AI can help your specific business
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    Learn about ROI and cost savings opportunities
+                  </li>
+                </ul>
+                <ul className="space-y-3 text-gray-400">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    Receive a custom automation roadmap
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    No pressure sales - just helpful guidance
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    Connect with automation experts who understand your industry
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           <div className="text-center mt-12">
             <Link 

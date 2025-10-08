@@ -12,14 +12,10 @@ interface TypeWriterProps {
 const TypeWriter: React.FC<TypeWriterProps> = ({ 
   text, 
   delay = 0, 
-  speed = 30, 
   className = '', 
   as: Component = 'span',
   onComplete 
 }) => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isStarted, setIsStarted] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLElement>(null);
 
@@ -32,12 +28,15 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
         entries.forEach((entry) => {
           if (entry.isIntersecting && !isVisible) {
             setIsVisible(true);
+            if (onComplete) {
+              setTimeout(onComplete, 600); // Call onComplete after animation
+            }
           }
         });
       },
       {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-        rootMargin: '50px', // Start slightly before it comes into view
+        threshold: 0.1,
+        rootMargin: '50px',
       }
     );
 
@@ -50,37 +49,21 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
         observer.unobserve(currentElement);
       }
     };
-  }, [isVisible]);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    // Start after delay once visible
-    const startTimer = setTimeout(() => {
-      setIsStarted(true);
-    }, delay);
-
-    return () => clearTimeout(startTimer);
-  }, [delay, isVisible]);
-
-  useEffect(() => {
-    if (!isStarted) return;
-
-    if (currentIndex < text.length) {
-      const timer = setTimeout(() => {
-        setDisplayedText((prev) => prev + text[currentIndex]);
-        setCurrentIndex((prev) => prev + 1);
-      }, speed);
-
-      return () => clearTimeout(timer);
-    } else if (onComplete && currentIndex === text.length) {
-      onComplete();
-    }
-  }, [currentIndex, text, speed, isStarted, onComplete]);
+  }, [isVisible, onComplete]);
 
   return (
-    <Component ref={elementRef as any} className={className}>
-      {displayedText}
+    <Component 
+      ref={elementRef as any} 
+      className={`${className} transition-all duration-700 ease-out ${
+        isVisible 
+          ? 'opacity-100 translate-y-0' 
+          : 'opacity-0 translate-y-8'
+      }`}
+      style={{ 
+        transitionDelay: `${delay}ms`
+      }}
+    >
+      {text}
     </Component>
   );
 };

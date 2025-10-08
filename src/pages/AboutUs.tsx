@@ -10,12 +10,16 @@ const AboutUs = () => {
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              <TypeWriter text="About" speed={40} delay={100} />
+            <TypeWriter 
+              text="About" 
+              as="h1"
+              className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight"
+              delay={100}
+            >
               <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                <TypeWriter text="Automate Hub" speed={40} delay={500} />
+                Automate Hub
               </span>
-            </h1>
+            </TypeWriter>
 
             <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
               We believe that every business, regardless of size, should have access to powerful automation tools 

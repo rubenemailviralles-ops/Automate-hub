@@ -14,12 +14,16 @@ const EmailOutreach = () => {
               <span className="text-pink-400 font-medium">AI Email Outreach</span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              <TypeWriter text="Emails That" speed={40} delay={100} />
+            <TypeWriter 
+              text="Emails That" 
+              as="h1"
+              className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight"
+              delay={100}
+            >
               <span className="block bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent">
-                <TypeWriter text="Actually Convert" speed={40} delay={700} />
+                Actually Convert
               </span>
-            </h1>
+            </TypeWriter>
 
             <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
               Scale your outreach with AI-powered email campaigns that feel personal, drive engagement, and convert 

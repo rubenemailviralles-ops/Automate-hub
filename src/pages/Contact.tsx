@@ -33,12 +33,16 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Contact Info - Left Side */}
             <div className="lg:pr-8">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight">
-                <TypeWriter text="Get In" speed={35} delay={100} />
+              <TypeWriter 
+                text="Get In" 
+                as="h1"
+                className="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight"
+                delay={100}
+              >
                 <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  <TypeWriter text="Touch" speed={35} delay={500} />
+                  Touch
                 </span>
-              </h1>
+              </TypeWriter>
               <p className="text-base text-gray-400 mb-8 leading-relaxed">
                 Ready to automate your business operations? Let's discuss how our AI solutions can help
                 increase your productivity and reduce costs.

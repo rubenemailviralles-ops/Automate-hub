@@ -150,12 +150,16 @@ const ConsultationBooking = () => {
                 <span className="text-blue-400 font-medium text-sm">Free Consultation</span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
-                <TypeWriter text="Book Your Free" speed={35} delay={100} />
+              <TypeWriter 
+                text="Book Your Free" 
+                as="h1"
+                className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight"
+                delay={100}
+              >
                 <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  <TypeWriter text="Strategy Session" speed={35} delay={700} />
+                  Strategy Session
                 </span>
-              </h1>
+              </TypeWriter>
 
               <p className="text-base text-gray-400 mb-8 leading-relaxed">
                 Ready to transform your business with AI automation? Schedule a personalized consultation and we'll respond within 24 hours to set up your session.

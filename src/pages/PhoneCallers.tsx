@@ -15,12 +15,16 @@ const PhoneCallers = () => {
               <span className="text-indigo-400 font-medium">AI Phone Automation</span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              <TypeWriter text="Never Miss a" speed={40} delay={100} />
+            <TypeWriter 
+              text="Never Miss a" 
+              as="h1"
+              className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight"
+              delay={100}
+            >
               <span className="block bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                <TypeWriter text="Profitable Call" speed={40} delay={700} />
+                Profitable Call
               </span>
-            </h1>
+            </TypeWriter>
 
             <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
               Many businesses miss important calls due to unavailability. Our AI phone agents ensure every call 

@@ -14,12 +14,16 @@ const CRMIntegration = () => {
               <span className="text-purple-400 font-medium">CRM Integration & Automation</span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              <TypeWriter text="Unify Your" speed={40} delay={100} />
+            <TypeWriter 
+              text="Unify Your" 
+              as="h1"
+              className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight"
+              delay={100}
+            >
               <span className="block bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                <TypeWriter text="Customer Data" speed={40} delay={600} />
+                Customer Data
               </span>
-            </h1>
+            </TypeWriter>
 
             <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
               Connect all your systems into one powerful automation engine. Our CRM integrations eliminate data silos 

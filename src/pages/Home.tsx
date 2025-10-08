@@ -61,25 +61,17 @@ const Home = () => {
               <span className="text-white font-medium">Next-Gen AI Automation Platform</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              <TypeWriter 
-                text="Automate Your" 
-                speed={35} 
-                delay={100}
-                onComplete={() => setShowSecondLine(true)}
-              />
-              <span 
-                className="block bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent transition-opacity duration-700"
-                style={{ opacity: showSecondLine ? 1 : 0 }}
-              >
-                {showSecondLine && (
-                  <TypeWriter 
-                    text="Business Growth" 
-                    speed={35}
-                  />
-                )}
+            <TypeWriter 
+              text="Automate Your" 
+              as="h1"
+              className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight"
+              delay={100}
+              onComplete={() => setShowSecondLine(true)}
+            >
+              <span className="block bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                Business Growth
               </span>
-            </h1>
+            </TypeWriter>
 
             <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-400">
               Increase productivity and reduce costs with AI automation solutions. From intelligent chatbots to automated systems, 
@@ -104,14 +96,13 @@ const Home = () => {
       <section className="py-16 seamless-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-              <TypeWriter 
-                text="Our AI Solutions" 
-                speed={35}
-                delay={0}
-                onComplete={() => setShowSubheading(true)}
-              />
-            </h2>
+            <TypeWriter 
+              text="Our AI Solutions" 
+              as="h2"
+              className="text-4xl md:text-5xl font-bold mb-6 text-white"
+              delay={0}
+              onComplete={() => setShowSubheading(true)}
+            />
             <p 
               className="text-lg text-gray-400 max-w-3xl mx-auto transition-all duration-700"
               style={{ 

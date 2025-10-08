@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, ReactNode } from 'react';
 
 interface TypeWriterProps {
   text: string;
@@ -7,6 +7,7 @@ interface TypeWriterProps {
   className?: string;
   as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span';
   onComplete?: () => void;
+  children?: ReactNode;
 }
 
 const TypeWriter: React.FC<TypeWriterProps> = ({ 
@@ -14,7 +15,8 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
   delay = 0, 
   className = '', 
   as: Component = 'span',
-  onComplete 
+  onComplete,
+  children
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLElement>(null);
@@ -63,6 +65,7 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
       }}
     >
       {text}
+      {children}
     </Component>
   );
 };

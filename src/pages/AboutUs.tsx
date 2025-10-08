@@ -1,6 +1,7 @@
 import React from 'react';
 import { Target, Users, Lightbulb, Award } from 'lucide-react';
 import CTASection from '../components/CTASection';
+import TypeWriter from '../components/TypeWriter';
 
 const AboutUs = () => {
   return (
@@ -10,9 +11,9 @@ const AboutUs = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
             <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              About
+              <TypeWriter text="About" speed={80} delay={200} />
               <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Automate Hub
+                <TypeWriter text="Automate Hub" speed={80} delay={700} />
               </span>
             </h1>
 

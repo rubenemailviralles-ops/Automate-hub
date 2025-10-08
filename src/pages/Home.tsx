@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowRight, Sparkles, Globe, Database, Phone, Mail, BarChart3 } from 'lucide-react';
 import CTASection from '../components/CTASection';
 import Calculator from '../components/Calculator';
+import TypeWriter from '../components/TypeWriter';
 
 const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [showSecondLine, setShowSecondLine] = useState(false);
+  const [showSubheading, setShowSubheading] = useState(false);
 
   const handleServiceClick = (servicePath: string) => {
     if (location.pathname === servicePath) {
@@ -58,11 +61,21 @@ const Home = () => {
               <span className="text-white font-medium">Next-Gen AI Automation Platform</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight animate-fade-in-up delay-200">
-              Automate Your
-              <span className="block bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-                Business Growth
-              </span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight">
+              <TypeWriter 
+                text="Automate Your" 
+                speed={80} 
+                delay={300}
+                onComplete={() => setShowSecondLine(true)}
+              />
+              {showSecondLine && (
+                <span className="block bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                  <TypeWriter 
+                    text="Business Growth" 
+                    speed={80}
+                  />
+                </span>
+              )}
             </h1>
 
             <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-400">
@@ -88,12 +101,19 @@ const Home = () => {
       <section className="py-16 seamless-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white animate-fade-in-up">
-              Our AI Solutions
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+              <TypeWriter 
+                text="Our AI Solutions" 
+                speed={70}
+                delay={0}
+                onComplete={() => setShowSubheading(true)}
+              />
             </h2>
-            <p className="text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in-up delay-200">
-              Comprehensive automation services designed to transform every aspect of your business operations.
-            </p>
+            {showSubheading && (
+              <p className="text-lg text-gray-400 max-w-3xl mx-auto animate-fade-in-up">
+                Comprehensive automation services designed to transform every aspect of your business operations.
+              </p>
+            )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">

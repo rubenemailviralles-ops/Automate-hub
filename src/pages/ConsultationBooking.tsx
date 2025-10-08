@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Calendar, Send, CheckCircle, Globe, Database, Phone, Mail, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import TypeWriter from '../components/TypeWriter';
 
 const ConsultationBooking = () => {
   const [formData, setFormData] = useState({
@@ -150,9 +151,9 @@ const ConsultationBooking = () => {
               </div>
 
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight">
-                Book Your Free
+                <TypeWriter text="Book Your Free" speed={70} delay={200} />
                 <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  Strategy Session
+                  <TypeWriter text="Strategy Session" speed={70} delay={1000} />
                 </span>
               </h1>
 

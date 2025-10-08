@@ -64,15 +64,15 @@ const Home = () => {
             <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight">
               <TypeWriter 
                 text="Automate Your" 
-                speed={80} 
-                delay={300}
+                speed={35} 
+                delay={100}
                 onComplete={() => setShowSecondLine(true)}
               />
               {showSecondLine && (
                 <span className="block bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
                   <TypeWriter 
                     text="Business Growth" 
-                    speed={80}
+                    speed={35}
                   />
                 </span>
               )}
@@ -104,7 +104,7 @@ const Home = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               <TypeWriter 
                 text="Our AI Solutions" 
-                speed={70}
+                speed={35}
                 delay={0}
                 onComplete={() => setShowSubheading(true)}
               />

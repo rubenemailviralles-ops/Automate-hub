@@ -16,9 +16,9 @@ const PhoneCallers = () => {
             </div>
 
             <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              <TypeWriter text="Never Miss a" speed={80} delay={200} />
+              <TypeWriter text="Never Miss a" speed={40} delay={100} />
               <span className="block bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                <TypeWriter text="Profitable Call" speed={80} delay={1000} />
+                <TypeWriter text="Profitable Call" speed={40} delay={600} />
               </span>
             </h1>
 

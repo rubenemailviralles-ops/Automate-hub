@@ -12,7 +12,7 @@ interface TypeWriterProps {
 const TypeWriter: React.FC<TypeWriterProps> = ({ 
   text, 
   delay = 0, 
-  speed = 50, 
+  speed = 30, 
   className = '', 
   as: Component = 'span',
   onComplete 

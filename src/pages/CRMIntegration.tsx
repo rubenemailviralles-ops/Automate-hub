@@ -15,9 +15,9 @@ const CRMIntegration = () => {
             </div>
 
             <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              <TypeWriter text="Unify Your" speed={80} delay={200} />
+              <TypeWriter text="Unify Your" speed={40} delay={100} />
               <span className="block bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                <TypeWriter text="Customer Data" speed={80} delay={1000} />
+                <TypeWriter text="Customer Data" speed={40} delay={500} />
               </span>
             </h1>
 

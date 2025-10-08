@@ -66,7 +66,7 @@ const PhoneCallers = () => {
 
           <ScrollReveal delay={200}>
             <div className="bg-gradient-to-br from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-3xl p-8 max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               {/* Phone Call Simulation */}
               <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-blue-500 animate-pulse"></div>
@@ -175,26 +175,27 @@ const PhoneCallers = () => {
                   </div>
                 </div>
               </div>
-            </div>
+              </div>
 
-            <ScrollReveal delay={300}>
-              <div className="text-center mt-8">
-                <div className="flex items-center justify-center space-x-6 text-gray-300">
-                  <div className="flex items-center space-x-2">
-                    <Clock className="w-4 h-4 text-green-500" />
-                    <span>24/7 Available</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="w-4 h-4 text-blue-500" />
-                    <span>100% Professional</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <TrendingUp className="w-4 h-4 text-purple-500" />
-                    <span>68% Conversion Rate</span>
+              <ScrollReveal delay={300}>
+                <div className="text-center mt-8">
+                  <div className="flex items-center justify-center space-x-6 text-gray-300">
+                    <div className="flex items-center space-x-2">
+                      <Clock className="w-4 h-4 text-green-500" />
+                      <span>24/7 Available</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-blue-500" />
+                      <span>100% Professional</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <TrendingUp className="w-4 h-4 text-purple-500" />
+                      <span>68% Conversion Rate</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            </div>
           </ScrollReveal>
         </div>
       </section>

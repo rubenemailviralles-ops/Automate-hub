@@ -65,7 +65,7 @@ const CRMIntegration = () => {
 
           <ScrollReveal delay={200}>
             <div className="bg-gradient-to-br from-purple-500/10 to-pink-600/10 border border-purple-500/30 rounded-3xl p-8 max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
               {/* Website with Chatbot */}
               <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
                 <div className="bg-gray-100 px-4 py-3 flex items-center space-x-2">
@@ -174,28 +174,29 @@ const CRMIntegration = () => {
                   </div>
                 </div>
               </div>
-            </div>
+              </div>
 
-            <ScrollReveal delay={300}>
-              <div className="text-center mt-8">
-                <div className="flex items-center justify-center space-x-4 text-gray-300">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                    <span>Real-time sync</span>
-                  </div>
-                  <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse delay-500"></div>
-                    <span>Auto lead scoring</span>
-                  </div>
-                  <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse delay-1000"></div>
-                    <span>Smart follow-ups</span>
+              <ScrollReveal delay={300}>
+                <div className="text-center mt-8">
+                  <div className="flex items-center justify-center space-x-4 text-gray-300">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                      <span>Real-time sync</span>
+                    </div>
+                    <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse delay-500"></div>
+                      <span>Auto lead scoring</span>
+                    </div>
+                    <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-3 h-3 bg-purple-500 rounded-full animate-pulse delay-1000"></div>
+                      <span>Smart follow-ups</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            </div>
           </ScrollReveal>
         </div>
       </section>

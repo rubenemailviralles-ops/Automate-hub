@@ -66,7 +66,7 @@ const WebsiteCreation = () => {
 
           <ScrollReveal delay={200}>
             <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-3xl p-8 max-w-5xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
               {/* Mock Browser Header */}
               <div className="bg-gray-100 px-4 py-3 flex items-center space-x-2">
                 <div className="flex space-x-2">
@@ -128,17 +128,18 @@ const WebsiteCreation = () => {
                   </div>
                 </div>
               </div>
-            </div>
-
-            <ScrollReveal delay={300}>
-              <div className="text-center mt-8">
-                <p className="text-gray-300 text-lg">
-                  ✨ <span className="text-white font-bold">Mobile-optimized</span> • 
-                  <span className="text-white font-bold"> SEO-ready</span> • 
-                  <span className="text-white font-bold"> Conversion-focused</span> ✨
-                </p>
               </div>
-            </ScrollReveal>
+
+              <ScrollReveal delay={300}>
+                <div className="text-center mt-8">
+                  <p className="text-gray-300 text-lg">
+                    ✨ <span className="text-white font-bold">Mobile-optimized</span> • 
+                    <span className="text-white font-bold"> SEO-ready</span> • 
+                    <span className="text-white font-bold"> Conversion-focused</span> ✨
+                  </p>
+                </div>
+              </ScrollReveal>
+            </div>
           </ScrollReveal>
         </div>
       </section>

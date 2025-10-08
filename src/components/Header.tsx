@@ -130,26 +130,32 @@ const Header = () => {
     <header className="fixed top-0 w-full bg-black/40 backdrop-blur-md border-b border-white/10 z-50" ref={mobileMenuRef}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 animate-slide-in-left">
-          <Link to="/" className="flex items-center space-x-3">
+          <div className="flex items-center space-x-3">
             <div 
               className={`nav-item nav-brand-icon w-10 h-10 bg-gradient-to-br from-white to-gray-300 rounded-xl flex items-center justify-center shadow-lg cursor-pointer transition-all duration-200 logo-normal ${
                 isAnimating ? 'logo-hidden' : 'hover:logo-shake'
               }`}
-              onClick={triggerAnimation}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                triggerAnimation();
+              }}
               id="logo-icon"
               data-nav-item="logo"
             >
               <Bot className="w-6 h-6 text-black" />
             </div>
-            <span 
-              className={`nav-item nav-brand-text text-2xl font-bold text-white tracking-tight transition-all duration-300 ${
-                isAnimating ? 'opacity-0 -translate-y-1 pointer-events-none' : 'opacity-100'
-              }`}
-              data-nav-item="brand"
-            >
-              Automate Hub
-            </span>
-          </Link>
+            <Link to="/">
+              <span 
+                className={`nav-item nav-brand-text text-2xl font-bold text-white tracking-tight transition-all duration-300 cursor-pointer ${
+                  isAnimating ? 'opacity-0 -translate-y-1 pointer-events-none' : 'opacity-100'
+                }`}
+                data-nav-item="brand"
+              >
+                Automate Hub
+              </span>
+            </Link>
+          </div>
 
           <nav className="hidden lg:flex items-center space-x-8 animate-slide-in-right">
             <Link 

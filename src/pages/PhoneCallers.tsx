@@ -2,6 +2,7 @@ import React from 'react';
 import { Phone, Clock, TrendingUp, Shield, CheckCircle, ArrowRight, Users, BarChart3 } from 'lucide-react';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
+import ScrollReveal from '../components/ScrollReveal';
 
 const PhoneCallers = () => {
   return (
@@ -26,10 +27,12 @@ const PhoneCallers = () => {
               </span>
             </TypeWriter>
 
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Many businesses miss important calls due to unavailability. Our AI phone agents ensure every call 
-              is answered professionally, helping you capture more opportunities and serve customers better.
-            </p>
+            <ScrollReveal delay={200}>
+              <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
+                Many businesses miss important calls due to unavailability. Our AI phone agents ensure every call 
+                is answered professionally, helping you capture more opportunities and serve customers better.
+              </p>
+            </ScrollReveal>
 
             <div className="bg-indigo-500/10 border border-indigo-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
               <p className="text-gray-300 text-lg">

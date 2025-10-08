@@ -2,6 +2,7 @@ import React from 'react';
 import { Target, Users, Lightbulb, Award } from 'lucide-react';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
+import ScrollReveal from '../components/ScrollReveal';
 
 const AboutUs = () => {
   return (
@@ -21,10 +22,12 @@ const AboutUs = () => {
               </span>
             </TypeWriter>
 
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
-              We believe that every business, regardless of size, should have access to powerful automation tools 
-              that increase productivity and reduce operational costs.
-            </p>
+            <ScrollReveal delay={200}>
+              <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
+                We believe that every business, regardless of size, should have access to powerful automation tools 
+                that increase productivity and reduce operational costs.
+              </p>
+            </ScrollReveal>
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Mail, Target, BarChart3, Users, Zap, TrendingUp } from 'lucide-react';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
+import ScrollReveal from '../components/ScrollReveal';
 
 const EmailOutreach = () => {
   return (
@@ -25,10 +26,12 @@ const EmailOutreach = () => {
               </span>
             </TypeWriter>
 
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Scale your outreach with AI-powered email campaigns that feel personal, drive engagement, and convert 
-              prospects into customers at unprecedented rates.
-            </p>
+            <ScrollReveal delay={200}>
+              <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
+                Scale your outreach with AI-powered email campaigns that feel personal, drive engagement, and convert 
+                prospects into customers at unprecedented rates.
+              </p>
+            </ScrollReveal>
 
             <div className="bg-gradient-to-r from-pink-500/10 to-rose-600/10 border border-pink-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
               <p className="text-gray-300 text-lg">

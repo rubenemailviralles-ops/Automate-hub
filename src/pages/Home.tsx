@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles, Globe, Database, Phone, Mail, BarChart3 } from 'l
 import CTASection from '../components/CTASection';
 import Calculator from '../components/Calculator';
 import TypeWriter from '../components/TypeWriter';
+import ScrollReveal from '../components/ScrollReveal';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -56,10 +57,12 @@ const Home = () => {
       <section className="py-16 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
-            <div className="inline-flex items-center px-6 py-3 bg-white/10 border border-white/20 rounded-full mb-8 backdrop-blur-sm animate-fade-in">
-              <Sparkles className="w-5 h-5 text-white mr-2" />
-              <span className="text-white font-medium">Next-Gen AI Automation Platform</span>
-            </div>
+            <ScrollReveal delay={0}>
+              <div className="inline-flex items-center px-6 py-3 bg-white/10 border border-white/20 rounded-full mb-8 backdrop-blur-sm">
+                <Sparkles className="w-5 h-5 text-white mr-2" />
+                <span className="text-white font-medium">Next-Gen AI Automation Platform</span>
+              </div>
+            </ScrollReveal>
 
             <TypeWriter 
               text="Automate Your" 
@@ -73,19 +76,23 @@ const Home = () => {
               </span>
             </TypeWriter>
 
-            <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in-up delay-400">
-              Increase productivity and reduce costs with AI automation solutions. From intelligent chatbots to automated systems, 
-              we help businesses operate more efficiently and compete effectively.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12 animate-fade-in-up delay-600">
-            </div>
-
-            <div className="text-center max-w-3xl mx-auto animate-fade-in-up delay-800">
-              <p className="text-base text-gray-400">
-                Helping businesses streamline operations and reduce costs through intelligent automation solutions
+            <ScrollReveal delay={200}>
+              <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed">
+                Increase productivity and reduce costs with AI automation solutions. From intelligent chatbots to automated systems, 
+                we help businesses operate more efficiently and compete effectively.
               </p>
+            </ScrollReveal>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
             </div>
+
+            <ScrollReveal delay={300}>
+              <div className="text-center max-w-3xl mx-auto">
+                <p className="text-base text-gray-400">
+                  Helping businesses streamline operations and reduce costs through intelligent automation solutions
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -117,33 +124,31 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {services.map((service, index) => {
               const Icon = service.icon;
-              const animationDelay = `delay-${200 + (index * 100)}`;
               
               return (
-                <div
-                  key={index}
-                  className={`group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 transition-all duration-500 hover:bg-white/10 hover-pop animate-scale-in ${animationDelay}`}
-                >
-                  <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg animate-float`}>
-                    <Icon className="w-8 h-8 text-white" />
-                  </div>
-                  
-                  <h3 className="text-2xl font-bold mb-4 text-white">
-                    {service.title}
-                  </h3>
-                  
-                  <p className="text-gray-400 leading-relaxed mb-6">
-                    {service.description}
-                  </p>
+                <ScrollReveal key={index} delay={index * 150}>
+                  <div className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 transition-all duration-500 hover:bg-white/10 hover-pop">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg`}>
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold mb-4 text-white">
+                      {service.title}
+                    </h3>
+                    
+                    <p className="text-gray-400 leading-relaxed mb-6">
+                      {service.description}
+                    </p>
 
-                  <button
-                    onClick={() => handleServiceClick(service.path)}
-                    className="inline-flex items-center text-white font-semibold hover:text-gray-300 transition-all duration-300 group animate-bounce-subtle hover-pop-text"
-                  >
-                    Learn More
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </div>
+                    <button
+                      onClick={() => handleServiceClick(service.path)}
+                      className="inline-flex items-center text-white font-semibold hover:text-gray-300 transition-all duration-300 group hover-pop-text"
+                    >
+                      Learn More
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </button>
+                  </div>
+                </ScrollReveal>
               );
             })}
           </div>

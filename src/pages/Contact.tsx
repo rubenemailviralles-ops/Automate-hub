@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Phone, Mail } from 'lucide-react';
 import TypeWriter from '../components/TypeWriter';
+import ScrollReveal from '../components/ScrollReveal';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -43,10 +44,12 @@ const Contact = () => {
                   Touch
                 </span>
               </TypeWriter>
-              <p className="text-base text-gray-400 mb-8 leading-relaxed">
-                Ready to automate your business operations? Let's discuss how our AI solutions can help
-                increase your productivity and reduce costs.
-              </p>
+              <ScrollReveal delay={200}>
+                <p className="text-base text-gray-400 mb-8 leading-relaxed">
+                  Ready to automate your business operations? Let's discuss how our AI solutions can help
+                  increase your productivity and reduce costs.
+                </p>
+              </ScrollReveal>
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-4">

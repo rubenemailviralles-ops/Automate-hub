@@ -2,6 +2,7 @@ import React from 'react';
 import { Globe, Smartphone, Search, Zap, Palette, Code } from 'lucide-react';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
+import ScrollReveal from '../components/ScrollReveal';
 
 const WebsiteCreation = () => {
   return (
@@ -26,10 +27,12 @@ const WebsiteCreation = () => {
               </span>
             </TypeWriter>
 
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Your website is your digital storefront. We create conversion-optimized, AI-powered websites that turn 
-              visitors into customers and scale with your business growth.
-            </p>
+            <ScrollReveal delay={200}>
+              <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
+                Your website is your digital storefront. We create conversion-optimized, AI-powered websites that turn 
+                visitors into customers and scale with your business growth.
+              </p>
+            </ScrollReveal>
 
             <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
               <p className="text-gray-300 text-lg">

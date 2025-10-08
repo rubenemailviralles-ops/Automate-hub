@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Calendar, Send, CheckCircle, Globe, Database, Phone, Mail, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
+import ScrollReveal from '../components/ScrollReveal';
 
 const ConsultationBooking = () => {
   const [formData, setFormData] = useState({
@@ -161,9 +162,11 @@ const ConsultationBooking = () => {
                 </span>
               </TypeWriter>
 
-              <p className="text-base text-gray-400 mb-8 leading-relaxed">
-                Ready to transform your business with AI automation? Schedule a personalized consultation and we'll respond within 24 hours to set up your session.
-              </p>
+              <ScrollReveal delay={200}>
+                <p className="text-base text-gray-400 mb-8 leading-relaxed">
+                  Ready to transform your business with AI automation? Schedule a personalized consultation and we'll respond within 24 hours to set up your session.
+                </p>
+              </ScrollReveal>
 
               <div className="space-y-4 mb-8">
                 <div className="flex items-start space-x-3">

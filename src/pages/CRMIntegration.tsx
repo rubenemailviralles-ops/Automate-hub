@@ -2,6 +2,7 @@ import React from 'react';
 import { Database, Zap, BarChart3, Users, Workflow, Shield, MessageSquare, Calendar, Headphones, Ticket, Clock, ArrowRight } from 'lucide-react';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
+import ScrollReveal from '../components/ScrollReveal';
 
 const CRMIntegration = () => {
   return (
@@ -25,10 +26,12 @@ const CRMIntegration = () => {
               </span>
             </TypeWriter>
 
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Connect all your systems into one powerful automation engine. Our CRM integrations eliminate data silos 
-              and create seamless workflows that scale with your business.
-            </p>
+            <ScrollReveal delay={200}>
+              <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
+                Connect all your systems into one powerful automation engine. Our CRM integrations eliminate data silos 
+                and create seamless workflows that scale with your business.
+              </p>
+            </ScrollReveal>
 
             <div className="bg-gradient-to-r from-purple-500/10 to-pink-600/10 border border-purple-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
               <p className="text-gray-300 text-lg">

@@ -52,44 +52,51 @@ const Contact = () => {
               </ScrollReveal>
 
               <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-black" />
+                <ScrollReveal delay={300}>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
+                      <Phone className="w-6 h-6 text-black" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-white">Phone</h4>
+                      <p className="text-gray-400">(+27) 82 644 2575</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-lg font-medium text-white">Phone</h4>
-                    <p className="text-gray-400">(+27) 82 644 2575</p>
-                  </div>
-                </div>
+                </ScrollReveal>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-black" />
+                <ScrollReveal delay={400}>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center">
+                      <Mail className="w-6 h-6 text-black" />
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-medium text-white">Email</h4>
+                      <p className="text-gray-400">automate.hub1@gmail.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-lg font-medium text-white">Email</h4>
-                    <p className="text-gray-400">automate.hub1@gmail.com</p>
-                  </div>
-                </div>
+                </ScrollReveal>
 
               </div>
 
-              <div className="mt-8 p-6 bg-white/5 border border-white/20 rounded-2xl">
-                <h4 className="text-lg font-medium text-white mb-4">What to Expect:</h4>
-                <ul className="space-y-2 text-gray-400 text-sm">
-                  <li>• Free consultation to understand your needs</li>
-                  <li>• Custom automation recommendations</li>
-                  <li>• Clear timeline and next steps</li>
-                  <li>• No pressure, just helpful guidance</li>
-                </ul>
-              </div>
+              <ScrollReveal delay={500}>
+                <div className="mt-8 p-6 bg-white/5 border border-white/20 rounded-2xl">
+                  <h4 className="text-lg font-medium text-white mb-4">What to Expect:</h4>
+                  <ul className="space-y-2 text-gray-400 text-sm">
+                    <li>• Free consultation to understand your needs</li>
+                    <li>• Custom automation recommendations</li>
+                    <li>• Clear timeline and next steps</li>
+                    <li>• No pressure, just helpful guidance</li>
+                  </ul>
+                </div>
+              </ScrollReveal>
             </div>
 
             {/* Contact Form - Right Side */}
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:sticky lg:top-24">
-              <h3 className="text-2xl font-bold mb-6 text-white">Send Us a Message</h3>
-              
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <ScrollReveal delay={100}>
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:sticky lg:top-24">
+                <h3 className="text-2xl font-bold mb-6 text-white">Send Us a Message</h3>
+                
+                <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
                     Full Name *
@@ -180,7 +187,8 @@ const Contact = () => {
                   We'll respond within 24 hours during business hours
                 </p>
               </form>
-            </div>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

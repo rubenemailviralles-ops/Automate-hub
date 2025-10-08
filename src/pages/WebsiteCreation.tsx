@@ -140,71 +140,85 @@ const WebsiteCreation = () => {
       <section className="py-24 seamless-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-8 text-white">
-              What Makes Our Websites Different
-            </h2>
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl font-bold mb-8 text-white">
+                What Makes Our Websites Different
+              </h2>
+            </ScrollReveal>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6">
-                <Smartphone className="w-8 h-8 text-white" />
+            <ScrollReveal delay={100}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Smartphone className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Mobile-First Design</h3>
+                <p className="text-gray-400">
+                  Optimized for mobile devices where 60% of web traffic originates. Fast loading, intuitive navigation.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Mobile-First Design</h3>
-              <p className="text-gray-400">
-                Optimized for mobile devices where 60% of web traffic originates. Fast loading, intuitive navigation.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
-                <Search className="w-8 h-8 text-white" />
+            <ScrollReveal delay={200}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Search className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">SEO Optimized</h3>
+                <p className="text-gray-400">
+                  Built with search engine optimization in mind. Technical SEO, fast loading speeds, and clean code structure.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">SEO Optimized</h3>
-              <p className="text-gray-400">
-                Built with search engine optimization in mind. Technical SEO, fast loading speeds, and clean code structure.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
-                <Zap className="w-8 h-8 text-white" />
+            <ScrollReveal delay={300}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Zap className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">AI Integration</h3>
+                <p className="text-gray-400">
+                  Built-in AI chatbots, automated lead capture forms, and intelligent user behavior tracking.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">AI Integration</h3>
-              <p className="text-gray-400">
-                Built-in AI chatbots, automated lead capture forms, and intelligent user behavior tracking.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
-                <Palette className="w-8 h-8 text-white" />
+            <ScrollReveal delay={400}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Palette className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Custom Design</h3>
+                <p className="text-gray-400">
+                  Unique designs tailored to your brand identity. No templates - every website is built from scratch.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Custom Design</h3>
-              <p className="text-gray-400">
-                Unique designs tailored to your brand identity. No templates - every website is built from scratch.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
-                <Code className="w-8 h-8 text-white" />
+            <ScrollReveal delay={500}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Code className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Modern Technology</h3>
+                <p className="text-gray-400">
+                  Built with the latest web technologies for maximum performance, security, and scalability.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Modern Technology</h3>
-              <p className="text-gray-400">
-                Built with the latest web technologies for maximum performance, security, and scalability.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
-                <Globe className="w-8 h-8 text-white" />
+            <ScrollReveal delay={600}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Globe className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Conversion Focused</h3>
+                <p className="text-gray-400">
+                  Every element is designed to guide visitors toward taking action. Optimized for maximum conversions.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Conversion Focused</h3>
-              <p className="text-gray-400">
-                Every element is designed to guide visitors toward taking action. Optimized for maximum conversions.
-              </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -213,51 +227,61 @@ const WebsiteCreation = () => {
       <section className="py-24 seamless-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-8 text-white">
-              Our Website Development Process
-            </h2>
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl font-bold mb-8 text-white">
+                Our Website Development Process
+              </h2>
+            </ScrollReveal>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                1
+            <ScrollReveal delay={100}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
+                  1
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Discovery</h3>
+                <p className="text-gray-400">
+                  We analyze your business, target audience, and competitors to create the perfect strategy.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Discovery</h3>
-              <p className="text-gray-400">
-                We analyze your business, target audience, and competitors to create the perfect strategy.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                2
+            <ScrollReveal delay={200}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
+                  2
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Design</h3>
+                <p className="text-gray-400">
+                  Custom wireframes and designs that reflect your brand and optimize for conversions.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Design</h3>
-              <p className="text-gray-400">
-                Custom wireframes and designs that reflect your brand and optimize for conversions.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                3
+            <ScrollReveal delay={300}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
+                  3
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Development</h3>
+                <p className="text-gray-400">
+                  Clean, fast code with AI integrations, SEO optimization, and mobile responsiveness.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Development</h3>
-              <p className="text-gray-400">
-                Clean, fast code with AI integrations, SEO optimization, and mobile responsiveness.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
-                4
+            <ScrollReveal delay={400}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 text-white font-bold text-xl">
+                  4
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">Launch</h3>
+                <p className="text-gray-400">
+                  Thorough testing, optimization, and launch with ongoing support and maintenance.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-white mb-4">Launch</h3>
-              <p className="text-gray-400">
-                Thorough testing, optimization, and launch with ongoing support and maintenance.
-              </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

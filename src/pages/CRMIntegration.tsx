@@ -197,16 +197,19 @@ const CRMIntegration = () => {
       <section className="py-24 seamless-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-8 text-white">
-              Advanced CRM Features
-            </h2>
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl font-bold mb-8 text-white">
+                Advanced CRM Features
+              </h2>
+            </ScrollReveal>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* AI Chatbot */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
-                <MessageSquare className="w-8 h-8 text-white" />
+            <ScrollReveal delay={100}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                  <MessageSquare className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-4 text-white">AI Chatbot Integration</h3>
               <p className="text-gray-400 mb-6">
@@ -238,11 +241,13 @@ const CRMIntegration = () => {
                 </li>
               </ul>
             </div>
+            </ScrollReveal>
 
             {/* Appointment Setting */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
-                <Calendar className="w-8 h-8 text-white" />
+            <ScrollReveal delay={200}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Calendar className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-4 text-white">Automated Appointment Setting</h3>
               <p className="text-gray-400 mb-6">
@@ -274,11 +279,13 @@ const CRMIntegration = () => {
                 </li>
               </ul>
             </div>
+            </ScrollReveal>
 
             {/* Customer Support */}
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
-                <Headphones className="w-8 h-8 text-white" />
+            <ScrollReveal delay={300}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Headphones className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold mb-4 text-white">AI Customer Support</h3>
               <p className="text-gray-400 mb-6">
@@ -310,6 +317,7 @@ const CRMIntegration = () => {
                 </li>
               </ul>
             </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -317,71 +325,85 @@ const CRMIntegration = () => {
       <section className="py-24 seamless-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-8 text-white">
-              Core CRM Integration Features
-            </h2>
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl font-bold mb-8 text-white">
+                Core CRM Integration Features
+              </h2>
+            </ScrollReveal>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6">
-                <Zap className="w-8 h-8 text-white" />
+            <ScrollReveal delay={100}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Zap className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Real-Time Sync</h3>
+                <p className="text-gray-400">
+                  Instant data synchronization across all platforms. Updates happen in real-time, ensuring everyone has the latest information.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Real-Time Sync</h3>
-              <p className="text-gray-400">
-                Instant data synchronization across all platforms. Updates happen in real-time, ensuring everyone has the latest information.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
-                <BarChart3 className="w-8 h-8 text-white" />
+            <ScrollReveal delay={200}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                  <BarChart3 className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Advanced Analytics</h3>
+                <p className="text-gray-400">
+                  Comprehensive reporting and analytics across all integrated systems. Track performance, identify trends, and optimize processes.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Advanced Analytics</h3>
-              <p className="text-gray-400">
-                Comprehensive reporting and analytics across all integrated systems. Track performance, identify trends, and optimize processes.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
-                <Users className="w-8 h-8 text-white" />
+            <ScrollReveal delay={300}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Lead Management</h3>
+                <p className="text-gray-400">
+                  Automated lead scoring, routing, and nurturing. Ensure no lead falls through the cracks with intelligent automation.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Lead Management</h3>
-              <p className="text-gray-400">
-                Automated lead scoring, routing, and nurturing. Ensure no lead falls through the cracks with intelligent automation.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
-                <Workflow className="w-8 h-8 text-white" />
+            <ScrollReveal delay={400}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Workflow className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Custom Workflows</h3>
+                <p className="text-gray-400">
+                  Build complex automation workflows that match your unique business processes. Trigger actions based on any data point.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Custom Workflows</h3>
-              <p className="text-gray-400">
-                Build complex automation workflows that match your unique business processes. Trigger actions based on any data point.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
-                <Shield className="w-8 h-8 text-white" />
+            <ScrollReveal delay={500}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Shield className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Data Security</h3>
+                <p className="text-gray-400">
+                  Enterprise-grade security with encryption, access controls, and compliance with industry standards like GDPR and CCPA.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Data Security</h3>
-              <p className="text-gray-400">
-                Enterprise-grade security with encryption, access controls, and compliance with industry standards like GDPR and CCPA.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
-                <Database className="w-8 h-8 text-white" />
+            <ScrollReveal delay={600}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Database className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Multi-Platform Support</h3>
+                <p className="text-gray-400">
+                  Connect with 100+ platforms including Salesforce, HubSpot, Pipedrive, Zapier, and custom APIs.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Multi-Platform Support</h3>
-              <p className="text-gray-400">
-                Connect with 100+ platforms including Salesforce, HubSpot, Pipedrive, Zapier, and custom APIs.
-              </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

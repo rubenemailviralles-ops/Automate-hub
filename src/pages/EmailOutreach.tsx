@@ -205,71 +205,85 @@ const EmailOutreach = () => {
       <section className="py-24 seamless-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-8 text-white">
-              Advanced Email Automation Features
-            </h2>
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl font-bold mb-8 text-white">
+                Advanced Email Automation Features
+              </h2>
+            </ScrollReveal>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6">
-                <Target className="w-8 h-8 text-white" />
+            <ScrollReveal delay={100}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Target className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Hyper-Personalization</h3>
+                <p className="text-gray-400">
+                  AI analyzes prospect data, social profiles, and company information to create uniquely personalized messages for each recipient.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Hyper-Personalization</h3>
-              <p className="text-gray-400">
-                AI analyzes prospect data, social profiles, and company information to create uniquely personalized messages for each recipient.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
-                <BarChart3 className="w-8 h-8 text-white" />
+            <ScrollReveal delay={200}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                  <BarChart3 className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">A/B Testing</h3>
+                <p className="text-gray-400">
+                  Automatically test subject lines, content, send times, and call-to-actions to optimize for maximum open and response rates.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">A/B Testing</h3>
-              <p className="text-gray-400">
-                Automatically test subject lines, content, send times, and call-to-actions to optimize for maximum open and response rates.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
-                <Users className="w-8 h-8 text-white" />
+            <ScrollReveal delay={300}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Smart Segmentation</h3>
+                <p className="text-gray-400">
+                  Automatically segment your audience based on behavior, demographics, and engagement patterns for targeted messaging.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Smart Segmentation</h3>
-              <p className="text-gray-400">
-                Automatically segment your audience based on behavior, demographics, and engagement patterns for targeted messaging.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
-                <Zap className="w-8 h-8 text-white" />
+            <ScrollReveal delay={400}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Zap className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Automated Follow-ups</h3>
+                <p className="text-gray-400">
+                  Intelligent follow-up sequences that adapt based on recipient behavior, ensuring no lead falls through the cracks.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Automated Follow-ups</h3>
-              <p className="text-gray-400">
-                Intelligent follow-up sequences that adapt based on recipient behavior, ensuring no lead falls through the cracks.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
-                <TrendingUp className="w-8 h-8 text-white" />
+            <ScrollReveal delay={500}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
+                  <TrendingUp className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Performance Analytics</h3>
+                <p className="text-gray-400">
+                  Comprehensive tracking of open rates, click-through rates, responses, and conversions with actionable insights.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Performance Analytics</h3>
-              <p className="text-gray-400">
-                Comprehensive tracking of open rates, click-through rates, responses, and conversions with actionable insights.
-              </p>
-            </div>
+            </ScrollReveal>
 
-            <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
-                <Mail className="w-8 h-8 text-white" />
+            <ScrollReveal delay={600}>
+              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                  <Mail className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-white">Deliverability Optimization</h3>
+                <p className="text-gray-400">
+                  Advanced spam detection, sender reputation management, and deliverability optimization to ensure your emails reach the inbox.
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-4 text-white">Deliverability Optimization</h3>
-              <p className="text-gray-400">
-                Advanced spam detection, sender reputation management, and deliverability optimization to ensure your emails reach the inbox.
-              </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

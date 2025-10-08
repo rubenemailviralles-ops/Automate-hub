@@ -1,5 +1,7 @@
 import React from 'react';
 import { Shield, Eye, Lock, Database, UserCheck, Globe } from 'lucide-react';
+import ScrollReveal from '../components/ScrollReveal';
+import TypeWriter from '../components/TypeWriter';
 
 const PrivacyPolicy = () => {
   return (
@@ -13,22 +15,30 @@ const PrivacyPolicy = () => {
               <span className="text-blue-400 font-medium">Privacy & Data Protection</span>
             </div>
 
-            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
-              Privacy
+            <TypeWriter 
+              text="Privacy" 
+              as="h1"
+              className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight"
+              delay={100}
+            >
               <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Policy
               </span>
-            </h1>
+            </TypeWriter>
 
-            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Your privacy is important to us. This policy explains how we collect, use, and protect your information.
-            </p>
-
-            <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-6 max-w-2xl mx-auto">
-              <p className="text-gray-300">
-                <strong className="text-white">Last Updated:</strong> January 1, 2025
+            <ScrollReveal delay={200}>
+              <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
+                Your privacy is important to us. This policy explains how we collect, use, and protect your information.
               </p>
-            </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={300}>
+              <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-6 max-w-2xl mx-auto">
+                <p className="text-gray-300">
+                  <strong className="text-white">Last Updated:</strong> January 1, 2025
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -37,29 +47,35 @@ const PrivacyPolicy = () => {
       <section className="py-24 seamless-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Lock className="w-8 h-8 text-white" />
+            <ScrollReveal delay={100}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Lock className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Secure</h3>
+                <p className="text-gray-400 text-sm">Your data is encrypted and protected with industry-standard security measures.</p>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Secure</h3>
-              <p className="text-gray-400 text-sm">Your data is encrypted and protected with industry-standard security measures.</p>
-            </div>
+            </ScrollReveal>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Eye className="w-8 h-8 text-white" />
+            <ScrollReveal delay={200}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <Eye className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Transparent</h3>
+                <p className="text-gray-400 text-sm">We clearly explain what data we collect and how we use it.</p>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Transparent</h3>
-              <p className="text-gray-400 text-sm">We clearly explain what data we collect and how we use it.</p>
-            </div>
+            </ScrollReveal>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <UserCheck className="w-8 h-8 text-white" />
+            <ScrollReveal delay={300}>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <UserCheck className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2">Your Control</h3>
+                <p className="text-gray-400 text-sm">You have full control over your personal information and can request changes anytime.</p>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Your Control</h3>
-              <p className="text-gray-400 text-sm">You have full control over your personal information and can request changes anytime.</p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -67,8 +83,9 @@ const PrivacyPolicy = () => {
       {/* Privacy Policy Content */}
       <section className="py-24 seamless-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-12">
-            <div className="prose prose-invert max-w-none">
+          <ScrollReveal delay={0}>
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-12">
+              <div className="prose prose-invert max-w-none">
               
               <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
                 <Database className="w-8 h-8 mr-3" />
@@ -202,7 +219,8 @@ const PrivacyPolicy = () => {
               </div>
 
             </div>
-          </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

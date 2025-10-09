@@ -125,28 +125,63 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" style={{ perspective: '1000px' }}>
             {services.map((service, index) => {
               const Icon = service.icon;
               
               return (
                 <ScrollReveal key={index} delay={index * 150}>
-                  <div className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 transition-all duration-500 hover:bg-white/10 hover-pop">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 shadow-lg`}>
+                  <div 
+                    className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 transition-all duration-500 hover:bg-white/10 hover-pop relative"
+                    style={{
+                      transformStyle: 'preserve-3d',
+                      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                      background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                    }}
+                    onMouseMove={(e) => {
+                      const rect = e.currentTarget.getBoundingClientRect();
+                      const x = e.clientX - rect.left;
+                      const y = e.clientY - rect.top;
+                      const centerX = rect.width / 2;
+                      const centerY = rect.height / 2;
+                      const rotateX = (y - centerY) / 20;
+                      const rotateY = (centerX - x) / 20;
+                      e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                    }}
+                  >
+                    {/* Shine effect overlay */}
+                    <div 
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%)',
+                      }}
+                    />
+                    
+                    <div 
+                      className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 relative`}
+                      style={{
+                        boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                        transform: 'translateZ(20px)',
+                      }}
+                    >
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     
-                    <h3 className="text-2xl font-bold mb-4 text-white">
+                    <h3 className="text-2xl font-bold mb-4 text-white relative" style={{ transform: 'translateZ(15px)' }}>
                       {service.title}
                     </h3>
                     
-                    <p className="text-gray-400 leading-relaxed mb-6">
+                    <p className="text-gray-400 leading-relaxed mb-6 relative" style={{ transform: 'translateZ(10px)' }}>
                       {service.description}
                     </p>
 
                     <button
                       onClick={() => handleServiceClick(service.path)}
-                      className="inline-flex items-center text-white font-semibold hover:text-gray-300 transition-all duration-300 group hover-pop-text"
+                      className="inline-flex items-center text-white font-semibold hover:text-gray-300 transition-all duration-300 group hover-pop-text relative"
+                      style={{ transform: 'translateZ(15px)' }}
                     >
                       Learn More
                       <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />

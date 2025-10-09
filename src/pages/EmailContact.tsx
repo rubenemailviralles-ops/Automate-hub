@@ -47,7 +47,7 @@ const EmailContact = () => {
 
       {/* Email Contact Section */}
       <section className="py-24 seamless-section">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-4">
           <div 
             className="bg-black/50 border border-white/10 rounded-3xl p-6 sm:p-8 md:p-12 mobile-3d-popup relative"
             style={{

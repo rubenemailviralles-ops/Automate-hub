@@ -408,43 +408,46 @@ const ConsultationBooking = () => {
               </div>
 
               {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full px-6 py-4 rounded-xl font-bold flex items-center justify-center mt-6 ${
-                  isSubmitting
-                    ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                    : 'bg-white text-black hover:bg-gray-100 hover-pop-button'
-                }`}
-                style={{
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
-                }}
-                onMouseEnter={(e) => {
-                  if (!isSubmitting) {
-                    e.currentTarget.style.transform = 'scale(1.05)';
-                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(255, 255, 255, 0.2)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!isSubmitting) {
-                    e.currentTarget.style.transform = 'scale(1)';
-                    e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
-                  }
-                }}
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin mr-2"></div>
-                    <span>Booking...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="mr-2 w-5 h-5" />
-                    <span>Book Free Consultation</span>
-                  </>
-                )}
-              </button>
+              <div style={{ position: 'relative', zIndex: 10 }}>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`w-full px-6 py-4 rounded-xl font-bold flex items-center justify-center mt-6 ${
+                    isSubmitting
+                      ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
+                      : 'bg-white text-black hover:bg-gray-100'
+                  }`}
+                  style={{
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                    transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
+                    position: 'relative',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isSubmitting) {
+                      e.currentTarget.style.transform = 'scale(1.08) translateY(-2px)';
+                      e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(255, 255, 255, 0.3)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isSubmitting) {
+                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+                    }
+                  }}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin mr-2"></div>
+                      <span>Booking...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="mr-2 w-5 h-5" />
+                      <span>Book Free Consultation</span>
+                    </>
+                  )}
+                </button>
+              </div>
 
               <p className="text-gray-500 text-xs text-center mt-4">
                 By submitting, you agree to our privacy policy. We'll never share your information.

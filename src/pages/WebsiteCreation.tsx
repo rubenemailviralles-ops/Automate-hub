@@ -559,7 +559,7 @@ const WebsiteCreation = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <Link 
-              to="/"
+              to="/#services"
               className="inline-flex items-center text-gray-400 hover:text-white transition-all duration-300 hover-pop-text"
             >
               <ArrowLeft className="mr-2 w-4 h-4" />

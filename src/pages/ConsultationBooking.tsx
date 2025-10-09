@@ -207,8 +207,29 @@ const ConsultationBooking = () => {
               </div>
 
               <ScrollReveal delay={600}>
-                <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-xl p-4">
-                  <p className="text-gray-300 text-sm">
+                <div 
+                  className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-xl p-4 relative"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                    transition: 'transform 0.1s ease-out, border-color 0.3s',
+                    perspective: '1000px',
+                  }}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+                    e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                  }}
+                >
+                  <p className="text-gray-300 text-sm" style={{ transform: 'translateZ(10px)' }}>
                     <span className="text-white font-bold">What you'll get:</span> Expert insights, automation roadmap, ROI analysis, and clear next steps—all in one session.
                   </p>
                 </div>

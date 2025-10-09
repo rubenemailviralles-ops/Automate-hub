@@ -114,8 +114,24 @@ const Contact = () => {
 
             {/* Contact Form - Right Side */}
             <ScrollReveal delay={100}>
-              <div className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:sticky lg:top-24">
-                <h3 className="text-2xl font-bold mb-6 text-white">Send Us a Message</h3>
+              <div 
+                className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:sticky lg:top-24 relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                  perspective: '1000px',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
+                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+                }}
+              >
+                <h3 className="text-2xl font-bold mb-6 text-white" style={{ transform: 'translateZ(10px)' }}>Send Us a Message</h3>
                 
                 <form onSubmit={handleSubmit} className="space-y-4">
                 <div>

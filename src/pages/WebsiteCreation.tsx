@@ -155,74 +155,236 @@ const WebsiteCreation = () => {
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
             <ScrollReveal delay={100}>
-              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6">
+              <div 
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
+                <div 
+                  className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6"
+                  style={{
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                    transform: 'translateZ(20px)',
+                  }}
+                >
                   <Smartphone className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-white">Mobile-First Design</h3>
-                <p className="text-gray-400">
+                <h3 className="text-xl font-bold mb-4 text-white" style={{ transform: 'translateZ(15px)' }}>Mobile-First Design</h3>
+                <p className="text-gray-400" style={{ transform: 'translateZ(10px)' }}>
                   Optimized for mobile devices where 60% of web traffic originates. Fast loading, intuitive navigation.
                 </p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+              <div 
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
+                <div 
+                  className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6"
+                  style={{
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                    transform: 'translateZ(20px)',
+                  }}
+                >
                   <Search className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-white">SEO Optimized</h3>
-                <p className="text-gray-400">
+                <h3 className="text-xl font-bold mb-4 text-white" style={{ transform: 'translateZ(15px)' }}>SEO Optimized</h3>
+                <p className="text-gray-400" style={{ transform: 'translateZ(10px)' }}>
                   Built with search engine optimization in mind. Technical SEO, fast loading speeds, and clean code structure.
                 </p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
+              <div 
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
+                <div 
+                  className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6"
+                  style={{
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                    transform: 'translateZ(20px)',
+                  }}
+                >
                   <Zap className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-white">AI Integration</h3>
-                <p className="text-gray-400">
+                <h3 className="text-xl font-bold mb-4 text-white" style={{ transform: 'translateZ(15px)' }}>AI Integration</h3>
+                <p className="text-gray-400" style={{ transform: 'translateZ(10px)' }}>
                   Built-in AI chatbots, automated lead capture forms, and intelligent user behavior tracking.
                 </p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
-              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
+              <div 
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
+                <div 
+                  className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6"
+                  style={{
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                    transform: 'translateZ(20px)',
+                  }}
+                >
                   <Palette className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-white">Custom Design</h3>
-                <p className="text-gray-400">
+                <h3 className="text-xl font-bold mb-4 text-white" style={{ transform: 'translateZ(15px)' }}>Custom Design</h3>
+                <p className="text-gray-400" style={{ transform: 'translateZ(10px)' }}>
                   Unique designs tailored to your brand identity. No templates - every website is built from scratch.
                 </p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={500}>
-              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-                <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
+              <div 
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
+                <div 
+                  className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6"
+                  style={{
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                    transform: 'translateZ(20px)',
+                  }}
+                >
                   <Code className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-white">Modern Technology</h3>
-                <p className="text-gray-400">
+                <h3 className="text-xl font-bold mb-4 text-white" style={{ transform: 'translateZ(15px)' }}>Modern Technology</h3>
+                <p className="text-gray-400" style={{ transform: 'translateZ(10px)' }}>
                   Built with the latest web technologies for maximum performance, security, and scalability.
                 </p>
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={600}>
-              <div className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
-                <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+              <div 
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
+                <div 
+                  className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6"
+                  style={{
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                    transform: 'translateZ(20px)',
+                  }}
+                >
                   <Globe className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-white">Conversion Focused</h3>
-                <p className="text-gray-400">
+                <h3 className="text-xl font-bold mb-4 text-white" style={{ transform: 'translateZ(15px)' }}>Conversion Focused</h3>
+                <p className="text-gray-400" style={{ transform: 'translateZ(10px)' }}>
                   Every element is designed to guide visitors toward taking action. Optimized for maximum conversions.
                 </p>
               </div>

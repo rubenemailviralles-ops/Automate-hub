@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, Target, BarChart3, Users, Zap, TrendingUp } from 'lucide-react';
+import { Mail, Target, BarChart3, Users, Zap, TrendingUp, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
@@ -554,6 +555,21 @@ const EmailOutreach = () => {
       </section>
 
       <CTASection />
+
+      {/* Back to Homepage */}
+      <section className="py-12 seamless-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <Link 
+              to="/"
+              className="inline-flex items-center text-gray-400 hover:text-white transition-all duration-300 hover-pop-text"
+            >
+              <ArrowLeft className="mr-2 w-4 h-4" />
+              Back to Homepage
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

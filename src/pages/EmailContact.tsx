@@ -7,8 +7,8 @@ const EmailContact = () => {
     <div className="pt-20">
       {/* Hero Section */}
       <section className="py-24 seamless-section relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-          <div className="text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="text-center pt-4">
             <div 
               className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm mobile-3d-tilt relative"
               style={{

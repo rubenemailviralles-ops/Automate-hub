@@ -49,7 +49,7 @@ const EmailContact = () => {
       <section className="py-24 seamless-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
           <div 
-            className="bg-black/50 border border-white/10 rounded-3xl p-12 mobile-3d-popup relative"
+            className="bg-black/50 border border-white/10 rounded-3xl p-6 sm:p-8 md:p-12 mobile-3d-popup relative"
             style={{
               boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
               transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
@@ -64,11 +64,25 @@ const EmailContact = () => {
             }}
           >
             <div className="text-center mb-12">
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <div 
+                className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 mobile-3d-popup relative"
+                style={{
+                  boxShadow: '0 4px 15px rgba(59, 130, 246, 0.4)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.6)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(59, 130, 246, 0.4)';
+                }}
+              >
                 <Mail className="w-10 h-10 text-white" />
               </div>
-              <h2 className="text-4xl font-bold text-white mb-4">Get In Touch</h2>
-              <p className="text-xl text-gray-400">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 px-4">Get In Touch</h2>
+              <p className="text-lg sm:text-xl text-gray-400 px-4">
                 Ready to automate your business? We'd love to hear from you!
               </p>
             </div>
@@ -113,32 +127,74 @@ const EmailContact = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div 
+                  className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4 mobile-3d-popup relative"
+                  style={{
+                    boxShadow: '0 4px 15px rgba(34, 197, 94, 0.3)',
+                    transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(34, 197, 94, 0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(34, 197, 94, 0.3)';
+                  }}
+                >
                   <Clock className="w-8 h-8 text-white" />
                 </div>
                 <h4 className="text-lg font-bold text-white mb-2">Quick Response</h4>
-                <p className="text-gray-400">We respond within 24 hours during business days</p>
+                <p className="text-gray-400 text-sm sm:text-base">We respond within 24 hours during business days</p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div 
+                  className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4 mobile-3d-popup relative"
+                  style={{
+                    boxShadow: '0 4px 15px rgba(168, 85, 247, 0.3)',
+                    transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(168, 85, 247, 0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(168, 85, 247, 0.3)';
+                  }}
+                >
                   <CheckCircle className="w-8 h-8 text-white" />
                 </div>
                 <h4 className="text-lg font-bold text-white mb-2">Professional Support</h4>
-                <p className="text-gray-400">Expert guidance for all your automation needs</p>
+                <p className="text-gray-400 text-sm sm:text-base">Expert guidance for all your automation needs</p>
               </div>
 
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div 
+                  className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4 mobile-3d-popup relative"
+                  style={{
+                    boxShadow: '0 4px 15px rgba(249, 115, 22, 0.3)',
+                    transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(249, 115, 22, 0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 15px rgba(249, 115, 22, 0.3)';
+                  }}
+                >
                   <Mail className="w-8 h-8 text-white" />
                 </div>
                 <h4 className="text-lg font-bold text-white mb-2">Always Available</h4>
-                <p className="text-gray-400">Send us an email anytime, day or night</p>
+                <p className="text-gray-400 text-sm sm:text-base">Send us an email anytime, day or night</p>
               </div>
             </div>
 
             <div 
-              className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+              className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 mobile-3d-tilt relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -165,8 +221,8 @@ const EmailContact = () => {
                 e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
               }}
             >
-              <h4 className="text-xl font-bold text-white mb-4" style={{ transform: 'translateZ(15px)', position: 'relative', zIndex: 2 }}>What to Include in Your Email:</h4>
-              <ul className="space-y-3 text-gray-400" style={{ transform: 'translateZ(15px)', position: 'relative', zIndex: 2 }}>
+              <h4 className="text-lg sm:text-xl font-bold text-white mb-4" style={{ transform: 'translateZ(15px)', position: 'relative', zIndex: 2 }}>What to Include in Your Email:</h4>
+              <ul className="space-y-3 text-gray-400 text-sm sm:text-base" style={{ transform: 'translateZ(15px)', position: 'relative', zIndex: 2 }}>
                 <li className="flex items-start">
                   <span className="text-blue-400 mr-3">•</span>
                   Your business name and industry

@@ -51,17 +51,15 @@ const EmailContact = () => {
           <div 
             className="bg-black/50 border border-white/10 rounded-3xl p-12 mobile-3d-popup relative"
             style={{
-              transformStyle: 'preserve-3d',
               boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
               transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
-              perspective: '1000px',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
+              e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
               e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
+              e.currentTarget.style.transform = 'translateY(0) scale(1)';
               e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
             }}
           >

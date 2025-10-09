@@ -132,11 +132,12 @@ const Home = () => {
               return (
                 <ScrollReveal key={index} delay={index * 150}>
                   <div 
-                    className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 transition-all duration-500 hover:bg-white/10 hover-pop relative"
+                    className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 hover:bg-white/10 hover-pop relative"
                     style={{
                       transformStyle: 'preserve-3d',
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                       background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                      transition: 'transform 0.1s ease-out, border-color 0.5s, background-color 0.5s',
                     }}
                     onMouseMove={(e) => {
                       const rect = e.currentTarget.getBoundingClientRect();
@@ -161,10 +162,17 @@ const Home = () => {
                     />
                     
                     <div 
-                      className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300 relative`}
+                      className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 relative`}
                       style={{
                         boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                         transform: 'translateZ(20px)',
+                        transition: 'transform 0.3s ease-out',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
                       }}
                     >
                       <Icon className="w-8 h-8 text-white" />

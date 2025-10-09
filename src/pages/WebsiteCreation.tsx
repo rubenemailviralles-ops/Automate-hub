@@ -184,6 +184,13 @@ const WebsiteCreation = () => {
                   style={{
                     boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                     transform: 'translateZ(20px)',
+                    transition: 'transform 0.3s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
                   }}
                 >
                   <Smartphone className="w-8 h-8 text-white" />
@@ -223,6 +230,13 @@ const WebsiteCreation = () => {
                   style={{
                     boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                     transform: 'translateZ(20px)',
+                    transition: 'transform 0.3s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
                   }}
                 >
                   <Search className="w-8 h-8 text-white" />
@@ -262,6 +276,13 @@ const WebsiteCreation = () => {
                   style={{
                     boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                     transform: 'translateZ(20px)',
+                    transition: 'transform 0.3s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
                   }}
                 >
                   <Zap className="w-8 h-8 text-white" />
@@ -301,6 +322,13 @@ const WebsiteCreation = () => {
                   style={{
                     boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                     transform: 'translateZ(20px)',
+                    transition: 'transform 0.3s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
                   }}
                 >
                   <Palette className="w-8 h-8 text-white" />
@@ -340,6 +368,13 @@ const WebsiteCreation = () => {
                   style={{
                     boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                     transform: 'translateZ(20px)',
+                    transition: 'transform 0.3s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
                   }}
                 >
                   <Code className="w-8 h-8 text-white" />
@@ -379,6 +414,13 @@ const WebsiteCreation = () => {
                   style={{
                     boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                     transform: 'translateZ(20px)',
+                    transition: 'transform 0.3s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
                   }}
                 >
                   <Globe className="w-8 h-8 text-white" />

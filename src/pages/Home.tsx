@@ -113,13 +113,15 @@ const Home = () => {
               onComplete={() => setShowSubheading(true)}
             />
             <p 
-              className="text-lg text-gray-400 max-w-3xl mx-auto transition-all duration-700"
+              className="text-lg text-gray-400 max-w-3xl mx-auto"
               style={{ 
                 opacity: showSubheading ? 1 : 0,
-                transform: showSubheading ? 'translateY(0)' : 'translateY(10px)'
+                transform: showSubheading ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+                transitionDelay: '200ms'
               }}
             >
-              {showSubheading && "Comprehensive automation services designed to transform every aspect of your business operations."}
+              Comprehensive automation services designed to transform every aspect of your business operations.
             </p>
           </div>
 

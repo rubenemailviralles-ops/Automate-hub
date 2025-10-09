@@ -61,49 +61,44 @@ const AboutUs = () => {
               <div 
                 className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 relative"
                 style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
                   perspective: '1000px',
                 }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
               >
-                <div
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                    transition: 'transform 0.1s ease-out',
-                  }}
-                  onMouseMove={(e) => {
-                    const rect = e.currentTarget.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (y - centerY) / 20;
-                    const rotateY = (centerX - x) / 20;
-                    e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-                  }}
-                >
-                  <h3 className="text-2xl font-bold text-white mb-6" style={{ transform: 'translateZ(15px)' }}>Why We Do What We Do</h3>
-                  <ul className="space-y-4 text-gray-400" style={{ transform: 'translateZ(10px)' }}>
-                    <li className="flex items-start">
-                      <span className="text-blue-400 mr-3">•</span>
-                      Small and medium businesses deserve the same automation advantages as large corporations
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-400 mr-3">•</span>
-                      Reducing costs shouldn't mean sacrificing quality or customer service
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-400 mr-3">•</span>
-                      Every business should be able to operate efficiently and compete effectively
-                    </li>
-                    <li className="flex items-start">
-                      <span className="text-blue-400 mr-3">•</span>
-                      Technology should work for you, not against you
-                    </li>
-                  </ul>
-                </div>
+                <h3 className="text-2xl font-bold text-white mb-6" style={{ transform: 'translateZ(15px)' }}>Why We Do What We Do</h3>
+                <ul className="space-y-4 text-gray-400" style={{ transform: 'translateZ(10px)' }}>
+                  <li className="flex items-start">
+                    <span className="text-blue-400 mr-3">•</span>
+                    Small and medium businesses deserve the same automation advantages as large corporations
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-400 mr-3">•</span>
+                    Reducing costs shouldn't mean sacrificing quality or customer service
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-400 mr-3">•</span>
+                    Every business should be able to operate efficiently and compete effectively
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-400 mr-3">•</span>
+                    Technology should work for you, not against you
+                  </li>
+                </ul>
               </div>
             </ScrollReveal>
           </div>

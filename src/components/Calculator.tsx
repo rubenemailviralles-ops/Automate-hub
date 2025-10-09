@@ -45,8 +45,24 @@ const Calculator = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto">
           {/* Input Section */}
-          <div className="bg-white/5 border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-8 animate-slide-in-left">
-            <h3 className="text-lg md:text-2xl font-bold text-white mb-4 md:mb-6 flex items-center">
+          <div 
+            className="bg-white/5 border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-8 animate-slide-in-left relative"
+            style={{
+              transformStyle: 'preserve-3d',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+              transition: 'transform 0.3s ease-out, border-color 0.3s, box-shadow 0.3s ease-out',
+              perspective: '1000px',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
+              e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
+              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+            }}
+          >
+            <h3 className="text-lg md:text-2xl font-bold text-white mb-4 md:mb-6 flex items-center" style={{ transform: 'translateZ(10px)' }}>
               <DollarSign className="w-5 h-5 md:w-6 md:h-6 mr-2 text-green-400" />
               Your Current Situation
             </h3>

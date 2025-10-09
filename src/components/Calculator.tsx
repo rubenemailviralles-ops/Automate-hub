@@ -31,9 +31,25 @@ const Calculator = () => {
     <section className="py-8 md:py-24 seamless-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6 md:mb-12">
-          <div className="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-green-500/20 to-emerald-600/20 border border-green-500/30 rounded-full mb-4 md:mb-8 backdrop-blur-sm animate-fade-in">
-            <CalculatorIcon className="w-4 h-4 md:w-5 md:h-5 text-green-400 mr-2" />
-            <span className="text-green-400 font-medium text-sm md:text-base">ROI Calculator</span>
+          <div 
+            className="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-green-500/20 to-emerald-600/20 border border-green-500/30 rounded-full mb-4 md:mb-8 backdrop-blur-sm animate-fade-in mobile-3d-tilt"
+            style={{
+              transformStyle: 'preserve-3d',
+              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(16, 185, 129, 0.2)',
+              transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+              perspective: '1000px',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateZ(15px) scale(1.05)';
+              e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.5), 0 4px 15px rgba(16, 185, 129, 0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateZ(0) scale(1)';
+              e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(16, 185, 129, 0.2)';
+            }}
+          >
+            <CalculatorIcon className="w-4 h-4 md:w-5 md:h-5 text-green-400 mr-2" style={{ transform: 'translateZ(5px)' }} />
+            <span className="text-green-400 font-medium text-sm md:text-base" style={{ transform: 'translateZ(5px)' }}>ROI Calculator</span>
           </div>
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-3 md:mb-6 text-white animate-fade-in-up">
             Calculate Your Potential Savings

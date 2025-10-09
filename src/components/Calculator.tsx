@@ -160,17 +160,38 @@ const Calculator = () => {
             </div>
 
             {/* Potential Savings */}
-            <div className="bg-gradient-to-br from-green-500/10 to-emerald-600/10 border border-green-500/30 rounded-xl md:rounded-2xl p-4 md:p-8 animate-pulse-slow">
-              <h3 className="text-base md:text-2xl font-bold text-white mb-2 flex items-center">
+            <div 
+              className="bg-gradient-to-br from-green-500/10 to-emerald-600/10 border border-green-500/30 rounded-xl md:rounded-2xl p-4 md:p-8 animate-pulse-slow relative"
+              style={{
+                transformStyle: 'preserve-3d',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.1s ease-out, border-color 0.3s',
+                perspective: '1000px',
+              }}
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+              }}
+            >
+              <h3 className="text-base md:text-2xl font-bold text-white mb-2 flex items-center" style={{ transform: 'translateZ(15px)' }}>
                 <TrendingUp className="w-5 h-5 md:w-6 md:h-6 mr-2 text-green-400" />
                 <span className="hidden md:inline">Potential Annual Savings with AI</span>
                 <span className="md:hidden">Annual Savings with AI</span>
               </h3>
-              <div className="text-xs md:text-sm text-green-400 mb-2 md:mb-4">Save up to 75% on manual processes</div>
-              <div className="text-3xl md:text-5xl font-bold text-green-400 mb-3 md:mb-4">
+              <div className="text-xs md:text-sm text-green-400 mb-2 md:mb-4" style={{ transform: 'translateZ(12px)' }}>Save up to 75% on manual processes</div>
+              <div className="text-3xl md:text-5xl font-bold text-green-400 mb-3 md:mb-4" style={{ transform: 'translateZ(20px)' }}>
                 {formatCurrency(annualSavings)}
               </div>
-              <div className="grid grid-cols-2 gap-2 md:gap-4 text-gray-300">
+              <div className="grid grid-cols-2 gap-2 md:gap-4 text-gray-300" style={{ transform: 'translateZ(10px)' }}>
                 <div>
                   <div className="text-xs md:text-sm text-gray-400">Monthly Savings</div>
                   <div className="text-sm md:text-xl font-semibold text-green-400">{formatCurrency(monthlySavings)}</div>
@@ -182,8 +203,29 @@ const Calculator = () => {
               </div>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-lg p-3 md:p-4 text-center hidden md:block">
-              <p className="text-gray-400 text-sm">
+            <div 
+              className="bg-white/5 border border-white/10 rounded-lg p-3 md:p-4 text-center hidden md:block relative"
+              style={{
+                transformStyle: 'preserve-3d',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.1s ease-out, border-color 0.3s',
+                perspective: '1000px',
+              }}
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+              }}
+            >
+              <p className="text-gray-400 text-sm" style={{ transform: 'translateZ(10px)' }}>
                 🚀 Start automating today and see real results in weeks, not months
               </p>
             </div>

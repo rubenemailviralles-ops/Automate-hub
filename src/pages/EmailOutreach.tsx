@@ -36,8 +36,29 @@ const EmailOutreach = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="bg-gradient-to-r from-pink-500/10 to-rose-600/10 border border-pink-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12">
-                <p className="text-gray-300 text-lg">
+              <div 
+                className="bg-gradient-to-r from-pink-500/10 to-rose-600/10 border border-pink-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12 relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                  perspective: '1000px',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
+                <p className="text-gray-300 text-lg" style={{ transform: 'translateZ(10px)' }}>
                   Our AI writes <span className="text-white font-bold">hyper-personalized emails</span> at scale, analyzing each prospect's 
                   digital footprint to craft messages that feel like they were written by a human who knows them personally.
                 </p>

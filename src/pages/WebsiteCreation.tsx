@@ -65,8 +65,24 @@ const WebsiteCreation = () => {
           </div>
 
           <ScrollReveal delay={200}>
-            <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-3xl p-8 max-w-5xl mx-auto">
-              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div 
+              className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-3xl p-8 max-w-5xl mx-auto relative"
+              style={{
+                transformStyle: 'preserve-3d',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                perspective: '1000px',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
+                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+              }}
+            >
+              <div className="bg-white rounded-2xl shadow-2xl overflow-hidden" style={{ transform: 'translateZ(10px)' }}>
               {/* Mock Browser Header */}
               <div className="bg-gray-100 px-4 py-3 flex items-center space-x-2">
                 <div className="flex space-x-2">

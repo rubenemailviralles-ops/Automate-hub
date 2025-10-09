@@ -118,8 +118,12 @@ const EmailContact = () => {
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                transition: 'transform 0.1s ease-out, border-color 0.3s',
+                transition: 'transform 0.1s ease-out, border-color 0.3s, box-shadow 0.3s',
                 perspective: '1000px',
+                zIndex: 10,
+                isolation: 'isolate',
+                background: 'rgba(255, 255, 255, 0.05)',
+                backdropFilter: 'blur(10px)',
               }}
               onMouseMove={(e) => {
                 const rect = e.currentTarget.getBoundingClientRect();
@@ -129,14 +133,16 @@ const EmailContact = () => {
                 const centerY = rect.height / 2;
                 const rotateX = (y - centerY) / 20;
                 const rotateY = (centerX - x) / 20;
-                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(30px)`;
+                e.currentTarget.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.4)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
               }}
             >
-              <h4 className="text-xl font-bold text-white mb-4" style={{ transform: 'translateZ(10px)' }}>What to Include in Your Email:</h4>
-              <ul className="space-y-3 text-gray-400" style={{ transform: 'translateZ(10px)' }}>
+              <h4 className="text-xl font-bold text-white mb-4" style={{ transform: 'translateZ(15px)', position: 'relative', zIndex: 2 }}>What to Include in Your Email:</h4>
+              <ul className="space-y-3 text-gray-400" style={{ transform: 'translateZ(15px)', position: 'relative', zIndex: 2 }}>
                 <li className="flex items-start">
                   <span className="text-blue-400 mr-3">•</span>
                   Your business name and industry

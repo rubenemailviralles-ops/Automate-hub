@@ -73,8 +73,34 @@ const EmailContact = () => {
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-4 sm:p-8 mb-12 overflow-hidden">
-              <div className="text-center">
+            <div 
+              className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-4 sm:p-8 mb-12 mobile-3d-tilt relative"
+              style={{
+                transformStyle: 'preserve-3d',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.1s ease-out, border-color 0.3s, box-shadow 0.3s',
+                perspective: '1000px',
+                zIndex: 10,
+                isolation: 'isolate',
+                backdropFilter: 'blur(10px)',
+              }}
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(30px)`;
+                e.currentTarget.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+              }}
+            >
+              <div className="text-center" style={{ transform: 'translateZ(15px)', position: 'relative', zIndex: 2 }}>
                 <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Our Email Address</h3>
                 <a 
                   href="mailto:automate.hub1@gmail.com" 

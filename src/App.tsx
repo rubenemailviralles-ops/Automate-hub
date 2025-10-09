@@ -20,14 +20,26 @@ import Footer from './components/Footer';
 
 // Component to handle scrolling to top on route change
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const { reinitialize } = useMobileHover();
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    // If there's a hash, scroll to that element
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      // Otherwise scroll to top
+      window.scrollTo(0, 0);
+    }
+    
     // Reinitialize mobile hover effects when route changes
     reinitialize();
-  }, [pathname]);
+  }, [pathname, hash, reinitialize]);
 
   return null;
 }

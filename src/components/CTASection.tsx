@@ -45,14 +45,37 @@ const CTASection = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <Link 
-                to="/book-consultation"
-                className="group bg-white text-black hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-base transition-all duration-300 hover-pop-button inline-flex items-center justify-center shadow-lg"
+              <div 
+                className="inline-block"
+                style={{ perspective: '1000px' }}
               >
-                <Calendar className="mr-2 w-5 h-5" />
-                Book Your Free Consultation
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
+                <Link 
+                  to="/book-consultation"
+                  className="group bg-white text-black hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-base hover-pop-button inline-flex items-center justify-center shadow-lg relative"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                    transition: 'transform 0.1s ease-out, background-color 0.3s',
+                  }}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 15;
+                    const rotateY = (centerX - x) / 15;
+                    e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                  }}
+                >
+                  <Calendar className="mr-2 w-5 h-5" style={{ transform: 'translateZ(5px)' }} />
+                  <span style={{ transform: 'translateZ(5px)' }}>Book Your Free Consultation</span>
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" style={{ transform: 'translateZ(5px)' }} />
+                </Link>
+              </div>
             </ScrollReveal>
 
             <ScrollReveal delay={400}>

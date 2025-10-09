@@ -486,21 +486,15 @@ html {
 /* 3D Text Effects for Headers */
 h1, h2, h3, h4, h5, h6 {
   transform-style: preserve-3d;
-  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.1)) 
-          drop-shadow(0 2px 1px rgba(0, 0, 0, 0.3)) 
-          drop-shadow(0 4px 2px rgba(0, 0, 0, 0.2)) 
-          drop-shadow(0 6px 3px rgba(0, 0, 0, 0.15)) 
-          drop-shadow(0 8px 4px rgba(0, 0, 0, 0.1)) 
-          drop-shadow(0 12px 6px rgba(0, 0, 0, 0.08));
 }
 
-/* For non-gradient headers, add traditional text-shadow for more depth */
-h1:not(.bg-clip-text), 
-h2:not(.bg-clip-text), 
-h3:not(.bg-clip-text), 
-h4:not(.bg-clip-text), 
-h5:not(.bg-clip-text), 
-h6:not(.bg-clip-text) {
+/* 3D effect for non-gradient headers only */
+h1:not(:has(.bg-clip-text)), 
+h2:not(:has(.bg-clip-text)), 
+h3:not(:has(.bg-clip-text)), 
+h4:not(:has(.bg-clip-text)), 
+h5:not(:has(.bg-clip-text)), 
+h6:not(:has(.bg-clip-text)) {
   text-shadow: 
     0 1px 0 rgba(255, 255, 255, 0.08),
     0 2px 2px rgba(0, 0, 0, 0.4),
@@ -508,6 +502,14 @@ h6:not(.bg-clip-text) {
     0 6px 6px rgba(0, 0, 0, 0.2),
     0 8px 8px rgba(0, 0, 0, 0.15),
     0 12px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 3D effect for gradient text - using filter to preserve gradients */
+.bg-clip-text {
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.5)) 
+          drop-shadow(0 4px 4px rgba(0, 0, 0, 0.3)) 
+          drop-shadow(0 6px 6px rgba(0, 0, 0, 0.2)) 
+          drop-shadow(0 8px 8px rgba(0, 0, 0, 0.15));
 }
 
 /* Chatbot positioning fix */

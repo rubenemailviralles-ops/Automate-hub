@@ -215,7 +215,19 @@ const Contact = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold text-base hover-pop-button flex items-center justify-center shadow-2xl"
+                  className="w-full bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center hover-pop-button"
+                  style={{
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                    transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(255, 255, 255, 0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                    e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+                  }}
                 >
                   <Send className="mr-2 w-4 h-4" />
                   Send Message

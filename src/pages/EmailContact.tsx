@@ -9,7 +9,23 @@ const EmailContact = () => {
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative overflow-hidden">
           <div className="text-center">
-            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm">
+            <div 
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm mobile-3d-tilt relative"
+              style={{
+                transformStyle: 'preserve-3d',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.1s ease-out, border-color 0.3s',
+                perspective: '1000px',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.05) translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.4), 0 2px 12px rgba(0, 0, 0, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+              }}
+            >
               <Mail className="w-5 h-5 text-blue-400 mr-2" />
               <span className="text-blue-400 font-medium">Email Support</span>
             </div>
@@ -32,7 +48,23 @@ const EmailContact = () => {
       {/* Email Contact Section */}
       <section className="py-24 seamless-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
-          <div className="bg-black/50 border border-white/10 rounded-3xl p-12">
+          <div 
+            className="bg-black/50 border border-white/10 rounded-3xl p-12 mobile-3d-popup relative"
+            style={{
+              transformStyle: 'preserve-3d',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+              transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+              perspective: '1000px',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
+              e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
+              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+            }}
+          >
             <div className="text-center mb-12">
               <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6">
                 <Mail className="w-10 h-10 text-white" />
@@ -81,9 +113,30 @@ const EmailContact = () => {
               </div>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-              <h4 className="text-xl font-bold text-white mb-4">What to Include in Your Email:</h4>
-              <ul className="space-y-3 text-gray-400">
+            <div 
+              className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+              style={{
+                transformStyle: 'preserve-3d',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.1s ease-out, border-color 0.3s',
+                perspective: '1000px',
+              }}
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+              }}
+            >
+              <h4 className="text-xl font-bold text-white mb-4" style={{ transform: 'translateZ(10px)' }}>What to Include in Your Email:</h4>
+              <ul className="space-y-3 text-gray-400" style={{ transform: 'translateZ(10px)' }}>
                 <li className="flex items-start">
                   <span className="text-blue-400 mr-3">•</span>
                   Your business name and industry
@@ -110,7 +163,20 @@ const EmailContact = () => {
             <div className="text-center mt-12">
               <Link 
                 to="/contact"
-                className="inline-flex items-center bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold text-base transition-all duration-300 transform hover:scale-105 shadow-lg"
+                className="inline-flex items-center bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold text-base shadow-lg mobile-3d-tilt relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'scale(1.08) translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(255, 255, 255, 0.3)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+                }}
               >
                 <ArrowLeft className="mr-2 w-4 h-4" />
                 Back to Contact Page

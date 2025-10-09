@@ -483,6 +483,24 @@ html {
   line-height: 1.2;
 }
 
+/* 3D Text Effects for Headers */
+h1, h2, h3, h4, h5, h6 {
+  text-shadow: 
+    0 1px 0 rgba(255, 255, 255, 0.1),
+    0 2px 0 rgba(0, 0, 0, 0.3),
+    0 3px 0 rgba(0, 0, 0, 0.25),
+    0 4px 0 rgba(0, 0, 0, 0.2),
+    0 5px 0 rgba(0, 0, 0, 0.15),
+    0 6px 1px rgba(0, 0, 0, 0.1),
+    0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.2),
+    0 20px 20px rgba(0, 0, 0, 0.15);
+  transform-style: preserve-3d;
+}
+
 /* Chatbot positioning fix */
 #VG_OVERLAY_CONTAINER {
   transition: transform 0.3s ease-in-out;

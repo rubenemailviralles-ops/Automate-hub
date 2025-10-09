@@ -476,9 +476,30 @@ const ConsultationBooking = () => {
           </div>
 
           <ScrollReveal delay={500}>
-            <div className="mt-16 bg-gradient-to-r from-green-500/10 to-blue-600/10 border border-green-500/30 rounded-2xl p-8 text-center">
-              <h3 className="text-2xl font-bold text-white mb-4">Why Book a Consultation?</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+            <div 
+              className="mt-16 bg-gradient-to-r from-green-500/10 to-blue-600/10 border border-green-500/30 rounded-2xl p-8 text-center relative"
+              style={{
+                transformStyle: 'preserve-3d',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.1s ease-out, border-color 0.3s',
+                perspective: '1000px',
+              }}
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+              }}
+            >
+              <h3 className="text-2xl font-bold text-white mb-4" style={{ transform: 'translateZ(15px)' }}>Why Book a Consultation?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left" style={{ transform: 'translateZ(10px)' }}>
                 <ul className="space-y-3 text-gray-400">
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />

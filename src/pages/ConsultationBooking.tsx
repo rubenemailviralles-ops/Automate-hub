@@ -208,7 +208,7 @@ const ConsultationBooking = () => {
 
               <ScrollReveal delay={600}>
                 <div 
-                  className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-xl p-4 relative"
+                  className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-xl p-4 mobile-3d-tilt relative"
                   style={{
                     transformStyle: 'preserve-3d',
                     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -239,7 +239,7 @@ const ConsultationBooking = () => {
             {/* Right Side - Form */}
             <div className="animate-slide-in-right">
               <div 
-                className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm shadow-2xl relative"
+                className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm shadow-2xl mobile-3d-popup relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -514,7 +514,7 @@ const ConsultationBooking = () => {
 
           <ScrollReveal delay={500}>
             <div 
-              className="mt-16 bg-gradient-to-r from-green-500/10 to-blue-600/10 border border-green-500/30 rounded-2xl p-8 text-center relative"
+              className="mt-16 bg-gradient-to-r from-green-500/10 to-blue-600/10 border border-green-500/30 rounded-2xl p-8 text-center mobile-3d-tilt relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

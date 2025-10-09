@@ -387,6 +387,17 @@
 
 /* Mobile touch effects - activate on scroll intersection */
 @media (max-width: 768px) {
+  /* Disable mouse hover effects on mobile */
+  .hover-pop:hover,
+  .hover-pop-subtle:hover,
+  .hover-pop-button:hover,
+  .hover-pop-text:hover,
+  .hover-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  /* Mobile scroll-triggered effects */
   .hover-pop.mobile-active {
     transform: scale(1.05) translateY(-2px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -407,6 +418,18 @@
   
   .hover-lift.mobile-active {
     transform: translateY(-8px);
+  }
+  
+  /* Mobile 3D effects - simple popup on scroll */
+  .mobile-3d-popup.mobile-active {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* Mobile 3D card tilt - convert to simple popup */
+  .mobile-3d-tilt.mobile-active {
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35) !important;
   }
 }
 .hover-pop-subtle {

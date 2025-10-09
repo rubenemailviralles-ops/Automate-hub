@@ -29,9 +29,9 @@ export const useMobileHover = () => {
       }
     );
 
-    // Observe all hover elements
+    // Observe all hover elements and 3D elements
     const hoverElements = document.querySelectorAll(
-      '.hover-pop, .hover-pop-subtle, .hover-pop-button, .hover-pop-text, .hover-lift'
+      '.hover-pop, .hover-pop-subtle, .hover-pop-button, .hover-pop-text, .hover-lift, .mobile-3d-popup, .mobile-3d-tilt'
     );
     
     hoverElements.forEach((element) => {
@@ -54,10 +54,10 @@ export const useMobileHover = () => {
     // Disconnect existing observer
     observerRef.current.disconnect();
 
-    // Re-observe all hover elements
+    // Re-observe all hover elements and 3D elements
     setTimeout(() => {
       const hoverElements = document.querySelectorAll(
-        '.hover-pop, .hover-pop-subtle, .hover-pop-button, .hover-pop-text, .hover-lift'
+        '.hover-pop, .hover-pop-subtle, .hover-pop-button, .hover-pop-text, .hover-lift, .mobile-3d-popup, .mobile-3d-tilt'
       );
       
       hoverElements.forEach((element) => {

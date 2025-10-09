@@ -59,7 +59,7 @@ const AboutUs = () => {
             
             <ScrollReveal delay={200}>
               <div 
-                className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 relative"
+                className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -122,7 +122,7 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" style={{ perspective: '1000px' }}>
             <ScrollReveal delay={100}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover-pop relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -168,7 +168,7 @@ const AboutUs = () => {
 
             <ScrollReveal delay={200}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover-pop relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -214,7 +214,7 @@ const AboutUs = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover-pop relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -260,7 +260,7 @@ const AboutUs = () => {
 
             <ScrollReveal delay={400}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover-pop relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

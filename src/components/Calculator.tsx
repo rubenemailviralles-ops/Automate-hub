@@ -46,7 +46,7 @@ const Calculator = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 max-w-6xl mx-auto">
           {/* Input Section */}
           <div 
-            className="bg-white/5 border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-8 animate-slide-in-left relative"
+            className="bg-white/5 border border-white/10 rounded-xl md:rounded-2xl p-4 md:p-8 animate-slide-in-left mobile-3d-popup relative"
             style={{
               transformStyle: 'preserve-3d',
               boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -157,7 +157,7 @@ const Calculator = () => {
           <div className="space-y-3 md:space-y-6 animate-slide-in-right">
             {/* Current Costs */}
             <div 
-              className="bg-gradient-to-br from-red-500/10 to-orange-600/10 border border-red-500/30 rounded-xl md:rounded-2xl p-4 md:p-8 relative"
+              className="bg-gradient-to-br from-red-500/10 to-orange-600/10 border border-red-500/30 rounded-xl md:rounded-2xl p-4 md:p-8 mobile-3d-tilt relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -198,7 +198,7 @@ const Calculator = () => {
 
             {/* Potential Savings */}
             <div 
-              className="bg-gradient-to-br from-green-500/10 to-emerald-600/10 border border-green-500/30 rounded-xl md:rounded-2xl p-4 md:p-8 animate-pulse-slow relative"
+              className="bg-gradient-to-br from-green-500/10 to-emerald-600/10 border border-green-500/30 rounded-xl md:rounded-2xl p-4 md:p-8 animate-pulse-slow mobile-3d-tilt relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -241,7 +241,7 @@ const Calculator = () => {
             </div>
 
             <div 
-              className="bg-white/5 border border-white/10 rounded-lg p-3 md:p-4 text-center hidden md:block relative"
+              className="bg-white/5 border border-white/10 rounded-lg p-3 md:p-4 text-center hidden md:block mobile-3d-tilt relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

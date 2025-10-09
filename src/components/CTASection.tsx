@@ -51,7 +51,7 @@ const CTASection = () => {
               >
                 <Link 
                   to="/book-consultation"
-                  className="group bg-white text-black hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-base hover-pop-button inline-flex items-center justify-center shadow-lg relative"
+                  className="group bg-white text-black hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold text-base hover-pop-button mobile-3d-tilt inline-flex items-center justify-center shadow-lg relative"
                   style={{
                     transformStyle: 'preserve-3d',
                     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

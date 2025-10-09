@@ -80,7 +80,7 @@ const Contact = () => {
 
               <ScrollReveal delay={500}>
                 <div 
-                  className="mt-8 p-6 bg-white/5 border border-white/20 rounded-2xl relative"
+                  className="mt-8 p-6 bg-white/5 border border-white/20 rounded-2xl mobile-3d-tilt relative"
                   style={{
                     transformStyle: 'preserve-3d',
                     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -115,7 +115,7 @@ const Contact = () => {
             {/* Contact Form - Right Side */}
             <ScrollReveal delay={100}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:sticky lg:top-24 relative"
+                className="bg-white/5 border border-white/10 rounded-3xl p-8 lg:sticky lg:top-24 mobile-3d-popup relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

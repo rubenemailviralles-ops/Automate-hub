@@ -132,7 +132,7 @@ const Home = () => {
               return (
                 <ScrollReveal key={index} delay={index * 150}>
                   <div 
-                    className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 hover:bg-white/10 hover-pop relative"
+                    className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 hover:bg-white/10 hover-pop mobile-3d-tilt relative"
                     style={{
                       transformStyle: 'preserve-3d',
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

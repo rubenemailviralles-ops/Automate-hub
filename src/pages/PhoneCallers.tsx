@@ -38,7 +38,7 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-indigo-500/10 border border-indigo-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12 relative"
+                className="bg-indigo-500/10 border border-indigo-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12 mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -87,7 +87,7 @@ const PhoneCallers = () => {
 
           <ScrollReveal delay={200}>
             <div 
-              className="bg-gradient-to-br from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-3xl p-8 max-w-6xl mx-auto relative"
+              className="bg-gradient-to-br from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-3xl p-8 max-w-6xl mx-auto mobile-3d-popup relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -251,7 +251,7 @@ const PhoneCallers = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
             <ScrollReveal delay={100}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -297,7 +297,7 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={200}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -343,7 +343,7 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -389,7 +389,7 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={400}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -435,7 +435,7 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={500}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -481,7 +481,7 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={600}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -599,7 +599,7 @@ const PhoneCallers = () => {
 
           <ScrollReveal delay={300}>
             <div 
-              className="mt-16 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-2xl p-12 text-center relative"
+              className="mt-16 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-2xl p-12 text-center mobile-3d-tilt relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

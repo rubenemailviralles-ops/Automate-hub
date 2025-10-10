@@ -12,54 +12,47 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   className = ''
 }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
   useEffect(() => {
-    // Check if mobile
-    const mobile = window.innerWidth <= 768;
-    setIsMobile(mobile);
-
     const currentElement = elementRef.current;
+    if (!currentElement) return;
     
     const observer = new IntersectionObserver(
       (entries) => {
+        // Force update on each intersection change
         entries.forEach((entry) => {
-          // Animate in and out based on visibility
           setIsVisible(entry.isIntersecting);
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '50px',
+        threshold: 0.15,
+        rootMargin: '0px',
       }
     );
 
-    if (currentElement) {
-      observer.observe(currentElement);
-    }
+    observer.observe(currentElement);
 
     return () => {
-      if (currentElement) {
-        observer.unobserve(currentElement);
-      }
+      observer.disconnect();
     };
   }, []);
 
   // Simpler, faster animations for mobile
-  const mobileStyle = {
+  const mobileStyle: React.CSSProperties = {
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? 'translateY(0)' : 'translateY(15px)',
     transition: 'opacity 0.4s ease, transform 0.4s ease',
-    transitionDelay: isMobile ? '0ms' : `${delay}ms`,
+    transitionDelay: '0ms',
   };
 
-  const desktopStyle = {
+  const desktopStyle: React.CSSProperties = {
     opacity: isVisible ? 1 : 0,
     transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, 20px, 0)',
-    transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
-    transitionDelay: `${delay}ms`,
-    willChange: isVisible ? 'auto' : 'opacity, transform'
+    transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+    transitionDelay: isVisible ? `${delay}ms` : '0ms',
+    willChange: 'opacity, transform'
   };
 
   return (

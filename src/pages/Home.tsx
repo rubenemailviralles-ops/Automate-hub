@@ -31,6 +31,16 @@ const Home = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Helper to get 3D styles only on desktop
+  const get3DStyles = () => {
+    if (isMobile) return {};
+    
+    return {
+      transformStyle: 'preserve-3d' as const,
+      perspective: '1000px',
+    };
+  };
+
   // 3D tilt effect handlers - only on desktop for performance
   const get3DTiltHandlers = () => {
     if (isMobile) return {};
@@ -201,15 +211,14 @@ const Home = () => {
               <div 
                 className="inline-flex items-center px-6 py-3 bg-white/10 border border-white/20 rounded-full mb-8 backdrop-blur-sm mobile-3d-tilt"
                 style={{
-                  transformStyle: 'preserve-3d',
+                  ...get3DStyles(),
                   boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(255, 255, 255, 0.1)',
                   transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
-                  perspective: '1000px',
                 }}
                 {...getBadgeHoverHandlers()}
               >
-                <Sparkles className="w-5 h-5 text-white mr-2" style={{ transform: 'translateZ(5px)' }} />
-                <span className="text-white font-medium" style={{ transform: 'translateZ(5px)' }}>Next-Gen AI Automation Platform</span>
+                <Sparkles className="w-5 h-5 text-white mr-2" style={!isMobile ? { transform: 'translateZ(5px)' } : {}} />
+                <span className="text-white font-medium" style={!isMobile ? { transform: 'translateZ(5px)' } : {}}>Next-Gen AI Automation Platform</span>
               </div>
             </ScrollReveal>
 
@@ -278,7 +287,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" style={{ perspective: '1000px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" style={get3DStyles()}>
             {services.map((service, index) => {
               const Icon = service.icon;
               
@@ -287,7 +296,7 @@ const Home = () => {
                   <div 
                     className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 hover:bg-white/10 hover-pop mobile-3d-tilt relative"
                     style={{
-                      transformStyle: 'preserve-3d',
+                      ...get3DStyles(),
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                       background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
                       transition: 'transform 0.1s ease-out, border-color 0.5s, background-color 0.5s',
@@ -356,12 +365,12 @@ const Home = () => {
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12" style={{ perspective: '1000px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12" style={get3DStyles()}>
             <ScrollReveal delay={200}>
               <div 
                 className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
                 style={{
-                  transformStyle: 'preserve-3d',
+                  ...get3DStyles(),
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
                   transition: 'transform 0.1s ease-out, border-color 0.3s',
@@ -414,7 +423,7 @@ const Home = () => {
               <div 
                 className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
                 style={{
-                  transformStyle: 'preserve-3d',
+                  ...get3DStyles(),
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
                   transition: 'transform 0.1s ease-out, border-color 0.3s',
@@ -467,7 +476,7 @@ const Home = () => {
               <div 
                 className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
                 style={{
-                  transformStyle: 'preserve-3d',
+                  ...get3DStyles(),
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
                   transition: 'transform 0.1s ease-out, border-color 0.3s',
@@ -520,7 +529,7 @@ const Home = () => {
               <div 
                 className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
                 style={{
-                  transformStyle: 'preserve-3d',
+                  ...get3DStyles(),
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
                   transition: 'transform 0.1s ease-out, border-color 0.3s',

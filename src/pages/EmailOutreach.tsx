@@ -5,6 +5,7 @@ import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
+import ServiceSchema from '../components/ServiceSchema';
 
 const EmailOutreach = () => {
   return (
@@ -14,6 +15,19 @@ const EmailOutreach = () => {
         description="Scale your outreach with AI-powered email marketing automation. Hyper-personalized email campaigns, automated follow-ups, A/B testing, and advanced analytics. Boost open rates and conversions with intelligent email systems."
         keywords="email outreach, email marketing automation, AI email campaigns, personalized emails, email automation, lead generation, email marketing, automated follow-ups, email analytics, email marketing tools"
         canonicalUrl="https://automate-hub.com/email-outreach"
+      />
+      <ServiceSchema
+        serviceName="AI Email Outreach & Marketing Automation"
+        description="Scale your outreach with AI-powered email marketing automation. Hyper-personalized campaigns, automated follow-ups, A/B testing, and advanced analytics to boost conversions."
+        serviceType="Email Marketing"
+        offers={[
+          { name: 'AI Personalization', description: 'Unique emails for each prospect at scale' },
+          { name: 'Automated Sequences', description: 'Multi-touch campaigns that run on autopilot' },
+          { name: 'A/B Testing', description: 'Optimize subject lines, content, and send times' },
+          { name: 'Smart Scheduling', description: 'Send at optimal times for each recipient' },
+          { name: 'Advanced Analytics', description: 'Track opens, clicks, and conversions' },
+          { name: 'Deliverability Optimization', description: 'Maximize inbox placement rates' },
+        ]}
       />
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

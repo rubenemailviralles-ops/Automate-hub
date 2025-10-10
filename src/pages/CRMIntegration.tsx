@@ -5,6 +5,7 @@ import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
+import ServiceSchema from '../components/ServiceSchema';
 
 const CRMIntegration = () => {
   return (
@@ -14,6 +15,19 @@ const CRMIntegration = () => {
         description="Streamline your business with intelligent CRM integration services. AI-powered customer data management, automated workflows, lead scoring, and seamless system connections. Boost productivity and reduce manual work."
         keywords="CRM integration, customer data management, AI automation, lead management, workflow automation, CRM systems, customer relationship management, business automation, data synchronization, sales automation"
         canonicalUrl="https://automate-hub.com/crm-integration"
+      />
+      <ServiceSchema
+        serviceName="CRM Integration & Automation Services"
+        description="Intelligent CRM integration services with AI-powered customer data management, automated workflows, lead scoring, and seamless system connections. Streamline your entire customer journey."
+        serviceType="CRM Integration"
+        offers={[
+          { name: 'Bi-directional Sync', description: 'Real-time data synchronization across all platforms' },
+          { name: 'Custom Field Mapping', description: 'Match your specific business requirements' },
+          { name: 'Automated Workflows', description: 'Trigger actions based on customer behavior' },
+          { name: 'AI Lead Scoring', description: 'Prioritize high-value prospects automatically' },
+          { name: 'Data Deduplication', description: 'Keep your CRM clean and organized' },
+          { name: 'Advanced Reporting', description: 'Real-time insights and analytics' },
+        ]}
       />
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

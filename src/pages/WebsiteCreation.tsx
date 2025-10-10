@@ -5,6 +5,7 @@ import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
+import ServiceSchema from '../components/ServiceSchema';
 
 const WebsiteCreation = () => {
   return (
@@ -14,6 +15,19 @@ const WebsiteCreation = () => {
         description="Transform your business with professional website creation services. AI-powered web development, mobile-first design, SEO optimization, and conversion-focused websites that drive results. Get your custom website built from scratch."
         keywords="website creation, web development, AI-powered websites, professional web design, mobile-first design, SEO optimized websites, conversion optimization, custom website development, business websites, web design services"
         canonicalUrl="https://automate-hub.com/website-creation"
+      />
+      <ServiceSchema
+        serviceName="AI-Powered Website Creation Services"
+        description="Professional website creation services with AI integration, mobile-first design, SEO optimization, and conversion-focused development. Custom websites built from scratch to drive business growth."
+        serviceType="Web Development"
+        offers={[
+          { name: 'Custom Website Design', description: 'Unique designs tailored to your brand identity with no templates' },
+          { name: 'AI Chatbot Integration', description: '24/7 customer support and automated lead capture systems' },
+          { name: 'Mobile-First Development', description: 'Responsive design optimized for all devices and screen sizes' },
+          { name: 'SEO Optimization', description: 'Technical SEO, fast loading speeds, and clean code structure' },
+          { name: 'Conversion Optimization', description: 'Every element designed to guide visitors toward taking action' },
+          { name: 'Analytics Setup', description: 'Track visitors and conversions from day one' },
+        ]}
       />
       {/* Hero Section */}
       <section className="py-24 seamless-section relative overflow-hidden">

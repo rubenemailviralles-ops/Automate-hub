@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
 import ErrorBoundary from './components/ErrorBoundary';
+import Breadcrumbs from './components/Breadcrumbs';
 
 // Lazy load page components for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -21,6 +22,7 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
 const ConsultationBooking = lazy(() => import('./pages/ConsultationBooking'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Component to handle scrolling to top on route change
 function ScrollToTop() {
@@ -72,6 +74,7 @@ function App() {
         <div className="floating-orb floating-orb-4" aria-hidden="true"></div>
         
         <Header />
+        <Breadcrumbs />
         <ErrorBoundary>
           <main id="main-content" role="main">
             <Suspense fallback={<LoadingSpinner />}>
@@ -88,6 +91,7 @@ function App() {
                 <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="/cookie-policy" element={<CookiePolicy />} />
                 <Route path="/book-consultation" element={<ConsultationBooking />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
           </main>

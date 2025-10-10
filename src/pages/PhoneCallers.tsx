@@ -5,6 +5,7 @@ import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
+import ServiceSchema from '../components/ServiceSchema';
 
 const PhoneCallers = () => {
   return (
@@ -14,6 +15,19 @@ const PhoneCallers = () => {
         description="Never miss a call with AI phone agents. 24/7 customer service automation, lead qualification, appointment scheduling, and professional call handling. Transform your business communication with intelligent phone systems."
         keywords="AI phone agents, virtual callers, customer service automation, phone automation, AI call handling, 24/7 phone service, lead qualification, appointment scheduling, business phone systems, automated calling"
         canonicalUrl="https://automate-hub.com/phone-callers"
+      />
+      <ServiceSchema
+        serviceName="AI Phone Agents & Virtual Caller Services"
+        description="24/7 AI phone agents for customer service automation, lead qualification, appointment scheduling, and professional call handling. Never miss an opportunity with intelligent phone systems."
+        serviceType="Phone Automation"
+        offers={[
+          { name: '24/7 Availability', description: 'Never miss a customer call, day or night' },
+          { name: 'Natural Conversations', description: 'AI that sounds human and understands context' },
+          { name: 'Lead Qualification', description: 'Automatically score and route qualified leads' },
+          { name: 'Appointment Scheduling', description: 'Book meetings directly into your calendar' },
+          { name: 'Call Transcription', description: 'Every conversation documented automatically' },
+          { name: 'Multi-language Support', description: 'Serve customers in their preferred language' },
+        ]}
       />
       {/* Hero Section */}
       <section className="py-24 seamless-section relative overflow-hidden">

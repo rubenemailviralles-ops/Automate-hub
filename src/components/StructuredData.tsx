@@ -13,7 +13,7 @@ const StructuredData = ({ type = 'Organization', data }: StructuredDataProps) =>
       '@type': type,
       name: 'Automate Hub',
       url: 'https://automate-hub.com',
-      logo: 'https://automate-hub.com/Screenshot 2025-09-16 123406.png',
+      logo: 'https://automate-hub.com/automate-hub-ai-platform-preview.png',
       description: 'AI automation solutions for businesses including website creation, CRM integration, AI phone agents, and email outreach.',
       email: 'automate.hub1@gmail.com',
       contactPoint: {

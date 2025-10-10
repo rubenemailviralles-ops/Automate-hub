@@ -21,7 +21,7 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const elementRef = useRef<HTMLElement>(null);
-  const hasAnimated = useRef(false);
+  const hasCalledComplete = useRef(false);
 
   // Intersection Observer to detect when element is in viewport
   useEffect(() => {
@@ -34,13 +34,13 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Only animate once for better performance
-          if (entry.isIntersecting && !hasAnimated.current) {
-            setIsVisible(true);
-            hasAnimated.current = true;
-            if (onComplete) {
-              setTimeout(onComplete, mobile ? 300 : 600);
-            }
+          // Animate in and out based on visibility
+          setIsVisible(entry.isIntersecting);
+          
+          // Only call onComplete once when first appearing
+          if (entry.isIntersecting && !hasCalledComplete.current && onComplete) {
+            hasCalledComplete.current = true;
+            setTimeout(onComplete, mobile ? 300 : 600);
           }
         });
       },
@@ -64,8 +64,8 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
   // Simpler, faster animations for mobile
   const mobileStyle = {
     opacity: isVisible ? 1 : 0,
-    transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
-    transition: 'opacity 0.3s ease, transform 0.3s ease',
+    transform: isVisible ? 'translateY(0)' : 'translateY(15px)',
+    transition: 'opacity 0.4s ease, transform 0.4s ease',
   };
 
   const desktopStyle = {

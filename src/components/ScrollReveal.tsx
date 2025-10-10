@@ -25,10 +25,8 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Only animate in once for better performance
-          if (entry.isIntersecting && !isVisible) {
-            setIsVisible(true);
-          }
+          // Animate in and out based on visibility
+          setIsVisible(entry.isIntersecting);
         });
       },
       {
@@ -46,13 +44,13 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
         observer.unobserve(currentElement);
       }
     };
-  }, [isVisible]);
+  }, []);
 
   // Simpler, faster animations for mobile
   const mobileStyle = {
     opacity: isVisible ? 1 : 0,
-    transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
-    transition: 'opacity 0.3s ease, transform 0.3s ease',
+    transform: isVisible ? 'translateY(0)' : 'translateY(15px)',
+    transition: 'opacity 0.4s ease, transform 0.4s ease',
     transitionDelay: isMobile ? '0ms' : `${delay}ms`,
   };
 

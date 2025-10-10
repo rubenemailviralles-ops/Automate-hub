@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowRight, Sparkles, Globe, Database, Phone, Mail, BarChart3, CheckCircle, TrendingUp, Shield, Zap } from 'lucide-react';
 import CTASection from '../components/CTASection';
@@ -13,6 +13,129 @@ const Home = () => {
   const location = useLocation();
   const [showSecondLine, setShowSecondLine] = useState(false);
   const [showSubheading, setShowSubheading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // 3D tilt effect handlers - only on desktop for performance
+  const get3DTiltHandlers = () => {
+    if (isMobile) return {};
+    
+    return {
+      onMouseMove: (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 20;
+        const rotateY = (centerX - x) / 20;
+        e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+      },
+      onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {
+        e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+      }
+    };
+  };
+
+  // Icon hover handlers - only on desktop for performance
+  const getIconHoverHandlers = (scale: string = '1.1') => {
+    if (isMobile) return {};
+    
+    return {
+      onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {
+        e.currentTarget.style.transform = `translateZ(20px) scale(${scale})`;
+      },
+      onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {
+        e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
+      }
+    };
+  };
+
+  // Icon hover handlers with box shadow for "Why Choose" section - only on desktop for performance
+  const getIconHoverWithShadowHandlers = (shadowColor: string) => {
+    if (isMobile) return {};
+    
+    return {
+      onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {
+        e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+        e.currentTarget.style.boxShadow = `0 12px 30px ${shadowColor}, inset 0 1px 0 rgba(255, 255, 255, 0.3)`;
+      },
+      onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {
+        e.currentTarget.style.transform = 'scale(1) translateY(0)';
+        e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+      }
+    };
+  };
+
+  // Badge/button hover handlers - only on desktop for performance
+  const getBadgeHoverHandlers = () => {
+    if (isMobile) return {};
+    
+    return {
+      onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {
+        e.currentTarget.style.transform = 'translateZ(15px) scale(1.05)';
+        e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.5), 0 4px 15px rgba(255, 255, 255, 0.15)';
+      },
+      onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {
+        e.currentTarget.style.transform = 'translateZ(0) scale(1)';
+        e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(255, 255, 255, 0.1)';
+      }
+    };
+  };
+
+  // CTA box hover handlers - only on desktop for performance
+  const getCTAHoverHandlers = () => {
+    if (isMobile) return {};
+    
+    return {
+      onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {
+        e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
+        e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(59, 130, 246, 0.3)';
+      },
+      onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {
+        e.currentTarget.style.transform = 'translateY(0) scale(1)';
+        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+      }
+    };
+  };
+
+  // Button hover handlers - only on desktop for performance
+  const getButtonHoverHandlers = (withShadow: boolean = true) => {
+    if (isMobile) return {};
+    
+    if (withShadow) {
+      return {
+        onMouseEnter: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+          e.currentTarget.style.transform = 'translateY(-4px) scale(1.05)';
+          e.currentTarget.style.boxShadow = '0 8px 24px rgba(59, 130, 246, 0.6)';
+        },
+        onMouseLeave: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+          e.currentTarget.style.transform = 'translateY(0) scale(1)';
+          e.currentTarget.style.boxShadow = '0 4px 14px rgba(59, 130, 246, 0.4)';
+        }
+      };
+    } else {
+      return {
+        onMouseEnter: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+          e.currentTarget.style.transform = 'translateY(-4px) scale(1.05)';
+          e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 255, 255, 0.2)';
+        },
+        onMouseLeave: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+          e.currentTarget.style.transform = 'translateY(0) scale(1)';
+          e.currentTarget.style.boxShadow = 'none';
+        }
+      };
+    }
+  };
 
   const handleServiceClick = (servicePath: string) => {
     if (location.pathname === servicePath) {
@@ -77,14 +200,7 @@ const Home = () => {
                   transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
                   perspective: '1000px',
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(15px) scale(1.05)';
-                  e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.5), 0 4px 15px rgba(255, 255, 255, 0.15)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(255, 255, 255, 0.1)';
-                }}
+                {...getBadgeHoverHandlers()}
               >
                 <Sparkles className="w-5 h-5 text-white mr-2" style={{ transform: 'translateZ(5px)' }} />
                 <span className="text-white font-medium" style={{ transform: 'translateZ(5px)' }}>Next-Gen AI Automation Platform</span>
@@ -168,19 +284,7 @@ const Home = () => {
                       background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
                       transition: 'transform 0.1s ease-out, border-color 0.5s, background-color 0.5s',
                     }}
-                    onMouseMove={(e) => {
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      const x = e.clientX - rect.left;
-                      const y = e.clientY - rect.top;
-                      const centerX = rect.width / 2;
-                      const centerY = rect.height / 2;
-                      const rotateX = (y - centerY) / 20;
-                      const rotateY = (centerX - x) / 20;
-                      e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-                    }}
+                    {...get3DTiltHandlers()}
                   >
                     {/* Shine effect overlay */}
                     <div 
@@ -197,12 +301,7 @@ const Home = () => {
                         transform: 'translateZ(20px)',
                         transition: 'transform 0.3s ease-out',
                       }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
-                      }}
+                      {...getIconHoverHandlers()}
                     >
                       <Icon className="w-8 h-8 text-white" />
                     </div>
@@ -259,19 +358,7 @@ const Home = () => {
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
                   transition: 'transform 0.1s ease-out, border-color 0.3s',
                 }}
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
-                  const rotateX = (y - centerY) / 20;
-                  const rotateY = (centerX - x) / 20;
-                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-                }}
+                {...get3DTiltHandlers()}
               >
                 <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
                   <div 
@@ -280,14 +367,7 @@ const Home = () => {
                       boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                       transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(59, 130, 246, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
-                    }}
+                    {...getIconHoverWithShadowHandlers('rgba(59, 130, 246, 0.6)')}
                   >
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
@@ -331,19 +411,7 @@ const Home = () => {
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
                   transition: 'transform 0.1s ease-out, border-color 0.3s',
                 }}
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
-                  const rotateX = (y - centerY) / 20;
-                  const rotateY = (centerX - x) / 20;
-                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-                }}
+                {...get3DTiltHandlers()}
               >
                 <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
                   <div 
@@ -352,14 +420,7 @@ const Home = () => {
                       boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                       transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(168, 85, 247, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
-                    }}
+                    {...getIconHoverWithShadowHandlers('rgba(168, 85, 247, 0.6)')}
                   >
                     <Zap className="w-6 h-6 text-white" />
                   </div>
@@ -403,19 +464,7 @@ const Home = () => {
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
                   transition: 'transform 0.1s ease-out, border-color 0.3s',
                 }}
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
-                  const rotateX = (y - centerY) / 20;
-                  const rotateY = (centerX - x) / 20;
-                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-                }}
+                {...get3DTiltHandlers()}
               >
                 <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
                   <div 
@@ -424,14 +473,7 @@ const Home = () => {
                       boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                       transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(34, 197, 94, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
-                    }}
+                    {...getIconHoverWithShadowHandlers('rgba(34, 197, 94, 0.6)')}
                   >
                     <Shield className="w-6 h-6 text-white" />
                   </div>
@@ -475,19 +517,7 @@ const Home = () => {
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
                   transition: 'transform 0.1s ease-out, border-color 0.3s',
                 }}
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
-                  const rotateX = (y - centerY) / 20;
-                  const rotateY = (centerX - x) / 20;
-                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-                }}
+                {...get3DTiltHandlers()}
               >
                 <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
                   <div 
@@ -496,14 +526,7 @@ const Home = () => {
                       boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
                       transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
                     }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
-                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(249, 115, 22, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
-                    }}
+                    {...getIconHoverWithShadowHandlers('rgba(249, 115, 22, 0.6)')}
                   >
                     <BarChart3 className="w-6 h-6 text-white" />
                   </div>
@@ -547,14 +570,7 @@ const Home = () => {
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                 transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
-                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(59, 130, 246, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
-              }}
+              {...getCTAHoverHandlers()}
             >
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Ready to Transform Your Business?
@@ -570,14 +586,7 @@ const Home = () => {
                     boxShadow: '0 4px 14px rgba(59, 130, 246, 0.4)',
                     transition: 'transform 0.2s ease-out, box-shadow 0.2s ease-out',
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-4px) scale(1.05)';
-                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(59, 130, 246, 0.6)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                    e.currentTarget.style.boxShadow = '0 4px 14px rgba(59, 130, 246, 0.4)';
-                  }}
+                  {...getButtonHoverHandlers(true)}
                 >
                   Book Free Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -588,14 +597,7 @@ const Home = () => {
                   style={{
                     transition: 'transform 0.2s ease-out, box-shadow 0.2s ease-out',
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-4px) scale(1.05)';
-                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 255, 255, 0.2)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
+                  {...getButtonHoverHandlers(false)}
                 >
                   Contact Us
                 </Link>

@@ -5,6 +5,7 @@
 
 import React from 'react';
 import * as Sentry from '@sentry/react';
+import { browserTracingIntegration, replayIntegration } from '@sentry/react';
 import {
   useLocation,
   useNavigationType,
@@ -29,21 +30,11 @@ export const initSentry = () => {
       // Release tracking
       release: `automate-hub@${import.meta.env.VITE_APP_VERSION || '1.0.0'}`,
       
-      // Integrations
+      // Integrations (v7 API)
       integrations: [
-        // Browser tracing for performance monitoring
-        new Sentry.BrowserTracing({
-          // Track navigation between routes
-          routingInstrumentation: Sentry.reactRouterV6Instrumentation(
-            React.useEffect,
-            useLocation as any,
-            useNavigationType as any,
-            createRoutesFromChildren as any,
-            matchRoutes as any
-          ),
-        }),
-        // Replay sessions for debugging
-        new Sentry.Replay({
+        // Basic browser tracing (without explicit router instrumentation to avoid build issues)
+        browserTracingIntegration(),
+        replayIntegration({
           maskAllText: true,
           blockAllMedia: true,
         }),

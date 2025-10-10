@@ -1,32 +1,64 @@
-# robots.txt for Automate Hub
+# robots.txt for Automate Hub - AI Automation Platform
+# Last Updated: 2025-01-10
 
+# Default rule for all bots
 User-agent: *
 Allow: /
-
-# Disallow admin or sensitive pages (if any)
-# Disallow: /admin/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /*?*utm_source=
+Disallow: /*?*sessionid=
 
 # Sitemap location
 Sitemap: https://automate-hub.com/sitemap.xml
 
-# Crawl-delay for polite crawling
-Crawl-delay: 1
-
-# Allow all major search engines
+# Googlebot - No crawl-delay needed (Google ignores it anyway)
 User-agent: Googlebot
 Allow: /
+Disallow: /api/
+Disallow: /admin/
 
+# Googlebot for images
+User-agent: Googlebot-Image
+Allow: /
+
+# Bingbot
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
+Disallow: /api/
+Disallow: /admin/
 
+# Yahoo
 User-agent: Slurp
 Allow: /
+Crawl-delay: 1
 
+# DuckDuckGo
 User-agent: DuckDuckBot
 Allow: /
+Crawl-delay: 1
 
+# Baidu
 User-agent: Baiduspider
 Allow: /
+Crawl-delay: 2
 
+# Yandex
 User-agent: YandexBot
 Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

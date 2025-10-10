@@ -816,3 +816,90 @@ input[type="range"].slider::-webkit-slider-runnable-track {
   height: 8px;
   border-radius: 4px;
 }
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* GPU acceleration for animated elements */
+.hover-pop,
+.hover-pop-subtle,
+.hover-pop-button,
+.hover-pop-text,
+.hover-lift,
+.mobile-3d-popup,
+.mobile-3d-tilt,
+.floating-orb {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Optimize animations for performance */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY: REDUCED MOTION
+   ============================================ */
+
+/* Respect user's reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable background animations */
+  body::before {
+    animation: none !important;
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%) !important;
+  }
+
+  /* Disable floating orbs */
+  .floating-orb {
+    display: none !important;
+  }
+
+  /* Keep essential animations but make them instant */
+  .hover-pop:hover,
+  .hover-pop-subtle:hover,
+  .hover-pop-button:hover,
+  .hover-lift:hover {
+    transition: none !important;
+  }
+
+  /* Disable 3D transforms */
+  .mobile-3d-popup,
+  .mobile-3d-tilt {
+    transform: none !important;
+  }
+}
+
+/* ============================================
+   LOADING OPTIMIZATIONS
+   ============================================ */
+
+/* Preload critical animations */
+.animate-fade-in,
+.animate-fade-in-up,
+.animate-slide-in {
+  animation-fill-mode: both;
+}
+
+/* Reduce paint areas for better performance */
+.bg-gradient-to-r,
+.bg-gradient-to-br,
+.bg-clip-text {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}

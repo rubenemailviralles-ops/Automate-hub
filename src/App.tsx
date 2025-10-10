@@ -1,22 +1,25 @@
-import React, { useState } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useMobileHover } from './hooks/useMobileHover';
 import { useChatbotPosition } from './hooks/useChatbotPosition';
 import { useRemoveBoltBranding } from './hooks/useRemoveBoltBranding';
 import Header from './components/Header';
-import Home from './pages/Home';
-import WebsiteCreation from './pages/WebsiteCreation';
-import CRMIntegration from './pages/CRMIntegration';
-import PhoneCallers from './pages/PhoneCallers';
-import EmailOutreach from './pages/EmailOutreach';
-import AboutUs from './pages/AboutUs';
-import Contact from './pages/Contact';
-import EmailContact from './pages/EmailContact';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsOfService from './pages/TermsOfService';
-import CookiePolicy from './pages/CookiePolicy';
-import ConsultationBooking from './pages/ConsultationBooking';
 import Footer from './components/Footer';
+import LoadingSpinner from './components/LoadingSpinner';
+
+// Lazy load page components for better performance
+const Home = lazy(() => import('./pages/Home'));
+const WebsiteCreation = lazy(() => import('./pages/WebsiteCreation'));
+const CRMIntegration = lazy(() => import('./pages/CRMIntegration'));
+const PhoneCallers = lazy(() => import('./pages/PhoneCallers'));
+const EmailOutreach = lazy(() => import('./pages/EmailOutreach'));
+const AboutUs = lazy(() => import('./pages/AboutUs'));
+const Contact = lazy(() => import('./pages/Contact'));
+const EmailContact = lazy(() => import('./pages/EmailContact'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
+const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
+const ConsultationBooking = lazy(() => import('./pages/ConsultationBooking'));
 
 // Component to handle scrolling to top on route change
 function ScrollToTop() {
@@ -65,20 +68,22 @@ function App() {
         <div className="floating-orb floating-orb-4"></div>
         
         <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/website-creation" element={<WebsiteCreation />} />
-          <Route path="/crm-integration" element={<CRMIntegration />} />
-          <Route path="/phone-callers" element={<PhoneCallers />} />
-          <Route path="/email-outreach" element={<EmailOutreach />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/email-contact" element={<EmailContact />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/cookie-policy" element={<CookiePolicy />} />
-          <Route path="/book-consultation" element={<ConsultationBooking />} />
-        </Routes>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/website-creation" element={<WebsiteCreation />} />
+            <Route path="/crm-integration" element={<CRMIntegration />} />
+            <Route path="/phone-callers" element={<PhoneCallers />} />
+            <Route path="/email-outreach" element={<EmailOutreach />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/email-contact" element={<EmailContact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/book-consultation" element={<ConsultationBooking />} />
+          </Routes>
+        </Suspense>
         <Footer />
       </div>
     </Router>

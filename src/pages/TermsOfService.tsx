@@ -3,10 +3,17 @@ import { FileText, Scale, Shield, AlertTriangle, CheckCircle, Users, ArrowLeft }
 import { Link } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
 import TypeWriter from '../components/TypeWriter';
+import SEO from '../components/SEO';
 
 const TermsOfService = () => {
   return (
     <div className="pt-20">
+      <SEO
+        title="Terms of Service | Legal Terms & Conditions | Automate Hub"
+        description="Read Automate Hub's terms of service and legal conditions. Understand your rights and responsibilities when using our AI automation services, including service agreements, payment terms, and user obligations."
+        keywords="terms of service, legal terms, service agreement, user agreement, terms and conditions, legal conditions, service terms, user obligations, payment terms, service description"
+        canonicalUrl="https://automate-hub.com/terms-of-service"
+      />
       {/* Hero Section */}
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

@@ -5,6 +5,7 @@ import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import FormField from '../components/FormField';
 import { validateEmail, validateRequired, validatePhone, validateMessage, validateForm, hasFormErrors, FormErrors } from '../utils/validation';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -70,6 +71,12 @@ const Contact = () => {
 
   return (
     <div className="pt-20">
+      <SEO
+        title="Contact Automate Hub | Get AI Automation Consultation | Free Business Assessment"
+        description="Ready to automate your business? Contact Automate Hub for a free AI automation consultation. Get expert guidance on website creation, CRM integration, AI phone agents, and email outreach solutions."
+        keywords="contact automate hub, AI automation consultation, business automation assessment, automation experts, AI automation services, business automation consultation, automation planning, AI automation support"
+        canonicalUrl="https://automate-hub.com/contact"
+      />
       {/* Contact Section */}
       <section className="py-12 seamless-section relative overflow-hidden min-h-screen flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">

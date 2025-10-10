@@ -3,10 +3,17 @@ import { Cookie, Settings, Eye, Shield, BarChart3, Target, ArrowLeft } from 'luc
 import { Link } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
 import TypeWriter from '../components/TypeWriter';
+import SEO from '../components/SEO';
 
 const CookiePolicy = () => {
   return (
     <div className="pt-20">
+      <SEO
+        title="Cookie Policy | Cookie Usage & Tracking | Automate Hub"
+        description="Learn about Automate Hub's cookie policy and how we use cookies to improve your website experience. Understand cookie types, management options, and your privacy choices."
+        keywords="cookie policy, cookie usage, tracking cookies, website cookies, cookie management, privacy choices, cookie settings, analytics cookies, marketing cookies, cookie consent"
+        canonicalUrl="https://automate-hub.com/cookie-policy"
+      />
       {/* Hero Section */}
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

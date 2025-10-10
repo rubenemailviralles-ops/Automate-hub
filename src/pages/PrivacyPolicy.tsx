@@ -3,10 +3,17 @@ import { Shield, Eye, Lock, Database, UserCheck, Globe, ArrowLeft } from 'lucide
 import { Link } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
 import TypeWriter from '../components/TypeWriter';
+import SEO from '../components/SEO';
 
 const PrivacyPolicy = () => {
   return (
     <div className="pt-20">
+      <SEO
+        title="Privacy Policy | Data Protection & Security | Automate Hub"
+        description="Learn how Automate Hub protects your personal information and data. Our comprehensive privacy policy covers data collection, usage, security measures, and your rights regarding personal information."
+        keywords="privacy policy, data protection, personal information security, data privacy, GDPR compliance, data security, privacy rights, information protection, data handling, privacy policy"
+        canonicalUrl="https://automate-hub.com/privacy-policy"
+      />
       {/* Hero Section */}
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

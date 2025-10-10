@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
+import SEO from '../components/SEO';
 
 const EmailOutreach = () => {
   return (
     <div className="pt-20">
+      <SEO
+        title="AI Email Outreach & Marketing Automation | Personalized Email Campaigns | Automate Hub"
+        description="Scale your outreach with AI-powered email marketing automation. Hyper-personalized email campaigns, automated follow-ups, A/B testing, and advanced analytics. Boost open rates and conversions with intelligent email systems."
+        keywords="email outreach, email marketing automation, AI email campaigns, personalized emails, email automation, lead generation, email marketing, automated follow-ups, email analytics, email marketing tools"
+        canonicalUrl="https://automate-hub.com/email-outreach"
+      />
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">

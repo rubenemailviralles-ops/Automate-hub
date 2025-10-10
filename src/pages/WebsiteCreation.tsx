@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
+import SEO from '../components/SEO';
 
 const WebsiteCreation = () => {
   return (
     <div className="pt-20">
+      <SEO
+        title="Professional Website Creation Services | AI-Powered Web Development | Automate Hub"
+        description="Transform your business with professional website creation services. AI-powered web development, mobile-first design, SEO optimization, and conversion-focused websites that drive results. Get your custom website built from scratch."
+        keywords="website creation, web development, AI-powered websites, professional web design, mobile-first design, SEO optimized websites, conversion optimization, custom website development, business websites, web design services"
+        canonicalUrl="https://automate-hub.com/website-creation"
+      />
       {/* Hero Section */}
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

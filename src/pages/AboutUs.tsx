@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
+import SEO from '../components/SEO';
 
 const AboutUs = () => {
   return (
     <div className="pt-20">
+      <SEO
+        title="About Automate Hub | AI Automation Experts | Business Process Automation Company"
+        description="Learn about Automate Hub's mission to democratize AI automation for businesses of all sizes. Our team of experts delivers custom automation solutions that increase productivity and reduce operational costs."
+        keywords="about automate hub, AI automation company, business automation experts, automation consultants, AI automation team, business process automation, automation solutions, AI automation services"
+        canonicalUrl="https://automate-hub.com/about"
+      />
       {/* Hero Section */}
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

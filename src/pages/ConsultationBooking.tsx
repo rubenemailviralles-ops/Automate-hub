@@ -3,6 +3,7 @@ import { Calendar, Send, CheckCircle, Globe, Database, Phone, Mail, ArrowLeft } 
 import { Link } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
+import SEO from '../components/SEO';
 
 const ConsultationBooking = () => {
   const [formData, setFormData] = useState({
@@ -139,6 +140,12 @@ const ConsultationBooking = () => {
 
   return (
     <div className="pt-20">
+      <SEO
+        title="Book Free AI Automation Consultation | Strategy Session | Automate Hub"
+        description="Book your free 30-minute AI automation consultation with Automate Hub experts. Get a custom automation roadmap, ROI analysis, and clear next steps for your business. No pressure, just helpful guidance."
+        keywords="free automation consultation, AI automation strategy session, business automation planning, automation roadmap, AI automation experts, automation assessment, business automation consultation, automation strategy"
+        canonicalUrl="https://automate-hub.com/book-consultation"
+      />
       {/* Split Screen Hero with Form */}
       <section className="min-h-screen py-12 seamless-section relative overflow-hidden flex items-center">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">

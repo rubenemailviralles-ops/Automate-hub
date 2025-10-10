@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
+import SEO from '../components/SEO';
 
 const PhoneCallers = () => {
   return (
     <div className="pt-20">
+      <SEO
+        title="AI Phone Agents & Virtual Callers | 24/7 Customer Service Automation | Automate Hub"
+        description="Never miss a call with AI phone agents. 24/7 customer service automation, lead qualification, appointment scheduling, and professional call handling. Transform your business communication with intelligent phone systems."
+        keywords="AI phone agents, virtual callers, customer service automation, phone automation, AI call handling, 24/7 phone service, lead qualification, appointment scheduling, business phone systems, automated calling"
+        canonicalUrl="https://automate-hub.com/phone-callers"
+      />
       {/* Hero Section */}
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

@@ -1,10 +1,17 @@
 import React from 'react';
 import { Mail, Clock, CheckCircle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 const EmailContact = () => {
   return (
     <div className="pt-20">
+      <SEO
+        title="Email Contact | Get in Touch with Automate Hub | AI Automation Support"
+        description="Contact Automate Hub via email for AI automation support and consultation. Get expert guidance on business automation solutions. We respond within 24 hours during business days."
+        keywords="email contact, automate hub contact, AI automation support, business automation help, automation consultation email, AI automation services contact, automation experts contact"
+        canonicalUrl="https://automate-hub.com/email-contact"
+      />
       {/* Hero Section */}
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

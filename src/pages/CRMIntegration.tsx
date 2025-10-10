@@ -4,10 +4,17 @@ import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
+import SEO from '../components/SEO';
 
 const CRMIntegration = () => {
   return (
     <div className="pt-20">
+      <SEO
+        title="CRM Integration & Automation Services | AI-Powered Customer Data Management | Automate Hub"
+        description="Streamline your business with intelligent CRM integration services. AI-powered customer data management, automated workflows, lead scoring, and seamless system connections. Boost productivity and reduce manual work."
+        keywords="CRM integration, customer data management, AI automation, lead management, workflow automation, CRM systems, customer relationship management, business automation, data synchronization, sales automation"
+        canonicalUrl="https://automate-hub.com/crm-integration"
+      />
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">

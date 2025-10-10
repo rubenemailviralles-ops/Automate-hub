@@ -7,6 +7,7 @@ import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
+import { useMobileHover } from '../hooks/useMobileHover';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,6 +15,9 @@ const Home = () => {
   const [showSecondLine, setShowSecondLine] = useState(false);
   const [showSubheading, setShowSubheading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  // Enable mobile scroll-based hover effects
+  useMobileHover();
 
   // Detect mobile device
   useEffect(() => {

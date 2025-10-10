@@ -41,6 +41,12 @@ const Home = () => {
     };
   };
 
+  // Helper for inner 3D transforms - only on desktop
+  const getInner3DTransform = (zValue: string) => {
+    if (isMobile) return {};
+    return { transform: `translateZ(${zValue})` };
+  };
+
   // 3D tilt effect handlers - only on desktop for performance
   const get3DTiltHandlers = () => {
     if (isMobile) return {};
@@ -314,27 +320,27 @@ const Home = () => {
                     <div 
                       className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 relative`}
                       style={{
-                        boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-                        transform: 'translateZ(20px)',
-                        transition: 'transform 0.3s ease-out',
+                        boxShadow: isMobile ? 'none' : '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                        ...getInner3DTransform('20px'),
+                        transition: isMobile ? 'none' : 'transform 0.3s ease-out',
                       }}
                       {...getIconHoverHandlers()}
                     >
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     
-                    <h3 className="text-2xl font-bold mb-4 text-white relative" style={{ transform: 'translateZ(15px)' }}>
+                    <h3 className="text-2xl font-bold mb-4 text-white relative" style={getInner3DTransform('15px')}>
                       {service.title}
                     </h3>
                     
-                    <p className="text-gray-400 leading-relaxed mb-6 relative" style={{ transform: 'translateZ(10px)' }}>
+                    <p className="text-gray-400 leading-relaxed mb-6 relative" style={getInner3DTransform('10px')}>
                       {service.description}
                     </p>
 
                     <Link
                       to={service.path}
                       className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link hover-pop-text relative"
-                      style={{ transform: 'translateZ(15px)' }}
+                      style={getInner3DTransform('15px')}
                     >
                       <span className={`bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
                         Learn More
@@ -377,7 +383,7 @@ const Home = () => {
                 }}
                 {...get3DTiltHandlers()}
               >
-                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
+                <div className="flex items-start mb-6" style={getInner3DTransform('15px')}>
                   <div 
                     className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
                     style={{
@@ -388,7 +394,7 @@ const Home = () => {
                   >
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
-                  <div style={{ transform: 'translateZ(10px)' }}>
+                  <div style={getInner3DTransform('10px')}>
                     <h3 className="text-2xl font-bold text-white mb-4">Proven Results & ROI</h3>
                     <ul className="space-y-3 text-gray-400">
                       <li className="flex items-start">
@@ -409,7 +415,7 @@ const Home = () => {
                 <Link 
                   to="/about" 
                   className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
-                  style={{ transform: 'translateZ(10px)' }}
+                  style={getInner3DTransform('10px')}
                 >
                   <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
                     Learn about our approach
@@ -430,7 +436,7 @@ const Home = () => {
                 }}
                 {...get3DTiltHandlers()}
               >
-                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
+                <div className="flex items-start mb-6" style={getInner3DTransform('15px')}>
                   <div 
                     className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
                     style={{
@@ -441,7 +447,7 @@ const Home = () => {
                   >
                     <Zap className="w-6 h-6 text-white" />
                   </div>
-                  <div style={{ transform: 'translateZ(10px)' }}>
+                  <div style={getInner3DTransform('10px')}>
                     <h3 className="text-2xl font-bold text-white mb-4">Complete AI Automation Suite</h3>
                     <ul className="space-y-3 text-gray-400">
                       <li className="flex items-start">
@@ -462,7 +468,7 @@ const Home = () => {
                 <Link 
                   to="/book-consultation" 
                   className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
-                  style={{ transform: 'translateZ(10px)' }}
+                  style={getInner3DTransform('10px')}
                 >
                   <span className="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent">
                     Book a free consultation
@@ -483,7 +489,7 @@ const Home = () => {
                 }}
                 {...get3DTiltHandlers()}
               >
-                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
+                <div className="flex items-start mb-6" style={getInner3DTransform('15px')}>
                   <div 
                     className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
                     style={{
@@ -494,7 +500,7 @@ const Home = () => {
                   >
                     <Shield className="w-6 h-6 text-white" />
                   </div>
-                  <div style={{ transform: 'translateZ(10px)' }}>
+                  <div style={getInner3DTransform('10px')}>
                     <h3 className="text-2xl font-bold text-white mb-4">Enterprise-Grade Security</h3>
                     <ul className="space-y-3 text-gray-400">
                       <li className="flex items-start">
@@ -515,7 +521,7 @@ const Home = () => {
                 <Link 
                   to="/privacy-policy" 
                   className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
-                  style={{ transform: 'translateZ(10px)' }}
+                  style={getInner3DTransform('10px')}
                 >
                   <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
                     View our privacy policy
@@ -536,7 +542,7 @@ const Home = () => {
                 }}
                 {...get3DTiltHandlers()}
               >
-                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
+                <div className="flex items-start mb-6" style={getInner3DTransform('15px')}>
                   <div 
                     className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
                     style={{
@@ -547,7 +553,7 @@ const Home = () => {
                   >
                     <BarChart3 className="w-6 h-6 text-white" />
                   </div>
-                  <div style={{ transform: 'translateZ(10px)' }}>
+                  <div style={getInner3DTransform('10px')}>
                     <h3 className="text-2xl font-bold text-white mb-4">Scalable Solutions</h3>
                     <ul className="space-y-3 text-gray-400">
                       <li className="flex items-start">
@@ -568,7 +574,7 @@ const Home = () => {
                 <Link 
                   to="/contact" 
                   className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
-                  style={{ transform: 'translateZ(10px)' }}
+                  style={getInner3DTransform('10px')}
                 >
                   <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
                     Get started today

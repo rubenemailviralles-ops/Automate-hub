@@ -28,15 +28,6 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
     // Check if mobile
     const mobile = window.innerWidth <= 768;
     setIsMobile(mobile);
-    
-    // On mobile, show immediately
-    if (mobile) {
-      setIsVisible(true);
-      if (onComplete) {
-        onComplete();
-      }
-      return;
-    }
 
     const currentElement = elementRef.current;
     
@@ -48,7 +39,7 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
             setIsVisible(true);
             hasAnimated.current = true;
             if (onComplete) {
-              setTimeout(onComplete, 600); // Call onComplete after animation
+              setTimeout(onComplete, mobile ? 300 : 600);
             }
           }
         });
@@ -70,27 +61,26 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
     };
   }, [onComplete]);
 
-  // On mobile, render without animations
-  if (isMobile) {
-    return (
-      <Component className={className}>
-        {text}
-        {children}
-      </Component>
-    );
-  }
+  // Simpler, faster animations for mobile
+  const mobileStyle = {
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? 'translateY(0)' : 'translateY(10px)',
+    transition: 'opacity 0.3s ease, transform 0.3s ease',
+  };
+
+  const desktopStyle = {
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, 20px, 0)',
+    transition: 'opacity 0.5s ease-out, transform 0.5s ease-out',
+    transitionDelay: `${delay}ms`,
+    willChange: isVisible ? 'auto' : 'opacity, transform'
+  };
 
   return (
     <Component 
       ref={elementRef as any} 
       className={className}
-      style={{ 
-        opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, 20px, 0)',
-        transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-        transitionDelay: `${delay}ms`,
-        willChange: isVisible ? 'auto' : 'opacity, transform'
-      }}
+      style={isMobile ? mobileStyle : desktopStyle}
     >
       {text}
       {children}

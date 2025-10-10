@@ -385,7 +385,7 @@
 
 /* Mobile touch effects - activate on scroll intersection */
 @media (max-width: 768px) {
-  /* AGGRESSIVE MOBILE OPTIMIZATION - Disable all hover effects */
+  /* Mobile optimization - disable hover effects */
   .hover-pop:hover,
   .hover-pop-subtle:hover,
   .hover-pop-button:hover,
@@ -395,44 +395,40 @@
     box-shadow: none !important;
   }
   
-  /* Simplified mobile scroll-triggered effects - minimal animations */
-  .hover-pop.mobile-active,
-  .hover-pop-subtle.mobile-active,
-  .hover-pop-button.mobile-active,
-  .hover-pop-text.mobile-active,
-  .hover-lift.mobile-active,
+  /* Enable lightweight scroll-triggered effects with GPU acceleration */
+  .hover-pop.mobile-active {
+    transform: translate3d(0, -3px, 0) scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* CRITICAL: Disable 3D effects completely on mobile */
+  .mobile-3d-popup,
+  .mobile-3d-tilt,
+  .group {
+    transform: none !important;
+    transform-style: flat !important;
+    perspective: none !important;
+  }
+  
   .mobile-3d-popup.mobile-active,
   .mobile-3d-tilt.mobile-active {
     transform: none !important;
-    animation: none !important;
   }
   
-  /* Force hardware acceleration but NO transforms */
-  * {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
-  }
-  
-  /* Disable ALL transitions and animations for performance */
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0s !important;
-    animation-delay: 0s !important;
-    transition-duration: 0s !important;
-    transition-delay: 0s !important;
-  }
-  
-  /* Disable expensive transforms on mobile */
+  /* Disable expensive transforms */
   [style*="perspective"],
   [style*="rotateX"],
   [style*="rotateY"],
-  [style*="translateZ"] {
+  [style*="translateZ"],
+  [style*="preserve-3d"] {
     perspective: none !important;
+    transform: none !important;
+    transform-style: flat !important;
+  }
+  
+  /* Remove all inner 3D child transforms */
+  [style*="translateZ"] * {
     transform: none !important;
   }
   
@@ -441,25 +437,21 @@
     display: none !important;
   }
   
-  /* Disable scroll reveal animations */
-  [class*="animate-"],
-  [class*="fade-in"],
-  [class*="slide-in"] {
-    animation: none !important;
-    opacity: 1 !important;
+  /* Simplify box shadows for performance */
+  [class*="rounded-2xl"],
+  .bg-white\/5,
+  .bg-white\/10 {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  /* Disable group hover effects */
+  .group:hover > * {
     transform: none !important;
   }
   
-  /* Simplify box shadows for performance */
-  * {
-    box-shadow: none !important;
-  }
-  
-  /* Keep only essential shadows */
-  .bg-white\/5,
-  .bg-white\/10,
-  [class*="rounded-2xl"] {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  /* Optimize shine overlays */
+  .group-hover\:opacity-100 {
+    display: none !important;
   }
 }
 .hover-pop-subtle {

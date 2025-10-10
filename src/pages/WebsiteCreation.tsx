@@ -821,7 +821,23 @@ const WebsiteCreation = () => {
 
           <div className="space-y-6">
             <ScrollReveal delay={200}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">How long does it take to build a website?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Our typical website development timeline is 2-4 weeks, depending on complexity. Simple business websites can be completed in 2 weeks, while more complex sites with custom features, AI chatbots, and advanced integrations may take 3-4 weeks. We work efficiently while ensuring every detail meets our quality standards.
@@ -830,7 +846,23 @@ const WebsiteCreation = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={250}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Do you provide website hosting and maintenance?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Yes! We offer comprehensive hosting and maintenance packages. Your website will be hosted on enterprise-grade servers with 99.9% uptime guarantee. Our maintenance includes regular updates, security patches, backups, and technical support. You can focus on your business while we handle all technical aspects.
@@ -839,7 +871,23 @@ const WebsiteCreation = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Can you redesign my existing website?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Absolutely! We specialize in website redesigns and modernization. We'll analyze your current site, preserve what works, and transform outdated elements with modern design and AI-powered features. We can migrate your content, improve SEO, add automation, and create a fresh, conversion-focused design while maintaining your brand identity.
@@ -848,7 +896,23 @@ const WebsiteCreation = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Will my website be mobile-friendly and SEO optimized?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Every website we build is mobile-first and fully responsive, working perfectly on all devices. SEO optimization is built-in from day one with clean code structure, fast loading speeds, proper meta tags, structured data, and technical SEO best practices. We ensure your site ranks well and provides an excellent user experience on any device.
@@ -857,7 +921,23 @@ const WebsiteCreation = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">What AI features can you integrate into my website?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   We integrate advanced AI features including 24/7 chatbots for customer support and lead capture, automated appointment scheduling, intelligent form analysis, personalized content recommendations, and behavior-based automation. These AI tools work seamlessly with your CRM, email marketing, and phone systems to create a complete automation ecosystem.
@@ -866,7 +946,23 @@ const WebsiteCreation = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={450}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Can I update the website content myself?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Yes! We build user-friendly content management systems that allow you to easily update text, images, blog posts, and other content without technical knowledge. We provide comprehensive training and documentation. For complex updates or technical changes, our support team is always available to assist you.
@@ -875,7 +971,23 @@ const WebsiteCreation = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={500}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">What happens if I need changes after the website launches?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   We offer ongoing support and maintenance packages. Minor updates and tweaks are handled quickly, usually within 24-48 hours. For larger feature additions or redesigns, we'll provide a quote and timeline. All our websites are built with scalability in mind, making future enhancements straightforward and cost-effective.
@@ -884,7 +996,23 @@ const WebsiteCreation = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={550}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">How much does a custom website cost?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Website costs vary based on complexity, features, and integrations needed. A basic business website starts around $2,500, while advanced sites with AI features, custom integrations, and automation can range from $5,000-$15,000+. We offer flexible payment plans and provide detailed quotes after understanding your specific requirements. <Link to="/book-consultation" className="text-blue-400 hover:text-blue-300 transition-colors">Book a free consultation</Link> to get a custom quote.

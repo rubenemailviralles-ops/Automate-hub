@@ -823,7 +823,23 @@ const EmailOutreach = () => {
 
           <div className="space-y-6">
             <ScrollReveal delay={200}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">How does AI personalization work for emails?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Our AI analyzes each prospect's digital footprint including their website, social media, company news, and industry trends. It then crafts unique, personalized email content that references specific details about their business, challenges, and opportunities. This makes each email feel like it was written by a human who researched them personally, dramatically increasing response rates.
@@ -832,7 +848,23 @@ const EmailOutreach = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={250}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">How many emails can I send per day?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   We recommend starting with 50-100 emails per day per sending account to maintain optimal deliverability. Our system includes email warmup protocols that gradually increase volume over time. For larger campaigns, we can set up multiple sending accounts with domain rotation, allowing you to scale to thousands of emails daily while maintaining high inbox placement rates.
@@ -841,7 +873,23 @@ const EmailOutreach = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Will my emails end up in spam folders?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   We implement comprehensive deliverability best practices including proper SPF, DKIM, and DMARC setup, email warmup protocols, spam score checking, and content optimization. We monitor sender reputation, use rotating IP addresses, and follow all email service provider guidelines. Our typical inbox placement rate is 85-95%, far above industry averages.
@@ -850,7 +898,23 @@ const EmailOutreach = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Can you write the email content for us?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Yes! Our AI can generate complete email sequences based on your offer, target audience, and goals. We create subject lines, body copy, and calls-to-action optimized for conversions. You'll review and approve all content before campaigns launch. We also provide templates and frameworks if you prefer to write your own content with AI assistance.
@@ -859,7 +923,23 @@ const EmailOutreach = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">How do you handle email responses and follow-ups?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Our system automatically detects replies and stops automated sequences immediately to prevent awkward follow-ups. Responses are logged in your CRM with notifications sent to your team. The AI can even analyze response sentiment and categorize replies (interested, not interested, out of office) to help you prioritize your manual outreach efforts.
@@ -868,7 +948,23 @@ const EmailOutreach = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={450}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Can I A/B test different email variations?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Absolutely! Our platform includes advanced A/B testing capabilities. Test different subject lines, email copy, send times, calls-to-action, and more. The system automatically tracks performance metrics and can even auto-select winning variations to maximize your results. You get detailed analytics showing what works best for your audience.
@@ -877,7 +973,23 @@ const EmailOutreach = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={500}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">How much does email automation cost?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Email automation pricing starts at $300/month for up to 1,000 contacts and 10,000 emails. Advanced plans with AI personalization, unlimited sending, and premium features range from $800-$2,500/month. Enterprise solutions with dedicated IPs and custom integrations are available. <Link to="/book-consultation" className="text-pink-400 hover:text-pink-300 transition-colors">Get a custom quote</Link> based on your needs.

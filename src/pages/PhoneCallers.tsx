@@ -916,7 +916,23 @@ const PhoneCallers = () => {
 
           <div className="space-y-6">
             <ScrollReveal delay={200}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">How realistic do AI phone agents sound?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Our AI phone agents use advanced natural language processing and text-to-speech technology to sound remarkably human. They understand context, can handle complex conversations, respond naturally to interruptions, and adapt their tone appropriately. Most callers don't realize they're speaking with AI, and those who do are impressed by the quality of interaction.
@@ -925,7 +941,23 @@ const PhoneCallers = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={250}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Can AI phone agents handle complex customer inquiries?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Yes! Our AI agents are trained on your specific business, products, and services. They can answer detailed questions, provide product information, troubleshoot common issues, and qualify leads. For highly complex or sensitive matters, they can seamlessly transfer to a human agent while providing the agent with full conversation context.
@@ -934,7 +966,23 @@ const PhoneCallers = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">How do you set up and customize the AI phone system?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Setup typically takes 1-2 weeks. We start by understanding your business, call flows, and common scenarios. Then we train the AI on your specific needs, integrate with your existing phone system and CRM, test thoroughly, and fine-tune responses. You'll have full control over scripts, escalation rules, and how the AI handles different situations.
@@ -943,7 +991,23 @@ const PhoneCallers = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">What happens to call recordings and transcripts?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Every call is automatically transcribed and stored securely in your CRM or preferred system. You get full conversation logs, key highlights, sentiment analysis, and action items. All data is encrypted and compliant with privacy regulations. You can search past conversations, analyze trends, and use insights to improve your service.
@@ -952,7 +1016,23 @@ const PhoneCallers = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Can the AI book appointments directly into our calendar?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Yes! The AI integrates with popular calendar systems like Google Calendar, Outlook, and Calendly. It checks availability in real-time, books appointments, sends confirmations, and adds reminders. It handles rescheduling, cancellations, and time zone conversions automatically, ensuring your calendar stays perfectly organized.
@@ -961,7 +1041,23 @@ const PhoneCallers = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={450}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">What languages do the AI phone agents support?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Our AI agents support 20+ languages including English, Spanish, French, German, Mandarin, Japanese, and more. They can detect the caller's language automatically and switch seamlessly, or use a specific language based on your business needs. This allows you to serve international customers without hiring multilingual staff.
@@ -970,7 +1066,23 @@ const PhoneCallers = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={500}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">How much does AI phone automation cost?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Pricing starts at $500/month for basic phone answering service with up to 100 calls. More comprehensive solutions with advanced features, integrations, and higher call volumes range from $1,000-$3,000/month. We offer custom pricing based on your specific needs and call volume. <Link to="/book-consultation" className="text-indigo-400 hover:text-indigo-300 transition-colors">Book a consultation</Link> to discuss pricing.

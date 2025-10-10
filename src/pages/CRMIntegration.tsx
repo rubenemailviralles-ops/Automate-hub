@@ -943,7 +943,23 @@ const CRMIntegration = () => {
 
           <div className="space-y-6">
             <ScrollReveal delay={200}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Which CRM systems do you integrate with?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   We integrate with all major CRM platforms including Salesforce, HubSpot, Pipedrive, Zoho CRM, Monday.com, ActiveCampaign, and many others. We also work with custom CRMs and can connect virtually any system through APIs. If your CRM has an API, we can integrate it seamlessly with your business processes.
@@ -952,7 +968,23 @@ const CRMIntegration = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={250}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">How long does CRM integration take?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Basic CRM integrations typically take 1-2 weeks, while complex multi-system integrations with custom workflows may take 3-4 weeks. The timeline depends on the number of systems being connected, data migration requirements, and custom automation rules. We provide a detailed project timeline after assessing your specific needs.
@@ -961,7 +993,23 @@ const CRMIntegration = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Will you migrate our existing data?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Yes! We handle complete data migration including contacts, deals, tasks, notes, and custom fields. We ensure data integrity throughout the process, remove duplicates, validate information, and map fields correctly. Your historical data is preserved and properly organized in the new system without any loss.
@@ -970,7 +1018,23 @@ const CRMIntegration = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Can you automate our sales and marketing workflows?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Absolutely! We create intelligent automation workflows that handle lead assignment, follow-up sequences, deal stage progression, task creation, email campaigns, and much more. Our AI-powered automation can score leads, trigger actions based on customer behavior, and ensure no opportunity falls through the cracks.
@@ -979,7 +1043,23 @@ const CRMIntegration = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">What if we use multiple systems that need to work together?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Multi-system integration is our specialty. We connect your CRM with email marketing platforms, phone systems, accounting software, project management tools, and more. Data flows seamlessly between systems in real-time, eliminating manual data entry and ensuring all your tools stay synchronized automatically.
@@ -988,7 +1068,23 @@ const CRMIntegration = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={450}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">Do you provide training on the integrated CRM system?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Yes! We provide comprehensive training for your team including video tutorials, written documentation, and live training sessions. We ensure everyone understands how to use the automated workflows, where to find information, and how to leverage the system for maximum productivity. Ongoing support is available whenever you need it.
@@ -997,7 +1093,23 @@ const CRMIntegration = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={500}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">How secure is the data during integration?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   Security is our top priority. We use encrypted connections, follow industry best practices, and comply with data protection regulations like GDPR. All API connections are secured with authentication tokens, data transfers are encrypted, and we never store sensitive information longer than necessary. Your data remains completely secure throughout the integration process.
@@ -1006,7 +1118,23 @@ const CRMIntegration = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={550}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
+                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+                }}
+              >
                 <h3 className="text-xl font-bold text-white mb-3">What does CRM integration cost?</h3>
                 <p className="text-gray-400 leading-relaxed">
                   CRM integration pricing varies based on complexity. Basic single-system integrations start around $1,500, while comprehensive multi-system integrations with custom automation can range from $3,500-$10,000+. We offer flexible payment plans and provide detailed quotes after understanding your systems and requirements. <Link to="/book-consultation" className="text-purple-400 hover:text-purple-300 transition-colors">Schedule a consultation</Link> for a custom quote.

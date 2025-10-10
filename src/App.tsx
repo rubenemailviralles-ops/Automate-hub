@@ -60,30 +60,35 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <a href="#main-content" className="skip-to-main">
+        Skip to main content
+      </a>
       <div className="min-h-screen text-white relative">
         {/* Floating background orbs */}
-        <div className="floating-orb floating-orb-1"></div>
-        <div className="floating-orb floating-orb-2"></div>
-        <div className="floating-orb floating-orb-3"></div>
-        <div className="floating-orb floating-orb-4"></div>
+        <div className="floating-orb floating-orb-1" aria-hidden="true"></div>
+        <div className="floating-orb floating-orb-2" aria-hidden="true"></div>
+        <div className="floating-orb floating-orb-3" aria-hidden="true"></div>
+        <div className="floating-orb floating-orb-4" aria-hidden="true"></div>
         
         <Header />
-        <Suspense fallback={<LoadingSpinner />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/website-creation" element={<WebsiteCreation />} />
-            <Route path="/crm-integration" element={<CRMIntegration />} />
-            <Route path="/phone-callers" element={<PhoneCallers />} />
-            <Route path="/email-outreach" element={<EmailOutreach />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/email-contact" element={<EmailContact />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
-            <Route path="/book-consultation" element={<ConsultationBooking />} />
-          </Routes>
-        </Suspense>
+        <main id="main-content" role="main">
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/website-creation" element={<WebsiteCreation />} />
+              <Route path="/crm-integration" element={<CRMIntegration />} />
+              <Route path="/phone-callers" element={<PhoneCallers />} />
+              <Route path="/email-outreach" element={<EmailOutreach />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/email-contact" element={<EmailContact />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
+              <Route path="/book-consultation" element={<ConsultationBooking />} />
+            </Routes>
+          </Suspense>
+        </main>
         <Footer />
       </div>
     </Router>

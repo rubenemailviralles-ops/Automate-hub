@@ -127,7 +127,12 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 w-full bg-black/40 backdrop-blur-md border-b border-white/10 z-50" ref={mobileMenuRef}>
+    <header 
+      className="fixed top-0 w-full bg-black/40 backdrop-blur-md border-b border-white/10 z-50" 
+      ref={mobileMenuRef}
+      role="banner"
+      aria-label="Main header"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4 animate-slide-in-left">
           <div className="flex items-center space-x-3">
@@ -142,22 +147,36 @@ const Header = () => {
               }}
               id="logo-icon"
               data-nav-item="logo"
+              role="button"
+              aria-label="Trigger logo animation"
+              tabIndex={0}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  triggerAnimation();
+                }
+              }}
             >
-              <Bot className="w-6 h-6 text-black" />
+              <Bot className="w-6 h-6 text-black" aria-hidden="true" />
             </div>
-            <Link to="/">
+            <Link to="/" aria-label="Automate Hub home page">
               <span 
                 className={`nav-item nav-brand-text text-2xl font-bold text-white tracking-tight transition-all duration-300 cursor-pointer ${
                   isAnimating ? 'opacity-0 -translate-y-1 pointer-events-none' : 'opacity-100'
                 }`}
                 data-nav-item="brand"
+                aria-hidden="true"
               >
                 Automate Hub
               </span>
             </Link>
           </div>
 
-          <nav className="hidden lg:flex items-center space-x-8 animate-slide-in-right">
+          <nav 
+            className="hidden lg:flex items-center space-x-8 animate-slide-in-right"
+            role="navigation"
+            aria-label="Main navigation"
+          >
             <Link 
               to="/" 
               onClick={handleHomeClick}
@@ -165,6 +184,8 @@ const Header = () => {
                 location.pathname === '/' ? 'text-white' : 'text-gray-400 hover:text-white'
               }`}
               data-nav-item="home"
+              aria-label="Navigate to home page"
+              aria-current={location.pathname === '/' ? 'page' : undefined}
             >
               Home
             </Link>
@@ -176,13 +197,20 @@ const Header = () => {
                 }`}
                 onClick={toggleServices}
                 data-nav-item="services"
+                aria-label="Services menu"
+                aria-expanded={isServicesOpen}
+                aria-haspopup="true"
+                aria-controls="services-dropdown"
               >
                 Services
-                <ChevronDown className="ml-1 w-4 h-4" />
+                <ChevronDown className="ml-1 w-4 h-4" aria-hidden="true" />
               </button>
               
               {isServicesOpen && (
                 <div 
+                  id="services-dropdown"
+                  role="menu"
+                  aria-label="Services menu"
                   className={`absolute top-full left-0 mt-2 w-64 bg-black/80 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl py-2 hover-pop dropdown-menu dropdown-fade-in ${
                     isAnimating ? 'dropdown-falling' : ''
                   }`}
@@ -191,6 +219,7 @@ const Header = () => {
                     <Link
                       key={service.path}
                       to={service.path}
+                      role="menuitem"
                       className="block px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300 hover-pop-subtle"
                       onClick={(e) => {
                         handleServiceClick(service.path, e);
@@ -199,6 +228,7 @@ const Header = () => {
                         if (service.path === '/phone-callers') handlePhoneCallersClick(e);
                         if (service.path === '/email-outreach') handleEmailOutreachClick(e);
                       }}
+                      aria-label={`Navigate to ${service.name} service page`}
                     >
                       {service.name}
                     </Link>
@@ -214,6 +244,8 @@ const Header = () => {
                 isAnimating ? 'nav-item-animating' : ''
               }`}
               data-nav-item="about"
+              aria-label="Navigate to about us page"
+              aria-current={location.pathname === '/about' ? 'page' : undefined}
             >
               About
             </Link>
@@ -225,6 +257,8 @@ const Header = () => {
                 isAnimating ? 'nav-item-animating' : ''
               }`}
               data-nav-item="contact"
+              aria-label="Navigate to contact page"
+              aria-current={location.pathname === '/contact' ? 'page' : undefined}
             >
               Contact
             </Link>
@@ -236,6 +270,7 @@ const Header = () => {
                 isAnimating ? 'nav-item-animating' : ''
               }`}
               data-nav-item="consultation"
+              aria-label="Book a free consultation"
             >
               Book Consultation
             </Link>
@@ -245,14 +280,23 @@ const Header = () => {
             className="lg:hidden text-white nav-item"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             data-nav-item="mobile-toggle"
+            aria-label={isMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
           </button>
         </div>
 
         {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-white/10 mobile-menu-fade-in nav-item" data-nav-item="mobile-menu">
-            <nav className="flex flex-col space-y-4">
+          <div 
+            id="mobile-menu"
+            className="lg:hidden py-4 border-t border-white/10 mobile-menu-fade-in nav-item" 
+            data-nav-item="mobile-menu"
+            role="region"
+            aria-label="Mobile navigation menu"
+          >
+            <nav className="flex flex-col space-y-4" role="navigation" aria-label="Mobile navigation">
               <Link 
                 to="/" 
                 onClick={(e) => {
@@ -261,11 +305,13 @@ const Header = () => {
                 }}
                 className="text-gray-400 hover:text-white transition-colors nav-item"
                 data-nav-item="mobile-home"
+                aria-label="Navigate to home page"
+                aria-current={location.pathname === '/' ? 'page' : undefined}
               >
                 Home
               </Link>
-              <div className="space-y-2 nav-item" data-nav-item="mobile-services">
-                <p className="text-white font-medium nav-item" data-nav-item="mobile-services-label">Services</p>
+              <div className="space-y-2 nav-item" data-nav-item="mobile-services" role="group" aria-labelledby="mobile-services-label">
+                <p id="mobile-services-label" className="text-white font-medium nav-item" data-nav-item="mobile-services-label">Services</p>
                 {services.map((service) => (
                   <Link
                     key={service.path}
@@ -279,6 +325,7 @@ const Header = () => {
                       if (service.path === '/email-outreach') handleEmailOutreachClick(e);
                       setIsMenuOpen(false);
                     }}
+                    aria-label={`Navigate to ${service.name} service page`}
                   >
                     {service.name}
                   </Link>
@@ -292,6 +339,8 @@ const Header = () => {
                   handleAboutClick(e);
                   setIsMenuOpen(false);
                 }}
+                aria-label="Navigate to about us page"
+                aria-current={location.pathname === '/about' ? 'page' : undefined}
               >
                 About
               </Link>
@@ -303,6 +352,8 @@ const Header = () => {
                   handleContactClick(e);
                   setIsMenuOpen(false);
                 }}
+                aria-label="Navigate to contact page"
+                aria-current={location.pathname === '/contact' ? 'page' : undefined}
               >
                 Contact
               </Link>
@@ -314,6 +365,7 @@ const Header = () => {
                   handleBookConsultationClick(e);
                   setIsMenuOpen(false);
                 }}
+                aria-label="Book a free consultation"
               >
                 Book Consultation
               </Link>

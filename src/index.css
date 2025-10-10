@@ -385,38 +385,52 @@
 
 /* Mobile touch effects - activate on scroll intersection */
 @media (max-width: 768px) {
-  /* Mobile optimization - disable hover effects */
+  /* Disable mouse hover effects on mobile */
   .hover-pop:hover,
   .hover-pop-subtle:hover,
   .hover-pop-button:hover,
   .hover-pop-text:hover,
   .hover-lift:hover {
-    transform: none !important;
-    box-shadow: none !important;
+    transform: none;
+    box-shadow: none;
   }
   
-  /* Enable lightweight scroll-triggered effects with GPU acceleration */
+  /* Mobile scroll-triggered effects */
   .hover-pop.mobile-active {
-    transform: translate3d(0, -3px, 0) scale(1.02);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   }
   
-  /* CRITICAL: Disable 3D effects completely on mobile */
-  .mobile-3d-popup,
-  .mobile-3d-tilt,
-  .group {
-    transform: none !important;
-    transform-style: flat !important;
-    perspective: none !important;
+  .hover-pop-subtle.mobile-active {
+    transform: scale(1.02) translateY(-1px);
   }
   
-  .mobile-3d-popup.mobile-active,
+  .hover-pop-button.mobile-active {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+  }
+  
+  .hover-pop-text.mobile-active {
+    transform: scale(1.02);
+  }
+  
+  .hover-lift.mobile-active {
+    transform: translateY(-8px);
+  }
+  
+  /* Mobile 3D effects - simple popup on scroll */
+  .mobile-3d-popup.mobile-active {
+    transform: translateY(-8px) scale(1.02) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* Mobile 3D card tilt - convert to simple popup */
   .mobile-3d-tilt.mobile-active {
-    transform: none !important;
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35) !important;
   }
   
-  /* Disable expensive transforms */
+  /* Disable expensive 3D transforms on mobile */
   [style*="perspective"],
   [style*="rotateX"],
   [style*="rotateY"],
@@ -427,31 +441,10 @@
     transform-style: flat !important;
   }
   
-  /* Remove all inner 3D child transforms */
-  [style*="translateZ"] * {
-    transform: none !important;
-  }
-  
-  /* Completely disable floating orbs on mobile */
+  /* Simplify floating orbs on mobile */
   .floating-orb {
-    display: none !important;
-  }
-  
-  /* Simplify box shadows for performance */
-  [class*="rounded-2xl"],
-  .bg-white\/5,
-  .bg-white\/10 {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
-  }
-  
-  /* Disable group hover effects */
-  .group:hover > * {
-    transform: none !important;
-  }
-  
-  /* Optimize shine overlays */
-  .group-hover\:opacity-100 {
-    display: none !important;
+    animation: none !important;
+    opacity: 0.3 !important;
   }
 }
 .hover-pop-subtle {

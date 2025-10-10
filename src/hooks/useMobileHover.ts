@@ -8,41 +8,50 @@ export const useMobileHover = () => {
     const isMobile = window.innerWidth <= 768;
     if (!isMobile) return;
 
+    let ticking = false;
+
     // Create intersection observer for mobile hover effects (optimized)
     observerRef.current = new IntersectionObserver(
       (entries) => {
-        // Use requestAnimationFrame to batch DOM updates
-        requestAnimationFrame(() => {
-          entries.forEach((entry) => {
-            const element = entry.target as HTMLElement;
-            
-            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-              // Element is more than 50% visible, activate hover effect
-              element.classList.add('mobile-active');
-            } else {
-              // Element is less than 50% visible, remove hover effect
-              element.classList.remove('mobile-active');
-            }
+        // Throttle updates using requestAnimationFrame
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            entries.forEach((entry) => {
+              const element = entry.target as HTMLElement;
+              
+              if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+                // Element is more than 50% visible, activate hover effect
+                element.classList.add('mobile-active');
+              } else {
+                // Element is less than 50% visible, remove hover effect
+                element.classList.remove('mobile-active');
+              }
+            });
+            ticking = false;
           });
-        });
+          ticking = true;
+        }
       },
       {
-        threshold: 0.5, // Reduced from 5 thresholds to 1 for better performance
+        threshold: 0.5, // Single threshold for best performance
         rootMargin: '-10% 0px -10% 0px' // Trigger when element is in the middle 80% of viewport
       }
     );
 
-    // Observe all hover elements and 3D elements
-    const hoverElements = document.querySelectorAll(
-      '.hover-pop, .hover-pop-subtle, .hover-pop-button, .hover-pop-text, .hover-lift, .mobile-3d-popup, .mobile-3d-tilt'
-    );
-    
-    hoverElements.forEach((element) => {
-      observerRef.current?.observe(element);
-    });
+    // Use setTimeout to defer observation setup until after initial render
+    const timeoutId = setTimeout(() => {
+      const hoverElements = document.querySelectorAll(
+        '.hover-pop, .hover-pop-subtle, .hover-pop-button, .hover-pop-text, .hover-lift, .mobile-3d-popup, .mobile-3d-tilt'
+      );
+      
+      hoverElements.forEach((element) => {
+        observerRef.current?.observe(element);
+      });
+    }, 100);
 
     // Cleanup function
     return () => {
+      clearTimeout(timeoutId);
       if (observerRef.current) {
         observerRef.current.disconnect();
       }

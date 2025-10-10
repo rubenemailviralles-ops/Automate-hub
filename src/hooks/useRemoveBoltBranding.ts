@@ -38,6 +38,12 @@ export const useRemoveBoltBranding = () => {
       return;
     }
 
+    // Skip on mobile for performance
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      return;
+    }
+
     let rafId = 0;
 
     const scanForBranding = () => {

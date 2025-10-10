@@ -270,19 +270,20 @@ const Home = () => {
                   e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
                 }}
               >
-                <div className="flex items-start mb-6">
+                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
                   <div 
                     className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
                     style={{
                       boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-                      transform: 'translateZ(20px)',
-                      transition: 'transform 0.3s ease-out',
+                      transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(59, 130, 246, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
+                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
                     }}
                   >
                     <TrendingUp className="w-6 h-6 text-white" />
@@ -339,19 +340,20 @@ const Home = () => {
                   e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
                 }}
               >
-                <div className="flex items-start mb-6">
+                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
                   <div 
                     className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
                     style={{
                       boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-                      transform: 'translateZ(20px)',
-                      transition: 'transform 0.3s ease-out',
+                      transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(168, 85, 247, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
+                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
                     }}
                   >
                     <Zap className="w-6 h-6 text-white" />
@@ -408,19 +410,20 @@ const Home = () => {
                   e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
                 }}
               >
-                <div className="flex items-start mb-6">
+                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
                   <div 
                     className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
                     style={{
                       boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-                      transform: 'translateZ(20px)',
-                      transition: 'transform 0.3s ease-out',
+                      transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(34, 197, 94, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
+                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
                     }}
                   >
                     <Shield className="w-6 h-6 text-white" />
@@ -477,19 +480,20 @@ const Home = () => {
                   e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
                 }}
               >
-                <div className="flex items-start mb-6">
+                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
                   <div 
                     className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
                     style={{
                       boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
-                      transform: 'translateZ(20px)',
-                      transition: 'transform 0.3s ease-out',
+                      transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(249, 115, 22, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
+                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
                     }}
                   >
                     <BarChart3 className="w-6 h-6 text-white" />

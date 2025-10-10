@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Clock, TrendingUp, Shield, CheckCircle, ArrowRight, Users, BarChart3, ArrowLeft } from 'lucide-react';
+import { Phone, Clock, TrendingUp, Shield, CheckCircle, ArrowRight, Users, BarChart3, ArrowLeft, Headphones, Network } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
@@ -710,7 +710,26 @@ const PhoneCallers = () => {
                   e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
                 }}
               >
-                <h3 className="text-2xl font-bold text-white mb-6" style={{ transform: 'translateZ(10px)' }}>What's Included</h3>
+                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
+                  <div 
+                    className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
+                    style={{
+                      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                      transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(99, 102, 241, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+                    }}
+                  >
+                    <Headphones className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-0" style={{ transform: 'translateZ(10px)' }}>What's Included</h3>
+                </div>
                 <ul className="space-y-4 text-gray-400" style={{ transform: 'translateZ(8px)' }}>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
@@ -763,7 +782,26 @@ const PhoneCallers = () => {
                   e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
                 }}
               >
-                <h3 className="text-2xl font-bold text-white mb-6" style={{ transform: 'translateZ(10px)' }}>Integrate with Your System</h3>
+                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
+                  <div 
+                    className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
+                    style={{
+                      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                      transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(59, 130, 246, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+                    }}
+                  >
+                    <Network className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-0" style={{ transform: 'translateZ(10px)' }}>Integrate with Your System</h3>
+                </div>
                 <ul className="space-y-4 text-gray-400" style={{ transform: 'translateZ(8px)' }}>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />

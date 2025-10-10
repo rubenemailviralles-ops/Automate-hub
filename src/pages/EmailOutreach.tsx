@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Target, BarChart3, Users, Zap, TrendingUp, ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react';
+import { Mail, Target, BarChart3, Users, Zap, TrendingUp, ArrowLeft, CheckCircle, ArrowRight, Sparkles, Network } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
@@ -617,7 +617,26 @@ const EmailOutreach = () => {
                   e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
                 }}
               >
-                <h3 className="text-2xl font-bold text-white mb-6" style={{ transform: 'translateZ(10px)' }}>What's Included</h3>
+                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
+                  <div 
+                    className="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
+                    style={{
+                      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                      transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(236, 72, 153, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+                    }}
+                  >
+                    <Sparkles className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-0" style={{ transform: 'translateZ(10px)' }}>What's Included</h3>
+                </div>
                 <ul className="space-y-4 text-gray-400" style={{ transform: 'translateZ(8px)' }}>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
@@ -670,7 +689,26 @@ const EmailOutreach = () => {
                   e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
                 }}
               >
-                <h3 className="text-2xl font-bold text-white mb-6" style={{ transform: 'translateZ(10px)' }}>Integrate with Your Workflow</h3>
+                <div className="flex items-start mb-6" style={{ transform: 'translateZ(15px)' }}>
+                  <div 
+                    className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
+                    style={{
+                      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                      transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.15) translateY(-4px)';
+                      e.currentTarget.style.boxShadow = '0 12px 30px rgba(168, 85, 247, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)';
+                    }}
+                  >
+                    <Network className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-0" style={{ transform: 'translateZ(10px)' }}>Integrate with Your Workflow</h3>
+                </div>
                 <ul className="space-y-4 text-gray-400" style={{ transform: 'translateZ(8px)' }}>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />

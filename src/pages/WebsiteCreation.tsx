@@ -739,7 +739,21 @@ const WebsiteCreation = () => {
 
           {/* In-content CTA */}
           <ScrollReveal delay={400}>
-            <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 max-w-4xl mx-auto text-center">
+            <div 
+              className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 max-w-4xl mx-auto text-center mobile-3d-popup"
+              style={{
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
+                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(59, 130, 246, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+              }}
+            >
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Ready to Build Your Website?
               </h3>
@@ -749,7 +763,19 @@ const WebsiteCreation = () => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   to="/book-consultation"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                  style={{
+                    boxShadow: '0 4px 14px rgba(59, 130, 246, 0.4)',
+                    transition: 'transform 0.2s ease-out, box-shadow 0.2s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px) scale(1.05)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(59, 130, 246, 0.6)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.boxShadow = '0 4px 14px rgba(59, 130, 246, 0.4)';
+                  }}
                 >
                   Book Free Consultation
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -757,6 +783,17 @@ const WebsiteCreation = () => {
                 <Link
                   to="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300"
+                  style={{
+                    transition: 'transform 0.2s ease-out, box-shadow 0.2s ease-out',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-4px) scale(1.05)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 255, 255, 0.2)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
                 >
                   Contact Us
                 </Link>

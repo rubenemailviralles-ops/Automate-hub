@@ -54,8 +54,7 @@ const AboutUs = () => {
                 </p>
                 <p className="text-lg text-gray-400 mb-6 leading-relaxed">
                   By reducing operational costs and increasing productivity through intelligent automation, 
-                  we help businesses of all sizes compete more effectively in their markets. Our solutions 
-                  eliminate repetitive tasks, streamline processes, and free up valuable time for what matters most: 
+                  we help businesses of all sizes compete more effectively in their markets. Our <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors">AI-powered website solutions</Link>, <Link to="/crm-integration" className="text-purple-400 hover:text-purple-300 transition-colors">CRM integrations</Link>, <Link to="/phone-callers" className="text-indigo-400 hover:text-indigo-300 transition-colors">AI phone agents</Link>, and <Link to="/email-outreach" className="text-pink-400 hover:text-pink-300 transition-colors">email automation</Link> eliminate repetitive tasks, streamline processes, and free up valuable time for what matters most: 
                   growing your business.
                 </p>
                 <p className="text-lg text-gray-400 leading-relaxed">

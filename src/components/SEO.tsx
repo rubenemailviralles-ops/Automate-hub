@@ -5,6 +5,9 @@ interface SEOProps {
   description?: string;
   keywords?: string;
   ogImage?: string;
+  ogImageAlt?: string;
+  ogImageWidth?: string;
+  ogImageHeight?: string;
   ogType?: string;
   canonicalUrl?: string;
 }
@@ -14,6 +17,9 @@ const SEO = ({
   description = 'Transform your business with AI automation. Professional website creation, CRM integration, AI phone agents, and email outreach solutions. Increase productivity, reduce costs, and scale efficiently.',
   keywords = 'AI automation, business automation, AI chatbots, CRM integration, AI phone agents, email automation',
   ogImage = 'https://automate-hub.com/Screenshot 2025-09-16 123406.png',
+  ogImageAlt = 'Automate Hub AI Automation Platform - Dashboard showing website creation, CRM integration, AI phone agents, and email automation services',
+  ogImageWidth = '1200',
+  ogImageHeight = '630',
   ogType = 'website',
   canonicalUrl = 'https://automate-hub.com/',
 }: SEOProps) => {
@@ -43,13 +49,18 @@ const SEO = ({
     updateMetaTag('og:title', title, true);
     updateMetaTag('og:description', description, true);
     updateMetaTag('og:image', ogImage, true);
+    updateMetaTag('og:image:alt', ogImageAlt, true);
+    updateMetaTag('og:image:width', ogImageWidth, true);
+    updateMetaTag('og:image:height', ogImageHeight, true);
     updateMetaTag('og:type', ogType, true);
     updateMetaTag('og:url', canonicalUrl, true);
 
     // Update Twitter Card tags
+    updateMetaTag('twitter:card', 'summary_large_image');
     updateMetaTag('twitter:title', title);
     updateMetaTag('twitter:description', description);
     updateMetaTag('twitter:image', ogImage);
+    updateMetaTag('twitter:image:alt', ogImageAlt);
 
     // Update canonical link
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
@@ -59,7 +70,7 @@ const SEO = ({
       document.head.appendChild(canonical);
     }
     canonical.setAttribute('href', canonicalUrl);
-  }, [title, description, keywords, ogImage, ogType, canonicalUrl]);
+  }, [title, description, keywords, ogImage, ogImageAlt, ogImageWidth, ogImageHeight, ogType, canonicalUrl]);
 
   return null;
 };

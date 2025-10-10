@@ -59,6 +59,7 @@ const Home = () => {
         title="Automate Hub - AI Automation Solutions for Business Growth | Chatbots, CRM & More"
         description="Transform your business with AI automation. Professional website creation, CRM integration, AI phone agents, and email outreach solutions. Increase productivity, reduce costs by up to 75%, and scale efficiently."
         keywords="AI automation, business automation, AI chatbots, CRM integration, AI phone agents, email automation, lead generation, workflow automation, business productivity, ROI calculator"
+        ogImageAlt="Automate Hub Homepage - AI Automation Platform featuring ROI Calculator, Website Creation, CRM Integration, AI Phone Agents, and Email Automation Services"
         canonicalUrl="https://automate-hub.com/"
       />
       <StructuredData type="Organization" />
@@ -123,9 +124,11 @@ const Home = () => {
         </div>
       </section>
 
-      <ScrollReveal delay={0}>
-        <Calculator />
-      </ScrollReveal>
+      <section id="roi-calculator">
+        <ScrollReveal delay={0}>
+          <Calculator />
+        </ScrollReveal>
+      </section>
 
       {/* Services Section */}
       <section id="services" className="py-16 seamless-section">

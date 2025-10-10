@@ -95,8 +95,8 @@ const Contact = () => {
               </TypeWriter>
               <ScrollReveal delay={200}>
                 <p className="text-base text-gray-400 mb-8 leading-relaxed">
-                  Ready to automate your business operations? Let's discuss how our AI solutions can help
-                  increase your productivity and reduce costs.
+                  Ready to automate your business operations? Let's discuss how our <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors">professional website creation</Link>, <Link to="/crm-integration" className="text-purple-400 hover:text-purple-300 transition-colors">CRM integration services</Link>, <Link to="/phone-callers" className="text-indigo-400 hover:text-indigo-300 transition-colors">AI phone automation</Link>, and <Link to="/email-outreach" className="text-pink-400 hover:text-pink-300 transition-colors">email outreach solutions</Link> can help
+                  increase your productivity and reduce costs. <Link to="/#roi-calculator" className="text-green-400 hover:text-green-300 transition-colors font-semibold">Calculate your ROI</Link> before we talk.
                 </p>
               </ScrollReveal>
 

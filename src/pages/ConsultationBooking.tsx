@@ -187,7 +187,7 @@ const ConsultationBooking = () => {
 
               <ScrollReveal delay={200}>
                 <p className="text-base text-gray-400 mb-8 leading-relaxed">
-                  Ready to transform your business with AI automation? Schedule a personalized consultation and we'll respond within 24 hours to set up your session.
+                  Ready to transform your business with AI automation? Explore our <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors">website development</Link>, <Link to="/crm-integration" className="text-purple-400 hover:text-purple-300 transition-colors">CRM automation</Link>, <Link to="/phone-callers" className="text-indigo-400 hover:text-indigo-300 transition-colors">AI calling services</Link>, and <Link to="/email-outreach" className="text-pink-400 hover:text-pink-300 transition-colors">email marketing automation</Link>. <Link to="/#roi-calculator" className="text-green-400 hover:text-green-300 transition-colors font-semibold">Check your ROI potential</Link> then schedule a personalized consultation.
                 </p>
               </ScrollReveal>
 

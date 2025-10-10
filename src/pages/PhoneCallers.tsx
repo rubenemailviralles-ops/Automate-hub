@@ -56,7 +56,8 @@ const PhoneCallers = () => {
             <ScrollReveal delay={200}>
               <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
                 Many businesses miss important calls due to unavailability. Our AI phone agents ensure every call 
-                is answered professionally, helping you capture more opportunities and serve customers better.
+                is answered professionally, helping you capture more opportunities and serve customers better. <Link to="/#roi-calculator" className="text-indigo-400 hover:text-indigo-300 transition-colors font-semibold">Calculate your ROI</Link> and 
+                discover how much revenue you're losing from missed calls.
               </p>
             </ScrollReveal>
 

@@ -55,7 +55,8 @@ const CRMIntegration = () => {
             <ScrollReveal delay={200}>
               <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
                 Connect all your systems into one powerful automation engine. Our CRM integrations eliminate data silos 
-                and create seamless workflows that scale with your business.
+                and create seamless workflows that scale with your business. <Link to="/#roi-calculator" className="text-purple-400 hover:text-purple-300 transition-colors font-semibold">See your potential savings</Link> with 
+                our free ROI calculator.
               </p>
             </ScrollReveal>
 

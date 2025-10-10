@@ -56,7 +56,8 @@ const WebsiteCreation = () => {
             <ScrollReveal delay={200}>
               <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
                 Your website is your digital storefront. We create conversion-optimized, AI-powered websites that turn 
-                visitors into customers and scale with your business growth.
+                visitors into customers and scale with your business growth. <Link to="/#roi-calculator" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">Calculate your potential ROI</Link> and 
+                see how much you can save with automation.
               </p>
             </ScrollReveal>
 

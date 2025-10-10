@@ -55,7 +55,8 @@ const EmailOutreach = () => {
             <ScrollReveal delay={200}>
               <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
                 Scale your outreach with AI-powered email campaigns that feel personal, drive engagement, and convert 
-                prospects into customers at unprecedented rates.
+                prospects into customers at unprecedented rates. <Link to="/#roi-calculator" className="text-pink-400 hover:text-pink-300 transition-colors font-semibold">Use our ROI calculator</Link> to 
+                see how email automation can boost your revenue.
               </p>
             </ScrollReveal>
 

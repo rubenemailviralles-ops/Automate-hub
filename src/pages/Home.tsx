@@ -161,14 +161,13 @@ const Home = () => {
               return (
                 <ScrollReveal key={index} delay={index * 150}>
                   <div 
-                    className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 hover:bg-white/10 hover-pop mobile-3d-tilt relative cursor-pointer"
+                    className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 hover:bg-white/10 hover-pop mobile-3d-tilt relative"
                     style={{
                       transformStyle: 'preserve-3d',
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                       background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
                       transition: 'transform 0.1s ease-out, border-color 0.5s, background-color 0.5s',
                     }}
-                    onClick={() => handleServiceClick(service.path)}
                     onMouseMove={(e) => {
                       const rect = e.currentTarget.getBoundingClientRect();
                       const x = e.clientX - rect.left;
@@ -216,12 +215,16 @@ const Home = () => {
                       {service.description}
                     </p>
 
-                    <div className="inline-flex items-center text-white font-semibold hover:text-gray-300 transition-all duration-300 group hover-pop-text relative"
+                    <Link
+                      to={service.path}
+                      className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link hover-pop-text relative"
                       style={{ transform: 'translateZ(15px)' }}
                     >
-                      Learn More
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </div>
+                      <span className={`bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
+                        Learn More
+                      </span>
+                      <ArrowRight className={`ml-2 w-4 h-4 text-transparent bg-gradient-to-r ${service.gradient} bg-clip-text group-hover/link:translate-x-1 transition-transform`} />
+                    </Link>
                   </div>
                 </ScrollReveal>
               );

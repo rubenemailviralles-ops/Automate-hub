@@ -311,11 +311,13 @@ const Home = () => {
                 </div>
                 <Link 
                   to="/about" 
-                  className="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold transition-colors"
+                  className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
                   style={{ transform: 'translateZ(10px)' }}
                 >
-                  Learn about our approach
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                    Learn about our approach
+                  </span>
+                  <ArrowRight className="ml-2 w-4 h-4 text-transparent bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text group-hover/link:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </ScrollReveal>
@@ -381,11 +383,13 @@ const Home = () => {
                 </div>
                 <Link 
                   to="/book-consultation" 
-                  className="inline-flex items-center text-purple-400 hover:text-purple-300 font-semibold transition-colors"
+                  className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
                   style={{ transform: 'translateZ(10px)' }}
                 >
-                  Book a free consultation
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <span className="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent">
+                    Book a free consultation
+                  </span>
+                  <ArrowRight className="ml-2 w-4 h-4 text-transparent bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text group-hover/link:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </ScrollReveal>
@@ -451,11 +455,13 @@ const Home = () => {
                 </div>
                 <Link 
                   to="/privacy-policy" 
-                  className="inline-flex items-center text-green-400 hover:text-green-300 font-semibold transition-colors"
+                  className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
                   style={{ transform: 'translateZ(10px)' }}
                 >
-                  View our privacy policy
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
+                    View our privacy policy
+                  </span>
+                  <ArrowRight className="ml-2 w-4 h-4 text-transparent bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text group-hover/link:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </ScrollReveal>
@@ -521,11 +527,13 @@ const Home = () => {
                 </div>
                 <Link 
                   to="/contact" 
-                  className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold transition-colors"
+                  className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
                   style={{ transform: 'translateZ(10px)' }}
                 >
-                  Get started today
-                  <ArrowRight className="ml-2 w-4 h-4" />
+                  <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
+                    Get started today
+                  </span>
+                  <ArrowRight className="ml-2 w-4 h-4 text-transparent bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text group-hover/link:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </ScrollReveal>

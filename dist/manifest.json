@@ -13,7 +13,7 @@
   "scope": "/",
   "icons": [
     {
-      "src": "/Screenshot 2025-09-16 123406.png",
+      "src": "/automate-hub-ai-platform-preview.png",
       "sizes": "any",
       "type": "image/png",
       "purpose": "any maskable"
@@ -45,10 +45,10 @@
   ],
   "screenshots": [
     {
-      "src": "/Screenshot 2025-09-16 123406.png",
+      "src": "/automate-hub-ai-platform-preview.png",
       "sizes": "any",
       "type": "image/png",
-      "label": "Automate Hub Homepage"
+      "label": "Automate Hub AI Automation Platform - Complete dashboard showing website creation, CRM integration, AI phone agents, and email automation services for business growth"
     }
   ],
   "shortcuts": [
@@ -59,7 +59,7 @@
       "url": "/book-consultation",
       "icons": [
         {
-          "src": "/Screenshot 2025-09-16 123406.png",
+          "src": "/automate-hub-ai-platform-preview.png",
           "sizes": "192x192"
         }
       ]
@@ -71,7 +71,7 @@
       "url": "/contact",
       "icons": [
         {
-          "src": "/Screenshot 2025-09-16 123406.png",
+          "src": "/automate-hub-ai-platform-preview.png",
           "sizes": "192x192"
         }
       ]

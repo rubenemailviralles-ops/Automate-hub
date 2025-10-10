@@ -7,8 +7,11 @@ import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
 import ServiceSchema from '../components/ServiceSchema';
 import FAQSchema from '../components/FAQSchema';
+import { useIsMobile } from '../utils/mobileDetection';
 
 const WebsiteCreation = () => {
+  const isMobile = useIsMobile();
+  
   return (
     <div className="pt-20">
       <SEO
@@ -63,7 +66,7 @@ const WebsiteCreation = () => {
               className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight"
               delay={100}
             >
-              <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className={`block ${isMobile ? 'text-blue-400' : 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'}`}>
                 Convert Visitors
               </span>
             </TypeWriter>

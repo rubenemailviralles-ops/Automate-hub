@@ -2,8 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home, ArrowLeft, Search } from 'lucide-react';
 import SEO from '../components/SEO';
+import { useIsMobile } from '../utils/mobileDetection';
 
 const NotFound = () => {
+  const isMobile = useIsMobile();
+  
   return (
     <div className="pt-20 min-h-screen flex items-center justify-center">
       <SEO
@@ -14,7 +17,7 @@ const NotFound = () => {
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="mb-8">
-          <h1 className="text-9xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+          <h1 className={`text-9xl font-bold ${isMobile ? 'text-blue-400' : 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'} mb-4`}>
             404
           </h1>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">

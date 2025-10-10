@@ -6,8 +6,10 @@ import ScrollReveal from '../components/ScrollReveal';
 import FormField from '../components/FormField';
 import { validateEmail, validateRequired, validatePhone, validateMessage, validateForm, hasFormErrors, FormErrors } from '../utils/validation';
 import SEO from '../components/SEO';
+import { useIsMobile } from '../utils/mobileDetection';
 
 const Contact = () => {
+  const isMobile = useIsMobile();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -89,7 +91,7 @@ const Contact = () => {
                 className="text-4xl md:text-5xl font-bold mb-4 text-white leading-tight"
                 delay={100}
               >
-                <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <span className={`block ${isMobile ? 'text-blue-400' : 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'}`}>
                   Touch
                 </span>
               </TypeWriter>

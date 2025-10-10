@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
+import { useIsMobile } from '../utils/mobileDetection';
 
 const ConsultationBooking = () => {
+  const isMobile = useIsMobile();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -180,7 +182,7 @@ const ConsultationBooking = () => {
                 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight"
                 delay={100}
               >
-                <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <span className={`block ${isMobile ? 'text-blue-400' : 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'}`}>
                   Strategy Session
                 </span>
               </TypeWriter>

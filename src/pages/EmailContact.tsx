@@ -2,8 +2,11 @@ import React from 'react';
 import { Mail, Clock, CheckCircle, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
+import { useIsMobile } from '../utils/mobileDetection';
 
 const EmailContact = () => {
+  const isMobile = useIsMobile();
+  
   return (
     <div className="pt-20">
       <SEO
@@ -39,7 +42,7 @@ const EmailContact = () => {
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-white leading-tight">
               Contact Us
-              <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className={`block ${isMobile ? 'text-blue-400' : 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'}`}>
                 Via Email
               </span>
             </h1>

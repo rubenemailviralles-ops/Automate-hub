@@ -5,6 +5,8 @@ import CTASection from '../components/CTASection';
 import Calculator from '../components/Calculator';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
+import SEO from '../components/SEO';
+import StructuredData from '../components/StructuredData';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -53,6 +55,14 @@ const Home = () => {
 
   return (
     <div className="pt-20">
+      <SEO
+        title="Automate Hub - AI Automation Solutions for Business Growth | Chatbots, CRM & More"
+        description="Transform your business with AI automation. Professional website creation, CRM integration, AI phone agents, and email outreach solutions. Increase productivity, reduce costs by up to 75%, and scale efficiently."
+        keywords="AI automation, business automation, AI chatbots, CRM integration, AI phone agents, email automation, lead generation, workflow automation, business productivity, ROI calculator"
+        canonicalUrl="https://automate-hub.com/"
+      />
+      <StructuredData type="Organization" />
+      
       {/* Hero Section */}
       <section className="py-16 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">

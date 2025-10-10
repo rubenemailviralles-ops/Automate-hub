@@ -20,61 +20,52 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLElement>(null);
-  const hasCalledComplete = useRef(false);
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
 
   // Intersection Observer to detect when element is in viewport
   useEffect(() => {
     const currentElement = elementRef.current;
-    if (!currentElement) return;
     
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Animate in and out based on visibility
-          setIsVisible(entry.isIntersecting);
-          
-          // Only call onComplete once when first appearing
-          if (entry.isIntersecting && !hasCalledComplete.current && onComplete) {
-            hasCalledComplete.current = true;
-            setTimeout(onComplete, isMobile ? 300 : 600);
+          // Animate in when entering viewport, animate out when leaving
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            if (onComplete) {
+              setTimeout(onComplete, 600); // Call onComplete after animation
+            }
+          } else {
+            setIsVisible(false);
           }
         });
       },
       {
-        threshold: 0.15,
-        rootMargin: '0px',
+        threshold: 0.1,
+        rootMargin: '50px',
       }
     );
 
-    observer.observe(currentElement);
+    if (currentElement) {
+      observer.observe(currentElement);
+    }
 
     return () => {
-      observer.disconnect();
+      if (currentElement) {
+        observer.unobserve(currentElement);
+      }
     };
-  }, [onComplete, isMobile]);
-
-  // Simpler, faster animations for mobile
-  const mobileStyle: React.CSSProperties = {
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? 'translateY(0)' : 'translateY(15px)',
-    transition: 'opacity 0.4s ease, transform 0.4s ease',
-    transitionDelay: '0ms',
-  };
-
-  const desktopStyle: React.CSSProperties = {
-    opacity: isVisible ? 1 : 0,
-    transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, 20px, 0)',
-    transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
-    transitionDelay: isVisible ? `${delay}ms` : '0ms',
-    willChange: 'opacity, transform'
-  };
+  }, [onComplete]);
 
   return (
     <Component 
       ref={elementRef as any} 
       className={className}
-      style={isMobile ? mobileStyle : desktopStyle}
+      style={{ 
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+        transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
+        transitionDelay: `${delay}ms`
+      }}
     >
       {text}
       {children}

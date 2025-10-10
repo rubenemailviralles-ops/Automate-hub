@@ -246,14 +246,48 @@ const Home = () => {
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12" style={{ perspective: '1000px' }}>
             <ScrollReveal delay={200}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
                 <div className="flex items-start mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                  <div 
+                    className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
+                    style={{
+                      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                      transform: 'translateZ(20px)',
+                      transition: 'transform 0.3s ease-out',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
+                    }}
+                  >
                     <TrendingUp className="w-6 h-6 text-white" />
                   </div>
-                  <div>
+                  <div style={{ transform: 'translateZ(10px)' }}>
                     <h3 className="text-2xl font-bold text-white mb-4">Proven Results & ROI</h3>
                     <ul className="space-y-3 text-gray-400">
                       <li className="flex items-start">
@@ -274,6 +308,7 @@ const Home = () => {
                 <Link 
                   to="/about" 
                   className="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold transition-colors"
+                  style={{ transform: 'translateZ(10px)' }}
                 >
                   Learn about our approach
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -282,12 +317,46 @@ const Home = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
                 <div className="flex items-start mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                  <div 
+                    className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
+                    style={{
+                      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                      transform: 'translateZ(20px)',
+                      transition: 'transform 0.3s ease-out',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
+                    }}
+                  >
                     <Zap className="w-6 h-6 text-white" />
                   </div>
-                  <div>
+                  <div style={{ transform: 'translateZ(10px)' }}>
                     <h3 className="text-2xl font-bold text-white mb-4">Complete AI Automation Suite</h3>
                     <ul className="space-y-3 text-gray-400">
                       <li className="flex items-start">
@@ -308,6 +377,7 @@ const Home = () => {
                 <Link 
                   to="/book-consultation" 
                   className="inline-flex items-center text-purple-400 hover:text-purple-300 font-semibold transition-colors"
+                  style={{ transform: 'translateZ(10px)' }}
                 >
                   Book a free consultation
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -316,12 +386,46 @@ const Home = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
                 <div className="flex items-start mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                  <div 
+                    className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
+                    style={{
+                      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                      transform: 'translateZ(20px)',
+                      transition: 'transform 0.3s ease-out',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
+                    }}
+                  >
                     <Shield className="w-6 h-6 text-white" />
                   </div>
-                  <div>
+                  <div style={{ transform: 'translateZ(10px)' }}>
                     <h3 className="text-2xl font-bold text-white mb-4">Enterprise-Grade Security</h3>
                     <ul className="space-y-3 text-gray-400">
                       <li className="flex items-start">
@@ -342,6 +446,7 @@ const Home = () => {
                 <Link 
                   to="/privacy-policy" 
                   className="inline-flex items-center text-green-400 hover:text-green-300 font-semibold transition-colors"
+                  style={{ transform: 'translateZ(10px)' }}
                 >
                   View our privacy policy
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -350,12 +455,46 @@ const Home = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={500}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
                 <div className="flex items-start mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                  <div 
+                    className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0"
+                    style={{
+                      boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2)',
+                      transform: 'translateZ(20px)',
+                      transition: 'transform 0.3s ease-out',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateZ(20px) scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateZ(20px) scale(1)';
+                    }}
+                  >
                     <BarChart3 className="w-6 h-6 text-white" />
                   </div>
-                  <div>
+                  <div style={{ transform: 'translateZ(10px)' }}>
                     <h3 className="text-2xl font-bold text-white mb-4">Scalable Solutions</h3>
                     <ul className="space-y-3 text-gray-400">
                       <li className="flex items-start">
@@ -376,6 +515,7 @@ const Home = () => {
                 <Link 
                   to="/contact" 
                   className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold transition-colors"
+                  style={{ transform: 'translateZ(10px)' }}
                 >
                   Get started today
                   <ArrowRight className="ml-2 w-4 h-4" />

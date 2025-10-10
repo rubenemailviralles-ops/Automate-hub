@@ -2,9 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { copyFileSync, mkdirSync } from 'fs';
 import { resolve } from 'path';
+import { sentryVitePlugin } from '@sentry/vite-plugin';
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
     react(),
     // Custom plugin to copy service worker to dist
@@ -24,7 +25,21 @@ export default defineConfig({
         }
       },
     },
-  ],
+    // Sentry plugin for source maps (only in production builds with auth token)
+    mode === 'production' && process.env.SENTRY_AUTH_TOKEN
+      ? sentryVitePlugin({
+          org: process.env.SENTRY_ORG,
+          project: process.env.SENTRY_PROJECT,
+          authToken: process.env.SENTRY_AUTH_TOKEN,
+          sourcemaps: {
+            assets: './dist/**',
+          },
+          release: {
+            name: process.env.VITE_APP_VERSION || '1.0.0',
+          },
+        })
+      : undefined,
+  ].filter(Boolean),
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
@@ -46,5 +61,7 @@ export default defineConfig({
     esbuild: {
       drop: ['console', 'debugger'], // Remove console logs and debuggers in production
     },
+    // Enable source maps for Sentry (only in production)
+    sourcemap: mode === 'production',
   },
-});
+}));

@@ -6,6 +6,7 @@ import { useRemoveBoltBranding } from './hooks/useRemoveBoltBranding';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Lazy load page components for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -71,24 +72,26 @@ function App() {
         <div className="floating-orb floating-orb-4" aria-hidden="true"></div>
         
         <Header />
-        <main id="main-content" role="main">
-          <Suspense fallback={<LoadingSpinner />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/website-creation" element={<WebsiteCreation />} />
-              <Route path="/crm-integration" element={<CRMIntegration />} />
-              <Route path="/phone-callers" element={<PhoneCallers />} />
-              <Route path="/email-outreach" element={<EmailOutreach />} />
-              <Route path="/about" element={<AboutUs />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/email-contact" element={<EmailContact />} />
-              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-              <Route path="/terms-of-service" element={<TermsOfService />} />
-              <Route path="/cookie-policy" element={<CookiePolicy />} />
-              <Route path="/book-consultation" element={<ConsultationBooking />} />
-            </Routes>
-          </Suspense>
-        </main>
+        <ErrorBoundary>
+          <main id="main-content" role="main">
+            <Suspense fallback={<LoadingSpinner />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/website-creation" element={<WebsiteCreation />} />
+                <Route path="/crm-integration" element={<CRMIntegration />} />
+                <Route path="/phone-callers" element={<PhoneCallers />} />
+                <Route path="/email-outreach" element={<EmailOutreach />} />
+                <Route path="/about" element={<AboutUs />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/email-contact" element={<EmailContact />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-service" element={<TermsOfService />} />
+                <Route path="/cookie-policy" element={<CookiePolicy />} />
+                <Route path="/book-consultation" element={<ConsultationBooking />} />
+              </Routes>
+            </Suspense>
+          </main>
+        </ErrorBoundary>
         <Footer />
       </div>
     </Router>

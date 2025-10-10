@@ -3,6 +3,10 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import * as serviceWorkerRegistration from './utils/serviceWorkerRegistration';
+import { initSentry } from './utils/sentry';
+
+// Initialize Sentry error tracking
+initSentry();
 
 // Optimize scroll performance with passive event listeners
 if ('addEventListener' in window) {

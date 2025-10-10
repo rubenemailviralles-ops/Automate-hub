@@ -19,11 +19,25 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
   children
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const elementRef = useRef<HTMLElement>(null);
   const hasAnimated = useRef(false);
 
   // Intersection Observer to detect when element is in viewport
   useEffect(() => {
+    // Check if mobile
+    const mobile = window.innerWidth <= 768;
+    setIsMobile(mobile);
+    
+    // On mobile, show immediately
+    if (mobile) {
+      setIsVisible(true);
+      if (onComplete) {
+        onComplete();
+      }
+      return;
+    }
+
     const currentElement = elementRef.current;
     
     const observer = new IntersectionObserver(
@@ -55,6 +69,16 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
       }
     };
   }, [onComplete]);
+
+  // On mobile, render without animations
+  if (isMobile) {
+    return (
+      <Component className={className}>
+        {text}
+        {children}
+      </Component>
+    );
+  }
 
   return (
     <Component 

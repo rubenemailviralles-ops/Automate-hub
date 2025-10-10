@@ -12,9 +12,20 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   className = ''
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Check if mobile
+    const mobile = window.innerWidth <= 768;
+    setIsMobile(mobile);
+    
+    // On mobile, show immediately without animation
+    if (mobile) {
+      setIsVisible(true);
+      return;
+    }
+
     const currentElement = elementRef.current;
     
     const observer = new IntersectionObserver(
@@ -42,6 +53,11 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
       }
     };
   }, [isVisible]);
+
+  // On mobile, render without any animations
+  if (isMobile) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <div 

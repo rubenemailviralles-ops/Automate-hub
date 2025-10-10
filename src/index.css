@@ -385,79 +385,81 @@
 
 /* Mobile touch effects - activate on scroll intersection */
 @media (max-width: 768px) {
-  /* Disable mouse hover effects on mobile */
+  /* AGGRESSIVE MOBILE OPTIMIZATION - Disable all hover effects */
   .hover-pop:hover,
   .hover-pop-subtle:hover,
   .hover-pop-button:hover,
   .hover-pop-text:hover,
   .hover-lift:hover {
-    transform: none;
-    box-shadow: none;
+    transform: none !important;
+    box-shadow: none !important;
   }
   
-  /* Mobile scroll-triggered effects with hardware acceleration */
-  .hover-pop.mobile-active {
-    transform: translate3d(0, -2px, 0) scale(1.05);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  }
-  
-  .hover-pop-subtle.mobile-active {
-    transform: translate3d(0, -1px, 0) scale(1.02);
-  }
-  
-  .hover-pop-button.mobile-active {
-    transform: scale3d(1.05, 1.05, 1);
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
-  }
-  
-  .hover-pop-text.mobile-active {
-    transform: scale3d(1.02, 1.02, 1);
-  }
-  
-  .hover-lift.mobile-active {
-    transform: translate3d(0, -8px, 0);
-  }
-  
-  /* Mobile 3D effects - simple popup on scroll with GPU acceleration */
-  .mobile-3d-popup.mobile-active {
-    transform: translate3d(0, -8px, 0) scale(1.02) !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3) !important;
-  }
-  
-  /* Mobile 3D card tilt - convert to simple popup with GPU acceleration */
+  /* Simplified mobile scroll-triggered effects - minimal animations */
+  .hover-pop.mobile-active,
+  .hover-pop-subtle.mobile-active,
+  .hover-pop-button.mobile-active,
+  .hover-pop-text.mobile-active,
+  .hover-lift.mobile-active,
+  .mobile-3d-popup.mobile-active,
   .mobile-3d-tilt.mobile-active {
-    transform: translate3d(0, -4px, 0) scale(1.02) !important;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35) !important;
+    transform: none !important;
+    animation: none !important;
   }
   
-  /* Optimize animations for mobile */
+  /* Force hardware acceleration but NO transforms */
   * {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
   }
   
-  /* Reduce motion on mobile for better performance */
-  .mobile-3d-tilt,
-  .mobile-3d-popup,
-  .hover-pop,
-  .hover-pop-subtle,
-  .hover-pop-button {
-    transition-duration: 0.3s !important;
-    will-change: transform, opacity;
+  /* Disable ALL transitions and animations for performance */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
   }
   
   /* Disable expensive transforms on mobile */
   [style*="perspective"],
   [style*="rotateX"],
-  [style*="rotateY"] {
+  [style*="rotateY"],
+  [style*="translateZ"] {
     perspective: none !important;
-    transform: translate3d(0, 0, 0) !important;
+    transform: none !important;
   }
   
-  /* Simplify floating orbs on mobile */
+  /* Completely disable floating orbs on mobile */
   .floating-orb {
+    display: none !important;
+  }
+  
+  /* Disable scroll reveal animations */
+  [class*="animate-"],
+  [class*="fade-in"],
+  [class*="slide-in"] {
     animation: none !important;
-    opacity: 0.3 !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  /* Simplify box shadows for performance */
+  * {
+    box-shadow: none !important;
+  }
+  
+  /* Keep only essential shadows */
+  .bg-white\/5,
+  .bg-white\/10,
+  [class*="rounded-2xl"] {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
   }
 }
 .hover-pop-subtle {

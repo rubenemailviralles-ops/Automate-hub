@@ -43,6 +43,12 @@ const Home = () => {
     return { transform: `translateZ(${zValue})` };
   };
 
+  // Helper to get gradient classes - solid colors on mobile for performance
+  const getGradientClasses = (gradient: string, solidColor: string) => {
+    if (isMobile) return solidColor;
+    return `bg-gradient-to-r ${gradient} bg-clip-text text-transparent`;
+  };
+
   // 3D tilt effect handlers - only on desktop for performance
   const get3DTiltHandlers = () => {
     if (isMobile) return {};
@@ -231,7 +237,7 @@ const Home = () => {
               delay={100}
               onComplete={() => setShowSecondLine(true)}
             >
-              <span className="block bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+              <span className={`block ${getGradientClasses('from-white to-gray-400', 'text-gray-300')}`}>
                 Business Growth
               </span>
             </TypeWriter>
@@ -335,13 +341,13 @@ const Home = () => {
 
                     <Link
                       to={service.path}
-                      className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link hover-pop-text relative"
+                      className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link hover-pop-text relative ${isMobile ? 'text-blue-400' : ''}`}
                       style={getInner3DTransform('15px')}
                     >
-                      <span className={`bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
+                      <span className={isMobile ? '' : `bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
                         Learn More
                       </span>
-                      <ArrowRight className={`ml-2 w-4 h-4 text-transparent bg-gradient-to-r ${service.gradient} bg-clip-text group-hover/link:translate-x-1 transition-transform`} />
+                      <ArrowRight className={`ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform ${isMobile ? '' : `text-transparent bg-gradient-to-r ${service.gradient} bg-clip-text`}`} />
                     </Link>
                   </div>
                 </ScrollReveal>
@@ -357,7 +363,7 @@ const Home = () => {
           <div className="text-center mb-16">
             <ScrollReveal delay={0}>
               <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-                Why Choose <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Automate Hub</span>
+                Why Choose <span className={isMobile ? 'text-blue-400' : 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'}>Automate Hub</span>
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={100}>
@@ -410,13 +416,13 @@ const Home = () => {
                 </div>
                 <Link 
                   to="/about" 
-                  className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
+                  className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link ${isMobile ? 'text-blue-400' : ''}`}
                   style={getInner3DTransform('10px')}
                 >
-                  <span className="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                  <span className={isMobile ? '' : 'bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent'}>
                     Learn about our approach
                   </span>
-                  <ArrowRight className="ml-2 w-4 h-4 text-transparent bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text group-hover/link:translate-x-1 transition-transform" />
+                  <ArrowRight className={`ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform ${isMobile ? '' : 'text-transparent bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text'}`} />
                 </Link>
               </div>
             </ScrollReveal>
@@ -463,13 +469,13 @@ const Home = () => {
                 </div>
                 <Link 
                   to="/book-consultation" 
-                  className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
+                  className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link ${isMobile ? 'text-purple-400' : ''}`}
                   style={getInner3DTransform('10px')}
                 >
-                  <span className="bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent">
+                  <span className={isMobile ? '' : 'bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text text-transparent'}>
                     Book a free consultation
                   </span>
-                  <ArrowRight className="ml-2 w-4 h-4 text-transparent bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text group-hover/link:translate-x-1 transition-transform" />
+                  <ArrowRight className={`ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform ${isMobile ? '' : 'text-transparent bg-gradient-to-r from-purple-500 to-pink-600 bg-clip-text'}`} />
                 </Link>
               </div>
             </ScrollReveal>
@@ -516,13 +522,13 @@ const Home = () => {
                 </div>
                 <Link 
                   to="/privacy-policy" 
-                  className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
+                  className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link ${isMobile ? 'text-green-400' : ''}`}
                   style={getInner3DTransform('10px')}
                 >
-                  <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
+                  <span className={isMobile ? '' : 'bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent'}>
                     View our privacy policy
                   </span>
-                  <ArrowRight className="ml-2 w-4 h-4 text-transparent bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text group-hover/link:translate-x-1 transition-transform" />
+                  <ArrowRight className={`ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform ${isMobile ? '' : 'text-transparent bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text'}`} />
                 </Link>
               </div>
             </ScrollReveal>
@@ -569,13 +575,13 @@ const Home = () => {
                 </div>
                 <Link 
                   to="/contact" 
-                  className="inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link"
+                  className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link ${isMobile ? 'text-orange-400' : ''}`}
                   style={getInner3DTransform('10px')}
                 >
-                  <span className="bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent">
+                  <span className={isMobile ? '' : 'bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text text-transparent'}>
                     Get started today
                   </span>
-                  <ArrowRight className="ml-2 w-4 h-4 text-transparent bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text group-hover/link:translate-x-1 transition-transform" />
+                  <ArrowRight className={`ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform ${isMobile ? '' : 'text-transparent bg-gradient-to-r from-orange-500 to-red-600 bg-clip-text'}`} />
                 </Link>
               </div>
             </ScrollReveal>

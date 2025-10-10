@@ -713,11 +713,32 @@ const CRMIntegration = () => {
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12" style={{ perspective: '1000px' }}>
             <ScrollReveal delay={200}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Core Integration Features</h3>
-                <ul className="space-y-4 text-gray-400">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
+                <h3 className="text-2xl font-bold text-white mb-6" style={{ transform: 'translateZ(10px)' }}>Core Integration Features</h3>
+                <ul className="space-y-4 text-gray-400" style={{ transform: 'translateZ(8px)' }}>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
                     <span><span className="text-white font-semibold">Bi-directional sync</span> - Real-time data synchronization across all platforms</span>
@@ -747,9 +768,30 @@ const CRMIntegration = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-white mb-6">Expand Your Automation</h3>
-                <ul className="space-y-4 text-gray-400">
+              <div 
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
+                <h3 className="text-2xl font-bold text-white mb-6" style={{ transform: 'translateZ(10px)' }}>Expand Your Automation</h3>
+                <ul className="space-y-4 text-gray-400" style={{ transform: 'translateZ(8px)' }}>
                   <li className="flex items-start">
                     <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
                     <span>Add <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">custom websites</Link> with automated lead capture forms</span>

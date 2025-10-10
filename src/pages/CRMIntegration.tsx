@@ -1,5 +1,5 @@
 import React from 'react';
-import { Database, Zap, BarChart3, Users, Workflow, Shield, MessageSquare, Calendar, Headphones, Ticket, Clock, ArrowRight, ArrowLeft } from 'lucide-react';
+import { Database, Zap, BarChart3, Users, Workflow, Shield, MessageSquare, Calendar, Headphones, Ticket, Clock, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
@@ -678,6 +678,117 @@ const CRMIntegration = () => {
               </div>
             </ScrollReveal>
           </div>
+        </div>
+      </section>
+
+      {/* CRM Integration Benefits */}
+      <section className="py-24 seamless-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                Complete CRM Automation Package
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                Streamline your entire customer journey with intelligent CRM integration
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+            <ScrollReveal delay={200}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-white mb-6">Core Integration Features</h3>
+                <ul className="space-y-4 text-gray-400">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Bi-directional sync</span> - Real-time data synchronization across all platforms</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Custom field mapping</span> - Match your specific business requirements</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Automated workflows</span> - Trigger actions based on customer behavior</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Lead scoring</span> - AI-powered prioritization of high-value prospects</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Data deduplication</span> - Keep your CRM clean and organized</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Advanced reporting</span> - Insights and analytics in real-time</span>
+                  </li>
+                </ul>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={300}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-white mb-6">Expand Your Automation</h3>
+                <ul className="space-y-4 text-gray-400">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span>Add <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">custom websites</Link> with automated lead capture forms</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span>Connect <Link to="/phone-callers" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">AI phone agents</Link> for automated call logging</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span>Integrate <Link to="/email-outreach" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">email automation</Link> for personalized campaigns</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Calendar integration</span> - Automated appointment scheduling</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Task automation</span> - Auto-create follow-up tasks and reminders</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Sales pipeline automation</span> - Move deals automatically based on triggers</span>
+                  </li>
+                </ul>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* In-content CTA */}
+          <ScrollReveal delay={400}>
+            <div className="bg-gradient-to-r from-purple-500/10 to-pink-600/10 border border-purple-500/30 rounded-2xl p-8 max-w-4xl mx-auto text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Ready to Integrate Your CRM?
+              </h3>
+              <p className="text-gray-400 mb-6 text-lg">
+                Get a free consultation to discuss your CRM integration needs
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  Book Free Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

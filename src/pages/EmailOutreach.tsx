@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Target, BarChart3, Users, Zap, TrendingUp, ArrowLeft } from 'lucide-react';
+import { Mail, Target, BarChart3, Users, Zap, TrendingUp, ArrowLeft, CheckCircle, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
@@ -558,6 +558,117 @@ const EmailOutreach = () => {
               </div>
             </ScrollReveal>
           </div>
+        </div>
+      </section>
+
+      {/* Email Automation Features */}
+      <section className="py-24 seamless-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                Complete Email Automation Package
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                Scale your outreach with AI-powered personalization and automation
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+            <ScrollReveal delay={200}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-white mb-6">What's Included</h3>
+                <ul className="space-y-4 text-gray-400">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">AI personalization</span> - Unique emails for each prospect at scale</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Automated sequences</span> - Multi-touch campaigns that run on autopilot</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">A/B testing</span> - Optimize subject lines, content, and send times</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Smart scheduling</span> - Send at optimal times for each recipient</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Advanced analytics</span> - Track opens, clicks, and conversions</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Deliverability optimization</span> - Maximize inbox placement rates</span>
+                  </li>
+                </ul>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={300}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-white mb-6">Integrate with Your Workflow</h3>
+                <ul className="space-y-4 text-gray-400">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span>Connect with <Link to="/crm-integration" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">CRM integration</Link> for automated lead nurturing</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span>Sync with <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">your website</Link> for form-to-email automation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span>Combine with <Link to="/phone-callers" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">AI phone agents</Link> for multi-channel outreach</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Email warmup</span> - Gradually build sender reputation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Reply detection</span> - Automatically stop sequences on response</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Custom domains</span> - Use your own domain for better deliverability</span>
+                  </li>
+                </ul>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* In-content CTA */}
+          <ScrollReveal delay={400}>
+            <div className="bg-gradient-to-r from-pink-500/10 to-rose-600/10 border border-pink-500/30 rounded-2xl p-8 max-w-4xl mx-auto text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Ready to Scale Your Email Outreach?
+              </h3>
+              <p className="text-gray-400 mb-6 text-lg">
+                Start sending personalized emails that actually get responses
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-pink-500 to-rose-600 text-white font-semibold rounded-xl hover:from-pink-600 hover:to-rose-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  Book Free Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

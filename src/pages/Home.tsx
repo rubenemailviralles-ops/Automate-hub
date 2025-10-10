@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { ArrowRight, Sparkles, Globe, Database, Phone, Mail, BarChart3 } from 'lucide-react';
+import { ArrowRight, Sparkles, Globe, Database, Phone, Mail, BarChart3, CheckCircle, TrendingUp, Shield, Zap } from 'lucide-react';
 import CTASection from '../components/CTASection';
 import Calculator from '../components/Calculator';
 import TypeWriter from '../components/TypeWriter';
@@ -224,6 +224,189 @@ const Home = () => {
               );
             })}
           </div>
+        </div>
+      </section>
+
+      {/* Why Choose Automate Hub Section */}
+      <section className="py-24 seamless-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                Why Choose <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Automate Hub</span>
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                Transform your business with proven AI automation solutions that deliver measurable results
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+            <ScrollReveal delay={200}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+                <div className="flex items-start mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                    <TrendingUp className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Proven Results & ROI</h3>
+                    <ul className="space-y-3 text-gray-400">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span>Reduce operational costs by up to <span className="text-white font-semibold">75%</span> with intelligent automation</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span>Increase productivity with <span className="text-white font-semibold">24/7 AI-powered</span> systems</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span>See measurable improvements in <span className="text-white font-semibold">weeks, not months</span></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <Link 
+                  to="/about" 
+                  className="inline-flex items-center text-blue-400 hover:text-blue-300 font-semibold transition-colors"
+                >
+                  Learn about our approach
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={300}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+                <div className="flex items-start mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                    <Zap className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Complete AI Automation Suite</h3>
+                    <ul className="space-y-3 text-gray-400">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span><Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors">AI-powered websites</Link> that convert visitors into customers</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span><Link to="/crm-integration" className="text-blue-400 hover:text-blue-300 transition-colors">Smart CRM integration</Link> for seamless data management</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span><Link to="/phone-callers" className="text-blue-400 hover:text-blue-300 transition-colors">AI phone agents</Link> and <Link to="/email-outreach" className="text-blue-400 hover:text-blue-300 transition-colors">email automation</Link> for outreach</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <Link 
+                  to="/book-consultation" 
+                  className="inline-flex items-center text-purple-400 hover:text-purple-300 font-semibold transition-colors"
+                >
+                  Book a free consultation
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={400}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+                <div className="flex items-start mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                    <Shield className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Enterprise-Grade Security</h3>
+                    <ul className="space-y-3 text-gray-400">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span><span className="text-white font-semibold">Bank-level encryption</span> for all data transmissions</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span><span className="text-white font-semibold">GDPR compliant</span> data handling and privacy protection</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span>Regular security audits and <span className="text-white font-semibold">99.9% uptime</span> guarantee</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <Link 
+                  to="/privacy-policy" 
+                  className="inline-flex items-center text-green-400 hover:text-green-300 font-semibold transition-colors"
+                >
+                  View our privacy policy
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={500}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+                <div className="flex items-start mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center mr-4 flex-shrink-0">
+                    <BarChart3 className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-white mb-4">Scalable Solutions</h3>
+                    <ul className="space-y-3 text-gray-400">
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span>Start small and <span className="text-white font-semibold">scale as you grow</span> - no limitations</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span><span className="text-white font-semibold">Custom solutions</span> tailored to your business needs</span>
+                      </li>
+                      <li className="flex items-start">
+                        <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                        <span>Seamless integration with your <span className="text-white font-semibold">existing tools</span></span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <Link 
+                  to="/contact" 
+                  className="inline-flex items-center text-orange-400 hover:text-orange-300 font-semibold transition-colors"
+                >
+                  Get started today
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Link>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* In-content CTA */}
+          <ScrollReveal delay={600}>
+            <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 max-w-4xl mx-auto text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Ready to Transform Your Business?
+              </h3>
+              <p className="text-gray-400 mb-6 text-lg">
+                Join hundreds of businesses already saving time and money with AI automation
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  Book Free Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

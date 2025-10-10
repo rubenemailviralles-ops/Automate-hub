@@ -654,6 +654,117 @@ const PhoneCallers = () => {
         </div>
       </section>
 
+      {/* AI Phone Agent Features */}
+      <section className="py-24 seamless-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                Complete Phone Automation Solution
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                Never miss a call with AI-powered phone agents that work 24/7
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+            <ScrollReveal delay={200}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-white mb-6">What's Included</h3>
+                <ul className="space-y-4 text-gray-400">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">24/7 availability</span> - Never miss a customer call, day or night</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Natural conversations</span> - AI that sounds human and understands context</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Lead qualification</span> - Automatically score and route qualified leads</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Appointment scheduling</span> - Book meetings directly into your calendar</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Call transcription</span> - Every conversation documented automatically</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Multi-language support</span> - Serve customers in their preferred language</span>
+                  </li>
+                </ul>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={300}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-white mb-6">Integrate with Your System</h3>
+                <ul className="space-y-4 text-gray-400">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span>Sync with <Link to="/crm-integration" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">CRM integration</Link> for automatic lead updates</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span>Connect with <Link to="/email-outreach" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">email automation</Link> for follow-up campaigns</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span>Link to <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">your website</Link> for seamless lead capture</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">SMS integration</span> - Send automated text confirmations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Zapier connectivity</span> - Connect with 5,000+ apps</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-blue-400 mr-3 mt-0.5 flex-shrink-0" />
+                    <span><span className="text-white font-semibold">Custom webhooks</span> - Trigger any action after calls</span>
+                  </li>
+                </ul>
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* In-content CTA */}
+          <ScrollReveal delay={400}>
+            <div className="bg-gradient-to-r from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-2xl p-8 max-w-4xl mx-auto text-center">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Ready to Automate Your Calls?
+              </h3>
+              <p className="text-gray-400 mb-6 text-lg">
+                Start capturing every opportunity with AI phone agents
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+                >
+                  Book Free Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       <CTASection />
 
       {/* Back to Homepage */}

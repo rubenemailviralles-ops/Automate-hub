@@ -8,23 +8,26 @@ export const useMobileHover = () => {
     const isMobile = window.innerWidth <= 768;
     if (!isMobile) return;
 
-    // Create intersection observer for mobile hover effects
+    // Create intersection observer for mobile hover effects (optimized)
     observerRef.current = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          const element = entry.target as HTMLElement;
-          
-          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-            // Element is more than 50% visible, activate hover effect
-            element.classList.add('mobile-active');
-          } else {
-            // Element is less than 50% visible, remove hover effect
-            element.classList.remove('mobile-active');
-          }
+        // Use requestAnimationFrame to batch DOM updates
+        requestAnimationFrame(() => {
+          entries.forEach((entry) => {
+            const element = entry.target as HTMLElement;
+            
+            if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+              // Element is more than 50% visible, activate hover effect
+              element.classList.add('mobile-active');
+            } else {
+              // Element is less than 50% visible, remove hover effect
+              element.classList.remove('mobile-active');
+            }
+          });
         });
       },
       {
-        threshold: [0, 0.25, 0.5, 0.75, 1],
+        threshold: 0.5, // Reduced from 5 thresholds to 1 for better performance
         rootMargin: '-10% 0px -10% 0px' // Trigger when element is in the middle 80% of viewport
       }
     );

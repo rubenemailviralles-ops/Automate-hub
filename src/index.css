@@ -29,42 +29,40 @@
     background: 
       radial-gradient(ellipse 80% 50% at 20% 40%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
       radial-gradient(ellipse 60% 40% at 80% 60%, rgba(168, 85, 247, 0.10) 0%, transparent 50%),
-      radial-gradient(ellipse 100% 60% at 40% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
-      radial-gradient(ellipse 90% 70% at 60% 20%, rgba(59, 130, 246, 0.06) 0%, transparent 50%),
-      linear-gradient(135deg, #000000 0%, #0a0a0a 25%, #000000 50%, #0a0a0a 75%, #000000 100%);
+      linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
     background-size: 
       300% 200%,
       250% 180%,
-      400% 250%,
-      350% 200%,
-      400% 400%;
+      100% 100%;
+    /* Reduced from 6 animations to 2 for better scroll performance */
     animation: 
-      waveFlow1 25s ease-in-out infinite,
-      waveFlow2 30s ease-in-out infinite reverse,
-      waveFlow3 35s ease-in-out infinite,
-      waveFlow4 28s ease-in-out infinite reverse,
-      gradientShift 20s ease infinite,
-      colorCycle 45s ease-in-out infinite;
+      waveFlow1 30s ease-in-out infinite,
+      subtleGlow 40s ease-in-out infinite;
     z-index: -1;
     pointer-events: none;
+    will-change: background-position;
   }
 }
 
+/* Simplified background animations for better performance */
 @keyframes waveFlow1 {
   0% {
-    background-position: 0% 0%, 100% 100%, 50% 50%, 25% 75%, 0% 50%;
-  }
-  25% {
-    background-position: 25% 25%, 75% 75%, 75% 25%, 50% 50%, 25% 75%;
+    background-position: 0% 0%, 100% 100%, 50% 50%;
   }
   50% {
-    background-position: 50% 50%, 50% 50%, 100% 0%, 75% 25%, 50% 100%;
-  }
-  75% {
-    background-position: 75% 75%, 25% 25%, 25% 75%, 100% 0%, 75% 25%;
+    background-position: 100% 100%, 0% 0%, 50% 50%;
   }
   100% {
-    background-position: 0% 0%, 100% 100%, 50% 50%, 25% 75%, 0% 50%;
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+  }
+}
+
+@keyframes subtleGlow {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
   }
 }
 
@@ -821,7 +819,13 @@ input[type="range"].slider::-webkit-slider-runnable-track {
    PERFORMANCE OPTIMIZATIONS
    ============================================ */
 
-/* GPU acceleration for animated elements */
+/* Optimize scroll performance with CSS containment */
+section,
+.seamless-section {
+  contain: layout style;
+}
+
+/* GPU acceleration for animated elements - only apply will-change when needed */
 .hover-pop,
 .hover-pop-subtle,
 .hover-pop-button,
@@ -830,10 +834,20 @@ input[type="range"].slider::-webkit-slider-runnable-track {
 .mobile-3d-popup,
 .mobile-3d-tilt,
 .floating-orb {
-  will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Only add will-change when actively animating */
+.hover-pop:hover,
+.hover-pop-subtle:hover,
+.hover-pop-button:hover,
+.hover-lift:hover,
+.mobile-3d-popup.mobile-active,
+.mobile-3d-tilt.mobile-active,
+.floating-orb {
+  will-change: transform;
 }
 
 /* Optimize animations for performance */

@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowRight, Sparkles, Globe, Database, Phone, Mail, BarChart3, CheckCircle, TrendingUp, Shield, Zap } from 'lucide-react';
-import CTASection from '../components/CTASection';
-import Calculator from '../components/Calculator';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
 import { useMobileHover } from '../hooks/useMobileHover';
+
+// Lazy load heavy components for better initial load performance
+const Calculator = lazy(() => import('../components/Calculator'));
+const CTASection = lazy(() => import('../components/CTASection'));
 
 const Home = () => {
   const navigate = useNavigate();
@@ -246,7 +248,9 @@ const Home = () => {
 
       <section id="roi-calculator">
         <ScrollReveal delay={0}>
-          <Calculator />
+          <Suspense fallback={<div className="text-center py-12"><div className="animate-pulse text-gray-400">Loading calculator...</div></div>}>
+            <Calculator />
+          </Suspense>
         </ScrollReveal>
       </section>
 
@@ -611,7 +615,9 @@ const Home = () => {
         </div>
       </section>
 
-      <CTASection />
+      <Suspense fallback={null}>
+        <CTASection />
+      </Suspense>
     </div>
   );
 };

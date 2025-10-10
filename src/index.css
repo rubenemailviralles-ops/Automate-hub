@@ -395,39 +395,69 @@
     box-shadow: none;
   }
   
-  /* Mobile scroll-triggered effects */
+  /* Mobile scroll-triggered effects with hardware acceleration */
   .hover-pop.mobile-active {
-    transform: scale(1.05) translateY(-2px);
+    transform: translate3d(0, -2px, 0) scale(1.05);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   }
   
   .hover-pop-subtle.mobile-active {
-    transform: scale(1.02) translateY(-1px);
+    transform: translate3d(0, -1px, 0) scale(1.02);
   }
   
   .hover-pop-button.mobile-active {
-    transform: scale(1.05);
+    transform: scale3d(1.05, 1.05, 1);
     box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
   }
   
   .hover-pop-text.mobile-active {
-    transform: scale(1.02);
+    transform: scale3d(1.02, 1.02, 1);
   }
   
   .hover-lift.mobile-active {
-    transform: translateY(-8px);
+    transform: translate3d(0, -8px, 0);
   }
   
-  /* Mobile 3D effects - simple popup on scroll */
+  /* Mobile 3D effects - simple popup on scroll with GPU acceleration */
   .mobile-3d-popup.mobile-active {
-    transform: translateY(-8px) scale(1.02) !important;
+    transform: translate3d(0, -8px, 0) scale(1.02) !important;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3) !important;
   }
   
-  /* Mobile 3D card tilt - convert to simple popup */
+  /* Mobile 3D card tilt - convert to simple popup with GPU acceleration */
   .mobile-3d-tilt.mobile-active {
-    transform: translateY(-4px) scale(1.02) !important;
+    transform: translate3d(0, -4px, 0) scale(1.02) !important;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35) !important;
+  }
+  
+  /* Optimize animations for mobile */
+  * {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Reduce motion on mobile for better performance */
+  .mobile-3d-tilt,
+  .mobile-3d-popup,
+  .hover-pop,
+  .hover-pop-subtle,
+  .hover-pop-button {
+    transition-duration: 0.3s !important;
+    will-change: transform, opacity;
+  }
+  
+  /* Disable expensive transforms on mobile */
+  [style*="perspective"],
+  [style*="rotateX"],
+  [style*="rotateY"] {
+    perspective: none !important;
+    transform: translate3d(0, 0, 0) !important;
+  }
+  
+  /* Simplify floating orbs on mobile */
+  .floating-orb {
+    animation: none !important;
+    opacity: 0.3 !important;
   }
 }
 .hover-pop-subtle {

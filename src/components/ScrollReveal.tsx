@@ -20,8 +20,10 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Animate in when entering viewport, animate out when leaving
-          setIsVisible(entry.isIntersecting);
+          // Only animate in once for better performance
+          if (entry.isIntersecting && !isVisible) {
+            setIsVisible(true);
+          }
         });
       },
       {
@@ -39,7 +41,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
         observer.unobserve(currentElement);
       }
     };
-  }, []);
+  }, [isVisible]);
 
   return (
     <div 
@@ -47,9 +49,10 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
       className={className}
       style={{ 
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-        transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
-        transitionDelay: `${delay}ms`
+        transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, 20px, 0)',
+        transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+        transitionDelay: `${delay}ms`,
+        willChange: isVisible ? 'auto' : 'opacity, transform'
       }}
     >
       {children}

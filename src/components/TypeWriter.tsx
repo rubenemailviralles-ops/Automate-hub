@@ -20,6 +20,7 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLElement>(null);
+  const hasAnimated = useRef(false);
 
   // Intersection Observer to detect when element is in viewport
   useEffect(() => {
@@ -28,14 +29,13 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Animate in when entering viewport, animate out when leaving
-          if (entry.isIntersecting) {
+          // Only animate once for better performance
+          if (entry.isIntersecting && !hasAnimated.current) {
             setIsVisible(true);
+            hasAnimated.current = true;
             if (onComplete) {
               setTimeout(onComplete, 600); // Call onComplete after animation
             }
-          } else {
-            setIsVisible(false);
           }
         });
       },
@@ -62,9 +62,10 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
       className={className}
       style={{ 
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-        transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
-        transitionDelay: `${delay}ms`
+        transform: isVisible ? 'translate3d(0, 0, 0)' : 'translate3d(0, 20px, 0)',
+        transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
+        transitionDelay: `${delay}ms`,
+        willChange: isVisible ? 'auto' : 'opacity, transform'
       }}
     >
       {text}

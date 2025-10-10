@@ -6,6 +6,7 @@ import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
 import ServiceSchema from '../components/ServiceSchema';
+import FAQSchema from '../components/FAQSchema';
 
 const EmailOutreach = () => {
   return (
@@ -686,6 +687,122 @@ const EmailOutreach = () => {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 seamless-section">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <ScrollReveal delay={0}>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                Frequently Asked Questions
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal delay={100}>
+              <p className="text-xl text-gray-400">
+                Everything you need to know about AI email automation
+              </p>
+            </ScrollReveal>
+          </div>
+
+          <div className="space-y-6">
+            <ScrollReveal delay={200}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+                <h3 className="text-xl font-bold text-white mb-3">How does AI personalization work for emails?</h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Our AI analyzes each prospect's digital footprint including their website, social media, company news, and industry trends. It then crafts unique, personalized email content that references specific details about their business, challenges, and opportunities. This makes each email feel like it was written by a human who researched them personally, dramatically increasing response rates.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={250}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+                <h3 className="text-xl font-bold text-white mb-3">How many emails can I send per day?</h3>
+                <p className="text-gray-400 leading-relaxed">
+                  We recommend starting with 50-100 emails per day per sending account to maintain optimal deliverability. Our system includes email warmup protocols that gradually increase volume over time. For larger campaigns, we can set up multiple sending accounts with domain rotation, allowing you to scale to thousands of emails daily while maintaining high inbox placement rates.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={300}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+                <h3 className="text-xl font-bold text-white mb-3">Will my emails end up in spam folders?</h3>
+                <p className="text-gray-400 leading-relaxed">
+                  We implement comprehensive deliverability best practices including proper SPF, DKIM, and DMARC setup, email warmup protocols, spam score checking, and content optimization. We monitor sender reputation, use rotating IP addresses, and follow all email service provider guidelines. Our typical inbox placement rate is 85-95%, far above industry averages.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={350}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+                <h3 className="text-xl font-bold text-white mb-3">Can you write the email content for us?</h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Yes! Our AI can generate complete email sequences based on your offer, target audience, and goals. We create subject lines, body copy, and calls-to-action optimized for conversions. You'll review and approve all content before campaigns launch. We also provide templates and frameworks if you prefer to write your own content with AI assistance.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={400}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+                <h3 className="text-xl font-bold text-white mb-3">How do you handle email responses and follow-ups?</h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Our system automatically detects replies and stops automated sequences immediately to prevent awkward follow-ups. Responses are logged in your CRM with notifications sent to your team. The AI can even analyze response sentiment and categorize replies (interested, not interested, out of office) to help you prioritize your manual outreach efforts.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={450}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+                <h3 className="text-xl font-bold text-white mb-3">Can I A/B test different email variations?</h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Absolutely! Our platform includes advanced A/B testing capabilities. Test different subject lines, email copy, send times, calls-to-action, and more. The system automatically tracks performance metrics and can even auto-select winning variations to maximize your results. You get detailed analytics showing what works best for your audience.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal delay={500}>
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300">
+                <h3 className="text-xl font-bold text-white mb-3">How much does email automation cost?</h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Email automation pricing starts at $300/month for up to 1,000 contacts and 10,000 emails. Advanced plans with AI personalization, unlimited sending, and premium features range from $800-$2,500/month. Enterprise solutions with dedicated IPs and custom integrations are available. <Link to="/book-consultation" className="text-pink-400 hover:text-pink-300 transition-colors">Get a custom quote</Link> based on your needs.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      <FAQSchema
+        faqs={[
+          {
+            question: 'How does AI personalization work for emails?',
+            answer: 'Our AI analyzes each prospect\'s digital footprint including their website, social media, company news, and industry trends. It then crafts unique, personalized email content that references specific details about their business, challenges, and opportunities. This makes each email feel like it was written by a human who researched them personally, dramatically increasing response rates.',
+          },
+          {
+            question: 'How many emails can I send per day?',
+            answer: 'We recommend starting with 50-100 emails per day per sending account to maintain optimal deliverability. Our system includes email warmup protocols that gradually increase volume over time. For larger campaigns, we can set up multiple sending accounts with domain rotation, allowing you to scale to thousands of emails daily while maintaining high inbox placement rates.',
+          },
+          {
+            question: 'Will my emails end up in spam folders?',
+            answer: 'We implement comprehensive deliverability best practices including proper SPF, DKIM, and DMARC setup, email warmup protocols, spam score checking, and content optimization. We monitor sender reputation, use rotating IP addresses, and follow all email service provider guidelines. Our typical inbox placement rate is 85-95%, far above industry averages.',
+          },
+          {
+            question: 'Can you write the email content for us?',
+            answer: 'Yes! Our AI can generate complete email sequences based on your offer, target audience, and goals. We create subject lines, body copy, and calls-to-action optimized for conversions. You\'ll review and approve all content before campaigns launch. We also provide templates and frameworks if you prefer to write your own content with AI assistance.',
+          },
+          {
+            question: 'How do you handle email responses and follow-ups?',
+            answer: 'Our system automatically detects replies and stops automated sequences immediately to prevent awkward follow-ups. Responses are logged in your CRM with notifications sent to your team. The AI can even analyze response sentiment and categorize replies (interested, not interested, out of office) to help you prioritize your manual outreach efforts.',
+          },
+          {
+            question: 'Can I A/B test different email variations?',
+            answer: 'Absolutely! Our platform includes advanced A/B testing capabilities. Test different subject lines, email copy, send times, calls-to-action, and more. The system automatically tracks performance metrics and can even auto-select winning variations to maximize your results. You get detailed analytics showing what works best for your audience.',
+          },
+          {
+            question: 'How much does email automation cost?',
+            answer: 'Email automation pricing starts at $300/month for up to 1,000 contacts and 10,000 emails. Advanced plans with AI personalization, unlimited sending, and premium features range from $800-$2,500/month. Enterprise solutions with dedicated IPs and custom integrations are available.',
+          },
+        ]}
+      />
 
       <CTASection />
 

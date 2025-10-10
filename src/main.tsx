@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import * as serviceWorkerRegistration from './utils/serviceWorkerRegistration';
 
 // Optimize scroll performance with passive event listeners
 if ('addEventListener' in window) {
@@ -45,3 +46,20 @@ createRoot(document.getElementById('root')!).render(
     <App />
   </StrictMode>
 );
+
+// Register service worker for PWA functionality
+serviceWorkerRegistration.register({
+  onSuccess: () => {
+    console.log('[PWA] Content is cached for offline use.');
+  },
+  onUpdate: (registration) => {
+    console.log('[PWA] New content available! Please refresh.');
+    // Optionally show a notification to user
+    if (confirm('New version available! Reload to update?')) {
+      if (registration.waiting) {
+        registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+        window.location.reload();
+      }
+    }
+  },
+});

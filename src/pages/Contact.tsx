@@ -3,6 +3,8 @@ import { Send, Phone, Mail, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
+import FormField from '../components/FormField';
+import { validateEmail, validateRequired, validatePhone, validateMessage, validateForm, hasFormErrors, FormErrors } from '../utils/validation';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,18 +15,57 @@ const Contact = () => {
     message: ''
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const handleFieldChange = (field: string, value: string) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [field]: value
     });
+    
+    // Clear error for this field when user starts typing
+    if (errors[field]) {
+      setErrors({
+        ...errors,
+        [field]: ''
+      });
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitSuccess(false);
+
+    // Validate all fields
+    const validationErrors = validateForm(formData, {
+      name: (value) => validateRequired(value, 'Name'),
+      email: validateEmail,
+      phone: validatePhone,
+      businessName: (value) => validateRequired(value, 'Company name'),
+      message: (value) => validateMessage(value, 20),
+    });
+
+    if (hasFormErrors(validationErrors)) {
+      setErrors(validationErrors);
+      // Focus on first error field
+      const firstErrorField = Object.keys(validationErrors)[0];
+      document.getElementById(firstErrorField)?.focus();
+      return;
+    }
+
+    // Form is valid, submit
+    setIsSubmitting(true);
     console.log('Form submitted:', formData);
-    alert('Thank you for your message! We\'ll get back to you within 24 hours.');
-    setFormData({ name: '', email: '', phone: '', businessName: '', message: '' });
+    
+    // Simulate submission (replace with actual API call)
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      setFormData({ name: '', email: '', phone: '', businessName: '', message: '' });
+      setErrors({});
+    }, 1000);
   };
 
   return (
@@ -134,112 +175,118 @@ const Contact = () => {
               >
                 <h3 className="text-2xl font-bold mb-6 text-white" style={{ transform: 'translateZ(10px)' }}>Send Us a Message</h3>
                 
-                <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
+                {/* Success message with ARIA live region */}
+                {submitSuccess && (
+                  <div
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true"
+                    className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-400 flex items-start"
+                  >
+                    <svg 
+                      className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" 
+                      fill="currentColor" 
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                    >
+                      <path 
+                        fillRule="evenodd" 
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
+                        clipRule="evenodd" 
+                      />
+                    </svg>
+                    <span>Thank you for your message! We'll get back to you within 24 hours.</span>
+                  </div>
+                )}
+                
+                <form onSubmit={handleSubmit} className="space-y-4" noValidate aria-label="Contact form">
+                  <FormField
                     id="name"
-                    name="name"
-                    required
+                    label="Full Name"
+                    type="text"
                     value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sm"
+                    onChange={(value) => handleFieldChange('name', value)}
+                    error={errors.name}
+                    required
                     placeholder="John Doe"
                   />
-                </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
+                  <FormField
                     id="email"
-                    name="email"
-                    required
+                    label="Email Address"
+                    type="email"
                     value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sm"
+                    onChange={(value) => handleFieldChange('email', value)}
+                    error={errors.email}
+                    required
                     placeholder="john@company.com"
                   />
-                </div>
 
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
+                  <FormField
                     id="phone"
-                    name="phone"
+                    label="Phone Number"
+                    type="tel"
                     value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sm"
+                    onChange={(value) => handleFieldChange('phone', value)}
+                    error={errors.phone}
+                    required
                     placeholder="+1 (555) 123-4567"
                   />
-                </div>
 
-                <div>
-                  <label htmlFor="businessName" className="block text-sm font-medium text-gray-400 mb-2">
-                    Business Name
-                  </label>
-                  <input
-                    type="text"
+                  <FormField
                     id="businessName"
-                    name="businessName"
+                    label="Company Name"
+                    type="text"
                     value={formData.businessName}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sm"
-                    placeholder="Your Business Name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
+                    onChange={(value) => handleFieldChange('businessName', value)}
+                    error={errors.businessName}
                     required
-                    rows={5}
+                    placeholder="Your Company"
+                  />
+
+                  <FormField
+                    id="message"
+                    label="Message"
+                    type="textarea"
                     value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all resize-none text-sm"
-                    placeholder="Tell us about your business and how we can help you automate your operations..."
-                  ></textarea>
-                </div>
+                    onChange={(value) => handleFieldChange('message', value)}
+                    error={errors.message}
+                    required
+                    placeholder="Tell us about your automation needs..."
+                    rows={5}
+                  />
 
-                <div style={{ position: 'relative', zIndex: 10 }}>
-                  <button
-                    type="submit"
-                    className="w-full bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center"
-                    style={{
-                      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                      transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
-                      position: 'relative',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'scale(1.08) translateY(-2px)';
-                      e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(255, 255, 255, 0.3)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'scale(1) translateY(0)';
-                      e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
-                    }}
-                  >
-                    <Send className="mr-2 w-4 h-4" />
-                    Send Message
-                  </button>
-                </div>
+                  <div style={{ position: 'relative', zIndex: 10 }}>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                      style={{
+                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                        transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
+                        position: 'relative',
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isSubmitting) {
+                          e.currentTarget.style.transform = 'scale(1.08) translateY(-2px)';
+                          e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(255, 255, 255, 0.3)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+                      }}
+                      aria-label={isSubmitting ? "Sending message..." : "Send message"}
+                    >
+                      <Send className="mr-2 w-4 h-4" aria-hidden="true" />
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </button>
+                  </div>
 
-                <p className="text-xs text-gray-500 text-center">
-                  We'll respond within 24 hours during business hours
-                </p>
-              </form>
+                  <p className="text-xs text-gray-500 text-center">
+                    We'll respond within 24 hours during business hours
+                  </p>
+                </form>
               </div>
             </ScrollReveal>
           </div>
@@ -253,8 +300,9 @@ const Contact = () => {
             <Link 
               to="/"
               className="inline-flex items-center text-gray-400 hover:text-white transition-all duration-300 hover-pop-text"
+              aria-label="Navigate back to homepage"
             >
-              <ArrowLeft className="mr-2 w-4 h-4" />
+              <ArrowLeft className="mr-2 w-4 h-4" aria-hidden="true" />
               Back to Homepage
             </Link>
           </div>

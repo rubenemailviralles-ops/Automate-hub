@@ -105,10 +105,12 @@
         window.VG_CONFIG = {
             ID: "2cvhk4ymzenilr40", // YOUR AGENT ID
             region: 'na', // YOUR ACCOUNT REGION 
-            render: 'bottom-right', // Widget position
+            render: 'bottom-right', // can be 'full-width' or 'bottom-left' or 'bottom-right'
             // modalMode: true, // Set this to 'true' to open the widget in modal mode
             stylesheets: [
-                "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css"
+                // Base CONVOCORE CSS
+                "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css",
+                // Add your custom css stylesheets, Can also add relative URL ('/public/your-file.css)
             ],
             // THIS IS SUPPOSED TO BE CHANGED OR REMOVED.
             // user: {

@@ -125,7 +125,7 @@ const Contact = () => {
                   Contact <span className="text-blue-400">Us</span>
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
-                  Ready to automate your business? Let's talk about how we can help you save time and increase efficiency with our <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">website creation</Link>, <Link to="/crm-integration" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">CRM integration</Link>, <Link to="/phone-callers" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">AI phone agents</Link>, and <Link to="/email-outreach" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">email automation</Link> solutions.
+                  Ready to automate your business? Let's talk about how we can help you save time and increase efficiency with our <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">website creation</Link>, <Link to="/crm-integration" className="text-purple-400 hover:text-purple-300 transition-colors font-semibold">CRM integration</Link>, <Link to="/phone-callers" className="text-green-400 hover:text-green-300 transition-colors font-semibold">AI phone agents</Link>, and <Link to="/email-outreach" className="text-pink-400 hover:text-pink-300 transition-colors font-semibold">email automation</Link> solutions.
                 </p>
               </div>
             </ScrollReveal>
@@ -245,7 +245,7 @@ const Contact = () => {
                     <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
                       <CheckCircle className="w-4 h-4 text-blue-400" />
                     </div>
-                    <span>Custom automation recommendations for <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">websites</Link>, <Link to="/crm-integration" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">CRM systems</Link>, and <Link to="/phone-callers" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">phone systems</Link></span>
+                    <span>Custom automation recommendations for <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">websites</Link>, <Link to="/crm-integration" className="text-purple-400 hover:text-purple-300 transition-colors font-semibold">CRM systems</Link>, and <Link to="/phone-callers" className="text-green-400 hover:text-green-300 transition-colors font-semibold">phone systems</Link></span>
                   </li>
                   <li className="flex items-center space-x-4">
                     <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -286,7 +286,7 @@ const Contact = () => {
               <div className="mb-6" style={{ transform: 'translateZ(10px)' }}>
                 <h2 className="text-2xl font-bold text-white mb-2">Send us a message</h2>
                 <p className="text-gray-400 text-sm">
-                  Fill out the form and we'll contact you within 24 hours. Or <Link to="/book-consultation" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">book a free consultation</Link> for immediate assistance.
+                  Fill out the form and we'll contact you within 24 hours. Or <Link to="/book-consultation" className="text-cyan-400 hover:text-cyan-300 transition-colors font-semibold">book a free consultation</Link> for immediate assistance.
                 </p>
               </div>
 

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { Calendar, Send, CheckCircle, Globe, Database, Phone, Mail, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
 import { useIsMobile } from '../utils/mobileDetection';
 import { supabase } from '../lib/supabase';
+import { navigateToHomeWithScroll } from '../utils/scrollToTop';
 
 const ConsultationBooking = () => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -619,13 +621,13 @@ const ConsultationBooking = () => {
           </ScrollReveal>
 
           <div className="text-center mt-12">
-            <Link 
-              to="/"
-              className="inline-flex items-center text-gray-400 hover:text-white transition-all duration-300 hover-pop-text"
+            <button 
+              onClick={() => navigateToHomeWithScroll(navigate)}
+              className="inline-flex items-center text-gray-400 hover:text-white transition-all duration-300 hover-pop-text cursor-pointer"
             >
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Homepage
-            </Link>
+            </button>
           </div>
         </div>
       </section>

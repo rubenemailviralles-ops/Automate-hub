@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Send, Phone, Mail, ArrowLeft, CheckCircle, Globe, Database, Mail as MailIcon } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
 import { useIsMobile } from '../utils/mobileDetection';
 import { supabase } from '../lib/supabase';
+import { navigateToHomeWithScroll } from '../utils/scrollToTop';
 
 const Contact = () => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -473,13 +475,13 @@ const Contact = () => {
       {/* Back to Home - Bottom */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-center">
-          <Link 
-            to="/" 
-            className="flex items-center space-x-2 text-white hover:text-gray-300 transition-colors"
+          <button 
+            onClick={() => navigateToHomeWithScroll(navigate)}
+            className="flex items-center space-x-2 text-white hover:text-gray-300 transition-colors cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
             <span>Back to Home</span>
-          </Link>
+          </button>
         </div>
       </div>
     </div>

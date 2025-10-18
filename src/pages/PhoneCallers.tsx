@@ -1,6 +1,6 @@
 import React from 'react';
 import { Phone, Clock, TrendingUp, Shield, CheckCircle, ArrowRight, Users, BarChart3, ArrowLeft, Headphones, Network } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
@@ -8,9 +8,11 @@ import SEO from '../components/SEO';
 import ServiceSchema from '../components/ServiceSchema';
 import FAQSchema from '../components/FAQSchema';
 import { useIsMobile } from '../utils/mobileDetection';
+import { navigateToHomeWithScroll } from '../utils/scrollToTop';
 
 const PhoneCallers = () => {
   const isMobile = useIsMobile();
+  const navigate = useNavigate();
   
   return (
     <div className="pt-20">
@@ -1135,13 +1137,13 @@ const PhoneCallers = () => {
       <section className="py-12 seamless-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <Link 
-              to="/#services"
-              className="inline-flex items-center text-gray-400 hover:text-white transition-all duration-300 hover-pop-text"
+            <button 
+              onClick={() => navigateToHomeWithScroll(navigate)}
+              className="inline-flex items-center text-gray-400 hover:text-white transition-all duration-300 hover-pop-text cursor-pointer"
             >
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Homepage
-            </Link>
+            </button>
           </div>
         </div>
       </section>

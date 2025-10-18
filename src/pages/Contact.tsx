@@ -40,8 +40,9 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submit triggered!');
+    console.log('=== FORM SUBMIT TRIGGERED ===');
     console.log('Form data:', formData);
+    console.log('Is submitting:', isSubmitting);
     setSubmitSuccess(false);
 
     // Validate all fields
@@ -296,15 +297,29 @@ const Contact = () => {
                     rows={5}
                   />
 
-                  <div>
+                  <div style={{ position: 'relative', zIndex: 10 }}>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
-                      onClick={(e) => {
-                        console.log('Button clicked!');
-                        console.log('Form data:', formData);
-                        console.log('Is submitting:', isSubmitting);
+                      className="w-full bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                      style={{
+                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                        transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
+                        position: 'relative',
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isSubmitting) {
+                          e.currentTarget.style.transform = 'scale(1.08) translateY(-2px)';
+                          e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(255, 255, 255, 0.3)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+                      }}
+                      onClick={() => {
+                        console.log('=== BUTTON CLICKED ===');
+                        console.log('Button is working!');
                       }}
                       aria-label={isSubmitting ? "Sending message..." : "Send message"}
                     >

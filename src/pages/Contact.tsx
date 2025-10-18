@@ -23,24 +23,23 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const handleFieldChange = (field: string, value: string) => {
-    setFormData({
-      ...formData,
-      [field]: value
-    });
+  const handleFieldChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
     
     // Clear error for this field when user starts typing
-    if (errors[field]) {
-      setErrors({
-        ...errors,
-        [field]: ''
-      });
+    if (errors[name as keyof typeof errors]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    console.log('FORM SUBMIT TRIGGERED!', e);
-    alert('FORM SUBMIT TRIGGERED!'); // TEST ALERT
     e.preventDefault();
     setSubmitSuccess(false);
 
@@ -242,7 +241,7 @@ const Contact = () => {
                   </div>
                 )}
                 
-                <form onSubmit={handleSubmit} className="space-y-4" noValidate aria-label="Contact form">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Full Name */}
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
@@ -251,13 +250,15 @@ const Contact = () => {
                     <input
                       type="text"
                       id="name"
+                      name="name"
                       value={formData.name}
-                      onChange={(e) => handleFieldChange('name', e.target.value)}
-                      className={`w-full bg-white/5 border ${
-                        errors.name ? 'border-red-500' : 'border-white/10'
-                      } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors`}
+                      onChange={handleFieldChange}
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                        errors.name 
+                          ? 'border-red-500 focus:border-red-400' 
+                          : 'border-white/20 focus:border-white/40'
+                      }`}
                       placeholder="John Doe"
-                      required
                     />
                     {errors.name && (
                       <p className="text-red-400 text-xs mt-1">{errors.name}</p>
@@ -272,13 +273,15 @@ const Contact = () => {
                     <input
                       type="email"
                       id="email"
+                      name="email"
                       value={formData.email}
-                      onChange={(e) => handleFieldChange('email', e.target.value)}
-                      className={`w-full bg-white/5 border ${
-                        errors.email ? 'border-red-500' : 'border-white/10'
-                      } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors`}
+                      onChange={handleFieldChange}
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                        errors.email 
+                          ? 'border-red-500 focus:border-red-400' 
+                          : 'border-white/20 focus:border-white/40'
+                      }`}
                       placeholder="john@company.com"
-                      required
                     />
                     {errors.email && (
                       <p className="text-red-400 text-xs mt-1">{errors.email}</p>
@@ -293,13 +296,15 @@ const Contact = () => {
                     <input
                       type="tel"
                       id="phone"
+                      name="phone"
                       value={formData.phone}
-                      onChange={(e) => handleFieldChange('phone', e.target.value)}
-                      className={`w-full bg-white/5 border ${
-                        errors.phone ? 'border-red-500' : 'border-white/10'
-                      } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors`}
+                      onChange={handleFieldChange}
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                        errors.phone 
+                          ? 'border-red-500 focus:border-red-400' 
+                          : 'border-white/20 focus:border-white/40'
+                      }`}
                       placeholder="+1 (555) 123-4567"
-                      required
                     />
                     {errors.phone && (
                       <p className="text-red-400 text-xs mt-1">{errors.phone}</p>
@@ -314,13 +319,15 @@ const Contact = () => {
                     <input
                       type="text"
                       id="businessName"
+                      name="businessName"
                       value={formData.businessName}
-                      onChange={(e) => handleFieldChange('businessName', e.target.value)}
-                      className={`w-full bg-white/5 border ${
-                        errors.businessName ? 'border-red-500' : 'border-white/10'
-                      } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors`}
+                      onChange={handleFieldChange}
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                        errors.businessName 
+                          ? 'border-red-500 focus:border-red-400' 
+                          : 'border-white/20 focus:border-white/40'
+                      }`}
                       placeholder="Your Company"
-                      required
                     />
                     {errors.businessName && (
                       <p className="text-red-400 text-xs mt-1">{errors.businessName}</p>
@@ -334,35 +341,36 @@ const Contact = () => {
                     </label>
                     <textarea
                       id="message"
+                      name="message"
                       value={formData.message}
-                      onChange={(e) => handleFieldChange('message', e.target.value)}
-                      className={`w-full bg-white/5 border ${
-                        errors.message ? 'border-red-500' : 'border-white/10'
-                      } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors`}
+                      onChange={handleFieldChange}
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                        errors.message 
+                          ? 'border-red-500 focus:border-red-400' 
+                          : 'border-white/20 focus:border-white/40'
+                      }`}
                       placeholder="Tell us about your automation needs..."
                       rows={5}
-                      required
                     />
                     {errors.message && (
                       <p className="text-red-400 text-xs mt-1">{errors.message}</p>
                     )}
                   </div>
 
+                  {/* Submit Button */}
                   <div style={{ position: 'relative', zIndex: 10 }}>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                      className={`w-full px-6 py-4 rounded-xl font-bold flex items-center justify-center mt-6 ${
+                        isSubmitting
+                          ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
+                          : 'bg-white text-black hover:bg-gray-100'
+                      }`}
                       style={{
                         boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                         transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
                         position: 'relative',
-                      }}
-                      title={isSubmitting ? "Sending message..." : "Send message"}
-                      aria-label={isSubmitting ? "Sending message..." : "Send message"}
-                      onClick={() => {
-                        console.log('BUTTON CLICKED!');
-                        alert('BUTTON CLICKED!'); // TEST ALERT
                       }}
                       onMouseEnter={(e) => {
                         if (!isSubmitting) {

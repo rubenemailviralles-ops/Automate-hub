@@ -301,12 +301,12 @@ const ConsultationBooking = () => {
                 </div>
 
                 {submitSuccess ? (
-                  <div className="text-center py-12 mt-16 animate-fade-in">
-                    <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
+                  <div className="text-center py-8 mt-16 animate-fade-in">
+                    <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
                       <Calendar className="w-8 h-8 text-green-400" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-4 animate-fade-in">Consultation Booked!</h3>
-                    <p className="text-gray-400 mb-6 animate-fade-in">
+                    <h3 className="text-2xl font-bold text-white mb-3 animate-fade-in">Consultation Booked!</h3>
+                    <p className="text-gray-400 mb-4 animate-fade-in">
                       Thank you! We'll contact you within 24 hours to confirm your appointment time.
                     </p>
                     <Link

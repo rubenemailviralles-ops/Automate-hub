@@ -129,8 +129,8 @@ const Contact = () => {
             <div className="space-y-6">
               <ScrollReveal delay={200}>
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-blue-400" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white">Phone</h3>
@@ -141,8 +141,8 @@ const Contact = () => {
 
               <ScrollReveal delay={300}>
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-blue-400" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white">Email</h3>
@@ -180,21 +180,29 @@ const Contact = () => {
                 }}
               >
                 <h3 className="text-xl font-semibold text-white mb-4">What to Expect:</h3>
-                <ul className="space-y-3 text-gray-300">
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                <ul className="space-y-4 text-gray-300">
+                  <li className="flex items-center space-x-4">
+                    <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-4 h-4 text-blue-400" />
+                    </div>
                     <span>Free consultation to understand your needs</span>
                   </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <li className="flex items-center space-x-4">
+                    <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-4 h-4 text-blue-400" />
+                    </div>
                     <span>Custom automation recommendations</span>
                   </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <li className="flex items-center space-x-4">
+                    <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-4 h-4 text-blue-400" />
+                    </div>
                     <span>Clear timeline and next steps</span>
                   </li>
-                  <li className="flex items-start space-x-3">
-                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <li className="flex items-center space-x-4">
+                    <div className="w-8 h-8 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-4 h-4 text-blue-400" />
+                    </div>
                     <span>No pressure, just helpful guidance</span>
                   </li>
                 </ul>

@@ -92,6 +92,8 @@ const Contact = () => {
 
       if (error) throw error;
 
+      alert('Thank you for the message! You will be hearing from us soon.');
+
       setIsSubmitting(false);
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', phone: '', businessName: '', message: '' });

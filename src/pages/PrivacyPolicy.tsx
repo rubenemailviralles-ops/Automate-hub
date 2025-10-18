@@ -1,20 +1,16 @@
 import React from 'react';
 import { Shield, Eye, Lock, Database, UserCheck, Globe, ArrowLeft } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import ScrollReveal from '../components/ScrollReveal';
 import TypeWriter from '../components/TypeWriter';
 import SEO from '../components/SEO';
 import { useIsMobile } from '../utils/mobileDetection';
-import { scrollToTop } from '../utils/scrollToTop';
+import { navigateBackToHome } from '../utils/scrollToTop';
 
 const PrivacyPolicy = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
-  
-  const handleBackToHome = () => {
-    navigate('/');
-    setTimeout(() => scrollToTop(), 100);
-  };
+  const location = useLocation();
   
   return (
     <div className="pt-20">
@@ -300,7 +296,7 @@ const PrivacyPolicy = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <button 
-              onClick={handleBackToHome}
+              onClick={() => navigateBackToHome(navigate, location.state)}
               className="inline-flex items-center text-gray-400 hover:text-white transition-all duration-300 hover-pop-text cursor-pointer"
             >
               <ArrowLeft className="mr-2 w-4 h-4" />

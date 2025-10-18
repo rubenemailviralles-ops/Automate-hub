@@ -141,9 +141,6 @@ const ConsultationBooking = () => {
         companyName: '',
         areaOfService: ''
       });
-      
-      // Scroll to top after successful submission
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       console.error('Error submitting consultation booking:', error);
       alert('There was an error booking your consultation. Please try again or contact us directly.');

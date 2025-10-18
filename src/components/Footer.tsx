@@ -55,7 +55,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-black to-gray-900 border-t border-white/5 py-20" role="contentinfo" aria-label="Site footer">
+    <footer className="seamless-section border-t border-white/5 py-20" role="contentinfo" aria-label="Site footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {/* Company Info */}

@@ -39,6 +39,7 @@ const Contact = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
+    console.log('FORM SUBMIT TRIGGERED!', e);
     e.preventDefault();
     setSubmitSuccess(false);
 
@@ -358,6 +359,9 @@ const Contact = () => {
                       }}
                       title={isSubmitting ? "Sending message..." : "Send message"}
                       aria-label={isSubmitting ? "Sending message..." : "Send message"}
+                      onClick={() => {
+                        console.log('BUTTON CLICKED!');
+                      }}
                       onMouseEnter={(e) => {
                         if (!isSubmitting) {
                           e.currentTarget.style.transform = 'scale(1.08) translateY(-2px)';

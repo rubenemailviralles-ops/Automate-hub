@@ -65,6 +65,9 @@
     <!-- Additional SEO -->
     <meta name="format-detection" content="telephone=no" />
     
+    <!-- Override CSP for Render deployment -->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src * data:; connect-src *;" />
+    
     <!-- Google Analytics 4 -->
     <!-- Replace G-XXXXXXXXXX with your actual Google Analytics Measurement ID -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>

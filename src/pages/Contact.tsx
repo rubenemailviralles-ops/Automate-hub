@@ -303,13 +303,13 @@ const Contact = () => {
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-4 animate-fade-in">Thank you for the message!</h3>
                   <p className="text-gray-400 mb-6 animate-fade-in">
-                    You will be hearing from us soon.
+                    You will be hearing from us soon. Want faster results?
                   </p>
                   <Link
-                    to="/"
+                    to="/book-consultation"
                     className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors animate-fade-in"
                   >
-                    Return to Home Page
+                    Book a Free Consultation
                   </Link>
                 </div>
               ) : (

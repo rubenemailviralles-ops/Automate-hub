@@ -312,12 +312,12 @@ const ConsultationBooking = () => {
                     <p className="text-gray-400 mb-6 animate-fade-in">
                       Thank you! We'll contact you within 24 hours to confirm your appointment time.
                     </p>
-                    <button
-                      onClick={() => setSubmitSuccess(false)}
-                      className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors animate-fade-in"
+                    <Link
+                      to="/"
+                      className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors animate-fade-in"
                     >
-                      Book Another Consultation
-                    </button>
+                      Return to Home Page
+                    </Link>
                   </div>
                 ) : (
                 <form onSubmit={handleSubmit} className={`space-y-4 transition-all duration-500 ${submitSuccess ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>

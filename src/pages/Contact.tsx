@@ -40,6 +40,8 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Form submit triggered!');
+    console.log('Form data:', formData);
     setSubmitSuccess(false);
 
     // Validate all fields
@@ -51,7 +53,10 @@ const Contact = () => {
       message: (value) => validateMessage(value, 20),
     });
 
+    console.log('Validation errors:', validationErrors);
+
     if (hasFormErrors(validationErrors)) {
+      console.log('Form has validation errors, not submitting');
       setErrors(validationErrors);
       // Focus on first error field
       const firstErrorField = Object.keys(validationErrors)[0];
@@ -59,11 +64,13 @@ const Contact = () => {
       return;
     }
 
+    console.log('Form validation passed, submitting to Supabase...');
     // Form is valid, submit
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
+      console.log('Attempting to insert into Supabase...');
+      const { data, error } = await supabase
         .from('contact_submissions')
         .insert([
           {
@@ -73,10 +80,17 @@ const Contact = () => {
             business_name: formData.businessName,
             message: formData.message,
           }
-        ]);
+        ])
+        .select();
 
-      if (error) throw error;
+      console.log('Supabase response:', { data, error });
 
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+
+      console.log('Successfully submitted to Supabase!');
       setIsSubmitting(false);
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', phone: '', businessName: '', message: '' });
@@ -282,25 +296,15 @@ const Contact = () => {
                     rows={5}
                   />
 
-                  <div style={{ position: 'relative', zIndex: 10 }}>
+                  <div>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
-                      style={{
-                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                        transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
-                        position: 'relative',
-                      }}
-                      onMouseEnter={(e) => {
-                        if (!isSubmitting) {
-                          e.currentTarget.style.transform = 'scale(1.08) translateY(-2px)';
-                          e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(255, 255, 255, 0.3)';
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'scale(1) translateY(0)';
-                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+                      className="w-full bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold text-base flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
+                      onClick={(e) => {
+                        console.log('Button clicked!');
+                        console.log('Form data:', formData);
+                        console.log('Is submitting:', isSubmitting);
                       }}
                       aria-label={isSubmitting ? "Sending message..." : "Send message"}
                     >

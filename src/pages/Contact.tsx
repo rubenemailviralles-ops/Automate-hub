@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
-import Footer from '../components/Footer';
 import { useIsMobile } from '../utils/mobileDetection';
 import { supabase } from '../lib/supabase';
 
@@ -407,9 +406,6 @@ const Contact = () => {
           </ScrollReveal>
         </div>
       </div>
-      
-      {/* Footer */}
-      <Footer />
     </div>
   );
 };

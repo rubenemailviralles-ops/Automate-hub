@@ -258,9 +258,9 @@ const ConsultationBooking = () => {
                     const y = e.clientY - rect.top;
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
-                    const rotateX = (y - centerY) / 20;
-                    const rotateY = (centerX - x) / 20;
-                    e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                    const rotateX = (y - centerY) / 40;
+                    const rotateY = (centerX - x) / 40;
+                    e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(5px)`;
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
@@ -557,9 +557,9 @@ const ConsultationBooking = () => {
                 const y = e.clientY - rect.top;
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                const rotateX = (y - centerY) / 40;
+                const rotateY = (centerX - x) / 40;
+                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(5px)`;
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';

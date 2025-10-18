@@ -110,20 +110,6 @@ const Contact = () => {
         keywords="contact automate hub, AI automation consultation, business automation contact, AI automation services, automation consultation, contact us automation"
       />
       
-      {/* Header */}
-      <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="flex items-center justify-between">
-            <Link 
-              to="/" 
-              className="flex items-center space-x-2 text-white hover:text-gray-300 transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              <span>Back to Home</span>
-            </Link>
-          </div>
-        </div>
-      </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
@@ -404,6 +390,19 @@ const Contact = () => {
               )}
             </div>
           </ScrollReveal>
+        </div>
+      </div>
+      
+      {/* Back to Home - Bottom */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex items-center justify-center">
+          <Link 
+            to="/" 
+            className="flex items-center space-x-2 text-white hover:text-gray-300 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            <span>Back to Home</span>
+          </Link>
         </div>
       </div>
     </div>

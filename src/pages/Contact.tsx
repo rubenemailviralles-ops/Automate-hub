@@ -7,6 +7,7 @@ import FormField from '../components/FormField';
 import { validateEmail, validateRequired, validatePhone, validateMessage, validateForm, hasFormErrors, FormErrors } from '../utils/validation';
 import SEO from '../components/SEO';
 import { useIsMobile } from '../utils/mobileDetection';
+import { supabase } from '../lib/supabase';
 
 const Contact = () => {
   const isMobile = useIsMobile();
@@ -37,7 +38,7 @@ const Contact = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitSuccess(false);
 
@@ -60,15 +61,31 @@ const Contact = () => {
 
     // Form is valid, submit
     setIsSubmitting(true);
-    console.log('Form submitted:', formData);
-    
-    // Simulate submission (replace with actual API call)
-    setTimeout(() => {
+
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            business_name: formData.businessName,
+            message: formData.message,
+          }
+        ]);
+
+      if (error) throw error;
+
       setIsSubmitting(false);
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', phone: '', businessName: '', message: '' });
       setErrors({});
-    }, 1000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setIsSubmitting(false);
+      setErrors({ submit: 'Failed to submit form. Please try again.' });
+    }
   };
 
   return (

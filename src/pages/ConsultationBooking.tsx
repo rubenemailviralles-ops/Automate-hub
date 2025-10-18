@@ -5,6 +5,7 @@ import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
 import { useIsMobile } from '../utils/mobileDetection';
+import { supabase } from '../lib/supabase';
 
 const ConsultationBooking = () => {
   const isMobile = useIsMobile();
@@ -98,14 +99,14 @@ const ConsultationBooking = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       // Scroll to the form section when validation fails
       const formSection = document.getElementById('consultation-form');
       if (formSection) {
-        formSection.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
+        formSection.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
         });
       }
       return;
@@ -114,12 +115,22 @@ const ConsultationBooking = () => {
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      console.log('Consultation booking submitted:', formData);
+      const { error } = await supabase
+        .from('consultation_bookings')
+        .insert([
+          {
+            full_name: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            company_name: formData.companyName,
+            area_of_service: formData.areaOfService,
+          }
+        ]);
+
+      if (error) throw error;
+
       alert('Thank you! Your consultation has been booked. We\'ll contact you within 24 hours to confirm your appointment time.');
-      
+
       // Reset form
       setFormData({
         fullName: '',
@@ -132,6 +143,7 @@ const ConsultationBooking = () => {
       // Scroll to top after successful submission
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
+      console.error('Error submitting consultation booking:', error);
       alert('There was an error booking your consultation. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);

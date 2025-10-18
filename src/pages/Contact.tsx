@@ -40,9 +40,6 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('=== FORM SUBMIT TRIGGERED ===');
-    console.log('Form data:', formData);
-    console.log('Is submitting:', isSubmitting);
     setSubmitSuccess(false);
 
     // Validate all fields
@@ -54,10 +51,7 @@ const Contact = () => {
       message: (value) => validateMessage(value, 20),
     });
 
-    console.log('Validation errors:', validationErrors);
-
     if (hasFormErrors(validationErrors)) {
-      console.log('Form has validation errors, not submitting');
       setErrors(validationErrors);
       // Focus on first error field
       const firstErrorField = Object.keys(validationErrors)[0];
@@ -65,13 +59,11 @@ const Contact = () => {
       return;
     }
 
-    console.log('Form validation passed, submitting to Supabase...');
     // Form is valid, submit
     setIsSubmitting(true);
 
     try {
-      console.log('Attempting to insert into Supabase...');
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('contact_submissions')
         .insert([
           {
@@ -81,17 +73,10 @@ const Contact = () => {
             business_name: formData.businessName,
             message: formData.message,
           }
-        ])
-        .select();
+        ]);
 
-      console.log('Supabase response:', { data, error });
+      if (error) throw error;
 
-      if (error) {
-        console.error('Supabase error:', error);
-        throw error;
-      }
-
-      console.log('Successfully submitted to Supabase!');
       setIsSubmitting(false);
       setSubmitSuccess(true);
       setFormData({ name: '', email: '', phone: '', businessName: '', message: '' });
@@ -316,10 +301,6 @@ const Contact = () => {
                       onMouseLeave={(e) => {
                         e.currentTarget.style.transform = 'scale(1) translateY(0)';
                         e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
-                      }}
-                      onClick={() => {
-                        console.log('=== BUTTON CLICKED ===');
-                        console.log('Button is working!');
                       }}
                       aria-label={isSubmitting ? "Sending message..." : "Send message"}
                     >

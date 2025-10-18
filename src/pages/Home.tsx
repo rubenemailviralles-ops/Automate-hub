@@ -416,7 +416,8 @@ const Home = () => {
                   </div>
                 </div>
                 <Link 
-                  to="/about" 
+                  to="/about"
+                  state={{ fromSection: 'why-choose-automate-hub' }}
                   className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link ${isMobile ? 'text-blue-400' : ''}`}
                   style={getInner3DTransform('10px')}
                 >
@@ -469,7 +470,8 @@ const Home = () => {
                   </div>
                 </div>
                 <Link 
-                  to="/book-consultation" 
+                  to="/book-consultation"
+                  state={{ fromSection: 'why-choose-automate-hub' }}
                   className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link ${isMobile ? 'text-purple-400' : ''}`}
                   style={getInner3DTransform('10px')}
                 >
@@ -522,7 +524,8 @@ const Home = () => {
                   </div>
                 </div>
                 <Link 
-                  to="/privacy-policy" 
+                  to="/privacy-policy"
+                  state={{ fromSection: 'why-choose-automate-hub' }}
                   className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link ${isMobile ? 'text-green-400' : ''}`}
                   style={getInner3DTransform('10px')}
                 >
@@ -575,7 +578,8 @@ const Home = () => {
                   </div>
                 </div>
                 <Link 
-                  to="/contact" 
+                  to="/contact"
+                  state={{ fromSection: 'why-choose-automate-hub' }}
                   className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link ${isMobile ? 'text-orange-400' : ''}`}
                   style={getInner3DTransform('10px')}
                 >

@@ -158,11 +158,20 @@ const Contact = () => {
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                  transition: 'transform 0.1s ease-out, box-shadow 0.3s ease-out',
                   perspective: '1000px',
                 }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 20;
+                  const rotateY = (centerX - x) / 20;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+                }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
                   e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
                 }}
                 onMouseLeave={(e) => {

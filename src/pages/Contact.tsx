@@ -287,31 +287,33 @@ const Contact = () => {
                 e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
               }}
             >
-              <div className="mb-6" style={{ transform: 'translateZ(10px)' }}>
-                <h2 className="text-2xl font-bold text-white mb-2">Send us a message</h2>
-                <p className="text-gray-400 text-sm">
+              <div className="mb-6 transition-all duration-500 ease-in-out" style={{ transform: 'translateZ(10px)' }}>
+                <h2 className={`text-2xl font-bold text-white mb-2 transition-all duration-500 ${submitSuccess ? 'opacity-0 transform -translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+                  Send us a message
+                </h2>
+                <p className={`text-gray-400 text-sm transition-all duration-500 ${submitSuccess ? 'opacity-0 transform -translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
                   Fill out the form and we'll contact you within 24 hours. Or <Link to="/book-consultation" className="text-cyan-400 hover:text-cyan-300 transition-colors font-semibold">book a free consultation</Link> for immediate assistance.
                 </p>
               </div>
 
               {submitSuccess ? (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="text-center py-12 animate-fade-in">
+                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
                     <Send className="w-8 h-8 text-green-400" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">Thank you for the message!</h3>
-                  <p className="text-gray-400 mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-4 animate-fade-in">Thank you for the message!</h3>
+                  <p className="text-gray-400 mb-6 animate-fade-in">
                     You will be hearing from us soon.
                   </p>
                   <button
                     onClick={() => setSubmitSuccess(false)}
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors animate-fade-in"
                   >
                     Send Another Message
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className={`space-y-4 transition-all duration-500 ${submitSuccess ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
                   {/* Full Name */}
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">

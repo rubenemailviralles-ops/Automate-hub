@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Contact Form</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #1a1a1a; 
+            color: white; 
+            padding: 20px; 
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 16px;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #f0f0f0;
+            transform: scale(1.02);
+        }
+        .error {
+            color: #ef4444;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .success {
+            color: #10b981;
+            font-size: 16px;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Test Contact Form</h1>
+        <p>This is a simple test to see if forms work at all.</p>
+        
+        <form id="testForm">
+            <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="company">Company Name *</label>
+                <input type="text" id="company" name="company" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message * (minimum 20 characters)</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            
+            <button type="submit">Send Message</button>
+        </form>
+        
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            alert('FORM SUBMITTED!');
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value,
+                message: document.getElementById('message').value
+            };
+            
+            console.log('Form data:', formData);
+            
+            // Simple validation
+            const errors = [];
+            if (!formData.name.trim()) errors.push('Name is required');
+            if (!formData.email.trim()) errors.push('Email is required');
+            if (!formData.phone.trim()) errors.push('Phone is required');
+            if (!formData.company.trim()) errors.push('Company is required');
+            if (!formData.message.trim()) errors.push('Message is required');
+            if (formData.message.trim().length < 20) errors.push('Message must be at least 20 characters');
+            
+            if (errors.length > 0) {
+                alert('VALIDATION ERRORS: ' + errors.join(', '));
+                document.getElementById('result').innerHTML = '<div class="error">Errors: ' + errors.join(', ') + '</div>';
+            } else {
+                alert('VALIDATION PASSED! Form would submit to database.');
+                document.getElementById('result').innerHTML = '<div class="success">✅ Form validation passed! This would submit to Supabase.</div>';
+            }
+        });
+        
+        // Test if JavaScript is working
+        console.log('JavaScript is working!');
+        alert('Page loaded - JavaScript is working!');
+    </script>
+</body>
+</html>

@@ -129,8 +129,8 @@ const Contact = () => {
             <div className="space-y-6">
               <ScrollReveal delay={200}>
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-white" />
+                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center">
+                    <Phone className="w-8 h-8 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white">Phone</h3>
@@ -141,8 +141,8 @@ const Contact = () => {
 
               <ScrollReveal delay={300}>
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-white" />
+                  <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center">
+                    <Mail className="w-8 h-8 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-white">Email</h3>

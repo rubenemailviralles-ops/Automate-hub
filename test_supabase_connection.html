@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supabase Connection Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Supabase Connection Test</h1>
+    <div id="status">Testing connection...</div>
+    <div id="results"></div>
+
+    <script>
+        // Your Supabase credentials
+        const supabaseUrl = 'https://vibevjzpdkvttbfdtive.supabase.co';
+        const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpYmV2anpwZGt2dHRiZmR0aXZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4NzcwNTUsImV4cCI6MjA3NDQ1MzA1NX0.eA5mWnDKodvPwCvSYZvWaguiTizIKYnfTjQwRj_27dE';
+        
+        // Create Supabase client
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseAnonKey);
+        
+        async function testConnection() {
+            const statusDiv = document.getElementById('status');
+            const resultsDiv = document.getElementById('results');
+            
+            try {
+                // Test 1: Check if we can connect
+                statusDiv.innerHTML = '✅ Connected to Supabase!<br>';
+                
+                // Test 2: Check if tables exist
+                const { data: contactData, error: contactError } = await supabase
+                    .from('contact_submissions')
+                    .select('*')
+                    .limit(1);
+                
+                if (contactError) {
+                    resultsDiv.innerHTML += `❌ Contact table error: ${contactError.message}<br>`;
+                } else {
+                    resultsDiv.innerHTML += `✅ Contact submissions table exists<br>`;
+                }
+                
+                const { data: bookingData, error: bookingError } = await supabase
+                    .from('consultation_bookings')
+                    .select('*')
+                    .limit(1);
+                
+                if (bookingError) {
+                    resultsDiv.innerHTML += `❌ Booking table error: ${bookingError.message}<br>`;
+                } else {
+                    resultsDiv.innerHTML += `✅ Consultation bookings table exists<br>`;
+                }
+                
+                // Test 3: Try inserting test data
+                resultsDiv.innerHTML += '<br>Testing data insertion...<br>';
+                
+                const testContactData = {
+                    name: 'Test User',
+                    email: 'test@example.com',
+                    phone: '+1234567890',
+                    business_name: 'Test Company',
+                    message: 'This is a test message from connection test'
+                };
+                
+                const { data: insertData, error: insertError } = await supabase
+                    .from('contact_submissions')
+                    .insert([testContactData])
+                    .select();
+                
+                if (insertError) {
+                    resultsDiv.innerHTML += `❌ Insert error: ${insertError.message}<br>`;
+                } else {
+                    resultsDiv.innerHTML += `✅ Successfully inserted test data!<br>`;
+                    resultsDiv.innerHTML += `Inserted ID: ${insertData[0].id}<br>`;
+                    
+                    // Clean up test data
+                    await supabase
+                        .from('contact_submissions')
+                        .delete()
+                        .eq('id', insertData[0].id);
+                    resultsDiv.innerHTML += `✅ Test data cleaned up<br>`;
+                }
+                
+                resultsDiv.innerHTML += '<br><strong>🎉 All tests passed! Your Supabase connection is working perfectly!</strong>';
+                
+            } catch (error) {
+                statusDiv.innerHTML = '❌ Connection failed!';
+                resultsDiv.innerHTML = `Error: ${error.message}`;
+            }
+        }
+        
+        // Run the test when page loads
+        testConnection();
+    </script>
+</body>
+</html>

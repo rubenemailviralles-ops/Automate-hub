@@ -301,7 +301,7 @@ const ConsultationBooking = () => {
                 </div>
 
                 {submitSuccess ? (
-                  <div className="text-center py-12 animate-fade-in">
+                  <div className="text-center p-6 animate-fade-in">
                     <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
                       <Calendar className="w-8 h-8 text-green-400" />
                     </div>

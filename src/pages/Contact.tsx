@@ -297,9 +297,9 @@ const Contact = () => {
                   <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Send className="w-8 h-8 text-green-400" />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">Message Sent!</h3>
+                  <h3 className="text-2xl font-bold text-white mb-4">Thank you for the message!</h3>
                   <p className="text-gray-400 mb-6">
-                    Thank you for your message! We'll get back to you within 24 hours.
+                    You will be hearing from us soon.
                   </p>
                   <button
                     onClick={() => setSubmitSuccess(false)}

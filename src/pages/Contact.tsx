@@ -3,7 +3,7 @@ import { Send, Phone, Mail, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
-import FormField from '../components/FormField';
+// Removed FormField import - using regular HTML inputs like consultation form
 // Removed validation utilities import - using simple inline validation
 import SEO from '../components/SEO';
 import { useIsMobile } from '../utils/mobileDetection';
@@ -241,61 +241,110 @@ const Contact = () => {
                 )}
                 
                 <form onSubmit={handleSubmit} className="space-y-4" noValidate aria-label="Contact form">
-                  <FormField
-                    id="name"
-                    label="Full Name"
-                    type="text"
-                    value={formData.name}
-                    onChange={(value) => handleFieldChange('name', value)}
-                    error={errors.name}
-                    required
-                    placeholder="John Doe"
-                  />
+                  {/* Full Name */}
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => handleFieldChange('name', e.target.value)}
+                      className={`w-full bg-white/5 border ${
+                        errors.name ? 'border-red-500' : 'border-white/10'
+                      } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors`}
+                      placeholder="John Doe"
+                      required
+                    />
+                    {errors.name && (
+                      <p className="text-red-400 text-xs mt-1">{errors.name}</p>
+                    )}
+                  </div>
 
-                  <FormField
-                    id="email"
-                    label="Email Address"
-                    type="email"
-                    value={formData.email}
-                    onChange={(value) => handleFieldChange('email', value)}
-                    error={errors.email}
-                    required
-                    placeholder="john@company.com"
-                  />
+                  {/* Email Address */}
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={(e) => handleFieldChange('email', e.target.value)}
+                      className={`w-full bg-white/5 border ${
+                        errors.email ? 'border-red-500' : 'border-white/10'
+                      } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors`}
+                      placeholder="john@company.com"
+                      required
+                    />
+                    {errors.email && (
+                      <p className="text-red-400 text-xs mt-1">{errors.email}</p>
+                    )}
+                  </div>
 
-                  <FormField
-                    id="phone"
-                    label="Phone Number"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(value) => handleFieldChange('phone', value)}
-                    error={errors.phone}
-                    required
-                    placeholder="+1 (555) 123-4567"
-                  />
+                  {/* Phone Number */}
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-2">
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      value={formData.phone}
+                      onChange={(e) => handleFieldChange('phone', e.target.value)}
+                      className={`w-full bg-white/5 border ${
+                        errors.phone ? 'border-red-500' : 'border-white/10'
+                      } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors`}
+                      placeholder="+1 (555) 123-4567"
+                      required
+                    />
+                    {errors.phone && (
+                      <p className="text-red-400 text-xs mt-1">{errors.phone}</p>
+                    )}
+                  </div>
 
-                  <FormField
-                    id="businessName"
-                    label="Company Name"
-                    type="text"
-                    value={formData.businessName}
-                    onChange={(value) => handleFieldChange('businessName', value)}
-                    error={errors.businessName}
-                    required
-                    placeholder="Your Company"
-                  />
+                  {/* Company Name */}
+                  <div>
+                    <label htmlFor="businessName" className="block text-sm font-medium text-gray-400 mb-2">
+                      Company Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="businessName"
+                      value={formData.businessName}
+                      onChange={(e) => handleFieldChange('businessName', e.target.value)}
+                      className={`w-full bg-white/5 border ${
+                        errors.businessName ? 'border-red-500' : 'border-white/10'
+                      } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors`}
+                      placeholder="Your Company"
+                      required
+                    />
+                    {errors.businessName && (
+                      <p className="text-red-400 text-xs mt-1">{errors.businessName}</p>
+                    )}
+                  </div>
 
-                  <FormField
-                    id="message"
-                    label="Message"
-                    type="textarea"
-                    value={formData.message}
-                    onChange={(value) => handleFieldChange('message', value)}
-                    error={errors.message}
-                    required
-                    placeholder="Tell us about your automation needs..."
-                    rows={5}
-                  />
+                  {/* Message */}
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      value={formData.message}
+                      onChange={(e) => handleFieldChange('message', e.target.value)}
+                      className={`w-full bg-white/5 border ${
+                        errors.message ? 'border-red-500' : 'border-white/10'
+                      } rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors`}
+                      placeholder="Tell us about your automation needs..."
+                      rows={5}
+                      required
+                    />
+                    {errors.message && (
+                      <p className="text-red-400 text-xs mt-1">{errors.message}</p>
+                    )}
+                  </div>
 
                   <div style={{ position: 'relative', zIndex: 10 }}>
                     <button

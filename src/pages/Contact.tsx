@@ -42,20 +42,35 @@ const Contact = () => {
     e.preventDefault();
     setSubmitSuccess(false);
 
-    // Validate all fields
-    const validationErrors = validateForm(formData, {
-      name: (value) => validateRequired(value, 'Name'),
-      email: validateEmail,
-      phone: validatePhone,
-      businessName: (value) => validateRequired(value, 'Company name'),
-      message: (value) => validateMessage(value, 20),
-    });
+    // Simple inline validation (like the working consultation form)
+    const newErrors: {[key: string]: string} = {};
 
-    if (hasFormErrors(validationErrors)) {
-      setErrors(validationErrors);
-      // Focus on first error field
-      const firstErrorField = Object.keys(validationErrors)[0];
-      document.getElementById(firstErrorField)?.focus();
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email address is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Phone number is required';
+    }
+
+    if (!formData.businessName.trim()) {
+      newErrors.businessName = 'Company name is required';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 20) {
+      newErrors.message = 'Message must be at least 20 characters';
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 

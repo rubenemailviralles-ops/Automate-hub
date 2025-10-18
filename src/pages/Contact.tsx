@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Phone, Mail, ArrowLeft } from 'lucide-react';
+import { Send, Phone, Mail, ArrowLeft, CheckCircle, Globe, Database, Mail as MailIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
@@ -105,9 +105,9 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
       <SEO 
-        title="Contact Us - Automate Hub"
-        description="Get in touch with Automate Hub for AI automation solutions. Contact us for free consultation and custom automation recommendations."
-        keywords="contact, automation, AI, consultation, business automation"
+        title="Contact Us - Automate Hub | Get in Touch for AI Automation Solutions"
+        description="Contact Automate Hub for AI automation solutions. Get free consultation, custom automation recommendations, and expert guidance. Transform your business with our AI-powered automation services."
+        keywords="contact automate hub, AI automation consultation, business automation contact, AI automation services, automation consultation, contact us automation"
       />
       
       {/* Header */}
@@ -125,59 +125,116 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Contact <span className="text-blue-400">Us</span>
-          </h1>
-          <p className="text-xl text-gray-300 mb-8">
-            Ready to automate your business? Let's talk about how we can help you save time and increase efficiency.
-          </p>
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Left Side - Contact Info */}
+          <div className="space-y-8">
+            <ScrollReveal delay={100}>
+              <div>
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                  Contact <span className="text-blue-400">Us</span>
+                </h1>
+                <p className="text-xl text-gray-300 mb-8">
+                  Ready to automate your business? Let's talk about how we can help you save time and increase efficiency.
+                </p>
+              </div>
+            </ScrollReveal>
 
-        <div className="max-w-2xl mx-auto">
-          <div 
-            className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 mobile-3d-tilt relative"
-            style={{
-              transformStyle: 'preserve-3d',
-              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-              transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
-              perspective: '1000px',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
-              e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
-            }}
-          >
-            <div className="mb-6" style={{ transform: 'translateZ(10px)' }}>
-              <h2 className="text-2xl font-bold text-white mb-2">Send us a message</h2>
-              <p className="text-gray-400 text-sm">
-                Fill out the form and we'll contact you within 24 hours.
-              </p>
+            <div className="space-y-6">
+              <ScrollReveal delay={200}>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">Phone</h3>
+                    <p className="text-gray-400">(+27) 82 644 2575</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={300}>
+                <div className="flex items-center space-x-4">
+                  <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">Email</h3>
+                    <p className="text-gray-400">automate.hub1@gmail.com</p>
+                  </div>
+                </div>
+              </ScrollReveal>
             </div>
 
-            {submitSuccess ? (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Send className="w-8 h-8 text-green-400" />
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Message Sent!</h3>
-                <p className="text-gray-400 mb-6">
-                  Thank you for your message! We'll get back to you within 24 hours.
-                </p>
-                <button
-                  onClick={() => setSubmitSuccess(false)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
-                >
-                  Send Another Message
-                </button>
+            <ScrollReveal delay={400}>
+              <div className="bg-gray-800/50 rounded-2xl p-6">
+                <h3 className="text-xl font-semibold text-white mb-4">What to Expect:</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Free consultation to understand your needs</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Custom automation recommendations</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>Clear timeline and next steps</span>
+                  </li>
+                  <li className="flex items-start space-x-3">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <span>No pressure, just helpful guidance</span>
+                  </li>
+                </ul>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+            </ScrollReveal>
+          </div>
+
+          {/* Right Side - Contact Form */}
+          <ScrollReveal delay={500}>
+            <div 
+              className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 mobile-3d-tilt relative"
+              style={{
+                transformStyle: 'preserve-3d',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                perspective: '1000px',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
+                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+              }}
+            >
+              <div className="mb-6" style={{ transform: 'translateZ(10px)' }}>
+                <h2 className="text-2xl font-bold text-white mb-2">Send us a message</h2>
+                <p className="text-gray-400 text-sm">
+                  Fill out the form and we'll contact you within 24 hours.
+                </p>
+              </div>
+
+              {submitSuccess ? (
+                <div className="text-center py-12">
+                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Send className="w-8 h-8 text-green-400" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">Message Sent!</h3>
+                  <p className="text-gray-400 mb-6">
+                    Thank you for your message! We'll get back to you within 24 hours.
+                  </p>
+                  <button
+                    onClick={() => setSubmitSuccess(false)}
+                    className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
+                  >
+                    Send Another Message
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Full Name */}
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
@@ -330,7 +387,7 @@ const Contact = () => {
                 </form>
               )}
             </div>
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </div>

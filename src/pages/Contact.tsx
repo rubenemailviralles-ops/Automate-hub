@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import FormField from '../components/FormField';
-import { validateEmail, validateRequired, validatePhone, validateMessage, validateForm, hasFormErrors, FormErrors } from '../utils/validation';
+// Removed validation utilities import - using simple inline validation
 import SEO from '../components/SEO';
 import { useIsMobile } from '../utils/mobileDetection';
 import { supabase } from '../lib/supabase';
@@ -19,7 +19,7 @@ const Contact = () => {
     message: ''
   });
 
-  const [errors, setErrors] = useState<FormErrors>({});
+  const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 

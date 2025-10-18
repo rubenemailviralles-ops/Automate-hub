@@ -18,6 +18,7 @@ const ConsultationBooking = () => {
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const serviceOptions = [
     {
@@ -131,7 +132,8 @@ const ConsultationBooking = () => {
 
       alert('Thank you! Your consultation has been booked. We\'ll contact you within 24 hours to confirm your appointment time.');
 
-      // Reset form
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
       setFormData({
         fullName: '',
         email: '',
@@ -292,14 +294,33 @@ const ConsultationBooking = () => {
                   e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
                 }}
               >
-                <div className="mb-6" style={{ transform: 'translateZ(10px)' }}>
-                  <h2 className="text-2xl font-bold text-white mb-2">Schedule Your Consultation</h2>
-                  <p className="text-gray-400 text-sm">
+                <div className="mb-6 transition-all duration-500 ease-in-out" style={{ transform: 'translateZ(10px)' }}>
+                  <h2 className={`text-2xl font-bold text-white mb-2 transition-all duration-500 ${submitSuccess ? 'opacity-0 transform -translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+                    Schedule Your Consultation
+                  </h2>
+                  <p className={`text-gray-400 text-sm transition-all duration-500 ${submitSuccess ? 'opacity-0 transform -translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
                     Fill out the form and we'll contact you within 24 hours.
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                {submitSuccess ? (
+                  <div className="text-center py-12 animate-fade-in">
+                    <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6 animate-bounce">
+                      <Calendar className="w-8 h-8 text-green-400" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-4 animate-fade-in">Consultation Booked!</h3>
+                    <p className="text-gray-400 mb-6 animate-fade-in">
+                      Thank you! We'll contact you within 24 hours to confirm your appointment time.
+                    </p>
+                    <button
+                      onClick={() => setSubmitSuccess(false)}
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors animate-fade-in"
+                    >
+                      Book Another Consultation
+                    </button>
+                  </div>
+                ) : (
+                <form onSubmit={handleSubmit} className={`space-y-4 transition-all duration-500 ${submitSuccess ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
               {/* Full Name */}
               <div>
                 <label htmlFor="fullName" className="block text-sm font-medium text-gray-400 mb-2">
@@ -474,6 +495,7 @@ const ConsultationBooking = () => {
                 By submitting, you agree to our privacy policy. We'll never share your information.
               </p>
             </form>
+                )}
               </div>
             </div>
 

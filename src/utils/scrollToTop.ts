@@ -26,22 +26,27 @@ export const scrollToSection = (sectionId: string) => {
  * Handles context-aware navigation back to home page
  * Scrolls to the section user came from, or top if they came from elsewhere
  * @param navigate - React Router navigate function
- * @param navigationState - The location state from React Router (contains fromSection if user came from Why Choose section)
+ * @param navigationState - The location state from React Router (contains fromSection)
  */
 export const navigateBackToHome = (
   navigate: (path: string) => void, 
   navigationState: any
 ) => {
-  // Check if user came from the "Why Choose" section
-  const cameFromWhyChoose = navigationState?.fromSection === 'why-choose-automate-hub';
+  // Check which section user came from
+  const fromSection = navigationState?.fromSection;
+  const cameFromWhyChoose = fromSection === 'why-choose-automate-hub';
+  const cameFromServices = fromSection === 'services';
   
   navigate('/');
   
   // Use setTimeout to ensure navigation completes before scrolling
   setTimeout(() => {
     if (cameFromWhyChoose) {
-      // Return to the section they came from
+      // Return to the "Why Choose Automate Hub" section
       scrollToSection('why-choose-automate-hub');
+    } else if (cameFromServices) {
+      // Return to the "Our AI Solutions" section
+      scrollToSection('services');
     } else {
       // Go to top if they came from menu or direct URL
       scrollToTop();

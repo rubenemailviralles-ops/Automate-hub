@@ -272,7 +272,7 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-16 seamless-section">
+      <section id="services" className="py-16 seamless-section" data-section-name="our-ai-solutions">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <TypeWriter 
@@ -341,6 +341,7 @@ const Home = () => {
 
                     <Link
                       to={service.path}
+                      state={{ fromSection: 'services' }}
                       className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link hover-pop-text relative ${isMobile ? 'text-blue-400' : ''}`}
                       style={getInner3DTransform('15px')}
                     >

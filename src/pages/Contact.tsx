@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
+import StructuredData from '../components/StructuredData';
 import { useIsMobile } from '../utils/mobileDetection';
 import { supabase } from '../lib/supabase';
 
@@ -108,7 +109,10 @@ const Contact = () => {
         title="Contact Us - Automate Hub | Get in Touch for AI Automation Solutions"
         description="Contact Automate Hub for AI automation solutions. Get free consultation, custom automation recommendations, and expert guidance. Transform your business with our AI-powered automation services."
         keywords="contact automate hub, AI automation consultation, business automation contact, AI automation services, automation consultation, contact us automation"
+        ogImageAlt="Contact Automate Hub - AI Automation Solutions Contact Page"
+        canonicalUrl="https://automate-hub.com/contact"
       />
+      <StructuredData type="Organization" />
       
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

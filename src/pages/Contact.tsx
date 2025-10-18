@@ -40,6 +40,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    alert('FORM SUBMIT TRIGGERED!'); // TEST ALERT
     setSubmitSuccess(false);
 
     // Simple inline validation (like the working consultation form)
@@ -70,10 +71,12 @@ const Contact = () => {
     }
 
     if (Object.keys(newErrors).length > 0) {
+      alert('VALIDATION ERRORS: ' + JSON.stringify(newErrors)); // TEST ALERT
       setErrors(newErrors);
       return;
     }
 
+    alert('FORM VALIDATION PASSED - SUBMITTING TO SUPABASE'); // TEST ALERT
     // Form is valid, submit
     setIsSubmitting(true);
 
@@ -355,6 +358,9 @@ const Contact = () => {
                         boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                         transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
                         position: 'relative',
+                      }}
+                      onClick={() => {
+                        alert('BUTTON CLICKED!'); // TEST ALERT
                       }}
                       onMouseEnter={(e) => {
                         if (!isSubmitting) {

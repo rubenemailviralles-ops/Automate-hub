@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Target, BarChart3, Users, Zap, TrendingUp, ArrowLeft, CheckCircle, ArrowRight, Sparkles, Network } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
@@ -8,11 +8,12 @@ import SEO from '../components/SEO';
 import ServiceSchema from '../components/ServiceSchema';
 import FAQSchema from '../components/FAQSchema';
 import { useIsMobile } from '../utils/mobileDetection';
-import { navigateToHomeWithScroll } from '../utils/scrollToTop';
+import { navigateBackToHome } from '../utils/scrollToTop';
 
 const EmailOutreach = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
+  const location = useLocation();
   
   return (
     <div className="pt-20">
@@ -1045,7 +1046,7 @@ const EmailOutreach = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <button 
-              onClick={() => navigateToHomeWithScroll(navigate)}
+              onClick={() => navigateBackToHome(navigate, location.state)}
               className="inline-flex items-center text-gray-400 hover:text-white transition-all duration-300 hover-pop-text cursor-pointer"
             >
               <ArrowLeft className="mr-2 w-4 h-4" />

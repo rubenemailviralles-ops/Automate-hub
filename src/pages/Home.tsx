@@ -454,15 +454,15 @@ const Home = () => {
                     <ul className="space-y-3 text-gray-400">
                       <li className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                        <span><Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors">AI-powered websites</Link> that convert visitors into customers</span>
+                        <span><Link to="/website-creation" state={{ fromSection: 'why-choose-automate-hub' }} className="text-blue-400 hover:text-blue-300 transition-colors">AI-powered websites</Link> that convert visitors into customers</span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                        <span><Link to="/crm-integration" className="text-blue-400 hover:text-blue-300 transition-colors">Smart CRM integration</Link> for seamless data management</span>
+                        <span><Link to="/crm-integration" state={{ fromSection: 'why-choose-automate-hub' }} className="text-blue-400 hover:text-blue-300 transition-colors">Smart CRM integration</Link> for seamless data management</span>
                       </li>
                       <li className="flex items-start">
                         <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                        <span><Link to="/phone-callers" className="text-blue-400 hover:text-blue-300 transition-colors">AI phone agents</Link> and <Link to="/email-outreach" className="text-blue-400 hover:text-blue-300 transition-colors">email automation</Link> for outreach</span>
+                        <span><Link to="/phone-callers" state={{ fromSection: 'why-choose-automate-hub' }} className="text-blue-400 hover:text-blue-300 transition-colors">AI phone agents</Link> and <Link to="/email-outreach" state={{ fromSection: 'why-choose-automate-hub' }} className="text-blue-400 hover:text-blue-300 transition-colors">email automation</Link> for outreach</span>
                       </li>
                     </ul>
                   </div>

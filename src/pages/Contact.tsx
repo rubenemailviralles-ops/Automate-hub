@@ -125,95 +125,95 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
           {/* Left Side - Contact Info */}
-          <div className="space-y-10">
-            <div className="text-center lg:text-left">
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
+          <div className="space-y-8">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Contact <span className="text-blue-400">Us</span>
               </h1>
-              <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+              <p className="text-xl text-gray-300 mb-8">
                 Ready to automate your business? Let's talk about how we can help you save time and increase efficiency.
               </p>
             </div>
 
-            <div className="space-y-8">
-              <div className="flex items-center space-x-6 p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50">
-                <div className="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center">
-                  <Phone className="w-8 h-8 text-blue-400" />
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                  <Phone className="w-6 h-6 text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Phone</h3>
-                  <p className="text-gray-400 text-lg">(+27) 82 644 2575</p>
+                  <h3 className="text-lg font-semibold text-white">Phone</h3>
+                  <p className="text-gray-400">(+27) 82 644 2575</p>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-6 p-6 bg-gray-800/30 rounded-2xl border border-gray-700/50">
-                <div className="w-16 h-16 bg-blue-500/20 rounded-2xl flex items-center justify-center">
-                  <Mail className="w-8 h-8 text-blue-400" />
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
+                  <Mail className="w-6 h-6 text-blue-400" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">Email</h3>
-                  <p className="text-gray-400 text-lg">automate.hub1@gmail.com</p>
+                  <h3 className="text-lg font-semibold text-white">Email</h3>
+                  <p className="text-gray-400">automate.hub1@gmail.com</p>
                 </div>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-3xl p-8 border border-gray-700/50">
-              <h3 className="text-2xl font-bold text-white mb-6">What to Expect:</h3>
-              <ul className="space-y-4 text-gray-300">
-                <li className="flex items-start space-x-4">
-                  <div className="w-3 h-3 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-lg">Free consultation to understand your needs</span>
+            <div className="bg-gray-800/50 rounded-2xl p-6">
+              <h3 className="text-xl font-semibold text-white mb-4">What to Expect:</h3>
+              <ul className="space-y-3 text-gray-300">
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Free consultation to understand your needs</span>
                 </li>
-                <li className="flex items-start space-x-4">
-                  <div className="w-3 h-3 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-lg">Custom automation recommendations</span>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Custom automation recommendations</span>
                 </li>
-                <li className="flex items-start space-x-4">
-                  <div className="w-3 h-3 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-lg">Clear timeline and next steps</span>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>Clear timeline and next steps</span>
                 </li>
-                <li className="flex items-start space-x-4">
-                  <div className="w-3 h-3 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-lg">No pressure, just helpful guidance</span>
+                <li className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                  <span>No pressure, just helpful guidance</span>
                 </li>
               </ul>
             </div>
           </div>
 
           {/* Right Side - Contact Form */}
-          <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 backdrop-blur-sm rounded-3xl p-10 border border-gray-700/50 shadow-2xl">
+          <div className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50">
             {submitSuccess ? (
-              <div className="text-center py-16">
-                <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8">
-                  <Send className="w-10 h-10 text-green-400" />
+              <div className="text-center py-12">
+                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Send className="w-8 h-8 text-green-400" />
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-6">Message Sent!</h3>
-                <p className="text-gray-400 mb-8 text-lg">
+                <h3 className="text-2xl font-bold text-white mb-4">Message Sent!</h3>
+                <p className="text-gray-400 mb-6">
                   Thank you for your message! We'll get back to you within 24 hours.
                 </p>
                 <button
                   onClick={() => setSubmitSuccess(false)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold transition-colors text-lg"
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold transition-colors"
                 >
                   Send Another Message
                 </button>
               </div>
             ) : (
               <>
-                <div className="mb-10 text-center">
-                  <h2 className="text-3xl font-bold text-white mb-4">Send us a message</h2>
-                  <p className="text-gray-400 text-lg">
+                <div className="mb-8">
+                  <h2 className="text-2xl font-bold text-white mb-2">Send us a message</h2>
+                  <p className="text-gray-400">
                     Fill out the form and we'll contact you within 24 hours.
                   </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Full Name */}
-                  <div className="space-y-2">
-                    <label htmlFor="name" className="block text-sm font-semibold text-gray-300 mb-3">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
                       Full Name *
                     </label>
                     <input
@@ -222,21 +222,21 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full px-5 py-4 bg-gray-900/50 border rounded-2xl text-white placeholder-gray-500 focus:outline-none transition-all text-lg ${
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
                         errors.name 
                           ? 'border-red-500 focus:border-red-400' 
-                          : 'border-gray-600 focus:border-blue-400'
+                          : 'border-white/20 focus:border-white/40'
                       }`}
                       placeholder="John Doe"
                     />
                     {errors.name && (
-                      <p className="text-red-400 text-sm mt-2">{errors.name}</p>
+                      <p className="text-red-400 text-xs mt-1">{errors.name}</p>
                     )}
                   </div>
 
                   {/* Email Address */}
-                  <div className="space-y-2">
-                    <label htmlFor="email" className="block text-sm font-semibold text-gray-300 mb-3">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
                       Email Address *
                     </label>
                     <input
@@ -245,21 +245,21 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-5 py-4 bg-gray-900/50 border rounded-2xl text-white placeholder-gray-500 focus:outline-none transition-all text-lg ${
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
                         errors.email 
                           ? 'border-red-500 focus:border-red-400' 
-                          : 'border-gray-600 focus:border-blue-400'
+                          : 'border-white/20 focus:border-white/40'
                       }`}
                       placeholder="john@company.com"
                     />
                     {errors.email && (
-                      <p className="text-red-400 text-sm mt-2">{errors.email}</p>
+                      <p className="text-red-400 text-xs mt-1">{errors.email}</p>
                     )}
                   </div>
 
                   {/* Phone Number */}
-                  <div className="space-y-2">
-                    <label htmlFor="phone" className="block text-sm font-semibold text-gray-300 mb-3">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-2">
                       Phone Number *
                     </label>
                     <input
@@ -268,21 +268,21 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className={`w-full px-5 py-4 bg-gray-900/50 border rounded-2xl text-white placeholder-gray-500 focus:outline-none transition-all text-lg ${
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
                         errors.phone 
                           ? 'border-red-500 focus:border-red-400' 
-                          : 'border-gray-600 focus:border-blue-400'
+                          : 'border-white/20 focus:border-white/40'
                       }`}
                       placeholder="+1 (555) 123-4567"
                     />
                     {errors.phone && (
-                      <p className="text-red-400 text-sm mt-2">{errors.phone}</p>
+                      <p className="text-red-400 text-xs mt-1">{errors.phone}</p>
                     )}
                   </div>
 
                   {/* Company Name */}
-                  <div className="space-y-2">
-                    <label htmlFor="businessName" className="block text-sm font-semibold text-gray-300 mb-3">
+                  <div>
+                    <label htmlFor="businessName" className="block text-sm font-medium text-gray-400 mb-2">
                       Company Name *
                     </label>
                     <input
@@ -291,21 +291,21 @@ const Contact = () => {
                       name="businessName"
                       value={formData.businessName}
                       onChange={handleChange}
-                      className={`w-full px-5 py-4 bg-gray-900/50 border rounded-2xl text-white placeholder-gray-500 focus:outline-none transition-all text-lg ${
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
                         errors.businessName 
                           ? 'border-red-500 focus:border-red-400' 
-                          : 'border-gray-600 focus:border-blue-400'
+                          : 'border-white/20 focus:border-white/40'
                       }`}
                       placeholder="Your Company"
                     />
                     {errors.businessName && (
-                      <p className="text-red-400 text-sm mt-2">{errors.businessName}</p>
+                      <p className="text-red-400 text-xs mt-1">{errors.businessName}</p>
                     )}
                   </div>
 
                   {/* Message */}
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="block text-sm font-semibold text-gray-300 mb-3">
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
                       Message *
                     </label>
                     <textarea
@@ -313,36 +313,51 @@ const Contact = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full px-5 py-4 bg-gray-900/50 border rounded-2xl text-white placeholder-gray-500 focus:outline-none transition-all text-lg resize-none ${
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
                         errors.message 
                           ? 'border-red-500 focus:border-red-400' 
-                          : 'border-gray-600 focus:border-blue-400'
+                          : 'border-white/20 focus:border-white/40'
                       }`}
                       placeholder="Tell us about your automation needs..."
-                      rows={6}
+                      rows={5}
                     />
                     {errors.message && (
-                      <p className="text-red-400 text-sm mt-2">{errors.message}</p>
+                      <p className="text-red-400 text-xs mt-1">{errors.message}</p>
                     )}
                   </div>
 
                   {/* Submit Button */}
-                  <div className="pt-4">
+                  <div style={{ position: 'relative', zIndex: 10 }}>
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className={`w-full px-8 py-5 rounded-2xl font-bold flex items-center justify-center text-lg transition-all duration-300 ${
+                      className={`w-full px-6 py-4 rounded-xl font-bold flex items-center justify-center mt-6 ${
                         isSubmitting
                           ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                          : 'bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:from-blue-600 hover:to-blue-700 hover:scale-105 shadow-lg hover:shadow-xl'
+                          : 'bg-white text-black hover:bg-gray-100'
                       }`}
+                      style={{
+                        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                        transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
+                        position: 'relative',
+                      }}
+                      onMouseEnter={(e) => {
+                        if (!isSubmitting) {
+                          e.currentTarget.style.transform = 'scale(1.08) translateY(-2px)';
+                          e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(255, 255, 255, 0.3)';
+                        }
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'scale(1) translateY(0)';
+                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+                      }}
                     >
-                      <Send className="mr-3 w-5 h-5" aria-hidden="true" />
+                      <Send className="mr-2 w-4 h-4" aria-hidden="true" />
                       {isSubmitting ? 'Sending...' : 'Send Message'}
                     </button>
                   </div>
 
-                  <p className="text-sm text-gray-400 text-center pt-4">
+                  <p className="text-xs text-gray-500 text-center">
                     We'll respond within 24 hours during business hours
                   </p>
                 </form>

@@ -1441,6 +1441,11 @@ body.mobile-no-animations .animate-bounce {
   animation: none !important;
 }
 
+/* DISABLE floating orbs on mobile - causing seizure effect */
+body.mobile-no-animations .floating-orb {
+  display: none !important;
+}
+
 body.mobile-no-animations *:hover {
   transform: none !important;
   box-shadow: inherit !important;
@@ -1456,7 +1461,6 @@ body.mobile-no-animations .hover\:-translate-y-1 {
 /* KEEP these animations on mobile - they're smooth */
 /* .animate-fade-in - KEPT */
 /* .animate-fade-in-up - KEPT */
-/* .floating-orb (background orbs) - KEPT */
 /* .animate-pulse-slow - KEPT */
 
 /* ============================================

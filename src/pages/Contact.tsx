@@ -120,7 +120,7 @@ const Contact = () => {
       <StructuredData type="Organization" />
       
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 overflow-x-hidden">
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Left Side - Contact Info */}
           <div className="space-y-8">
@@ -203,7 +203,7 @@ const Contact = () => {
 
           {/* Right Side - Contact Form */}
             <div 
-              className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-gray-700/70"
+              className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 relative"
               style={{
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
               }}
@@ -358,7 +358,7 @@ const Contact = () => {
                       className={`w-full px-6 py-4 rounded-xl font-bold flex items-center justify-center mt-6 transition-all duration-300 ${
                         isSubmitting
                           ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                          : 'bg-white text-black hover:bg-gray-100 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl'
+                          : 'bg-white text-black hover:bg-gray-100 hover:-translate-y-2 hover:shadow-2xl'
                       }`}
                       style={{
                         boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

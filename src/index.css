@@ -1440,22 +1440,45 @@ body.mobile-no-animations .animate-slide-in-right,
 body.mobile-no-animations .animate-slide-in,
 body.mobile-no-animations .animate-bounce {
   animation: none !important;
+  transform: none !important;
 }
 
-/* KEEP fade-in and fade-in-up on mobile - they're smooth and not problematic */
-/* .animate-fade-in and .animate-fade-in-up are NOT disabled */
+/* EXPLICITLY ALLOW fade-in animations on mobile */
+body.mobile-no-animations .animate-fade-in {
+  animation: fadeIn 1.2s ease-out !important;
+}
+
+body.mobile-no-animations .animate-fade-in-up {
+  animation: fadeInUp 1.2s ease-out !important;
+}
 
 /* DISABLE PC floating orbs on mobile - they're not mobile-optimized */
 body.mobile-no-animations .floating-orb {
   display: none !important;
 }
 
+/* Disable hover effects on mobile */
+body.mobile-no-animations *:hover {
+  transform: none !important;
+  box-shadow: inherit !important;
+  border-color: inherit !important;
+}
+
+body.mobile-no-animations .hover\:-translate-y-2,
+body.mobile-no-animations .hover\:scale-105,
+body.mobile-no-animations .hover\:-translate-y-1 {
+  transition: none !important;
+}
+
+/* ============================================
+   MOBILE ORBS - Separate section, always active
+   ============================================ */
 /* Mobile orbs - hidden by default, only show on mobile */
 .mobile-orb {
   display: none;
 }
 
-/* NEW Mobile-optimized orbs - simpler animations */
+/* Show mobile orbs when mobile-no-animations class is active */
 body.mobile-no-animations .mobile-orb {
   display: block !important;
   position: fixed;
@@ -1472,7 +1495,7 @@ body.mobile-no-animations .mobile-orb-1 {
   background: radial-gradient(circle, rgba(99, 102, 241, 0.6) 0%, rgba(99, 102, 241, 0.3) 50%, transparent 80%);
   top: 10%;
   left: -50px;
-  animation: mobileFloat1 20s ease-in-out infinite;
+  animation: mobileFloat1 20s ease-in-out infinite !important;
 }
 
 body.mobile-no-animations .mobile-orb-2 {
@@ -1481,7 +1504,7 @@ body.mobile-no-animations .mobile-orb-2 {
   background: radial-gradient(circle, rgba(168, 85, 247, 0.5) 0%, rgba(168, 85, 247, 0.25) 50%, transparent 80%);
   top: 50%;
   right: -50px;
-  animation: mobileFloat2 25s ease-in-out infinite;
+  animation: mobileFloat2 25s ease-in-out infinite !important;
 }
 
 body.mobile-no-animations .mobile-orb-3 {
@@ -1490,7 +1513,7 @@ body.mobile-no-animations .mobile-orb-3 {
   background: radial-gradient(circle, rgba(236, 72, 153, 0.5) 0%, rgba(236, 72, 153, 0.25) 50%, transparent 80%);
   bottom: 15%;
   left: 10%;
-  animation: mobileFloat3 22s ease-in-out infinite;
+  animation: mobileFloat3 22s ease-in-out infinite !important;
 }
 
 /* Simple mobile orb animations - smooth float with fade in/out */
@@ -1556,23 +1579,6 @@ body.mobile-no-animations .mobile-orb-3 {
     opacity: 0;
   }
 }
-
-body.mobile-no-animations *:hover {
-  transform: none !important;
-  box-shadow: inherit !important;
-  border-color: inherit !important;
-}
-
-body.mobile-no-animations .hover\:-translate-y-2,
-body.mobile-no-animations .hover\:scale-105,
-body.mobile-no-animations .hover\:-translate-y-1 {
-  transition: none !important;
-}
-
-/* KEEP these animations on mobile - they're smooth */
-/* .animate-fade-in - KEPT */
-/* .animate-fade-in-up - KEPT */
-/* .animate-pulse-slow - KEPT */
 
 /* ============================================
    LOADING OPTIMIZATIONS

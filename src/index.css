@@ -1350,24 +1350,33 @@ select:focus-visible {
 }
 
 /* ============================================
-   MOBILE - DISABLE ALL HOVER EFFECTS
+   MOBILE - DISABLE POPUP HOVER EFFECTS ONLY
    ============================================ */
-/* On mobile, completely disable hover effects */
+/* On mobile, disable ONLY the popup transform effects that make things clickable */
 @media (max-width: 1023px) and (hover: none) and (pointer: coarse) {
-  /* Disable all hover transform effects on mobile */
-  .hover\:-translate-y-2:hover,
-  .hover\:scale-105:hover,
+  /* Disable hover transform popup effects on mobile */
+  .hover\:-translate-y-2:hover {
+    transform: none !important;
+  }
+  
+  .hover\:scale-105:hover {
+    transform: none !important;
+  }
+  
   .hover\:-translate-y-1:hover {
     transform: none !important;
   }
   
-  /* Disable hover shadows on mobile */
-  .hover\:shadow-2xl:hover,
-  .hover\:shadow-xl:hover {
-    box-shadow: none !important;
+  /* Disable hover shadows that trigger on click */
+  .hover\:shadow-2xl:hover {
+    box-shadow: inherit !important;
   }
   
-  /* Disable hover border effects on mobile */
+  .hover\:shadow-xl:hover {
+    box-shadow: inherit !important;
+  }
+  
+  /* Disable hover border color changes */
   .hover\:border-blue-500\/50:hover,
   .hover\:border-green-500\/50:hover,
   .hover\:border-red-500\/50:hover,
@@ -1379,9 +1388,12 @@ select:focus-visible {
     border-color: inherit !important;
   }
   
-  /* Remove tap highlight on mobile */
-  * {
+  /* Remove tap highlight that causes flash on click */
+  .hover\:-translate-y-2,
+  .hover\:scale-105,
+  .hover\:-translate-y-1 {
     -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
   }
 }
 

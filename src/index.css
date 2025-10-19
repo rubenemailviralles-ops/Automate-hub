@@ -1287,67 +1287,9 @@ select:focus-visible {
 }
 
 /* ============================================
-   ACCESSIBILITY: REDUCED MOTION
+   ACCESSIBILITY: REDUCED MOTION - DISABLED
    ============================================ */
-
-/* Respect user's reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  /* Disable background animations */
-  body::before {
-    animation: none !important;
-    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%) !important;
-  }
-
-  /* Keep floating orbs on mobile - they should work */
-  /* .floating-orb {
-    display: none !important;
-  } */
-
-  /* Keep essential animations but make them instant */
-        .hover-lift:hover {
-    transition: none !important;
-  }
-
-  /* Disable 3D transforms */
-    .mobile-3d-tilt {
-    transform: none !important;
-  }
-
-  /* Mobile scroll-reveal popup - disable click-based hover effects on mobile */
-  @media (hover: none) and (pointer: coarse) {
-    /* Disable hover effects that require mouse interaction */
-    .hover\:-translate-y-2:hover,
-    .hover\:scale-105:hover,
-    .hover\:-translate-y-1:hover {
-      transform: none !important;
-    }
-    
-    .hover\:shadow-2xl:hover,
-    .hover\:shadow-xl:hover {
-      box-shadow: none !important;
-    }
-    
-    .hover\:border-blue-500\/50:hover,
-    .hover\:border-green-500\/50:hover,
-    .hover\:border-red-500\/50:hover,
-    .hover\:border-white\/20:hover,
-    .hover\:border-indigo-500\/50:hover,
-    .hover\:border-purple-500\/50:hover,
-    .hover\:border-pink-500\/50:hover,
-    .hover\:border-orange-500\/50:hover {
-      border-color: inherit !important;
-    }
-  }
-}
+/* Animations work on all devices regardless of accessibility settings */
 
 /* ============================================
    MOBILE - DISABLE POPUP HOVER EFFECTS ONLY

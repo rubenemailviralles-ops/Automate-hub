@@ -109,7 +109,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-x-hidden">
       <SEO 
         title="Contact Us - Automate Hub | Get in Touch for AI Automation Solutions"
         description="Contact Automate Hub for AI automation solutions. Get free consultation, custom automation recommendations, and expert guidance. Transform your business with our AI-powered automation services."
@@ -136,7 +136,7 @@ const Contact = () => {
             <div className="space-y-6">
                 <div className="flex items-center space-x-4">
                   <div 
-                    className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-105"
+                    className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
                     style={{
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                     }}
@@ -151,7 +151,7 @@ const Contact = () => {
 
                 <div className="flex items-center space-x-4">
                   <div 
-                    className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-105"
+                    className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
                     style={{
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                     }}

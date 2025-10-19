@@ -67,26 +67,6 @@ function App() {
   // Remove external branding overlays
   useRemoveBoltBranding();
 
-  // Add mobile-no-animations class to body on mobile devices
-  useEffect(() => {
-    const isMobileDevice = window.innerWidth < 1024;
-    if (isMobileDevice) {
-      document.body.classList.add('mobile-no-animations');
-    } else {
-      document.body.classList.remove('mobile-no-animations');
-    }
-    
-    const handleResize = () => {
-      if (window.innerWidth < 1024) {
-        document.body.classList.add('mobile-no-animations');
-      } else {
-        document.body.classList.remove('mobile-no-animations');
-      }
-    };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   return (
     <Router>
@@ -95,7 +75,7 @@ function App() {
         Skip to main content
       </a>
       <div className="min-h-screen text-white relative">
-        {/* PC floating background orbs - hidden on mobile */}
+        {/* Floating background orbs */}
         <div className="floating-orb floating-orb-1" aria-hidden="true"></div>
         <div className="floating-orb floating-orb-2" aria-hidden="true"></div>
         <div className="floating-orb floating-orb-3" aria-hidden="true"></div>
@@ -103,11 +83,6 @@ function App() {
         <div className="floating-orb floating-orb-5" aria-hidden="true"></div>
         <div className="floating-orb floating-orb-6" aria-hidden="true"></div>
         <div className="floating-orb floating-orb-7" aria-hidden="true"></div>
-        
-        {/* Mobile-optimized orbs - simple animations, only show on mobile */}
-        <div className="mobile-orb mobile-orb-1" aria-hidden="true"></div>
-        <div className="mobile-orb mobile-orb-2" aria-hidden="true"></div>
-        <div className="mobile-orb mobile-orb-3" aria-hidden="true"></div>
         
         <Header />
         <Breadcrumbs />

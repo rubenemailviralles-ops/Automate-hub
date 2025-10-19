@@ -7,9 +7,15 @@ import SEO from '../components/SEO';
 import { useIsMobile } from '../utils/mobileDetection';
 import { supabase } from '../lib/supabase';
 import { navigateBackToHome } from '../utils/scrollToTop';
+import ConsultationBookingMobile from './ConsultationBookingMobile';
 
 const ConsultationBooking = () => {
   const isMobile = useIsMobile();
+  
+  // Show mobile version on mobile devices
+  if (isMobile) {
+    return <ConsultationBookingMobile />;
+  }
   const navigate = useNavigate();
   const location = useLocation();
   const [formData, setFormData] = useState({

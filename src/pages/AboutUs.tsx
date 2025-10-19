@@ -7,9 +7,15 @@ import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
 import { useIsMobile } from '../utils/mobileDetection';
 import { navigateBackToHome } from '../utils/scrollToTop';
+import AboutUsMobile from './AboutUsMobile';
 
 const AboutUs = () => {
   const isMobile = useIsMobile();
+  
+  // Show mobile version on mobile devices
+  if (isMobile) {
+    return <AboutUsMobile />;
+  }
   const navigate = useNavigate();
   const location = useLocation();
   

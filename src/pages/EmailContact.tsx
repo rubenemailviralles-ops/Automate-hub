@@ -204,35 +204,17 @@ const EmailContact = () => {
             </div>
 
             <div 
-              className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
+              className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20"
               style={{
-                transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                transition: 'transform 0.1s ease-out, border-color 0.3s, box-shadow 0.3s',
-                perspective: '1000px',
                 zIndex: 10,
                 isolation: 'isolate',
                 background: 'rgba(255, 255, 255, 0.05)',
                 backdropFilter: 'blur(10px)',
               }}
-              onMouseMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(30px)`;
-                e.currentTarget.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(0, 0, 0, 0.4)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
-              }}
             >
-              <h4 className="text-lg sm:text-xl font-bold text-white mb-4" style={{ transform: 'translateZ(15px)', position: 'relative', zIndex: 2 }}>What to Include in Your Email:</h4>
-              <ul className="space-y-3 text-gray-400 text-sm sm:text-base" style={{ transform: 'translateZ(15px)', position: 'relative', zIndex: 2 }}>
+              <h4 className="text-lg sm:text-xl font-bold text-white mb-4" style={{ position: 'relative', zIndex: 2 }}>What to Include in Your Email:</h4>
+              <ul className="space-y-3 text-gray-400 text-sm sm:text-base" style={{ position: 'relative', zIndex: 2 }}>
                 <li className="flex items-start">
                   <span className="text-blue-400 mr-3">•</span>
                   Your business name and industry

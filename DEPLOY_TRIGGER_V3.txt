@@ -1,0 +1,4 @@
+Trigger Netlify deploy - Mobile calculator v3 with inline styles
+Timestamp: 2025-10-19 13:57 UTC
+Changes: Mobile calculator rebuilt from scratch with inline styles, no Tailwind classes
+

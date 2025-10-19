@@ -6,6 +6,8 @@ import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
 import StructuredData from '../components/StructuredData';
+import ABTestWrapper from '../components/ABTestWrapper';
+import { HeroSectionVariations } from '../components/ABTestComponents';
 
 // Lazy load heavy components for better initial load performance
 const Calculator = lazy(() => import('../components/Calculator'));
@@ -213,51 +215,27 @@ const Home = () => {
       />
       <StructuredData type="Organization" />
       
-      {/* Hero Section */}
+      {/* Hero Section with A/B Testing */}
       <section className="py-16 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center">
-            <ScrollReveal delay={0}>
-              <div 
-                className="inline-flex items-center px-6 py-3 bg-white/10 border border-white/20 rounded-full mb-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-                style={{
-                  ...get3DStyles(),
-                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(255, 255, 255, 0.1)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
-                }}
-                {...getBadgeHoverHandlers()}
-              >
-                <Sparkles className="w-5 h-5 text-white mr-2" style={!isMobile ? { transform: 'translateZ(5px)' } : {}} />
-                <span className="text-white font-medium" style={!isMobile ? { transform: 'translateZ(5px)' } : {}}>{t('hero.title')}</span>
-              </div>
-            </ScrollReveal>
-
-            <TypeWriter 
-              text={t('hero.title')} 
-              as="h1"
-              className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight"
-              delay={100}
-              onComplete={() => setShowSecondLine(true)}
-            >
-            </TypeWriter>
-
-            <ScrollReveal delay={200}>
-              <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed">
-                {t('hero.subtitle')}
-              </p>
-            </ScrollReveal>
-
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-            </div>
-
-            <ScrollReveal delay={300}>
-              <div className="text-center max-w-3xl mx-auto">
-                <p className="text-base text-gray-400">
-                  Helping businesses streamline operations and reduce costs through intelligent automation solutions
+          <ABTestWrapper 
+            testName="Hero Section Optimization"
+            fallback={
+              <div className="text-center">
+                <h1 className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight">
+                  {t('hero.title')}
+                </h1>
+                <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed">
+                  {t('hero.subtitle')}
                 </p>
               </div>
-            </ScrollReveal>
-          </div>
+            }
+          >
+            {(variation, trackEvent) => {
+              const HeroComponent = HeroSectionVariations[variation.id as keyof typeof HeroSectionVariations] || HeroSectionVariations.control;
+              return <HeroComponent trackEvent={trackEvent} />;
+            }}
+          </ABTestWrapper>
         </div>
       </section>
 

@@ -22,6 +22,7 @@ const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
 const ConsultationBooking = lazy(() => import('./pages/ConsultationBooking'));
+const ABTestDashboard = lazy(() => import('./components/ABTestDashboard'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Component to handle scrolling to top on route change
@@ -94,6 +95,7 @@ function App() {
                 <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="/cookie-policy" element={<CookiePolicy />} />
                 <Route path="/book-consultation" element={<ConsultationBooking />} />
+                <Route path="/ab-testing" element={<ABTestDashboard />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>

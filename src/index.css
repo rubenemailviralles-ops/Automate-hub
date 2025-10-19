@@ -1431,22 +1431,33 @@ select:focus-visible {
 }
 
 /* ============================================
-   MOBILE NO ANIMATIONS - NUCLEAR OPTION
+   MOBILE NO ANIMATIONS - Kill hover/slide/scale but KEEP fade in/out
    ============================================ */
-/* When body has mobile-no-animations class, kill EVERYTHING */
-body.mobile-no-animations * {
+/* When body has mobile-no-animations class - kill problematic animations */
+body.mobile-no-animations .animate-slide-in-left,
+body.mobile-no-animations .animate-slide-in-right,
+body.mobile-no-animations .animate-slide-in,
+body.mobile-no-animations .animate-bounce {
   animation: none !important;
-  transition: none !important;
-  transform: none !important;
-  opacity: 1 !important;
 }
 
 body.mobile-no-animations *:hover {
   transform: none !important;
   box-shadow: inherit !important;
   border-color: inherit !important;
-  background-color: inherit !important;
 }
+
+body.mobile-no-animations .hover\:-translate-y-2,
+body.mobile-no-animations .hover\:scale-105,
+body.mobile-no-animations .hover\:-translate-y-1 {
+  transition: none !important;
+}
+
+/* KEEP these animations on mobile - they're smooth */
+/* .animate-fade-in - KEPT */
+/* .animate-fade-in-up - KEPT */
+/* .floating-orb (background orbs) - KEPT */
+/* .animate-pulse-slow - KEPT */
 
 /* ============================================
    LOADING OPTIMIZATIONS

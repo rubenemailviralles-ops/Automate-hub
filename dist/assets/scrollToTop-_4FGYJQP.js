@@ -1,0 +1,2 @@
+const r=()=>{window.scrollTo({top:0,behavior:"smooth"})},c=e=>{const o=document.getElementById(e);o&&o.scrollIntoView({behavior:"smooth",block:"start"})},l=(e,o)=>{const s=o==null?void 0:o.fromSection,t=s==="why-choose-automate-hub",m=s==="services";e("/"),setTimeout(()=>{t?c("why-choose-automate-hub"):m?c("services"):r()},100)};export{l as n,r as s};
+//# sourceMappingURL=scrollToTop-_4FGYJQP.js.map

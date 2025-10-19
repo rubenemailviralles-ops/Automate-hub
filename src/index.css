@@ -1301,10 +1301,11 @@ select:focus-visible {
     scroll-behavior: auto !important;
   }
 
-  /* Disable background animations */
+  /* Disable background animations and simplify background */
   body::before {
     animation: none !important;
-    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%) !important;
+    background: #000000 !important; /* Solid black, no gradients */
+    background-size: 100% 100% !important;
   }
 
   /* Disable floating orbs */

@@ -1361,8 +1361,10 @@ select:focus-visible {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.6s ease-out !important;
-    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
-    pointer-events: auto; /* Ensure children can receive events */
+    -webkit-tap-highlight-color: transparent !important; /* Remove tap highlight on mobile */
+    -webkit-touch-callout: none !important; /* Disable callout on iOS */
+    -webkit-user-select: none !important; /* Prevent text selection */
+    user-select: none !important;
   }
   
   /* When element is in view, apply the popup effect */
@@ -1380,18 +1382,24 @@ select:focus-visible {
   .hover\:-translate-y-2 a,
   .hover\:-translate-y-2 select,
   .hover\:-translate-y-2 textarea,
+  .hover\:-translate-y-2 label,
   .hover\:scale-105 input,
   .hover\:scale-105 button,
   .hover\:scale-105 a,
   .hover\:scale-105 select,
   .hover\:scale-105 textarea,
+  .hover\:scale-105 label,
   .hover\:-translate-y-1 input,
   .hover\:-translate-y-1 button,
   .hover\:-translate-y-1 a,
   .hover\:-translate-y-1 select,
-  .hover\:-translate-y-1 textarea {
+  .hover\:-translate-y-1 textarea,
+  .hover\:-translate-y-1 label {
     pointer-events: auto !important;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1) !important;
+    -webkit-touch-callout: default !important;
+    -webkit-user-select: text !important;
+    user-select: text !important;
     touch-action: auto !important;
   }
   

@@ -1307,10 +1307,10 @@ select:focus-visible {
     background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%) !important;
   }
 
-  /* Disable floating orbs */
-  .floating-orb {
+  /* Keep floating orbs on mobile - they should work */
+  /* .floating-orb {
     display: none !important;
-  }
+  } */
 
   /* Keep essential animations but make them instant */
         .hover-lift:hover {
@@ -1354,17 +1354,18 @@ select:focus-visible {
    ============================================ */
 /* On mobile, COMPLETELY disable hover effects and clickable containers */
 @media (max-width: 1023px), (hover: none) and (pointer: coarse) {
-  /* COMPLETELY disable hover effects - no transforms, no shadows, nothing */
+  /* Only disable hover effects on mobile - everything else works normally */
   .hover\:-translate-y-2:hover,
   .hover\:scale-105:hover,
-  .hover\:-translate-y-1:hover,
+  .hover\:-translate-y-1:hover {
+    transform: none !important;
+  }
+  
   .hover\:shadow-2xl:hover,
   .hover\:shadow-xl:hover {
-    transform: none !important;
     box-shadow: none !important;
   }
   
-  /* Disable ALL hover border effects */
   .hover\:border-blue-500\/50:hover,
   .hover\:border-green-500\/50:hover,
   .hover\:border-red-500\/50:hover,
@@ -1379,55 +1380,9 @@ select:focus-visible {
     background-color: inherit !important;
   }
   
-  /* Make containers completely non-interactive but allow children to work */
-  .hover\:-translate-y-2,
-  .hover\:scale-105,
-  .hover\:-translate-y-1 {
+  /* Remove tap highlight */
+  * {
     -webkit-tap-highlight-color: transparent !important;
-    -webkit-touch-callout: none !important;
-    pointer-events: auto !important; /* Container can pass events to children */
-  }
-  
-  /* Ensure interactive children still work */
-  .hover\:-translate-y-2 input,
-  .hover\:-translate-y-2 button,
-  .hover\:-translate-y-2 a,
-  .hover\:-translate-y-2 select,
-  .hover\:-translate-y-2 textarea,
-  .hover\:scale-105 input,
-  .hover\:scale-105 button,
-  .hover\:scale-105 a,
-  .hover\:scale-105 select,
-  .hover\:scale-105 textarea,
-  .hover\:-translate-y-1 input,
-  .hover\:-translate-y-1 button,
-  .hover\:-translate-y-1 a,
-  .hover\:-translate-y-1 select,
-  .hover\:-translate-y-1 textarea {
-    pointer-events: auto !important;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1) !important;
-  }
-  
-  /* Disable pulse animations on mobile */
-  .animate-pulse-slow {
-    animation: none !important;
-  }
-  
-  /* Disable slide-in animations on mobile - causing flickering */
-  /* But KEEP fade-in animations - they're smooth */
-  .animate-slide-in-left,
-  .animate-slide-in-right,
-  .animate-slide-in {
-    animation: none !important;
-    transform: none !important;
-  }
-  
-  /* KEEP animate-fade-in and animate-fade-in-up on mobile - DO NOT override opacity */
-  /* Let ScrollReveal handle opacity transitions */
-  
-  /* Disable transition-colors on links */
-  .transition-colors {
-    transition: none !important;
   }
 }
 

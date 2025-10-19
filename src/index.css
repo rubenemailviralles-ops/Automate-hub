@@ -168,7 +168,8 @@
     background: radial-gradient(circle, rgba(99, 102, 241, 0.8) 0%, rgba(99, 102, 241, 0.4) 30%, rgba(99, 102, 241, 0.1) 60%, transparent 80%);
     top: 10%;
     left: 10%;
-    animation: orbFloat1 18s ease-in-out infinite;
+    animation: orbFloat1 25s ease-in-out infinite;
+    animation-delay: 0s;
     box-shadow: 0 0 150px rgba(99, 102, 241, 0.6), 0 0 80px rgba(99, 102, 241, 0.4);
   }
 
@@ -178,8 +179,8 @@
     background: radial-gradient(circle, rgba(168, 85, 247, 0.7) 0%, rgba(168, 85, 247, 0.35) 30%, rgba(168, 85, 247, 0.1) 60%, transparent 80%);
     top: 60%;
     right: 10%;
-    animation: orbFloat2 22s ease-in-out infinite;
-    animation-delay: -5s;
+    animation: orbFloat2 28s ease-in-out infinite;
+    animation-delay: -8s;
     box-shadow: 0 0 180px rgba(168, 85, 247, 0.5), 0 0 100px rgba(168, 85, 247, 0.4);
   }
 
@@ -189,8 +190,8 @@
     background: radial-gradient(circle, rgba(236, 72, 153, 0.7) 0%, rgba(236, 72, 153, 0.35) 30%, rgba(236, 72, 153, 0.1) 60%, transparent 80%);
     bottom: 20%;
     left: 20%;
-    animation: orbFloat3 16s ease-in-out infinite;
-    animation-delay: -8s;
+    animation: orbFloat3 22s ease-in-out infinite;
+    animation-delay: -14s;
     box-shadow: 0 0 130px rgba(236, 72, 153, 0.5), 0 0 70px rgba(236, 72, 153, 0.4);
   }
 
@@ -200,8 +201,8 @@
     background: radial-gradient(circle, rgba(59, 130, 246, 0.7) 0%, rgba(59, 130, 246, 0.35) 30%, rgba(59, 130, 246, 0.1) 60%, transparent 80%);
     top: 30%;
     right: 30%;
-    animation: orbFloat4 20s ease-in-out infinite;
-    animation-delay: -12s;
+    animation: orbFloat4 26s ease-in-out infinite;
+    animation-delay: -18s;
     box-shadow: 0 0 160px rgba(59, 130, 246, 0.5), 0 0 90px rgba(59, 130, 246, 0.4);
   }
   
@@ -342,208 +343,235 @@
   }
 }
 
-/* Advanced orb animations with collision effects and dynamic movement */
+/* Advanced orb animations - Galaxies colliding across screen */
 @keyframes orbFloat1 {
   0% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.7;
+    transform: translate(0vw, 0vh) scale(1);
+    opacity: 0;
     filter: blur(50px);
   }
-  8% {
-    transform: translate(30px, -40px) scale(1.05);
-    opacity: 0.85;
+  5% {
+    opacity: 0.7;
   }
   15% {
-    transform: translate(60px, -60px) scale(1.1);
-    opacity: 0.95;
+    transform: translate(25vw, -15vh) scale(1.1);
+    opacity: 0.85;
     filter: blur(45px);
   }
-  22% {
-    /* Collision moment - distortion */
-    transform: translate(80px, -70px) scale(1.15, 0.95) skew(-8deg, 0deg);
-    opacity: 1;
-    filter: blur(35px) brightness(1.3);
-  }
-  28% {
-    /* Recovery from collision */
-    transform: translate(90px, -65px) scale(1.08, 1.05) skew(-3deg, 0deg);
-    filter: blur(42px) brightness(1.1);
+  25% {
+    /* Moving toward collision point */
+    transform: translate(35vw, -10vh) scale(1.15);
+    opacity: 0.95;
+    filter: blur(40px);
   }
   35% {
-    transform: translate(85px, -50px) scale(1);
-    opacity: 0.8;
-    filter: blur(50px);
+    /* COLLISION - Galaxy crash with orb 2 */
+    transform: translate(40vw, -5vh) scale(1.25, 0.85) skew(-12deg, 5deg);
+    opacity: 1;
+    filter: blur(30px) brightness(1.5) saturate(1.8);
+  }
+  42% {
+    /* Recovery ripple */
+    transform: translate(42vw, -3vh) scale(1.1, 1.08) skew(-5deg, 2deg);
+    filter: blur(38px) brightness(1.3);
   }
   50% {
-    transform: translate(40px, -20px) scale(0.95);
-    opacity: 0.6;
+    /* Move away from collision */
+    transform: translate(50vw, 10vh) scale(1);
+    opacity: 0.75;
+    filter: blur(50px);
   }
   65% {
-    transform: translate(-20px, -45px) scale(1.05);
-    opacity: 0.85;
+    transform: translate(20vw, 25vh) scale(0.95);
+    opacity: 0.5;
   }
-  80% {
-    transform: translate(-30px, -30px) scale(1);
-    opacity: 0.75;
+  75% {
+    transform: translate(-10vw, 15vh) scale(1.05);
+    opacity: 0.8;
+  }
+  90% {
+    transform: translate(-5vw, 5vh) scale(1);
+    opacity: 0.7;
+  }
+  95% {
+    opacity: 0.3;
   }
   100% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.7;
+    transform: translate(0vw, 0vh) scale(1);
+    opacity: 0;
     filter: blur(50px);
   }
 }
 
 @keyframes orbFloat2 {
   0% {
-    transform: translate(0px, 0px) scale(1) rotate(0deg);
-    opacity: 0.65;
+    transform: translate(0vw, 0vh) scale(1) rotate(0deg);
+    opacity: 0;
     filter: blur(50px);
   }
-  12% {
-    transform: translate(-40px, 30px) scale(1.08) rotate(15deg);
-    opacity: 0.8;
+  8% {
+    opacity: 0.65;
   }
-  20% {
-    /* Pre-collision build up */
-    transform: translate(-70px, 50px) scale(1.12) rotate(25deg);
-    opacity: 0.9;
+  18% {
+    transform: translate(-30vw, 20vh) scale(1.12) rotate(25deg);
+    opacity: 0.8;
     filter: blur(45px);
   }
-  25% {
-    /* Collision with orb1 - massive distortion */
-    transform: translate(-85px, 60px) scale(0.95, 1.2) rotate(35deg) skew(10deg, -5deg);
+  28% {
+    /* Approaching collision point */
+    transform: translate(-40vw, 15vh) scale(1.18) rotate(35deg);
+    opacity: 0.9;
+    filter: blur(42px);
+  }
+  35% {
+    /* COLLISION with orb 1 - Universe crash */
+    transform: translate(-38vw, 10vh) scale(0.9, 1.3) rotate(45deg) skew(15deg, -8deg);
     opacity: 1;
-    filter: blur(30px) brightness(1.4) saturate(1.5);
+    filter: blur(28px) brightness(1.6) saturate(1.9);
   }
-  32% {
-    /* Bounce back */
-    transform: translate(-75px, 48px) scale(1.05, 0.98) rotate(20deg);
-    filter: blur(40px) brightness(1.2);
+  43% {
+    /* Bounce away with ripple */
+    transform: translate(-35vw, 8vh) scale(1.12, 0.95) rotate(38deg);
+    filter: blur(35px) brightness(1.4);
   }
-  40% {
-    transform: translate(-50px, 35px) scale(1) rotate(10deg);
-    opacity: 0.75;
+  52% {
+    transform: translate(-25vw, -5vh) scale(1) rotate(20deg);
+    opacity: 0.7;
     filter: blur(50px);
   }
-  55% {
-    transform: translate(0px, -20px) scale(0.92) rotate(-5deg);
+  65% {
+    transform: translate(10vw, -20vh) scale(0.9) rotate(-10deg);
     opacity: 0.55;
   }
-  70% {
-    transform: translate(35px, -40px) scale(1.05) rotate(-15deg);
+  78% {
+    transform: translate(30vw, -30vh) scale(1.08) rotate(-25deg);
     opacity: 0.8;
   }
-  85% {
-    transform: translate(25px, -20px) scale(1) rotate(-8deg);
-    opacity: 0.7;
+  92% {
+    transform: translate(10vw, -10vh) scale(1) rotate(-5deg);
+    opacity: 0.6;
+  }
+  97% {
+    opacity: 0.2;
   }
   100% {
-    transform: translate(0px, 0px) scale(1) rotate(0deg);
-    opacity: 0.65;
+    transform: translate(0vw, 0vh) scale(1) rotate(0deg);
+    opacity: 0;
     filter: blur(50px);
   }
 }
 
 @keyframes orbFloat3 {
   0% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.7;
+    transform: translate(0vw, 0vh) scale(1);
+    opacity: 0;
     filter: blur(50px) hue-rotate(0deg);
   }
-  10% {
-    transform: translate(25px, 40px) scale(1.1);
-    opacity: 0.9;
+  7% {
+    opacity: 0.7;
   }
-  18% {
-    transform: translate(45px, 70px) scale(1.15);
-    opacity: 0.95;
+  16% {
+    transform: translate(20vw, 30vh) scale(1.15);
+    opacity: 0.9;
     filter: blur(42px) hue-rotate(10deg);
   }
-  25% {
-    transform: translate(60px, 85px) scale(1.2);
+  24% {
+    /* Drifting toward center */
+    transform: translate(35vw, 40vh) scale(1.2);
+    opacity: 0.95;
+  }
+  32% {
+    /* COLLISION - Massive galaxy impact */
+    transform: translate(40vw, 35vh) scale(1.3, 0.88) skew(18deg, -12deg);
     opacity: 1;
+    filter: blur(25px) brightness(1.7) saturate(2.0) hue-rotate(20deg);
   }
-  30% {
-    /* Collision distortion */
-    transform: translate(70px, 90px) scale(1.25, 0.9) skew(12deg, -8deg);
-    opacity: 1;
-    filter: blur(32px) brightness(1.5) saturate(1.6) hue-rotate(15deg);
+  40% {
+    /* Recovery wave */
+    transform: translate(42vw, 32vh) scale(1.15, 1.05) skew(8deg, -5deg);
+    filter: blur(35px) brightness(1.4) hue-rotate(12deg);
   }
-  37% {
-    /* Recovery */
-    transform: translate(65px, 80px) scale(1.1, 1.05);
-    filter: blur(45px) brightness(1.2) hue-rotate(8deg);
-  }
-  45% {
-    transform: translate(45px, 60px) scale(1);
+  48% {
+    transform: translate(45vw, 25vh) scale(1);
     opacity: 0.8;
     filter: blur(50px) hue-rotate(0deg);
   }
-  60% {
-    transform: translate(-15px, 20px) scale(0.9);
+  62% {
+    transform: translate(15vw, -10vh) scale(0.92);
     opacity: 0.5;
   }
-  75% {
-    transform: translate(-35px, 50px) scale(1.05);
+  76% {
+    transform: translate(-20vw, -25vh) scale(1.08);
     opacity: 0.85;
   }
-  90% {
-    transform: translate(-15px, 25px) scale(1);
-    opacity: 0.75;
+  88% {
+    transform: translate(-8vw, -10vh) scale(1);
+    opacity: 0.65;
+  }
+  96% {
+    opacity: 0.25;
   }
   100% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.7;
+    transform: translate(0vw, 0vh) scale(1);
+    opacity: 0;
     filter: blur(50px) hue-rotate(0deg);
   }
 }
 
 @keyframes orbFloat4 {
   0% {
-    transform: translate(0px, 0px) scale(1) rotate(0deg);
-    opacity: 0.68;
+    transform: translate(0vw, 0vh) scale(1) rotate(0deg);
+    opacity: 0;
     filter: blur(50px);
+  }
+  6% {
+    opacity: 0.68;
   }
   14% {
-    transform: translate(-35px, -50px) scale(1.1) rotate(-20deg);
-    opacity: 0.88;
-  }
-  22% {
-    transform: translate(-55px, -80px) scale(1.15) rotate(-30deg);
-    opacity: 0.95;
+    transform: translate(-25vw, -30vh) scale(1.12) rotate(-25deg);
+    opacity: 0.85;
     filter: blur(43px);
   }
-  28% {
-    /* Collision moment */
-    transform: translate(-70px, -95px) scale(0.9, 1.25) rotate(-40deg) skew(-10deg, 8deg);
+  22% {
+    /* Racing toward collision */
+    transform: translate(-35vw, -20vh) scale(1.18) rotate(-35deg);
+    opacity: 0.95;
+    filter: blur(38px);
+  }
+  30% {
+    /* COLLISION with orb 3 - Epic galaxy crash */
+    transform: translate(-40vw, -12vh) scale(0.85, 1.32) rotate(-48deg) skew(-15deg, 10deg);
     opacity: 1;
-    filter: blur(28px) brightness(1.5) saturate(1.7);
+    filter: blur(24px) brightness(1.8) saturate(2.1);
   }
-  35% {
-    /* Recovery wave */
-    transform: translate(-62px, -85px) scale(1.08, 1.02) rotate(-25deg);
-    filter: blur(40px) brightness(1.3);
+  38% {
+    /* Shockwave recovery */
+    transform: translate(-38vw, -10vh) scale(1.1, 1.05) rotate(-35deg);
+    filter: blur(32px) brightness(1.5);
   }
-  42% {
-    transform: translate(-45px, -65px) scale(1) rotate(-15deg);
-    opacity: 0.78;
+  46% {
+    transform: translate(-30vw, -5vh) scale(1) rotate(-20deg);
+    opacity: 0.75;
     filter: blur(50px);
   }
-  56% {
-    transform: translate(15px, -30px) scale(0.93) rotate(5deg);
+  58% {
+    transform: translate(-10vw, 15vh) scale(0.9) rotate(5deg);
     opacity: 0.58;
   }
-  68% {
-    transform: translate(50px, -60px) scale(1.08) rotate(18deg);
-    opacity: 0.85;
+  70% {
+    transform: translate(15vw, 35vh) scale(1.1) rotate(22deg);
+    opacity: 0.82;
   }
-  82% {
-    transform: translate(30px, -40px) scale(1.02) rotate(10deg);
-    opacity: 0.73;
+  84% {
+    transform: translate(25vw, 20vh) scale(1) rotate(12deg);
+    opacity: 0.7;
+  }
+  94% {
+    opacity: 0.3;
   }
   100% {
-    transform: translate(0px, 0px) scale(1) rotate(0deg);
-    opacity: 0.68;
+    transform: translate(0vw, 0vh) scale(1) rotate(0deg);
+    opacity: 0;
     filter: blur(50px);
   }
 }
@@ -1071,4 +1099,7 @@ select:focus-visible {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   transform: translateZ(0);
+}
+}
+}
 }

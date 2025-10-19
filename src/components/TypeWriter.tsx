@@ -20,26 +20,9 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Check if mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   // Intersection Observer to detect when element is in viewport
   useEffect(() => {
-    // Skip animation on mobile - instant render
-    if (isMobile) {
-      setIsVisible(true);
-      if (onComplete) onComplete();
-      return;
-    }
     const currentElement = elementRef.current;
     
     const observer = new IntersectionObserver(
@@ -71,13 +54,13 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
         observer.unobserve(currentElement);
       }
     };
-  }, [isMobile, onComplete]);
+  }, [onComplete]);
 
   return (
     <Component 
       ref={elementRef as any} 
       className={className}
-      style={isMobile ? {} : { 
+      style={{ 
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
         transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',

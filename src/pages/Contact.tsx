@@ -121,10 +121,10 @@ const Contact = () => {
       
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Left Side - Contact Info */}
           <div className="space-y-8">
-            <ScrollReveal delay={100}>
+            <ScrollReveal delay={0}>
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   Contact <span className="text-blue-400">Us</span>
@@ -136,7 +136,7 @@ const Contact = () => {
             </ScrollReveal>
 
             <div className="space-y-6">
-              <ScrollReveal delay={200}>
+              <ScrollReveal delay={0}>
                 <div className="flex items-center space-x-4">
                   <div 
                     className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-105"
@@ -153,7 +153,7 @@ const Contact = () => {
                 </div>
               </ScrollReveal>
 
-              <ScrollReveal delay={300}>
+              <ScrollReveal delay={0}>
                 <div className="flex items-center space-x-4">
                   <div 
                     className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-105"
@@ -171,7 +171,7 @@ const Contact = () => {
               </ScrollReveal>
             </div>
 
-            <ScrollReveal delay={400}>
+            <ScrollReveal delay={0}>
               <div 
                 className="bg-gray-800/50 rounded-2xl p-6 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-gray-700/70 border border-transparent"
                 style={{
@@ -210,7 +210,7 @@ const Contact = () => {
           </div>
 
           {/* Right Side - Contact Form */}
-          <ScrollReveal delay={500}>
+          <ScrollReveal delay={0}>
             <div 
               className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-gray-700/70"
               style={{
@@ -364,25 +364,13 @@ const Contact = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className={`w-full px-6 py-4 rounded-xl font-bold flex items-center justify-center mt-6 ${
+                      className={`w-full px-6 py-4 rounded-xl font-bold flex items-center justify-center mt-6 transition-all duration-300 ${
                         isSubmitting
                           ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                          : 'bg-white text-black hover:bg-gray-100'
+                          : 'bg-white text-black hover:bg-gray-100 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl'
                       }`}
                       style={{
                         boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                        transition: 'transform 0.3s ease-out, background-color 0.3s, box-shadow 0.3s ease-out',
-                        position: 'relative',
-                      }}
-                      onMouseEnter={(e) => {
-                        if (!isSubmitting) {
-                          e.currentTarget.style.transform = 'scale(1.08) translateY(-2px)';
-                          e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(255, 255, 255, 0.3)';
-                        }
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'scale(1) translateY(0)';
-                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
                       }}
                     >
                       <Send className="mr-2 w-4 h-4" aria-hidden="true" />

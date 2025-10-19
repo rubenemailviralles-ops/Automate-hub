@@ -372,12 +372,12 @@
     /* COLLISION - Galaxy impact with distortion */
     transform: translate(420px, -190px) scale(1.28, 0.88) skew(-10deg, 4deg);
     opacity: 1;
-    filter: blur(32px) brightness(1.6) saturate(1.9);
+    filter: blur(32px) brightness(2.2) saturate(1.9);
   }
   34% {
     /* Shockwave ripple */
     transform: translate(440px, -185px) scale(1.15, 1.08) skew(-4deg, 1deg);
-    filter: blur(38px) brightness(1.35) saturate(1.5);
+    filter: blur(38px) brightness(1.7) saturate(1.5);
   }
   40% {
     /* Recovery phase */
@@ -445,12 +445,12 @@
     /* COLLISION - Massive galaxy crash */
     transform: translate(-420px, 240px) scale(0.92, 1.32) rotate(52deg) skew(14deg, -7deg);
     opacity: 1;
-    filter: blur(28px) brightness(1.7) saturate(2.0);
+    filter: blur(28px) brightness(2.5) saturate(2.0);
   }
   36% {
     /* Ripple effect */
     transform: translate(-410px, 235px) scale(1.12, 1.05) rotate(45deg) skew(6deg, -3deg);
-    filter: blur(35px) brightness(1.45) saturate(1.7);
+    filter: blur(35px) brightness(1.8) saturate(1.7);
   }
   43% {
     /* Drifting away */
@@ -518,12 +518,12 @@
     /* EPIC COLLISION with orb4 - Universe merge */
     transform: translate(340px, 380px) scale(1.35, 0.85) skew(16deg, -10deg);
     opacity: 1;
-    filter: blur(26px) brightness(1.8) saturate(2.2) hue-rotate(25deg);
+    filter: blur(26px) brightness(2.8) saturate(2.2) hue-rotate(25deg);
   }
   36% {
     /* Energy burst ripple */
     transform: translate(350px, 375px) scale(1.18, 1.1) skew(8deg, -4deg);
-    filter: blur(32px) brightness(1.55) saturate(1.9) hue-rotate(18deg);
+    filter: blur(32px) brightness(2.0) saturate(1.9) hue-rotate(18deg);
   }
   42% {
     /* Separating */
@@ -591,12 +591,12 @@
     /* COLLISION - Epic galaxy impact */
     transform: translate(-350px, -380px) scale(0.88, 1.38) rotate(-58deg) skew(-18deg, 12deg);
     opacity: 1;
-    filter: blur(24px) brightness(1.85) saturate(2.3);
+    filter: blur(24px) brightness(3.0) saturate(2.3);
   }
   37% {
     /* Shockwave recovery */
     transform: translate(-340px, -372px) scale(1.14, 1.06) rotate(-50deg) skew(-8deg, 5deg);
-    filter: blur(30px) brightness(1.6) saturate(2.0);
+    filter: blur(30px) brightness(2.1) saturate(2.0);
   }
   44% {
     /* Bouncing away */

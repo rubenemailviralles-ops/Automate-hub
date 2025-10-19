@@ -72,6 +72,9 @@ function App() {
         <div className="floating-orb floating-orb-2" aria-hidden="true"></div>
         <div className="floating-orb floating-orb-3" aria-hidden="true"></div>
         <div className="floating-orb floating-orb-4" aria-hidden="true"></div>
+        <div className="floating-orb floating-orb-5" aria-hidden="true"></div>
+        <div className="floating-orb floating-orb-6" aria-hidden="true"></div>
+        <div className="floating-orb floating-orb-7" aria-hidden="true"></div>
         
         <Header />
         <Breadcrumbs />

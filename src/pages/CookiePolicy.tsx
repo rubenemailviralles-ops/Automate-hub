@@ -29,7 +29,7 @@ const CookiePolicy = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
             <div 
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500/20 to-red-600/20 border border-orange-500/30 rounded-full mb-8 backdrop-blur-sm mobile-3d-tilt"
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-orange-500/20 to-red-600/20 border border-orange-500/30 rounded-full mb-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(249, 115, 22, 0.2)',
@@ -68,7 +68,7 @@ const CookiePolicy = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-gradient-to-r from-orange-500/10 to-red-600/10 border border-orange-500/30 rounded-2xl p-6 max-w-2xl mx-auto mobile-3d-tilt relative"
+                className="bg-gradient-to-r from-orange-500/10 to-red-600/10 border border-orange-500/30 rounded-2xl p-6 max-w-2xl mx-auto transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

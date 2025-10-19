@@ -211,7 +211,7 @@ const Header = () => {
                   id="services-dropdown"
                   role="menu"
                   aria-label="Services menu"
-                  className={`absolute top-full left-0 mt-2 w-64 bg-black/80 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl py-2 hover-pop dropdown-menu dropdown-fade-in ${
+                  className={`absolute top-full left-0 mt-2 w-64 bg-black/80 backdrop-blur-xl border border-white/20 rounded-xl shadow-2xl py-2 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dropdown-menu dropdown-fade-in ${
                     isAnimating ? 'dropdown-falling' : ''
                   }`}
                 >
@@ -220,7 +220,7 @@ const Header = () => {
                       key={service.path}
                       to={service.path}
                       role="menuitem"
-                      className="block px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300 hover-pop-subtle"
+                      className="block px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                       onClick={(e) => {
                         handleServiceClick(service.path, e);
                         if (service.path === '/website-creation') handleWebsiteCreationClick(e);
@@ -266,7 +266,7 @@ const Header = () => {
             <Link 
               to="/book-consultation"
               onClick={handleBookConsultationClick}
-              className={`bg-white text-black hover:bg-gray-100 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 hover-pop-button nav-item ${
+              className={`bg-white text-black hover:bg-gray-100 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl nav-item ${
                 isAnimating ? 'nav-item-animating' : ''
               }`}
               data-nav-item="consultation"

@@ -42,7 +42,7 @@ const WebsiteCreation = () => {
           <div className="text-center">
             <ScrollReveal delay={0}>
               <div 
-                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm mobile-3d-tilt"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(59, 130, 246, 0.2)',
@@ -84,7 +84,7 @@ const WebsiteCreation = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12 mobile-3d-tilt relative"
+                className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -241,7 +241,7 @@ const WebsiteCreation = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
             <ScrollReveal delay={100}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -287,7 +287,7 @@ const WebsiteCreation = () => {
 
             <ScrollReveal delay={200}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -333,7 +333,7 @@ const WebsiteCreation = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -379,7 +379,7 @@ const WebsiteCreation = () => {
 
             <ScrollReveal delay={400}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -425,7 +425,7 @@ const WebsiteCreation = () => {
 
             <ScrollReveal delay={500}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -471,7 +471,7 @@ const WebsiteCreation = () => {
 
             <ScrollReveal delay={600}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -600,7 +600,7 @@ const WebsiteCreation = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12" style={{ perspective: '1000px' }}>
             <ScrollReveal delay={200}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -672,7 +672,7 @@ const WebsiteCreation = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

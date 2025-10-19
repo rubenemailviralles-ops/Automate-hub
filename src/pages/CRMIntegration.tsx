@@ -41,7 +41,7 @@ const CRMIntegration = () => {
           <div className="text-center">
             <ScrollReveal delay={0}>
               <div 
-                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500/20 to-pink-600/20 border border-purple-500/30 rounded-full mb-8 backdrop-blur-sm mobile-3d-tilt"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500/20 to-pink-600/20 border border-purple-500/30 rounded-full mb-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(168, 85, 247, 0.2)',
@@ -83,7 +83,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-gradient-to-r from-purple-500/10 to-pink-600/10 border border-purple-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12 mobile-3d-tilt relative"
+                className="bg-gradient-to-r from-purple-500/10 to-pink-600/10 border border-purple-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -298,7 +298,7 @@ const CRMIntegration = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* AI Chatbot */}
             <ScrollReveal delay={100}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
                   <MessageSquare className="w-8 h-8 text-white" />
                 </div>
@@ -336,7 +336,7 @@ const CRMIntegration = () => {
 
             {/* Appointment Setting */}
             <ScrollReveal delay={200}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-green-600 rounded-2xl flex items-center justify-center mb-6">
                   <Calendar className="w-8 h-8 text-white" />
                 </div>
@@ -374,7 +374,7 @@ const CRMIntegration = () => {
 
             {/* Customer Support */}
             <ScrollReveal delay={300}>
-              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 hover-pop transition-all duration-300">
+              <div className="bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl flex items-center justify-center mb-6">
                   <Headphones className="w-8 h-8 text-white" />
                 </div>
@@ -426,7 +426,7 @@ const CRMIntegration = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
             <ScrollReveal delay={100}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -472,7 +472,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={200}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -518,7 +518,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -564,7 +564,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={400}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -610,7 +610,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={500}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -656,7 +656,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={600}>
               <div 
-                className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
+                className="bg-black/50 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -722,7 +722,7 @@ const CRMIntegration = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12" style={{ perspective: '1000px' }}>
             <ScrollReveal delay={200}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -794,7 +794,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

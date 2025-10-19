@@ -78,7 +78,7 @@ const Footer = () => {
                   href="https://x.com/Automate_hub1" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group hover-pop-button"
+                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   aria-label="Follow us on Twitter/X (opens in new tab)"
                 >
                   <Twitter className="w-5 h-5 text-gray-400 group-hover:text-white" aria-hidden="true" />
@@ -87,21 +87,21 @@ const Footer = () => {
                   href="https://www.linkedin.com/in/ruben-germeshuys-bbb478385/" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group hover-pop-button"
+                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   aria-label="Connect with us on LinkedIn (opens in new tab)"
                 >
                   <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-white" aria-hidden="true" />
                 </a>
                 <button 
                   onClick={handleEmailClick} 
-                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group hover-pop-button"
+                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   aria-label="Contact us via email"
                 >
                   <Mail className="w-5 h-5 text-gray-400 group-hover:text-white" aria-hidden="true" />
                 </button>
                 <button 
                   onClick={handlePhoneClick} 
-                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group hover-pop-button"
+                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
                   aria-label="Contact us by phone"
                 >
                   <Phone className="w-5 h-5 text-gray-400 group-hover:text-white" aria-hidden="true" />

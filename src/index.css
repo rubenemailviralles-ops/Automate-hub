@@ -373,104 +373,7 @@
   transform: translateY(-8px);
 }
 
-/* Enhanced hover effects for interactive elements */
-.hover-pop {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-pop:hover {
-  transform: scale(1.05) translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-}
-
-/* Mobile touch effects - activate on scroll intersection */
-@media (max-width: 768px) {
-  /* Disable mouse hover effects on mobile */
-  .hover-pop:hover,
-  .hover-pop-subtle:hover,
-  .hover-pop-button:hover,
-  .hover-pop-text:hover,
-  .hover-lift:hover {
-    transform: none;
-    box-shadow: none;
-  }
-  
-  /* Mobile scroll-triggered effects */
-  .hover-pop.mobile-active {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  }
-  
-  .hover-pop-subtle.mobile-active {
-    transform: scale(1.02) translateY(-1px);
-  }
-  
-  .hover-pop-button.mobile-active {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
-  }
-  
-  .hover-pop-text.mobile-active {
-    transform: scale(1.02);
-  }
-  
-  .hover-lift.mobile-active {
-    transform: translateY(-8px);
-  }
-  
-  /* Mobile 3D effects - simple popup on scroll */
-  .mobile-3d-popup.mobile-active {
-    transform: translateY(-8px) scale(1.02) !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3) !important;
-  }
-  
-  /* Mobile 3D card tilt - convert to simple popup */
-  .mobile-3d-tilt.mobile-active {
-    transform: translateY(-4px) scale(1.02) !important;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35) !important;
-  }
-  
-  /* Disable expensive 3D transforms on mobile */
-  [style*="perspective"],
-  [style*="rotateX"],
-  [style*="rotateY"],
-  [style*="translateZ"],
-  [style*="preserve-3d"] {
-    perspective: none !important;
-    transform: none !important;
-    transform-style: flat !important;
-  }
-  
-  /* Simplify floating orbs on mobile */
-  .floating-orb {
-    animation: none !important;
-    opacity: 0.3 !important;
-  }
-}
-.hover-pop-subtle {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-pop-subtle:hover {
-  transform: scale(1.02) translateY(-1px);
-}
-
-.hover-pop-button {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-pop-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
-}
-
-.hover-pop-text {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.hover-pop-text:hover {
-  transform: scale(1.02);
-}
+/* Popup effects now handled via Tailwind utility classes */
 /* Elegant borders */
 .border-elegant {
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -843,13 +746,7 @@ section,
 }
 
 /* GPU acceleration for animated elements - only apply will-change when needed */
-.hover-pop,
-.hover-pop-subtle,
-.hover-pop-button,
-.hover-pop-text,
 .hover-lift,
-.mobile-3d-popup,
-.mobile-3d-tilt,
 .floating-orb {
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -857,12 +754,7 @@ section,
 }
 
 /* Only add will-change when actively animating */
-.hover-pop:hover,
-.hover-pop-subtle:hover,
-.hover-pop-button:hover,
 .hover-lift:hover,
-.mobile-3d-popup.mobile-active,
-.mobile-3d-tilt.mobile-active,
 .floating-orb {
   will-change: transform;
 }
@@ -949,16 +841,12 @@ select:focus-visible {
   }
 
   /* Keep essential animations but make them instant */
-  .hover-pop:hover,
-  .hover-pop-subtle:hover,
-  .hover-pop-button:hover,
-  .hover-lift:hover {
+        .hover-lift:hover {
     transition: none !important;
   }
 
   /* Disable 3D transforms */
-  .mobile-3d-popup,
-  .mobile-3d-tilt {
+    .mobile-3d-tilt {
     transform: none !important;
   }
 }

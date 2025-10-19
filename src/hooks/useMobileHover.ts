@@ -41,7 +41,7 @@ export const useMobileHover = () => {
     // Use setTimeout to defer observation setup until after initial render
     const timeoutId = setTimeout(() => {
       const hoverElements = document.querySelectorAll(
-        '.hover-pop, .hover-pop-subtle, .hover-pop-button, .hover-pop-text, .hover-lift, .mobile-3d-popup, .mobile-3d-tilt'
+        '.hover-lift'
       );
       
       hoverElements.forEach((element) => {
@@ -69,7 +69,7 @@ export const useMobileHover = () => {
     // Re-observe all hover elements and 3D elements
     setTimeout(() => {
       const hoverElements = document.querySelectorAll(
-        '.hover-pop, .hover-pop-subtle, .hover-pop-button, .hover-pop-text, .hover-lift, .mobile-3d-popup, .mobile-3d-tilt'
+        '.hover-lift'
       );
       
       hoverElements.forEach((element) => {

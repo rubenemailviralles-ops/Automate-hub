@@ -56,7 +56,7 @@ const Features = () => {
             return (
               <div
                 key={index}
-                className={`group bg-white/5 border border-white/10 rounded-2xl p-10 hover:border-white/30 transition-all duration-500 hover:bg-white/10 hover-pop animate-fade-in-up ${animationDelay}`}
+                className={`group bg-white/5 border border-white/10 rounded-2xl p-10 hover:border-white/30 transition-all duration-500 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl animate-fade-in-up ${animationDelay}`}
               >
                 <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-300 animate-bounce-subtle">
                   <Icon className="w-7 h-7 text-black" />

@@ -139,7 +139,7 @@ const Contact = () => {
               <ScrollReveal delay={200}>
                 <div className="flex items-center space-x-4">
                   <div 
-                    className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center hover-pop-button mobile-3d-tilt relative"
+                    className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                     style={{
                       transformStyle: 'preserve-3d',
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -177,7 +177,7 @@ const Contact = () => {
               <ScrollReveal delay={300}>
                 <div className="flex items-center space-x-4">
                   <div 
-                    className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center hover-pop-button mobile-3d-tilt relative"
+                    className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                     style={{
                       transformStyle: 'preserve-3d',
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -215,7 +215,7 @@ const Contact = () => {
 
             <ScrollReveal delay={400}>
               <div 
-                className="bg-gray-800/50 rounded-2xl p-6 mobile-3d-tilt relative"
+                className="bg-gray-800/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -274,7 +274,7 @@ const Contact = () => {
           {/* Right Side - Contact Form */}
           <ScrollReveal delay={500}>
             <div 
-              className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 mobile-3d-tilt relative"
+              className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

@@ -20,7 +20,7 @@ const EmailContact = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center pt-4">
             <div 
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm mobile-3d-tilt relative"
+              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -98,7 +98,7 @@ const EmailContact = () => {
             </div>
 
             <div 
-              className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-4 sm:p-8 mb-12 mobile-3d-tilt relative"
+              className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-4 sm:p-8 mb-12 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -204,7 +204,7 @@ const EmailContact = () => {
             </div>
 
             <div 
-              className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 mobile-3d-tilt relative"
+              className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -259,7 +259,7 @@ const EmailContact = () => {
             <div className="text-center mt-12">
               <Link 
                 to="/contact"
-                className="inline-flex items-center bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold text-base shadow-lg mobile-3d-tilt relative"
+                className="inline-flex items-center bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-lg font-semibold text-base shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

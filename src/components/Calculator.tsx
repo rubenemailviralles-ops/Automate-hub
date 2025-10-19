@@ -32,7 +32,7 @@ const Calculator = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6 md:mb-12">
           <div 
-            className="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-green-500/20 to-emerald-600/20 border border-green-500/30 rounded-full mb-4 md:mb-8 backdrop-blur-sm animate-fade-in mobile-3d-tilt"
+            className="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-green-500/20 to-emerald-600/20 border border-green-500/30 rounded-full mb-4 md:mb-8 backdrop-blur-sm animate-fade-in transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             style={{
               transformStyle: 'preserve-3d',
               boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(16, 185, 129, 0.2)',
@@ -173,7 +173,7 @@ const Calculator = () => {
           <div className="space-y-3 md:space-y-6 animate-slide-in-right">
             {/* Current Costs */}
             <div 
-              className="bg-gradient-to-br from-red-500/10 to-orange-600/10 border border-red-500/30 rounded-xl md:rounded-2xl p-4 md:p-8 mobile-3d-tilt relative"
+              className="bg-gradient-to-br from-red-500/10 to-orange-600/10 border border-red-500/30 rounded-xl md:rounded-2xl p-4 md:p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -214,7 +214,7 @@ const Calculator = () => {
 
             {/* Potential Savings */}
             <div 
-              className="bg-gradient-to-br from-green-500/10 to-emerald-600/10 border border-green-500/30 rounded-xl md:rounded-2xl p-4 md:p-8 animate-pulse-slow mobile-3d-tilt relative"
+              className="bg-gradient-to-br from-green-500/10 to-emerald-600/10 border border-green-500/30 rounded-xl md:rounded-2xl p-4 md:p-8 animate-pulse-slow transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -257,7 +257,7 @@ const Calculator = () => {
             </div>
 
             <div 
-              className="bg-white/5 border border-white/10 rounded-lg p-3 md:p-4 text-center hidden md:block mobile-3d-tilt relative"
+              className="bg-white/5 border border-white/10 rounded-lg p-3 md:p-4 text-center hidden md:block transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
               style={{
                 transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

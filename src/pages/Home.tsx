@@ -217,7 +217,7 @@ const Home = () => {
           <div className="text-center">
             <ScrollReveal delay={0}>
               <div 
-                className="inline-flex items-center px-6 py-3 bg-white/10 border border-white/20 rounded-full mb-8 backdrop-blur-sm mobile-3d-tilt"
+                className="inline-flex items-center px-6 py-3 bg-white/10 border border-white/20 rounded-full mb-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                 style={{
                   ...get3DStyles(),
                   boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(255, 255, 255, 0.1)',
@@ -302,7 +302,7 @@ const Home = () => {
               return (
                 <ScrollReveal key={index} delay={index * 150}>
                   <div 
-                    className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 hover:bg-white/10 hover-pop mobile-3d-tilt relative"
+                    className="group bg-white/5 border border-white/10 rounded-2xl p-8 hover:border-white/30 hover:bg-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                     style={{
                       ...get3DStyles(),
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -342,7 +342,7 @@ const Home = () => {
                     <Link
                       to={service.path}
                       state={{ fromSection: 'services' }}
-                      className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link hover-pop-text relative ${isMobile ? 'text-blue-400' : ''}`}
+                      className={`inline-flex items-center font-semibold hover:opacity-80 transition-all duration-300 group/link  relative ${isMobile ? 'text-blue-400' : ''}`}
                       style={getInner3DTransform('15px')}
                     >
                       <span className={isMobile ? '' : `bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent`}>
@@ -377,7 +377,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12" style={get3DStyles()}>
             <ScrollReveal delay={200}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   ...get3DStyles(),
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -431,7 +431,7 @@ const Home = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   ...get3DStyles(),
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -485,7 +485,7 @@ const Home = () => {
 
             <ScrollReveal delay={400}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   ...get3DStyles(),
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
@@ -539,7 +539,7 @@ const Home = () => {
 
             <ScrollReveal delay={500}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
+                className="bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
                 style={{
                   ...get3DStyles(),
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

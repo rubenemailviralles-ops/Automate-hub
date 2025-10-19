@@ -1,6 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowRight, Sparkles, Globe, Database, Phone, Mail, BarChart3, CheckCircle, TrendingUp, Shield, Zap } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
@@ -13,6 +14,7 @@ const CTASection = lazy(() => import('../components/CTASection'));
 const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
   const [showSecondLine, setShowSecondLine] = useState(false);
   const [showSubheading, setShowSubheading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -226,26 +228,22 @@ const Home = () => {
                 {...getBadgeHoverHandlers()}
               >
                 <Sparkles className="w-5 h-5 text-white mr-2" style={!isMobile ? { transform: 'translateZ(5px)' } : {}} />
-                <span className="text-white font-medium" style={!isMobile ? { transform: 'translateZ(5px)' } : {}}>Next-Gen AI Automation Platform</span>
+                <span className="text-white font-medium" style={!isMobile ? { transform: 'translateZ(5px)' } : {}}>{t('hero.title')}</span>
               </div>
             </ScrollReveal>
 
             <TypeWriter 
-              text="Automate Your" 
+              text={t('hero.title')} 
               as="h1"
               className="text-5xl md:text-7xl font-bold mb-8 text-white leading-tight"
               delay={100}
               onComplete={() => setShowSecondLine(true)}
             >
-              <span className={`block ${getGradientClasses('from-white to-gray-400', 'text-gray-300')}`}>
-                Business Growth
-              </span>
             </TypeWriter>
 
             <ScrollReveal delay={200}>
               <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed">
-                Increase productivity and reduce costs with AI automation solutions. From intelligent chatbots to automated systems, 
-                we help businesses operate more efficiently and compete effectively.
+                {t('hero.subtitle')}
               </p>
             </ScrollReveal>
 
@@ -276,7 +274,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <TypeWriter 
-              text="Our AI Solutions" 
+              text={t('services.title')} 
               as="h2"
               className="text-4xl md:text-5xl font-bold mb-6 text-white"
               delay={0}

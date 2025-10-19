@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "bookConsultation": "Book Consultation"
+  },
+  "hero": {
+    "title": "Transform Your Business with AI Automation",
+    "subtitle": "Professional website creation, CRM integration, AI phone agents, and email outreach solutions that increase productivity and reduce costs.",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "services": {
+    "title": "Our AI Solutions",
+    "websiteCreation": {
+      "title": "Website Creation",
+      "description": "AI-powered websites that convert visitors into customers"
+    },
+    "crmIntegration": {
+      "title": "CRM Integration", 
+      "description": "Connect and automate your customer relationship management"
+    },
+    "phoneCallers": {
+      "title": "AI Phone Callers",
+      "description": "24/7 AI phone agents for customer service"
+    },
+    "emailOutreach": {
+      "title": "Email Outreach",
+      "description": "Automated email campaigns that drive results"
+    }
+  },
+  "calculator": {
+    "title": "Calculate Your Potential Savings",
+    "employees": "Number of Employees",
+    "salary": "Average Annual Salary",
+    "hours": "Manual Hours Per Week",
+    "annualSavings": "Potential Annual Savings with AI",
+    "monthlySavings": "Monthly Savings",
+    "weeklySavings": "Weekly Savings"
+  },
+  "contact": {
+    "title": "Ready to automate your business?",
+    "subtitle": "Get in touch for a free consultation",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "company": "Company Name",
+    "message": "Message",
+    "sendMessage": "Send Message",
+    "success": "Thank you for your message! We'll respond within 24 hours."
+  },
+  "footer": {
+    "description": "Transform your business with AI automation solutions.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "legal": "Legal",
+    "contactInfo": "Contact Information"
+  }
+}

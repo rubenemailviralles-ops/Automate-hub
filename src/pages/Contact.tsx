@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Phone, Mail, ArrowLeft, CheckCircle, Globe, Database, Mail as MailIcon } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
@@ -13,6 +14,7 @@ const Contact = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const location = useLocation();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -126,10 +128,10 @@ const Contact = () => {
           <div className="space-y-8">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                  Contact <span className="text-blue-400">Us</span>
+                  {t('contact.title')}
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
-                  Ready to automate your business? Let's talk about how we can help you save time and increase efficiency with our <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">website creation</Link>, <Link to="/crm-integration" className="text-purple-400 hover:text-purple-300 transition-colors font-semibold">CRM integration</Link>, <Link to="/phone-callers" className="text-green-400 hover:text-green-300 transition-colors font-semibold">AI phone agents</Link>, and <Link to="/email-outreach" className="text-pink-400 hover:text-pink-300 transition-colors font-semibold">email automation</Link> solutions.
+                  {t('contact.subtitle')}
                 </p>
               </div>
 
@@ -210,7 +212,7 @@ const Contact = () => {
             >
               <div className="mb-6 transition-all duration-500 ease-in-out">
                 <h2 className={`text-2xl font-bold text-white mb-2 transition-all duration-500 ${submitSuccess ? 'opacity-0 transform -translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
-                  Send us a message
+                  {t('contact.sendMessage')}
                 </h2>
                 <p className={`text-gray-400 text-sm transition-all duration-500 ${submitSuccess ? 'opacity-0 transform -translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
                   Fill out the form and we'll contact you within 24 hours. Or <Link to="/book-consultation" className="text-cyan-400 hover:text-cyan-300 transition-colors font-semibold">book a free consultation</Link> for immediate assistance.
@@ -238,7 +240,7 @@ const Contact = () => {
                   {/* Full Name */}
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">
-                      Full Name *
+                      {t('contact.name')} *
                     </label>
                     <input
                       type="text"
@@ -261,7 +263,7 @@ const Contact = () => {
                   {/* Email Address */}
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-2">
-                      Email Address *
+                      {t('contact.email')} *
                     </label>
                     <input
                       type="email"
@@ -284,7 +286,7 @@ const Contact = () => {
                   {/* Phone Number */}
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-2">
-                      Phone Number *
+                      {t('contact.phone')} *
                     </label>
                     <input
                       type="tel"
@@ -307,7 +309,7 @@ const Contact = () => {
                   {/* Company Name */}
                   <div>
                     <label htmlFor="businessName" className="block text-sm font-medium text-gray-400 mb-2">
-                      Company Name *
+                      {t('contact.company')} *
                     </label>
                     <input
                       type="text"
@@ -330,7 +332,7 @@ const Contact = () => {
                   {/* Message */}
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-2">
-                      Message *
+                      {t('contact.message')} *
                     </label>
                     <textarea
                       id="message"
@@ -365,7 +367,7 @@ const Contact = () => {
                       }}
                     >
                       <Send className="mr-2 w-4 h-4" aria-hidden="true" />
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                      {isSubmitting ? 'Sending...' : t('contact.sendMessage')}
                     </button>
                   </div>
 

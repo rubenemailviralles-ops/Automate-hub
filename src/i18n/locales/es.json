@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios", 
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "bookConsultation": "Reservar Consulta"
+  },
+  "hero": {
+    "title": "Transforma Tu Negocio con Automatización IA",
+    "subtitle": "Creación profesional de sitios web, integración CRM, agentes telefónicos IA y soluciones de email marketing que aumentan la productividad y reducen costos.",
+    "getStarted": "Comenzar",
+    "learnMore": "Saber Más"
+  },
+  "services": {
+    "title": "Nuestras Soluciones IA",
+    "websiteCreation": {
+      "title": "Creación de Sitios Web",
+      "description": "Sitios web con IA que convierten visitantes en clientes"
+    },
+    "crmIntegration": {
+      "title": "Integración CRM",
+      "description": "Conecta y automatiza tu gestión de relaciones con clientes"
+    },
+    "phoneCallers": {
+      "title": "Agentes Telefónicos IA",
+      "description": "Agentes telefónicos IA 24/7 para servicio al cliente"
+    },
+    "emailOutreach": {
+      "title": "Email Marketing",
+      "description": "Campañas de email automatizadas que generan resultados"
+    }
+  },
+  "calculator": {
+    "title": "Calcula Tus Ahorros Potenciales",
+    "employees": "Número de Empleados",
+    "salary": "Salario Anual Promedio",
+    "hours": "Horas Manuales Por Semana",
+    "annualSavings": "Ahorros Anuales Potenciales con IA",
+    "monthlySavings": "Ahorros Mensuales",
+    "weeklySavings": "Ahorros Semanales"
+  },
+  "contact": {
+    "title": "¿Listo para automatizar tu negocio?",
+    "subtitle": "Ponte en contacto para una consulta gratuita",
+    "name": "Nombre Completo",
+    "email": "Dirección de Email",
+    "phone": "Número de Teléfono",
+    "company": "Nombre de la Empresa",
+    "message": "Mensaje",
+    "sendMessage": "Enviar Mensaje",
+    "success": "¡Gracias por tu mensaje! Responderemos dentro de 24 horas."
+  },
+  "footer": {
+    "description": "Transforma tu negocio con soluciones de automatización IA.",
+    "quickLinks": "Enlaces Rápidos",
+    "services": "Servicios",
+    "legal": "Legal",
+    "contactInfo": "Información de Contacto"
+  }
+}

@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import './i18n';
 import * as serviceWorkerRegistration from './utils/serviceWorkerRegistration';
 import { initSentry } from './utils/sentry';
 

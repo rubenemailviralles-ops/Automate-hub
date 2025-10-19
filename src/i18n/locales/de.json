@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "bookConsultation": "Beratung Buchen"
+  },
+  "hero": {
+    "title": "Transformieren Sie Ihr Unternehmen mit KI-Automatisierung",
+    "subtitle": "Professionelle Website-Erstellung, CRM-Integration, KI-Telefonagenten und E-Mail-Marketing-Lösungen, die die Produktivität steigern und Kosten senken.",
+    "getStarted": "Loslegen",
+    "learnMore": "Mehr Erfahren"
+  },
+  "services": {
+    "title": "Unsere KI-Lösungen",
+    "websiteCreation": {
+      "title": "Website-Erstellung",
+      "description": "KI-gestützte Websites, die Besucher in Kunden verwandeln"
+    },
+    "crmIntegration": {
+      "title": "CRM-Integration",
+      "description": "Verbinden und automatisieren Sie Ihr Kundenbeziehungsmanagement"
+    },
+    "phoneCallers": {
+      "title": "KI-Telefonagenten",
+      "description": "24/7 KI-Telefonagenten für Kundenservice"
+    },
+    "emailOutreach": {
+      "title": "E-Mail-Marketing",
+      "description": "Automatisierte E-Mail-Kampagnen, die Ergebnisse liefern"
+    }
+  },
+  "calculator": {
+    "title": "Berechnen Sie Ihre Potenziellen Einsparungen",
+    "employees": "Anzahl der Mitarbeiter",
+    "salary": "Durchschnittliches Jahresgehalt",
+    "hours": "Manuelle Stunden Pro Woche",
+    "annualSavings": "Potenzielle Jahreseinsparungen mit KI",
+    "monthlySavings": "Monatliche Einsparungen",
+    "weeklySavings": "Wöchentliche Einsparungen"
+  },
+  "contact": {
+    "title": "Bereit, Ihr Unternehmen zu automatisieren?",
+    "subtitle": "Kontaktieren Sie uns für eine kostenlose Beratung",
+    "name": "Vollständiger Name",
+    "email": "E-Mail-Adresse",
+    "phone": "Telefonnummer",
+    "company": "Firmenname",
+    "message": "Nachricht",
+    "sendMessage": "Nachricht Senden",
+    "success": "Vielen Dank für Ihre Nachricht! Wir antworten innerhalb von 24 Stunden."
+  },
+  "footer": {
+    "description": "Transformieren Sie Ihr Unternehmen mit KI-Automatisierungslösungen.",
+    "quickLinks": "Schnelllinks",
+    "services": "Dienstleistungen",
+    "legal": "Rechtliches",
+    "contactInfo": "Kontaktinformationen"
+  }
+}

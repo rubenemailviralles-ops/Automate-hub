@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "about": "À propos",
+    "contact": "Contact",
+    "bookConsultation": "Réserver Consultation"
+  },
+  "hero": {
+    "title": "Transformez Votre Entreprise avec l'Automatisation IA",
+    "subtitle": "Création professionnelle de sites web, intégration CRM, agents téléphoniques IA et solutions d'email marketing qui augmentent la productivité et réduisent les coûts.",
+    "getStarted": "Commencer",
+    "learnMore": "En Savoir Plus"
+  },
+  "services": {
+    "title": "Nos Solutions IA",
+    "websiteCreation": {
+      "title": "Création de Sites Web",
+      "description": "Sites web alimentés par l'IA qui convertissent les visiteurs en clients"
+    },
+    "crmIntegration": {
+      "title": "Intégration CRM",
+      "description": "Connectez et automatisez votre gestion de la relation client"
+    },
+    "phoneCallers": {
+      "title": "Agents Téléphoniques IA",
+      "description": "Agents téléphoniques IA 24/7 pour le service client"
+    },
+    "emailOutreach": {
+      "title": "Email Marketing",
+      "description": "Campagnes d'email automatisées qui génèrent des résultats"
+    }
+  },
+  "calculator": {
+    "title": "Calculez Vos Économies Potentielles",
+    "employees": "Nombre d'Employés",
+    "salary": "Salaire Annuel Moyen",
+    "hours": "Heures Manuelles Par Semaine",
+    "annualSavings": "Économies Annuelles Potentielles avec l'IA",
+    "monthlySavings": "Économies Mensuelles",
+    "weeklySavings": "Économies Hebdomadaires"
+  },
+  "contact": {
+    "title": "Prêt à automatiser votre entreprise ?",
+    "subtitle": "Contactez-nous pour une consultation gratuite",
+    "name": "Nom Complet",
+    "email": "Adresse Email",
+    "phone": "Numéro de Téléphone",
+    "company": "Nom de l'Entreprise",
+    "message": "Message",
+    "sendMessage": "Envoyer Message",
+    "success": "Merci pour votre message ! Nous répondrons dans les 24 heures."
+  },
+  "footer": {
+    "description": "Transformez votre entreprise avec des solutions d'automatisation IA.",
+    "quickLinks": "Liens Rapides",
+    "services": "Services",
+    "legal": "Légal",
+    "contactInfo": "Informations de Contact"
+  }
+}

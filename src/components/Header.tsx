@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Bot, Menu, X, ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { useLogoAnimation } from '../hooks/useLogoAnimation';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,6 +13,7 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { isAnimating, triggerAnimation } = useLogoAnimation();
+  const { t } = useTranslation();
 
   const services = [
     { name: 'Website Creation', path: '/website-creation' },
@@ -187,7 +190,7 @@ const Header = () => {
               aria-label="Navigate to home page"
               aria-current={location.pathname === '/' ? 'page' : undefined}
             >
-              Home
+              {t('nav.home')}
             </Link>
             
             <div className="relative group" ref={servicesDropdownRef}>
@@ -202,7 +205,7 @@ const Header = () => {
                 aria-haspopup="true"
                 aria-controls="services-dropdown"
               >
-                Services
+                {t('nav.services')}
                 <ChevronDown className="ml-1 w-4 h-4" aria-hidden="true" />
               </button>
               
@@ -247,7 +250,7 @@ const Header = () => {
               aria-label="Navigate to about us page"
               aria-current={location.pathname === '/about' ? 'page' : undefined}
             >
-              About
+              {t('nav.about')}
             </Link>
             
             <Link 
@@ -260,20 +263,23 @@ const Header = () => {
               aria-label="Navigate to contact page"
               aria-current={location.pathname === '/contact' ? 'page' : undefined}
             >
-              Contact
+              {t('nav.contact')}
             </Link>
             
-            <Link 
-              to="/book-consultation"
-              onClick={handleBookConsultationClick}
-              className={`bg-white text-black hover:bg-gray-100 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl nav-item ${
-                isAnimating ? 'nav-item-animating' : ''
-              }`}
-              data-nav-item="consultation"
-              aria-label="Book a free consultation"
-            >
-              Book Consultation
-            </Link>
+            <div className="flex items-center space-x-4">
+              <LanguageSwitcher />
+              <Link 
+                to="/book-consultation"
+                onClick={handleBookConsultationClick}
+                className={`bg-white text-black hover:bg-gray-100 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl nav-item ${
+                  isAnimating ? 'nav-item-animating' : ''
+                }`}
+                data-nav-item="consultation"
+                aria-label="Book a free consultation"
+              >
+                {t('nav.bookConsultation')}
+              </Link>
+            </div>
           </nav>
 
           <button
@@ -308,10 +314,10 @@ const Header = () => {
                 aria-label="Navigate to home page"
                 aria-current={location.pathname === '/' ? 'page' : undefined}
               >
-                Home
+                {t('nav.home')}
               </Link>
               <div className="space-y-2 nav-item" data-nav-item="mobile-services" role="group" aria-labelledby="mobile-services-label">
-                <p id="mobile-services-label" className="text-white font-medium nav-item" data-nav-item="mobile-services-label">Services</p>
+                <p id="mobile-services-label" className="text-white font-medium nav-item" data-nav-item="mobile-services-label">{t('nav.services')}</p>
                 {services.map((service) => (
                   <Link
                     key={service.path}
@@ -342,7 +348,7 @@ const Header = () => {
                 aria-label="Navigate to about us page"
                 aria-current={location.pathname === '/about' ? 'page' : undefined}
               >
-                About
+                {t('nav.about')}
               </Link>
               <Link 
                 to="/contact" 
@@ -355,7 +361,7 @@ const Header = () => {
                 aria-label="Navigate to contact page"
                 aria-current={location.pathname === '/contact' ? 'page' : undefined}
               >
-                Contact
+                {t('nav.contact')}
               </Link>
               <Link 
                 to="/book-consultation"
@@ -367,7 +373,7 @@ const Header = () => {
                 }}
                 aria-label="Book a free consultation"
               >
-                Book Consultation
+                {t('nav.bookConsultation')}
               </Link>
             </nav>
           </div>

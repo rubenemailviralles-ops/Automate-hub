@@ -645,29 +645,13 @@ const PhoneCallers = () => {
 
           <ScrollReveal delay={300}>
             <div 
-              className="mt-16 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-2xl p-12 text-center mobile-3d-tilt relative"
+              className="mt-16 bg-gradient-to-r from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-2xl p-12 text-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-indigo-500/50"
               style={{
-                transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                transition: 'transform 0.1s ease-out, border-color 0.3s',
-                perspective: '1000px',
-              }}
-              onMouseMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
               }}
             >
-              <h3 className="text-3xl font-bold text-white mb-4" style={{ transform: 'translateZ(15px)' }}>Key Benefits</h3>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto" style={{ transform: 'translateZ(10px)' }}>
+              <h3 className="text-3xl font-bold text-white mb-4">Key Benefits</h3>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
                 Our AI phone agents help businesses provide better customer service, capture more leads, 
                 and operate more efficiently with 24/7 availability and consistent professional responses.
               </p>

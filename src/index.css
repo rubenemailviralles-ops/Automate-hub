@@ -1352,31 +1352,19 @@ select:focus-visible {
 /* ============================================
    MOBILE - DISABLE POPUP HOVER EFFECTS ONLY
    ============================================ */
-/* On mobile, disable ONLY the popup transform effects that make things clickable */
-@media (max-width: 1023px) and (hover: none) and (pointer: coarse) {
-  /* Disable hover transform popup effects on mobile */
-  .hover\:-translate-y-2:hover {
-    transform: none !important;
-  }
-  
-  .hover\:scale-105:hover {
-    transform: none !important;
-  }
-  
-  .hover\:-translate-y-1:hover {
-    transform: none !important;
-  }
-  
-  /* Disable hover shadows that trigger on click */
-  .hover\:shadow-2xl:hover {
-    box-shadow: inherit !important;
-  }
-  
+/* On mobile, COMPLETELY disable hover effects and clickable containers */
+@media (max-width: 1023px), (hover: none) and (pointer: coarse) {
+  /* COMPLETELY disable hover effects - no transforms, no shadows, nothing */
+  .hover\:-translate-y-2:hover,
+  .hover\:scale-105:hover,
+  .hover\:-translate-y-1:hover,
+  .hover\:shadow-2xl:hover,
   .hover\:shadow-xl:hover {
-    box-shadow: inherit !important;
+    transform: none !important;
+    box-shadow: none !important;
   }
   
-  /* Disable hover border color changes */
+  /* Disable ALL hover border effects */
   .hover\:border-blue-500\/50:hover,
   .hover\:border-green-500\/50:hover,
   .hover\:border-red-500\/50:hover,
@@ -1384,19 +1372,43 @@ select:focus-visible {
   .hover\:border-indigo-500\/50:hover,
   .hover\:border-purple-500\/50:hover,
   .hover\:border-pink-500\/50:hover,
-  .hover\:border-orange-500\/50:hover {
+  .hover\:border-orange-500\/50:hover,
+  .hover\:bg-white\/10:hover,
+  .hover\:bg-gray-100:hover {
     border-color: inherit !important;
+    background-color: inherit !important;
   }
   
-  /* Remove tap highlight that causes flash on click */
+  /* Make containers completely non-interactive but allow children to work */
   .hover\:-translate-y-2,
   .hover\:scale-105,
   .hover\:-translate-y-1 {
     -webkit-tap-highlight-color: transparent !important;
     -webkit-touch-callout: none !important;
+    pointer-events: auto !important; /* Container can pass events to children */
   }
   
-  /* Disable pulse animations on mobile to prevent glitchy behavior */
+  /* Ensure interactive children still work */
+  .hover\:-translate-y-2 input,
+  .hover\:-translate-y-2 button,
+  .hover\:-translate-y-2 a,
+  .hover\:-translate-y-2 select,
+  .hover\:-translate-y-2 textarea,
+  .hover\:scale-105 input,
+  .hover\:scale-105 button,
+  .hover\:scale-105 a,
+  .hover\:scale-105 select,
+  .hover\:scale-105 textarea,
+  .hover\:-translate-y-1 input,
+  .hover\:-translate-y-1 button,
+  .hover\:-translate-y-1 a,
+  .hover\:-translate-y-1 select,
+  .hover\:-translate-y-1 textarea {
+    pointer-events: auto !important;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1) !important;
+  }
+  
+  /* Disable pulse animations on mobile */
   .animate-pulse-slow {
     animation: none !important;
   }

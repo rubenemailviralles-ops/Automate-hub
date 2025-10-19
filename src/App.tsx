@@ -95,7 +95,7 @@ function App() {
         Skip to main content
       </a>
       <div className="min-h-screen text-white relative">
-        {/* Floating background orbs */}
+        {/* PC floating background orbs - hidden on mobile */}
         <div className="floating-orb floating-orb-1" aria-hidden="true"></div>
         <div className="floating-orb floating-orb-2" aria-hidden="true"></div>
         <div className="floating-orb floating-orb-3" aria-hidden="true"></div>
@@ -103,6 +103,11 @@ function App() {
         <div className="floating-orb floating-orb-5" aria-hidden="true"></div>
         <div className="floating-orb floating-orb-6" aria-hidden="true"></div>
         <div className="floating-orb floating-orb-7" aria-hidden="true"></div>
+        
+        {/* Mobile-optimized orbs - simple animations, only show on mobile */}
+        <div className="mobile-orb mobile-orb-1" aria-hidden="true"></div>
+        <div className="mobile-orb mobile-orb-2" aria-hidden="true"></div>
+        <div className="mobile-orb mobile-orb-3" aria-hidden="true"></div>
         
         <Header />
         <Breadcrumbs />

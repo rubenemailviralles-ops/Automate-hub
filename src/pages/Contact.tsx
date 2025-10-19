@@ -9,15 +9,9 @@ import StructuredData from '../components/StructuredData';
 import { useIsMobile } from '../utils/mobileDetection';
 import { supabase } from '../lib/supabase';
 import { navigateBackToHome } from '../utils/scrollToTop';
-import ContactMobile from './ContactMobile';
 
 const Contact = () => {
   const isMobile = useIsMobile();
-  
-  // Show mobile version on mobile devices
-  if (isMobile) {
-    return <ContactMobile />;
-  }
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();

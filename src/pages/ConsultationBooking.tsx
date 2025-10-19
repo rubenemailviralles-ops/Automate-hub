@@ -170,7 +170,7 @@ const ConsultationBooking = () => {
             {/* Left Side - Content */}
             <div className="animate-slide-in-left">
               <div 
-                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-blue-500/50"
+                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-6 backdrop-blur-sm"
                 style={{
                   boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(59, 130, 246, 0.2)',
                 }}
@@ -236,7 +236,7 @@ const ConsultationBooking = () => {
 
               <ScrollReveal delay={600}>
                 <div 
-                  className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-xl p-4 relative transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-blue-500/50"
+                  className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-xl p-4 relative"
                   style={{
                     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   }}

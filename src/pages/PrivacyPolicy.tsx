@@ -64,28 +64,12 @@ const PrivacyPolicy = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-6 max-w-2xl mx-auto transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
+                className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-6 max-w-2xl mx-auto relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-blue-500/50"
                 style={{
-                  transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.1s ease-out, border-color 0.3s',
-                  perspective: '1000px',
-                }}
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
-                  const rotateX = (y - centerY) / 20;
-                  const rotateY = (centerX - x) / 20;
-                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
                 }}
               >
-                <p className="text-gray-300" style={{ transform: 'translateZ(10px)' }}>
+                <p className="text-gray-300">
                   <strong className="text-white">Last Updated:</strong> January 1, 2025
                 </p>
               </div>

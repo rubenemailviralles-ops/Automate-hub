@@ -1365,6 +1365,18 @@ select:focus-visible {
     -webkit-touch-callout: none !important; /* Disable callout on iOS */
     -webkit-user-select: none !important; /* Prevent text selection */
     user-select: none !important;
+    cursor: default !important; /* Remove pointer cursor */
+  }
+  
+  /* Completely disable active/focus states on mobile for containers */
+  .hover\:-translate-y-2:active,
+  .hover\:scale-105:active,
+  .hover\:-translate-y-1:active,
+  .hover\:-translate-y-2:focus,
+  .hover\:scale-105:focus,
+  .hover\:-translate-y-1:focus {
+    transform: translateY(-8px) !important; /* Keep same transform, don't change on click */
+    outline: none !important;
   }
   
   /* When element is in view, apply the popup effect */

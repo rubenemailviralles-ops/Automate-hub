@@ -63,6 +63,25 @@ export const initMobileScrollPopup = () => {
   // Observe each element
   elements.forEach((element) => {
     observer?.observe(element);
+    
+    // Add attribute to mark as non-interactive container
+    element.setAttribute('data-scroll-popup-container', 'true');
+    
+    // Disable any click handlers on the container itself (but not children)
+    const disableContainerClick = (e: Event) => {
+      const target = e.target as HTMLElement;
+      
+      // Only prevent if clicking directly on the container (not bubbled from children)
+      if (target === element) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+      }
+    };
+    
+    // Add click prevention only on direct container clicks
+    element.addEventListener('click', disableContainerClick, true);
+    element.addEventListener('touchend', disableContainerClick, true);
   });
   
   isInitialized = true;
@@ -95,9 +114,22 @@ export const refreshMobileScrollPopup = () => {
   
   elements.forEach((element) => {
     // Only observe if not already observed
-    if (!element.classList.contains('observed')) {
-      element.classList.add('observed');
+    if (!element.getAttribute('data-scroll-popup-container')) {
+      element.setAttribute('data-scroll-popup-container', 'true');
       observer?.observe(element);
+      
+      // Add click prevention for new elements
+      const disableContainerClick = (e: Event) => {
+        const target = e.target as HTMLElement;
+        if (target === element) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
+      };
+      
+      element.addEventListener('click', disableContainerClick, true);
+      element.addEventListener('touchend', disableContainerClick, true);
     }
   });
 };

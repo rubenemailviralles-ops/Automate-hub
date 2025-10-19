@@ -1350,77 +1350,38 @@ select:focus-visible {
 }
 
 /* ============================================
-   MOBILE SCROLL POPUP ANIMATION
+   MOBILE - DISABLE ALL HOVER EFFECTS
    ============================================ */
-/* On mobile, apply smooth scroll-reveal popup animation */
+/* On mobile, completely disable hover effects */
 @media (max-width: 1023px) and (hover: none) and (pointer: coarse) {
-  /* Elements with hover popup classes get automatic scroll-reveal on mobile */
-  .hover\:-translate-y-2,
-  .hover\:scale-105,
-  .hover\:-translate-y-1 {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.6s ease-out !important;
-    -webkit-tap-highlight-color: transparent !important; /* Remove tap highlight on mobile */
-    -webkit-touch-callout: none !important; /* Disable callout on iOS */
-    -webkit-user-select: none !important; /* Prevent text selection */
-    user-select: none !important;
-    cursor: default !important; /* Remove pointer cursor */
+  /* Disable all hover transform effects on mobile */
+  .hover\:-translate-y-2:hover,
+  .hover\:scale-105:hover,
+  .hover\:-translate-y-1:hover {
+    transform: none !important;
   }
   
-  /* Completely disable active/focus states on mobile for containers */
-  .hover\:-translate-y-2:active,
-  .hover\:scale-105:active,
-  .hover\:-translate-y-1:active,
-  .hover\:-translate-y-2:focus,
-  .hover\:scale-105:focus,
-  .hover\:-translate-y-1:focus {
-    transform: translateY(-8px) !important; /* Keep same transform, don't change on click */
-    outline: none !important;
+  /* Disable hover shadows on mobile */
+  .hover\:shadow-2xl:hover,
+  .hover\:shadow-xl:hover {
+    box-shadow: none !important;
   }
   
-  /* When element is in view, apply the popup effect */
-  .hover\:-translate-y-2.in-view,
-  .hover\:scale-105.in-view,
-  .hover\:-translate-y-1.in-view {
-    opacity: 1;
-    transform: translateY(-8px) !important;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2) !important;
+  /* Disable hover border effects on mobile */
+  .hover\:border-blue-500\/50:hover,
+  .hover\:border-green-500\/50:hover,
+  .hover\:border-red-500\/50:hover,
+  .hover\:border-white\/20:hover,
+  .hover\:border-indigo-500\/50:hover,
+  .hover\:border-purple-500\/50:hover,
+  .hover\:border-pink-500\/50:hover,
+  .hover\:border-orange-500\/50:hover {
+    border-color: inherit !important;
   }
   
-  /* Ensure interactive elements inside popup containers remain fully functional */
-  .hover\:-translate-y-2 input,
-  .hover\:-translate-y-2 button,
-  .hover\:-translate-y-2 a,
-  .hover\:-translate-y-2 select,
-  .hover\:-translate-y-2 textarea,
-  .hover\:-translate-y-2 label,
-  .hover\:scale-105 input,
-  .hover\:scale-105 button,
-  .hover\:scale-105 a,
-  .hover\:scale-105 select,
-  .hover\:scale-105 textarea,
-  .hover\:scale-105 label,
-  .hover\:-translate-y-1 input,
-  .hover\:-translate-y-1 button,
-  .hover\:-translate-y-1 a,
-  .hover\:-translate-y-1 select,
-  .hover\:-translate-y-1 textarea,
-  .hover\:-translate-y-1 label {
-    pointer-events: auto !important;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1) !important;
-    -webkit-touch-callout: default !important;
-    -webkit-user-select: text !important;
-    user-select: text !important;
-    touch-action: auto !important;
-  }
-  
-  /* Specific fix for range sliders on mobile */
-  .hover\:-translate-y-2 input[type="range"],
-  .hover\:scale-105 input[type="range"],
-  .hover\:-translate-y-1 input[type="range"] {
-    -webkit-appearance: none;
-    touch-action: none !important; /* Allow dragging */
+  /* Remove tap highlight on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent !important;
   }
 }
 

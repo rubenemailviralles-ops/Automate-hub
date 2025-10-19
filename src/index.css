@@ -1431,6 +1431,24 @@ select:focus-visible {
 }
 
 /* ============================================
+   MOBILE NO ANIMATIONS - NUCLEAR OPTION
+   ============================================ */
+/* When body has mobile-no-animations class, kill EVERYTHING */
+body.mobile-no-animations * {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+body.mobile-no-animations *:hover {
+  transform: none !important;
+  box-shadow: inherit !important;
+  border-color: inherit !important;
+  background-color: inherit !important;
+}
+
+/* ============================================
    LOADING OPTIMIZATIONS
    ============================================ */
 

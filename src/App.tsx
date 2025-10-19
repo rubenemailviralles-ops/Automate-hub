@@ -67,17 +67,26 @@ function App() {
   // Remove external branding overlays
   useRemoveBoltBranding();
 
-  // Mobile scroll popup disabled - was causing flickering issues
-  // useEffect(() => {
-  //   initMobileScrollPopup();
-  //   
-  //   // Refresh scroll popup observer after dynamic content loads
-  //   const timer = setTimeout(() => {
-  //     refreshMobileScrollPopup();
-  //   }, 1000);
-  //   
-  //   return () => clearTimeout(timer);
-  // }, []);
+  // Add mobile-no-animations class to body on mobile devices
+  useEffect(() => {
+    const isMobileDevice = window.innerWidth < 1024;
+    if (isMobileDevice) {
+      document.body.classList.add('mobile-no-animations');
+    } else {
+      document.body.classList.remove('mobile-no-animations');
+    }
+    
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        document.body.classList.add('mobile-no-animations');
+      } else {
+        document.body.classList.remove('mobile-no-animations');
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <Router>

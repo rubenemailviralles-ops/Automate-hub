@@ -248,7 +248,7 @@ const Contact = () => {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none ${
                         errors.name 
                           ? 'border-red-500 focus:border-red-400' 
                           : 'border-white/20 focus:border-white/40'
@@ -271,7 +271,7 @@ const Contact = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none ${
                         errors.email 
                           ? 'border-red-500 focus:border-red-400' 
                           : 'border-white/20 focus:border-white/40'
@@ -294,7 +294,7 @@ const Contact = () => {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none ${
                         errors.phone 
                           ? 'border-red-500 focus:border-red-400' 
                           : 'border-white/20 focus:border-white/40'
@@ -317,7 +317,7 @@ const Contact = () => {
                       name="businessName"
                       value={formData.businessName}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none ${
                         errors.businessName 
                           ? 'border-red-500 focus:border-red-400' 
                           : 'border-white/20 focus:border-white/40'
@@ -339,7 +339,7 @@ const Contact = () => {
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none transition-all ${
+                      className={`w-full px-4 py-3 bg-black border rounded-xl text-white placeholder-gray-600 focus:outline-none ${
                         errors.message 
                           ? 'border-red-500 focus:border-red-400' 
                           : 'border-white/20 focus:border-white/40'

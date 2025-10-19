@@ -7,7 +7,6 @@ import ScrollReveal from '../components/ScrollReveal';
 import SEO from '../components/SEO';
 import ServiceSchema from '../components/ServiceSchema';
 import FAQSchema from '../components/FAQSchema';
-import VapiDemo from '../components/VapiDemo';
 import { useIsMobile } from '../utils/mobileDetection';
 import { navigateBackToHome } from '../utils/scrollToTop';
 
@@ -116,25 +115,170 @@ const PhoneCallers = () => {
         </div>
       </section>
 
-
-      {/* Interactive Vapi Demo Section */}
+      {/* Visual Demo Section */}
       <section className="py-24 bg-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <ScrollReveal delay={0}>
               <h2 className="text-4xl font-bold mb-8 text-white">
-                Experience AI Phone Agent Live
+                AI Phone Agent In Action
               </h2>
             </ScrollReveal>
             <ScrollReveal delay={100}>
               <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-                Try our AI phone agent right now. Click the button below to start a real conversation
+                Watch how our AI handles incoming calls professionally and captures every opportunity
               </p>
             </ScrollReveal>
           </div>
 
           <ScrollReveal delay={200}>
-            <VapiDemo />
+            <div 
+              className="bg-gradient-to-br from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-3xl p-8 max-w-6xl mx-auto mobile-3d-popup relative"
+              style={{
+                transformStyle: 'preserve-3d',
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                perspective: '1000px',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
+                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+              }}
+            >
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center" style={{ transform: 'translateZ(10px)' }}>
+              {/* Phone Call Simulation */}
+              <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-blue-500 animate-pulse"></div>
+                
+                <div className="text-center mb-8">
+                  <div className="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                    <Phone className="w-12 h-12 text-white" />
+                  </div>
+                  <h3 className="text-white text-xl font-bold">Incoming Call</h3>
+                  <p className="text-gray-400">+1 (555) 123-4567</p>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4 animate-fade-in">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                        <span className="text-white text-xs font-bold">AI</span>
+                      </div>
+                      <span className="text-green-400 font-semibold">AI Agent</span>
+                    </div>
+                    <p className="text-white text-sm">"Hello! Thank you for calling. How can I help you today?"</p>
+                  </div>
+
+                  <div className="bg-blue-500/20 border border-blue-500/30 rounded-lg p-4 animate-fade-in delay-1000">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                        <Users className="w-4 h-4 text-white" />
+                      </div>
+                      <span className="text-blue-400 font-semibold">Customer</span>
+                    </div>
+                    <p className="text-white text-sm">"Hi, I'm interested in your automation services."</p>
+                  </div>
+
+                  <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4 animate-fade-in delay-2000">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                        <span className="text-white text-xs font-bold">AI</span>
+                      </div>
+                      <span className="text-green-400 font-semibold">AI Agent</span>
+                    </div>
+                    <p className="text-white text-sm">"Perfect! I'd love to help you with that. Can I get your name and email to send you some information?"</p>
+                  </div>
+
+                  <div className="flex items-center justify-center space-x-2 mt-6">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse delay-200"></div>
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse delay-400"></div>
+                    <span className="text-green-400 text-sm ml-2">Call in progress...</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Call Analytics Dashboard */}
+              <div className="bg-gray-900 rounded-2xl shadow-2xl overflow-hidden">
+                <div className="bg-gray-800 px-4 py-3 flex items-center space-x-2">
+                  <div className="flex items-center space-x-2">
+                    <BarChart3 className="w-4 h-4 text-indigo-400" />
+                    <span className="text-white text-sm font-medium">Call Analytics</span>
+                  </div>
+                  <div className="flex items-center space-x-1 ml-auto">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span className="text-green-400 text-xs">Live</span>
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-6">
+                  <div className="animate-slide-in-right">
+                    <h4 className="text-white font-semibold mb-3">Today's Performance</h4>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-gray-800 rounded-lg p-3 text-center">
+                        <div className="text-2xl font-bold text-green-400 animate-pulse">47</div>
+                        <div className="text-gray-400 text-xs">Calls Answered</div>
+                      </div>
+                      <div className="bg-gray-800 rounded-lg p-3 text-center">
+                        <div className="text-2xl font-bold text-blue-400 animate-pulse">32</div>
+                        <div className="text-gray-400 text-xs">Leads Captured</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="animate-slide-in-right delay-500">
+                    <h4 className="text-white font-semibold mb-3">Conversion Rate</h4>
+                    <div className="bg-gray-800 rounded-lg p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-gray-300 text-sm">Call to Lead</span>
+                        <span className="text-green-400 text-sm font-bold">68%</span>
+                      </div>
+                      <div className="w-full bg-gray-700 rounded-full h-2">
+                        <div className="bg-gradient-to-r from-green-400 to-blue-500 h-2 rounded-full animate-pulse" style={{width: '68%'}}></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="animate-slide-in-right delay-1000">
+                    <h4 className="text-white font-semibold mb-3">Recent Actions</h4>
+                    <div className="space-y-2">
+                      <div className="bg-gray-800 rounded-lg p-3 flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                        <span className="text-white text-sm">Lead qualified & scheduled callback</span>
+                      </div>
+                      <div className="bg-gray-800 rounded-lg p-3 flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                        <span className="text-white text-sm">Follow-up email sent automatically</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+
+              <ScrollReveal delay={300}>
+                <div className="text-center mt-8">
+                  <div className="flex items-center justify-center space-x-6 text-gray-300">
+                    <div className="flex items-center space-x-2">
+                      <Clock className="w-4 h-4 text-green-500" />
+                      <span>24/7 Available</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <CheckCircle className="w-4 h-4 text-blue-500" />
+                      <span>100% Professional</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <TrendingUp className="w-4 h-4 text-purple-500" />
+                      <span>68% Conversion Rate</span>
+                    </div>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
           </ScrollReveal>
         </div>
       </section>

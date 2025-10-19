@@ -1493,37 +1493,67 @@ body.mobile-no-animations .mobile-orb-3 {
   animation: mobileFloat3 22s ease-in-out infinite;
 }
 
-/* Simple mobile orb animations - smooth, no collisions */
+/* Simple mobile orb animations - smooth float with fade in/out */
 @keyframes mobileFloat1 {
-  0%, 100% {
+  0% {
     transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
     opacity: 0.4;
   }
   50% {
     transform: translate(30px, 50px);
     opacity: 0.6;
   }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
 }
 
 @keyframes mobileFloat2 {
-  0%, 100% {
+  0% {
     transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
     opacity: 0.35;
   }
   50% {
     transform: translate(-40px, -60px);
     opacity: 0.55;
   }
+  90% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
 }
 
 @keyframes mobileFloat3 {
-  0%, 100% {
+  0% {
     transform: translate(0, 0);
+    opacity: 0;
+  }
+  10% {
     opacity: 0.35;
   }
   50% {
     transform: translate(50px, -30px);
     opacity: 0.5;
+  }
+  90% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
   }
 }
 

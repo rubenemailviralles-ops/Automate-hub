@@ -950,21 +950,7 @@ const CRMIntegration = () => {
           <div className="space-y-6">
             <ScrollReveal delay={200}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">Which CRM systems do you integrate with?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -975,21 +961,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={250}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">How long does CRM integration take?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -1000,21 +972,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">Will you migrate our existing data?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -1025,21 +983,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={350}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">Can you automate our sales and marketing workflows?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -1050,21 +994,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={400}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">What if we use multiple systems that need to work together?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -1075,21 +1005,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={450}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">Do you provide training on the integrated CRM system?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -1100,21 +1016,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={500}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">How secure is the data during integration?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -1125,21 +1027,7 @@ const CRMIntegration = () => {
 
             <ScrollReveal delay={550}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">What does CRM integration cost?</h3>
                 <p className="text-gray-400 leading-relaxed">

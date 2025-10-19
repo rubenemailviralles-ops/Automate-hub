@@ -830,21 +830,7 @@ const EmailOutreach = () => {
           <div className="space-y-6">
             <ScrollReveal delay={200}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">How does AI personalization work for emails?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -855,21 +841,7 @@ const EmailOutreach = () => {
 
             <ScrollReveal delay={250}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">How many emails can I send per day?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -880,21 +852,7 @@ const EmailOutreach = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">Will my emails end up in spam folders?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -905,21 +863,7 @@ const EmailOutreach = () => {
 
             <ScrollReveal delay={350}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">Can you write the email content for us?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -930,21 +874,7 @@ const EmailOutreach = () => {
 
             <ScrollReveal delay={400}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">How do you handle email responses and follow-ups?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -955,21 +885,7 @@ const EmailOutreach = () => {
 
             <ScrollReveal delay={450}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">Can I A/B test different email variations?</h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -980,21 +896,7 @@ const EmailOutreach = () => {
 
             <ScrollReveal delay={500}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 mobile-3d-popup"
-                style={{
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.01)';
-                  e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                }}
+                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
                 <h3 className="text-xl font-bold text-white mb-3">How much does email automation cost?</h3>
                 <p className="text-gray-400 leading-relaxed">

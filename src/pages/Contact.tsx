@@ -124,7 +124,6 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Left Side - Contact Info */}
           <div className="space-y-8">
-            <ScrollReveal delay={0}>
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   Contact <span className="text-blue-400">Us</span>
@@ -133,10 +132,8 @@ const Contact = () => {
                   Ready to automate your business? Let's talk about how we can help you save time and increase efficiency with our <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold">website creation</Link>, <Link to="/crm-integration" className="text-purple-400 hover:text-purple-300 transition-colors font-semibold">CRM integration</Link>, <Link to="/phone-callers" className="text-green-400 hover:text-green-300 transition-colors font-semibold">AI phone agents</Link>, and <Link to="/email-outreach" className="text-pink-400 hover:text-pink-300 transition-colors font-semibold">email automation</Link> solutions.
                 </p>
               </div>
-            </ScrollReveal>
 
             <div className="space-y-6">
-              <ScrollReveal delay={0}>
                 <div className="flex items-center space-x-4">
                   <div 
                     className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-105"
@@ -151,9 +148,7 @@ const Contact = () => {
                     <p className="text-gray-400">(+27) 82 644 2575</p>
                   </div>
                 </div>
-              </ScrollReveal>
 
-              <ScrollReveal delay={0}>
                 <div className="flex items-center space-x-4">
                   <div 
                     className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-105"
@@ -168,10 +163,8 @@ const Contact = () => {
                     <p className="text-gray-400">automate.hub1@gmail.com</p>
                   </div>
                 </div>
-              </ScrollReveal>
             </div>
 
-            <ScrollReveal delay={0}>
               <div 
                 className="bg-gray-800/50 rounded-2xl p-6 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-gray-700/70 border border-transparent"
                 style={{
@@ -206,11 +199,9 @@ const Contact = () => {
                   </li>
                 </ul>
               </div>
-            </ScrollReveal>
           </div>
 
           {/* Right Side - Contact Form */}
-          <ScrollReveal delay={0}>
             <div 
               className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-gray-700/70"
               style={{
@@ -384,7 +375,6 @@ const Contact = () => {
                 </form>
               )}
             </div>
-          </ScrollReveal>
         </div>
       </div>
       

@@ -1361,6 +1361,8 @@ select:focus-visible {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.6s ease-out !important;
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
+    pointer-events: auto; /* Ensure children can receive events */
   }
   
   /* When element is in view, apply the popup effect */
@@ -1370,6 +1372,35 @@ select:focus-visible {
     opacity: 1;
     transform: translateY(-8px) !important;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  /* Ensure interactive elements inside popup containers remain fully functional */
+  .hover\:-translate-y-2 input,
+  .hover\:-translate-y-2 button,
+  .hover\:-translate-y-2 a,
+  .hover\:-translate-y-2 select,
+  .hover\:-translate-y-2 textarea,
+  .hover\:scale-105 input,
+  .hover\:scale-105 button,
+  .hover\:scale-105 a,
+  .hover\:scale-105 select,
+  .hover\:scale-105 textarea,
+  .hover\:-translate-y-1 input,
+  .hover\:-translate-y-1 button,
+  .hover\:-translate-y-1 a,
+  .hover\:-translate-y-1 select,
+  .hover\:-translate-y-1 textarea {
+    pointer-events: auto !important;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+    touch-action: auto !important;
+  }
+  
+  /* Specific fix for range sliders on mobile */
+  .hover\:-translate-y-2 input[type="range"],
+  .hover\:scale-105 input[type="range"],
+  .hover\:-translate-y-1 input[type="range"] {
+    -webkit-appearance: none;
+    touch-action: none !important; /* Allow dragging */
   }
 }
 

@@ -1,8 +1,9 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useMobileHover } from './hooks/useMobileHover';
 import { useChatbotPosition } from './hooks/useChatbotPosition';
 import { useRemoveBoltBranding } from './hooks/useRemoveBoltBranding';
+import { initMobileScrollPopup, refreshMobileScrollPopup } from './utils/mobileScrollPopup';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -46,6 +47,11 @@ function ScrollToTop() {
     
     // Reinitialize mobile hover effects when route changes
     reinitialize();
+    
+    // Refresh mobile scroll popup observer for new content
+    setTimeout(() => {
+      refreshMobileScrollPopup();
+    }, 500);
   }, [pathname, hash, reinitialize]);
 
   return null;
@@ -60,6 +66,18 @@ function App() {
 
   // Remove external branding overlays
   useRemoveBoltBranding();
+
+  // Initialize mobile scroll popup animations
+  useEffect(() => {
+    initMobileScrollPopup();
+    
+    // Refresh scroll popup observer after dynamic content loads
+    const timer = setTimeout(() => {
+      refreshMobileScrollPopup();
+    }, 1000);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <Router>

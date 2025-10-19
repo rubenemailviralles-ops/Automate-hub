@@ -23,13 +23,13 @@ export const HeroSectionVariations = {
       <div className="flex flex-col sm:flex-row gap-6 justify-center">
         <button 
           onClick={() => trackEvent('click', { element: 'cta_button', text: 'Get Started' })}
-          className="bg-white text-black hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
+          className="bg-white text-black hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
         >
           Get Started
         </button>
         <button 
           onClick={() => trackEvent('click', { element: 'secondary_button', text: 'Learn More' })}
-          className="border border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-xl font-semibold transition-all duration-300"
+          className="border border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
         >
           Learn More
         </button>
@@ -54,13 +54,13 @@ export const HeroSectionVariations = {
       <div className="flex flex-col sm:flex-row gap-6 justify-center">
         <button 
           onClick={() => trackEvent('click', { element: 'cta_button', text: 'Claim Your Spot' })}
-          className="bg-red-500 text-white hover:bg-red-600 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
+          className="bg-red-500 text-white hover:bg-red-600 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
         >
           Claim Your Spot Now
         </button>
         <button 
           onClick={() => trackEvent('click', { element: 'secondary_button', text: 'See Results' })}
-          className="border border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-xl font-semibold transition-all duration-300"
+          className="border border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
         >
           See Results
         </button>
@@ -90,13 +90,13 @@ export const HeroSectionVariations = {
       <div className="flex flex-col sm:flex-row gap-6 justify-center">
         <button 
           onClick={() => trackEvent('click', { element: 'cta_button', text: 'Start Your Success Story' })}
-          className="bg-white text-black hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
+          className="bg-white text-black hover:bg-gray-100 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
         >
           Start Your Success Story
         </button>
         <button 
           onClick={() => trackEvent('click', { element: 'secondary_button', text: 'Read Case Studies' })}
-          className="border border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-xl font-semibold transition-all duration-300"
+          className="border border-white/20 text-white hover:bg-white/10 px-8 py-4 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
         >
           Read Case Studies
         </button>

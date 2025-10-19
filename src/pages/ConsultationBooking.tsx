@@ -3,6 +3,7 @@ import { Calendar, Send, CheckCircle, Globe, Database, Phone, Mail, ArrowLeft } 
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import TypeWriter from '../components/TypeWriter';
 import ScrollReveal from '../components/ScrollReveal';
+import MobileScrollPopup from '../components/MobileScrollPopup';
 import SEO from '../components/SEO';
 import { useIsMobile } from '../utils/mobileDetection';
 import { supabase } from '../lib/supabase';
@@ -250,11 +251,9 @@ const ConsultationBooking = () => {
 
             {/* Right Side - Form */}
             <div className="animate-slide-in-right">
-              <div 
+              <MobileScrollPopup 
                 className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm shadow-2xl relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20"
-                style={{
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                }}
+                delay={100}
               >
                 <div className="mb-6 transition-all duration-500 ease-in-out">
                   <h2 className={`text-2xl font-bold text-white mb-2 transition-all duration-500 ${submitSuccess ? 'opacity-0 transform -translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
@@ -459,7 +458,7 @@ const ConsultationBooking = () => {
             </form>
                 )}
               </div>
-            </div>
+            </MobileScrollPopup>
 
           </div>
         </div>
@@ -527,11 +526,9 @@ const ConsultationBooking = () => {
           </div>
 
           <ScrollReveal delay={500}>
-            <div 
+            <MobileScrollPopup 
               className="mt-16 bg-gradient-to-r from-green-500/10 to-blue-600/10 border border-green-500/30 rounded-2xl p-8 text-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-green-500/50"
-              style={{
-                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-              }}
+              delay={200}
             >
               <h3 className="text-2xl font-bold text-white mb-4">Why Book a Consultation?</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
@@ -564,7 +561,7 @@ const ConsultationBooking = () => {
                   </li>
                 </ul>
               </div>
-            </div>
+            </MobileScrollPopup>
           </ScrollReveal>
 
           <div className="text-center mt-12">

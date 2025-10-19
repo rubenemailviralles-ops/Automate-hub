@@ -173,29 +173,9 @@ const Contact = () => {
 
             <ScrollReveal delay={400}>
               <div 
-                className="bg-gray-800/50 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
+                className="bg-gray-800/50 rounded-2xl p-6 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-gray-700/70 border border-transparent"
                 style={{
-                  transformStyle: 'preserve-3d',
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                  transition: 'transform 0.1s ease-out, box-shadow 0.3s ease-out',
-                  perspective: '1000px',
-                }}
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const x = e.clientX - rect.left;
-                  const y = e.clientY - rect.top;
-                  const centerX = rect.width / 2;
-                  const centerY = rect.height / 2;
-                  const rotateX = (y - centerY) / 20;
-                  const rotateY = (centerX - x) / 20;
-                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
                 }}
               >
                 <h3 className="text-xl font-semibold text-white mb-4">What to Expect:</h3>
@@ -232,23 +212,12 @@ const Contact = () => {
           {/* Right Side - Contact Form */}
           <ScrollReveal delay={500}>
             <div 
-              className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl relative"
+              className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-gray-700/70"
               style={{
-                transformStyle: 'preserve-3d',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
-                perspective: '1000px',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
-                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
               }}
             >
-              <div className="mb-6 transition-all duration-500 ease-in-out" style={{ transform: 'translateZ(10px)' }}>
+              <div className="mb-6 transition-all duration-500 ease-in-out">
                 <h2 className={`text-2xl font-bold text-white mb-2 transition-all duration-500 ${submitSuccess ? 'opacity-0 transform -translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
                   Send us a message
                 </h2>

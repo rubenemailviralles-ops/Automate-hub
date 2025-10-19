@@ -138,7 +138,7 @@ const Contact = () => {
             <div className="space-y-6">
                 <div className="flex items-center space-x-4">
                   <div 
-                    className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-105"
+                    className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center relative"
                     style={{
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                     }}
@@ -153,7 +153,7 @@ const Contact = () => {
 
                 <div className="flex items-center space-x-4">
                   <div 
-                    className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center relative transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-105"
+                    className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center relative"
                     style={{
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                     }}
@@ -168,7 +168,7 @@ const Contact = () => {
             </div>
 
               <div 
-                className="bg-gray-800/50 rounded-2xl p-6 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-gray-700/70 border border-transparent"
+                className="bg-gray-800/50 rounded-2xl p-6 relative border border-transparent"
                 style={{
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                 }}
@@ -357,10 +357,10 @@ const Contact = () => {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className={`w-full px-6 py-4 rounded-xl font-bold flex items-center justify-center mt-6 transition-all duration-300 ${
+                      className={`w-full px-6 py-4 rounded-xl font-bold flex items-center justify-center mt-6 ${
                         isSubmitting
                           ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                          : 'bg-white text-black hover:bg-gray-100 hover:-translate-y-2 hover:shadow-2xl'
+                          : 'bg-white text-black'
                       }`}
                       style={{
                         boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',

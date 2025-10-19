@@ -58,7 +58,7 @@ const ABTestDashboard: React.FC = () => {
     if (sampleSize < 100) return 'Insufficient data';
     
     const difference = Math.abs(variationRate - controlRate);
-    const standardError = Math.sqrt((controlRate * (1 - controlRate) + variationRate * (1 - variationRate)) / Math.sqrt(sampleSize);
+    const standardError = Math.sqrt((controlRate * (1 - controlRate) + variationRate * (1 - variationRate)) / Math.sqrt(sampleSize));
     const zScore = difference / standardError;
     
     if (zScore > 2.58) return '99% confidence';

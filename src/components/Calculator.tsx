@@ -30,7 +30,7 @@ const Calculator = () => {
   return (
     <>
       {/* Desktop version with animations */}
-      <section className="hidden lg:block py-8 md:py-24 seamless-section">
+      <section className="hidden xl:block py-8 md:py-24 seamless-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6 md:mb-12">
           <div 
@@ -217,7 +217,7 @@ const Calculator = () => {
       </section>
 
       {/* MOBILE ONLY - Built from scratch with zero effects */}
-      <section className="block lg:hidden py-8" style={{ pointerEvents: 'auto' }}>
+      <section className="block xl:hidden py-8" style={{ pointerEvents: 'auto' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '24px' }}>

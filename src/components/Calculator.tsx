@@ -32,7 +32,7 @@ const Calculator = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6 md:mb-12">
           <div 
-            className="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-green-500/20 to-emerald-600/20 border border-green-500/30 rounded-full mb-4 md:mb-8 backdrop-blur-sm animate-fade-in transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+            className="inline-flex items-center px-4 py-2 md:px-6 md:py-3 bg-gradient-to-r from-green-500/20 to-emerald-600/20 border border-green-500/30 rounded-full mb-4 md:mb-8 backdrop-blur-sm animate-fade-in"
           >
             <CalculatorIcon className="w-4 h-4 md:w-5 md:h-5 text-green-400 mr-2" />
             <span className="text-green-400 font-medium text-sm md:text-base">ROI Calculator</span>

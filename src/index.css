@@ -1395,6 +1395,11 @@ select:focus-visible {
     -webkit-tap-highlight-color: transparent !important;
     -webkit-touch-callout: none !important;
   }
+  
+  /* Disable pulse animations on mobile to prevent glitchy behavior */
+  .animate-pulse-slow {
+    animation: none !important;
+  }
 }
 
 /* ============================================

@@ -1419,11 +1419,11 @@ select:focus-visible {
   .animate-slide-in-right,
   .animate-slide-in {
     animation: none !important;
-    opacity: 1 !important;
     transform: none !important;
   }
   
-  /* KEEP animate-fade-in and animate-fade-in-up on mobile */
+  /* KEEP animate-fade-in and animate-fade-in-up on mobile - DO NOT override opacity */
+  /* Let ScrollReveal handle opacity transitions */
   
   /* Disable transition-colors on links */
   .transition-colors {

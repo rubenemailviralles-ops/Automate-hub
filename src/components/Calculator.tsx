@@ -216,13 +216,13 @@ const Calculator = () => {
       </div>
       </section>
 
-      {/* MOBILE ONLY - Built from scratch with zero effects */}
-      <section className="block xl:hidden py-8" style={{ pointerEvents: 'auto' }}>
+      {/* MOBILE ONLY - Built from scratch with zero effects - v3 CACHE BUSTER */}
+      <section className="block xl:hidden py-8" style={{ pointerEvents: 'auto' }} data-version="mobile-v3-no-animations">
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '24px' }}>
             <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '12px', color: 'white' }}>
-              Calculate Your Potential Savings
+              💰 Calculate Your Potential Savings (Mobile)
             </h2>
             <p style={{ fontSize: '14px', color: '#9ca3af' }}>
               See how much you could save by automating manual processes with AI

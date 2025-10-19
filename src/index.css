@@ -1412,6 +1412,22 @@ select:focus-visible {
   .animate-pulse-slow {
     animation: none !important;
   }
+  
+  /* Disable ALL slide-in animations on mobile - causing flickering */
+  .animate-slide-in-left,
+  .animate-slide-in-right,
+  .animate-slide-in,
+  .animate-fade-in,
+  .animate-fade-in-up {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  /* Disable transition-colors on links */
+  .transition-colors {
+    transition: none !important;
+  }
 }
 
 /* ============================================

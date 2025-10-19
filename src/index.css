@@ -157,8 +157,8 @@
   .floating-orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(60px);
-    opacity: 0.5;
+    filter: blur(50px);
+    opacity: 0.7;
     animation: float 8s ease-in-out infinite;
     pointer-events: none;
     z-index: 0;
@@ -167,41 +167,41 @@
   .floating-orb-1 {
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, rgba(99, 102, 241, 0.2) 40%, transparent 70%);
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.8) 0%, rgba(99, 102, 241, 0.4) 30%, rgba(99, 102, 241, 0.1) 60%, transparent 80%);
     top: 10%;
     left: 10%;
     animation-delay: 0s;
-    box-shadow: 0 0 100px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 150px rgba(99, 102, 241, 0.6), 0 0 80px rgba(99, 102, 241, 0.4);
   }
 
   .floating-orb-2 {
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, rgba(168, 85, 247, 0.18) 40%, transparent 70%);
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.7) 0%, rgba(168, 85, 247, 0.35) 30%, rgba(168, 85, 247, 0.1) 60%, transparent 80%);
     top: 60%;
     right: 10%;
     animation-delay: -4s;
-    box-shadow: 0 0 120px rgba(168, 85, 247, 0.25);
+    box-shadow: 0 0 180px rgba(168, 85, 247, 0.5), 0 0 100px rgba(168, 85, 247, 0.4);
   }
 
   .floating-orb-3 {
     width: 250px;
     height: 250px;
-    background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(236, 72, 153, 0.15) 40%, transparent 70%);
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.7) 0%, rgba(236, 72, 153, 0.35) 30%, rgba(236, 72, 153, 0.1) 60%, transparent 80%);
     bottom: 20%;
     left: 20%;
     animation-delay: -2s;
-    box-shadow: 0 0 90px rgba(236, 72, 153, 0.2);
+    box-shadow: 0 0 130px rgba(236, 72, 153, 0.5), 0 0 70px rgba(236, 72, 153, 0.4);
   }
 
   .floating-orb-4 {
     width: 350px;
     height: 350px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(59, 130, 246, 0.15) 40%, transparent 70%);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.7) 0%, rgba(59, 130, 246, 0.35) 30%, rgba(59, 130, 246, 0.1) 60%, transparent 80%);
     top: 30%;
     right: 30%;
     animation-delay: -6s;
-    box-shadow: 0 0 110px rgba(59, 130, 246, 0.2);
+    box-shadow: 0 0 160px rgba(59, 130, 246, 0.5), 0 0 90px rgba(59, 130, 246, 0.4);
   }
   
   .animate-fade-in {

@@ -1413,16 +1413,17 @@ select:focus-visible {
     animation: none !important;
   }
   
-  /* Disable ALL slide-in animations on mobile - causing flickering */
+  /* Disable slide-in animations on mobile - causing flickering */
+  /* But KEEP fade-in animations - they're smooth */
   .animate-slide-in-left,
   .animate-slide-in-right,
-  .animate-slide-in,
-  .animate-fade-in,
-  .animate-fade-in-up {
+  .animate-slide-in {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
+  
+  /* KEEP animate-fade-in and animate-fade-in-up on mobile */
   
   /* Disable transition-colors on links */
   .transition-colors {
@@ -1433,13 +1434,16 @@ select:focus-visible {
 /* ============================================
    MOBILE NO ANIMATIONS - Kill hover/slide/scale but KEEP fade in/out
    ============================================ */
-/* When body has mobile-no-animations class - kill problematic animations */
+/* When body has mobile-no-animations class - kill problematic animations but KEEP fade effects */
 body.mobile-no-animations .animate-slide-in-left,
 body.mobile-no-animations .animate-slide-in-right,
 body.mobile-no-animations .animate-slide-in,
 body.mobile-no-animations .animate-bounce {
   animation: none !important;
 }
+
+/* KEEP fade-in and fade-in-up on mobile - they're smooth and not problematic */
+/* .animate-fade-in and .animate-fade-in-up are NOT disabled */
 
 /* DISABLE floating orbs on mobile - causing seizure effect */
 body.mobile-no-animations .floating-orb {

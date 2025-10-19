@@ -13,8 +13,24 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
+    // Skip animation on mobile - instant render
+    if (isMobile) {
+      setIsVisible(true);
+      return;
+    }
     const currentElement = elementRef.current;
     
     const observer = new IntersectionObserver(
@@ -39,7 +55,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
         observer.unobserve(currentElement);
       }
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <div 

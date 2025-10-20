@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useMobileHover } from './hooks/useMobileHover';
 import { useChatbotPosition } from './hooks/useChatbotPosition';
 import { useRemoveBoltBranding } from './hooks/useRemoveBoltBranding';
@@ -88,7 +88,7 @@ function App() {
 
 
   return (
-    <Router basename={import.meta.env.BASE_URL}>
+    <Router>
       <ScrollToTop />
       <a href="#main-content" className="skip-to-main">
         Skip to main content

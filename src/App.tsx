@@ -88,7 +88,7 @@ function App() {
 
 
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <ScrollToTop />
       <a href="#main-content" className="skip-to-main">
         Skip to main content

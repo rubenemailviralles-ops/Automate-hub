@@ -59,19 +59,25 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>
 );
 
-// Register service worker for PWA functionality
-serviceWorkerRegistration.register({
-  onSuccess: () => {
-    console.log('[PWA] Content is cached for offline use.');
-  },
-  onUpdate: (registration) => {
-    console.log('[PWA] New content available! Please refresh.');
-    // Optionally show a notification to user
-    if (confirm('New version available! Reload to update?')) {
-      if (registration.waiting) {
-        registration.waiting.postMessage({ type: 'SKIP_WAITING' });
-        window.location.reload();
+// Register service worker only on first-party domains (disable on GitHub Pages)
+const isGitHubPages = typeof window !== 'undefined' && window.location.hostname.endsWith('github.io');
+
+if (isGitHubPages) {
+  // Ensure any existing SWs are unregistered
+  serviceWorkerRegistration.unregister();
+} else {
+  serviceWorkerRegistration.register({
+    onSuccess: () => {
+      console.log('[PWA] Content is cached for offline use.');
+    },
+    onUpdate: (registration) => {
+      console.log('[PWA] New content available! Please refresh.');
+      if (confirm('New version available! Reload to update?')) {
+        if (registration.waiting) {
+          registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+          window.location.reload();
+        }
       }
-    }
-  },
-});
+    },
+  });
+}

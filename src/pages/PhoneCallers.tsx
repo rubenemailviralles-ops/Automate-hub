@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Phone, Clock, TrendingUp, Shield, CheckCircle, ArrowRight, Users, BarChart3, ArrowLeft, Headphones, Network } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import CTASection from '../components/CTASection';
@@ -9,247 +9,86 @@ import ServiceSchema from '../components/ServiceSchema';
 import FAQSchema from '../components/FAQSchema';
 import { useIsMobile } from '../utils/mobileDetection';
 import { navigateBackToHome } from '../utils/scrollToTop';
+import Vapi from '@vapi-ai/web';
 
 const PhoneCallers = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [isCallActive, setIsCallActive] = React.useState(false);
-  const [callStatus, setCallStatus] = React.useState('Ready to call');
-  const [demoMode, setDemoMode] = React.useState(false);
-  const vapiInstanceRef = React.useRef(null);
+  const [vapi, setVapi] = useState<Vapi | null>(null);
+  const [isConnected, setIsConnected] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [transcript, setTranscript] = useState<Array<{role: string, text: string}>>([]);
+  const [callStatus, setCallStatus] = useState('Ready to call');
+
+  // Vapi configuration
+  const assistantId = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
+  const apiKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
 
   useEffect(() => {
-    // Vapi configuration
-    const assistant = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
-    const apiKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
+    const vapiInstance = new Vapi(apiKey);
+    setVapi(vapiInstance);
 
-    // Load Vapi SDK with custom configuration
-    const loadVapiSDK = () => {
-      return new Promise((resolve, reject) => {
-        if (window.vapiSDK) {
-          resolve(window.vapiSDK);
-          return;
-        }
-
-        const script = document.createElement('script');
-        script.src = 'https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js';
-        script.defer = true;
-        script.async = true;
-        script.onload = () => {
-          // Wait for SDK to fully initialize
-          setTimeout(() => {
-            // Immediately hide any default UI that might appear
-            const hideVapiUI = () => {
-              const vapiElements = document.querySelectorAll('[class*="vapi"], [id*="vapi"], [data-vapi], iframe[src*="vapi"]');
-              vapiElements.forEach(el => {
-                (el as HTMLElement).style.display = 'none';
-                (el as HTMLElement).style.visibility = 'hidden';
-                (el as HTMLElement).style.opacity = '0';
-                (el as HTMLElement).style.position = 'absolute';
-                (el as HTMLElement).style.left = '-9999px';
-                (el as HTMLElement).style.top = '-9999px';
-              });
-            };
-            
-            hideVapiUI();
-            setInterval(hideVapiUI, 500); // Keep hiding any new elements
-            
-            resolve(window.vapiSDK);
-          }, 200);
-        };
-        script.onerror = reject;
-        document.head.appendChild(script);
-      });
-    };
-
-    // Initialize Vapi SDK on mount
-    loadVapiSDK().catch(error => {
-      console.error('Failed to load Vapi SDK:', error);
-      setCallStatus('Failed to load voice system');
+    // Event listeners
+    vapiInstance.on('call-start', () => {
+      console.log('Call started');
+      setIsConnected(true);
+      setCallStatus('Connected - Speaking...');
     });
 
-    // Cleanup on unmount
-    return () => {
-      if (vapiInstanceRef.current) {
-        try {
-          vapiInstanceRef.current.stop();
-        } catch (e) {
-          console.error('Error stopping Vapi:', e);
-        }
-        vapiInstanceRef.current = null;
-      }
-    };
-  }, []);
+    vapiInstance.on('call-end', () => {
+      console.log('Call ended');
+      setIsConnected(false);
+      setIsSpeaking(false);
+      setCallStatus('Call ended');
+      setTimeout(() => setCallStatus('Ready to call'), 2000);
+    });
 
-  const startWorkingDemo = () => {
-    console.log('Starting guaranteed working demo...');
-    setCallStatus('Demo Mode - AI Speaking...');
-    
-    // Create a simple, guaranteed working audio demo
-    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    
-    // Create a simple beep sound to test audio
-    const oscillator = audioContext.createOscillator();
-    const gainNode = audioContext.createGain();
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(audioContext.destination);
-    
-    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
-    oscillator.frequency.setValueAtTime(600, audioContext.currentTime + 0.1);
-    oscillator.frequency.setValueAtTime(800, audioContext.currentTime + 0.2);
-    
-    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-    
-    oscillator.start(audioContext.currentTime);
-    oscillator.stop(audioContext.currentTime + 0.5);
-    
-    // Also try Web Speech API as backup
-    if ('speechSynthesis' in window) {
-      setTimeout(() => {
-        const utterance = new SpeechSynthesisUtterance("Hello! I'm the Automate Hub AI assistant. This is a working voice demo.");
-        utterance.rate = 0.9;
-        utterance.pitch = 1.0;
-        utterance.volume = 1.0;
-        
-        utterance.onstart = () => {
-          console.log('Speech started');
-          setCallStatus('Demo Mode - AI Speaking...');
-        };
-        
-        utterance.onend = () => {
-          console.log('Speech ended');
-          setCallStatus('Demo Mode - Listening...');
-        };
-        
-        utterance.onerror = (error) => {
-          console.error('Speech error:', error);
-          setCallStatus('Demo Mode - Audio test complete');
-        };
-        
-        speechSynthesis.speak(utterance);
-      }, 1000);
-    } else {
-      setCallStatus('Demo Mode - Audio test complete');
+    vapiInstance.on('speech-start', () => {
+      console.log('Assistant started speaking');
+      setIsSpeaking(true);
+      setCallStatus('AI Speaking - Listen...');
+    });
+
+    vapiInstance.on('speech-end', () => {
+      console.log('Assistant stopped speaking');
+      setIsSpeaking(false);
+      setCallStatus('Connected - Listening...');
+    });
+
+    vapiInstance.on('message', (message) => {
+      if (message.type === 'transcript') {
+        setTranscript(prev => [...prev, {
+          role: message.role,
+          text: message.transcript
+        }]);
+      }
+    });
+
+    vapiInstance.on('error', (error) => {
+      console.error('Vapi error:', error);
+      setCallStatus('Connection failed');
+      setIsConnected(false);
+      setTimeout(() => setCallStatus('Ready to call'), 3000);
+    });
+
+    return () => {
+      vapiInstance?.stop();
+    };
+  }, [apiKey]);
+
+  const startCall = () => {
+    if (vapi) {
+      console.log('Starting Vapi call with assistant:', assistantId);
+      vapi.start(assistantId);
     }
   };
 
-  const handleVapiToggle = async () => {
-    const assistant = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
-    const apiKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
-
-    try {
-      if (isCallActive) {
-        if (demoMode) {
-          // Stop demo mode
-          speechSynthesis.cancel(); // Stop any ongoing speech
-          setDemoMode(false);
-          setIsCallActive(false);
-          setCallStatus('Demo ended');
-          setTimeout(() => setCallStatus('Ready to call'), 2000);
-        } else if (vapiInstanceRef.current) {
-          // Stop the real call
-          vapiInstanceRef.current.stop();
-          vapiInstanceRef.current = null;
-          setIsCallActive(false);
-          setCallStatus('Call ended');
-          setTimeout(() => setCallStatus('Ready to call'), 2000);
-        }
-      } else {
-        // Try Vapi first, fallback to working demo
-        console.log('Attempting Vapi connection...');
-        
-        if (!window.vapiSDK) {
-          console.log('Vapi SDK not loaded, using demo mode');
-          setCallStatus('Demo Mode - Starting...');
-          setIsCallActive(true);
-          setDemoMode(true);
-          startWorkingDemo();
-          return;
-        }
-
-        setCallStatus('Connecting...');
-        setIsCallActive(true);
-
-        // Try Vapi with timeout
-        const vapiTimeout = setTimeout(() => {
-          console.log('Vapi timeout, switching to demo mode');
-          setCallStatus('Demo Mode - Starting...');
-          setDemoMode(true);
-          startWorkingDemo();
-        }, 5000); // 5 second timeout
-
-        try {
-          console.log('Starting Vapi call with credentials:', { 
-            assistant: assistant.substring(0, 8) + '...', 
-            apiKey: apiKey.substring(0, 8) + '...' 
-          });
-          
-          vapiInstanceRef.current = window.vapiSDK.run({
-            apiKey: apiKey,
-            assistant: assistant,
-            config: {
-              name: 'Automate Hub AI Agent',
-              firstMessage: 'Hello! I\'m the Automate Hub AI assistant. How can I help you today?'
-            }
-          });
-          
-          console.log('Vapi instance created:', vapiInstanceRef.current);
-          
-          // Set up event listeners
-          vapiInstanceRef.current.on('call-start', () => {
-            console.log('Vapi call started');
-            clearTimeout(vapiTimeout);
-            setCallStatus('Connected - Speaking...');
-          });
-          
-          vapiInstanceRef.current.on('speech-start', () => {
-            console.log('AI is speaking');
-            setCallStatus('AI Speaking - Listen...');
-          });
-          
-          vapiInstanceRef.current.on('speech-end', () => {
-            console.log('AI finished speaking');
-            setCallStatus('Connected - Listening...');
-          });
-          
-          vapiInstanceRef.current.on('call-end', () => {
-            console.log('Vapi call ended');
-            setCallStatus('Call ended');
-            setIsCallActive(false);
-            vapiInstanceRef.current = null;
-            setTimeout(() => setCallStatus('Ready to call'), 2000);
-          });
-          
-          vapiInstanceRef.current.on('error', (error) => {
-            console.error('Vapi call error:', error);
-            clearTimeout(vapiTimeout);
-            setCallStatus('Demo Mode - Starting...');
-            setDemoMode(true);
-            startWorkingDemo();
-          });
-          
-          // Start the call
-          console.log('Starting Vapi call...');
-          vapiInstanceRef.current.start();
-          
-        } catch (error) {
-          console.error('Vapi initialization error:', error);
-          clearTimeout(vapiTimeout);
-          setCallStatus('Demo Mode - Starting...');
-          setDemoMode(true);
-          startWorkingDemo();
-        }
-      }
-    } catch (error) {
-      console.error('Vapi error:', error);
-      setCallStatus('Connection failed');
-      setIsCallActive(false);
-      vapiInstanceRef.current = null;
-      setTimeout(() => setCallStatus('Ready to call'), 3000);
+  const endCall = () => {
+    if (vapi) {
+      console.log('Ending Vapi call');
+      vapi.stop();
     }
   };
   
@@ -376,16 +215,16 @@ const PhoneCallers = () => {
                   {/* Animated Avatar Circle */}
                   <div className="relative mb-8">
                     <div 
-                      className={`w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center relative ${isCallActive ? 'animate-pulse' : ''}`}
+                      className={`w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center relative ${isConnected ? 'animate-pulse' : ''}`}
                       style={{
-                        boxShadow: isCallActive 
+                        boxShadow: isConnected 
                           ? '0 0 60px rgba(99, 102, 241, 0.8), 0 0 120px rgba(168, 85, 247, 0.6)' 
                           : '0 20px 60px rgba(0, 0, 0, 0.4)',
                         transition: 'all 0.5s ease-out'
                       }}
                     >
                       {/* Outer ring animation */}
-                      {isCallActive && (
+                      {isConnected && (
                         <>
                           <div 
                             className="absolute inset-0 rounded-full border-4 border-indigo-400 opacity-75"
@@ -404,7 +243,7 @@ const PhoneCallers = () => {
                       
                       {/* Icon */}
                       <div className="relative z-10">
-                        {isCallActive ? (
+                        {isConnected ? (
                           <Phone className="w-16 h-16 text-white animate-pulse" />
                         ) : (
                           <Headphones className="w-16 h-16 text-white" />
@@ -415,12 +254,12 @@ const PhoneCallers = () => {
                     {/* Status indicator */}
                     <div className="mt-4 flex items-center justify-center space-x-2">
                       <div 
-                        className={`w-3 h-3 rounded-full ${isCallActive ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}
+                        className={`w-3 h-3 rounded-full ${isConnected ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}
                         style={{
-                          boxShadow: isCallActive ? '0 0 10px rgba(34, 197, 94, 0.8)' : 'none'
+                          boxShadow: isConnected ? '0 0 10px rgba(34, 197, 94, 0.8)' : 'none'
                         }}
                       ></div>
-                      <span className={`text-sm font-medium ${isCallActive ? 'text-green-400' : 'text-gray-400'}`}>
+                      <span className={`text-sm font-medium ${isConnected ? 'text-green-400' : 'text-gray-400'}`}>
                         {callStatus}
                       </span>
                     </div>
@@ -428,30 +267,30 @@ const PhoneCallers = () => {
 
                   {/* Title and Description */}
                   <h3 className="text-3xl font-bold text-white mb-4">
-                    {isCallActive ? 'AI Agent Live' : 'Experience Our AI Voice Agent'}
+                    {isConnected ? 'AI Agent Live' : 'Experience Our AI Voice Agent'}
                   </h3>
                   <p className="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
-                    {isCallActive 
+                    {isConnected 
                       ? 'Our AI is listening and ready to help. Speak naturally and ask anything about our services.'
                       : 'Click the button below to start a live conversation with our AI phone agent. No setup required—just click and speak!'}
                   </p>
 
                   {/* Control Button */}
                   <button 
-                    onClick={handleVapiToggle}
+                    onClick={isConnected ? endCall : startCall}
                     className={`group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white rounded-2xl transition-all duration-300 transform hover:scale-105 ${
-                      isCallActive 
+                      isConnected 
                         ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700' 
                         : 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600'
                     }`}
                     style={{
-                      boxShadow: isCallActive
+                      boxShadow: isConnected
                         ? '0 10px 40px rgba(239, 68, 68, 0.4), 0 0 20px rgba(239, 68, 68, 0.3)'
                         : '0 10px 40px rgba(99, 102, 241, 0.4), 0 0 20px rgba(168, 85, 247, 0.3)'
                     }}
                   >
                     <span className="relative z-10 flex items-center space-x-3">
-                      {isCallActive ? (
+                      {isConnected ? (
                         <>
                           <Phone className="w-6 h-6 animate-pulse" />
                           <span>End Call</span>
@@ -469,7 +308,7 @@ const PhoneCallers = () => {
                   </button>
 
                   {/* Features List */}
-                  {!isCallActive && (
+                  {!isConnected && (
                     <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
                       <div className="flex items-center justify-center space-x-2 text-gray-300">
                         <CheckCircle className="w-5 h-5 text-green-400" />
@@ -487,7 +326,7 @@ const PhoneCallers = () => {
                   )}
 
                   {/* Live Call Info */}
-                  {isCallActive && (
+                  {isConnected && (
                     <div className="mt-10 bg-black/30 border border-green-500/30 rounded-xl p-6 backdrop-blur-sm">
                       <div className="flex items-center justify-center space-x-3 mb-4">
                         <div className="flex space-x-1">

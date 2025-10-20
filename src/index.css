@@ -42,6 +42,15 @@
     pointer-events: none;
     will-change: background-position;
   }
+  
+  /* Disable background animations on mobile for better performance */
+  @media (max-width: 768px) {
+    body::before {
+      animation: none !important;
+      will-change: auto;
+      background-position: 0% 0%, 100% 100%, 50% 50%;
+    }
+  }
 }
 
 /* Simplified background animations for better performance */
@@ -994,6 +1003,14 @@ h6:not(:has(.bg-clip-text)) {
   animation: sectionWave 40s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;
+}
+
+/* Disable wave section animations on mobile for better performance */
+@media (max-width: 768px) {
+  .wave-section::before {
+    animation: none !important;
+    background-position: 0% 0%, 100% 100%;
+  }
 }
 
 @keyframes sectionWave {

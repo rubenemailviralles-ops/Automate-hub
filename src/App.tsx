@@ -32,15 +32,20 @@ function ScrollToTop() {
   const { reinitialize } = useMobileHover();
 
   React.useEffect(() => {
-    // If this is a reload, always go to top and ignore hash
+    // Check if this is a page reload
     const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
     const isReload = navEntries && navEntries[0] && navEntries[0].type === 'reload';
+    
     if (isReload) {
+      // On reload, clear any hash from URL and scroll to top
+      if (window.location.hash) {
+        // Use history.replaceState to remove hash without triggering navigation
+        window.history.replaceState(null, '', window.location.pathname);
+      }
       window.scrollTo(0, 0);
-      // do not honor hash on reload to avoid jumping to ROI section
-      // continue to reinitialize effects below
     } else {
-    // If there's a hash, scroll to that element
+      // Normal navigation (not a reload)
+      // If there's a hash, scroll to that element
       if (hash) {
         setTimeout(() => {
           const element = document.querySelector(hash);
@@ -73,15 +78,6 @@ function App() {
   // Initialize mobile scroll popup on mount (mobile: reveal on scroll instead of hover/click)
   useEffect(() => {
     initMobileScrollPopup();
-  }, []);
-
-  // On hard reloads of non-home routes, redirect to homepage
-  useEffect(() => {
-    const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
-    const isReload = navEntries && navEntries[0] && navEntries[0].type === 'reload';
-    if (isReload && window.location.pathname !== '/') {
-      window.location.replace('/');
-    }
   }, []);
   
   // Initialize chatbot positioning

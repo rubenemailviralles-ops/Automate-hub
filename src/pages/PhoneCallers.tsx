@@ -165,77 +165,28 @@ const PhoneCallers = () => {
         setCallStatus('Connecting...');
         setIsCallActive(true);
 
-        // Add timeout to prevent infinite connecting state
-        const connectionTimeout = setTimeout(() => {
-          if (callStatus === 'Connecting...') {
-            setCallStatus('Connection timeout');
-            setIsCallActive(false);
-            vapiInstanceRef.current = null;
-            setTimeout(() => setCallStatus('Ready to call'), 3000);
-          }
-        }, 10000); // 10 second timeout
-
-        // Initialize Vapi with minimal configuration
+        // Initialize Vapi with proper configuration
         try {
-          console.log('Attempting Vapi connection with:', { apiKey: apiKey.substring(0, 8) + '...', assistant });
+          console.log('Starting Vapi call with credentials:', { 
+            assistant: assistant.substring(0, 8) + '...', 
+            apiKey: apiKey.substring(0, 8) + '...' 
+          });
           
           vapiInstanceRef.current = window.vapiSDK.run({
             apiKey: apiKey,
             assistant: assistant,
             config: {
-              // Minimal config for testing
-              name: 'Automate Hub AI Agent'
+              name: 'Automate Hub AI Agent',
+              firstMessage: 'Hello! I\'m the Automate Hub AI assistant. How can I help you today?',
+              // Enable voice functionality
+              voice: {
+                provider: 'elevenlabs',
+                voiceId: 'rachel' // or any voice you prefer
+              }
             }
           });
           
           console.log('Vapi instance created:', vapiInstanceRef.current);
-
-          // Aggressively hide any Vapi UI elements
-          const hideAllVapiUI = () => {
-            // Hide by class names
-            const classSelectors = [
-              '[class*="vapi"]',
-              '[class*="Vapi"]', 
-              '[class*="VAPI"]',
-              '[id*="vapi"]',
-              '[data-vapi]',
-              'iframe[src*="vapi"]',
-              'div[style*="vapi"]'
-            ];
-            
-            classSelectors.forEach(selector => {
-              const elements = document.querySelectorAll(selector);
-              elements.forEach(el => {
-                const htmlEl = el as HTMLElement;
-                htmlEl.style.display = 'none';
-                htmlEl.style.visibility = 'hidden';
-                htmlEl.style.opacity = '0';
-                htmlEl.style.position = 'absolute';
-                htmlEl.style.left = '-9999px';
-                htmlEl.style.top = '-9999px';
-                htmlEl.style.zIndex = '-9999';
-              });
-            });
-          };
-
-          // Hide immediately and keep hiding
-          hideAllVapiUI();
-          const hideInterval = setInterval(hideAllVapiUI, 100);
-          
-          // Clear interval after 10 seconds
-          setTimeout(() => clearInterval(hideInterval), 10000);
-          
-        } catch (error) {
-          console.error('Vapi initialization error:', error);
-          setCallStatus('Failed to initialize voice system');
-          setIsCallActive(false);
-          return;
-        }
-
-        // Add event listeners for call state changes
-        if (vapiInstanceRef.current) {
-          // Clear connection timeout
-          clearTimeout(connectionTimeout);
           
           // Set up event listeners
           vapiInstanceRef.current.on('call-start', () => {
@@ -269,59 +220,15 @@ const PhoneCallers = () => {
             setTimeout(() => setCallStatus('Ready to call'), 3000);
           });
           
-          // Try to start the call immediately
-          try {
-            console.log('Starting Vapi call...');
-            
-            // Check if browser supports audio
-            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-              console.error('Browser does not support audio');
-              setCallStatus('Audio not supported');
-              setIsCallActive(false);
-              vapiInstanceRef.current = null;
-              setTimeout(() => setCallStatus('Ready to call'), 3000);
-              return;
-            }
-            
-            // Request microphone permission first
-            navigator.mediaDevices.getUserMedia({ audio: true })
-              .then(() => {
-                console.log('Microphone permission granted');
-                
-                // Initialize audio context for better audio handling
-                if (window.AudioContext || window.webkitAudioContext) {
-                  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                  if (audioContext.state === 'suspended') {
-                    audioContext.resume();
-                  }
-                }
-                
-                vapiInstanceRef.current.start();
-                setCallStatus('Connected - Speaking...');
-              })
-              .catch((audioError) => {
-                console.error('Microphone permission denied:', audioError);
-                setCallStatus('Microphone permission required');
-                setIsCallActive(false);
-                vapiInstanceRef.current = null;
-                setTimeout(() => setCallStatus('Ready to call'), 3000);
-              });
-              
-          } catch (startError) {
-            console.error('Failed to start Vapi call:', startError);
-            // Fallback to working demo mode with actual audio
-            console.log('Switching to working demo mode');
-            setDemoMode(true);
-            setCallStatus('Demo Mode - Starting...');
-            setIsCallActive(true);
-            
-            // Create a working voice demo with Web Speech API
-            startWorkingDemo();
-          }
-        } else {
-          // Connection failed
-          setCallStatus('Connection failed');
+          // Start the call
+          console.log('Starting Vapi call...');
+          vapiInstanceRef.current.start();
+          
+        } catch (error) {
+          console.error('Vapi initialization error:', error);
+          setCallStatus('Failed to start call');
           setIsCallActive(false);
+          vapiInstanceRef.current = null;
           setTimeout(() => setCallStatus('Ready to call'), 3000);
         }
       }

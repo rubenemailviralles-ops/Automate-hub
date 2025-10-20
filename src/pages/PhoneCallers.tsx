@@ -15,12 +15,14 @@ const PhoneCallers = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [isCallActive, setIsCallActive] = React.useState(false);
+  const [callStatus, setCallStatus] = React.useState('Ready to call');
+  const vapiInstanceRef = React.useRef(null);
+
   useEffect(() => {
     // Vapi configuration
     const assistant = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
     const apiKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
-    
-    let vapiInstance = null;
 
     // Load Vapi SDK
     const loadVapiSDK = () => {
@@ -34,58 +36,77 @@ const PhoneCallers = () => {
         script.src = 'https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js';
         script.defer = true;
         script.async = true;
-        script.onload = () => resolve(window.vapiSDK);
+        script.onload = () => {
+          setTimeout(() => resolve(window.vapiSDK), 100);
+        };
         script.onerror = reject;
         document.head.appendChild(script);
       });
     };
 
-    // Initialize Vapi
-    const initVapi = async () => {
-      try {
-        const vapiSDK = await loadVapiSDK();
-        
-        const startButton = document.getElementById('vapi-start-btn');
-        if (startButton) {
-          startButton.addEventListener('click', () => {
-            if (vapiInstance) {
-              vapiInstance.stop();
-              vapiInstance = null;
-              startButton.textContent = 'Start Voice Demo';
-              startButton.className = 'bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg';
-            } else {
-              vapiInstance = vapiSDK.run({
-                apiKey: apiKey,
-                assistant: assistant,
-                config: {
-                  // Customize the appearance
-                  theme: {
-                    primaryColor: '#6366f1', // indigo-500
-                    secondaryColor: '#8b5cf6', // purple-500
-                  }
-                }
-              });
-              
-              startButton.textContent = 'Stop Demo';
-              startButton.className = 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg';
-            }
-          });
-        }
-      } catch (error) {
-        console.error('Failed to load Vapi SDK:', error);
-      }
-    };
-
-    // Initialize when component mounts
-    initVapi();
+    // Initialize Vapi SDK on mount
+    loadVapiSDK().catch(error => {
+      console.error('Failed to load Vapi SDK:', error);
+      setCallStatus('Failed to load voice system');
+    });
 
     // Cleanup on unmount
     return () => {
-      if (vapiInstance) {
-        vapiInstance.stop();
+      if (vapiInstanceRef.current) {
+        try {
+          vapiInstanceRef.current.stop();
+        } catch (e) {
+          console.error('Error stopping Vapi:', e);
+        }
+        vapiInstanceRef.current = null;
       }
     };
   }, []);
+
+  const handleVapiToggle = async () => {
+    const assistant = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
+    const apiKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
+
+    try {
+      if (isCallActive && vapiInstanceRef.current) {
+        // Stop the call
+        vapiInstanceRef.current.stop();
+        vapiInstanceRef.current = null;
+        setIsCallActive(false);
+        setCallStatus('Call ended');
+        setTimeout(() => setCallStatus('Ready to call'), 2000);
+      } else {
+        // Start the call
+        if (!window.vapiSDK) {
+          setCallStatus('Loading voice system...');
+          return;
+        }
+
+        setCallStatus('Connecting...');
+        setIsCallActive(true);
+
+        vapiInstanceRef.current = window.vapiSDK.run({
+          apiKey: apiKey,
+          assistant: assistant,
+          config: {
+            name: 'Automate Hub AI Agent',
+            firstMessage: 'Hello! I\'m the Automate Hub AI assistant. How can I help you today?',
+          }
+        });
+
+        // Listen for call events
+        if (vapiInstanceRef.current) {
+          setCallStatus('Connected - Speaking...');
+        }
+      }
+    } catch (error) {
+      console.error('Vapi error:', error);
+      setCallStatus('Connection failed');
+      setIsCallActive(false);
+      vapiInstanceRef.current = null;
+      setTimeout(() => setCallStatus('Ready to call'), 3000);
+    }
+  };
   
   return (
     <div className="pt-20">
@@ -205,19 +226,139 @@ const PhoneCallers = () => {
                 e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
               }}
             >
-              <div className="flex items-center justify-center h-full">
-                <div className="text-center w-full">
-                  <Headphones className="w-16 h-16 mx-auto mb-6 text-indigo-400" />
-                  <h3 className="text-xl font-semibold text-white mb-4">Try Our AI Phone Agent</h3>
-                  <p className="text-gray-400 mb-6">Click to start a conversation with our AI assistant</p>
-                  <div id="vapi-demo-container" className="flex justify-center">
-                    <button 
-                      id="vapi-start-btn"
-                      className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+              <div className="min-h-[420px] flex items-center justify-center" style={{ transform: 'translateZ(10px)' }}>
+                <div className="text-center w-full max-w-2xl mx-auto px-6">
+                  {/* Animated Avatar Circle */}
+                  <div className="relative mb-8">
+                    <div 
+                      className={`w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center relative ${isCallActive ? 'animate-pulse' : ''}`}
+                      style={{
+                        boxShadow: isCallActive 
+                          ? '0 0 60px rgba(99, 102, 241, 0.8), 0 0 120px rgba(168, 85, 247, 0.6)' 
+                          : '0 20px 60px rgba(0, 0, 0, 0.4)',
+                        transition: 'all 0.5s ease-out'
+                      }}
                     >
-                      Start Voice Demo
-                    </button>
+                      {/* Outer ring animation */}
+                      {isCallActive && (
+                        <>
+                          <div 
+                            className="absolute inset-0 rounded-full border-4 border-indigo-400 opacity-75"
+                            style={{
+                              animation: 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite'
+                            }}
+                          ></div>
+                          <div 
+                            className="absolute inset-0 rounded-full border-4 border-purple-400 opacity-75"
+                            style={{
+                              animation: 'ping 2s cubic-bezier(0, 0, 0.2, 1) infinite 1s'
+                            }}
+                          ></div>
+                        </>
+                      )}
+                      
+                      {/* Icon */}
+                      <div className="relative z-10">
+                        {isCallActive ? (
+                          <Phone className="w-16 h-16 text-white animate-pulse" />
+                        ) : (
+                          <Headphones className="w-16 h-16 text-white" />
+                        )}
+                      </div>
+                    </div>
+                    
+                    {/* Status indicator */}
+                    <div className="mt-4 flex items-center justify-center space-x-2">
+                      <div 
+                        className={`w-3 h-3 rounded-full ${isCallActive ? 'bg-green-500 animate-pulse' : 'bg-gray-500'}`}
+                        style={{
+                          boxShadow: isCallActive ? '0 0 10px rgba(34, 197, 94, 0.8)' : 'none'
+                        }}
+                      ></div>
+                      <span className={`text-sm font-medium ${isCallActive ? 'text-green-400' : 'text-gray-400'}`}>
+                        {callStatus}
+                      </span>
+                    </div>
                   </div>
+
+                  {/* Title and Description */}
+                  <h3 className="text-3xl font-bold text-white mb-4">
+                    {isCallActive ? 'AI Agent Live' : 'Experience Our AI Voice Agent'}
+                  </h3>
+                  <p className="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
+                    {isCallActive 
+                      ? 'Our AI is listening and ready to help. Speak naturally and ask anything about our services.'
+                      : 'Click the button below to start a live conversation with our AI phone agent. No setup required—just click and speak!'}
+                  </p>
+
+                  {/* Control Button */}
+                  <button 
+                    onClick={handleVapiToggle}
+                    className={`group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white rounded-2xl transition-all duration-300 transform hover:scale-105 ${
+                      isCallActive 
+                        ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700' 
+                        : 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600'
+                    }`}
+                    style={{
+                      boxShadow: isCallActive
+                        ? '0 10px 40px rgba(239, 68, 68, 0.4), 0 0 20px rgba(239, 68, 68, 0.3)'
+                        : '0 10px 40px rgba(99, 102, 241, 0.4), 0 0 20px rgba(168, 85, 247, 0.3)'
+                    }}
+                  >
+                    <span className="relative z-10 flex items-center space-x-3">
+                      {isCallActive ? (
+                        <>
+                          <Phone className="w-6 h-6 animate-pulse" />
+                          <span>End Call</span>
+                        </>
+                      ) : (
+                        <>
+                          <Phone className="w-6 h-6" />
+                          <span>Start Voice Demo</span>
+                        </>
+                      )}
+                    </span>
+                    
+                    {/* Shine effect */}
+                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -skew-x-12 group-hover:translate-x-full transition-all duration-700"></div>
+                  </button>
+
+                  {/* Features List */}
+                  {!isCallActive && (
+                    <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="flex items-center justify-center space-x-2 text-gray-300">
+                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <span className="text-sm">Natural Voice</span>
+                      </div>
+                      <div className="flex items-center justify-center space-x-2 text-gray-300">
+                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <span className="text-sm">Real-time Response</span>
+                      </div>
+                      <div className="flex items-center justify-center space-x-2 text-gray-300">
+                        <CheckCircle className="w-5 h-5 text-green-400" />
+                        <span className="text-sm">24/7 Available</span>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Live Call Info */}
+                  {isCallActive && (
+                    <div className="mt-10 bg-black/30 border border-green-500/30 rounded-xl p-6 backdrop-blur-sm">
+                      <div className="flex items-center justify-center space-x-3 mb-4">
+                        <div className="flex space-x-1">
+                          <div className="w-1 h-8 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '0ms' }}></div>
+                          <div className="w-1 h-10 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '150ms' }}></div>
+                          <div className="w-1 h-6 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '300ms' }}></div>
+                          <div className="w-1 h-12 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '450ms' }}></div>
+                          <div className="w-1 h-8 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '600ms' }}></div>
+                        </div>
+                        <span className="text-green-400 font-semibold">Listening...</span>
+                      </div>
+                      <p className="text-gray-400 text-sm">
+                        Speak clearly and naturally. The AI will respond in real-time.
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
 

@@ -104,22 +104,28 @@ const PhoneCallers = () => {
         setCallStatus('Connecting...');
         setIsCallActive(true);
 
-        // Initialize Vapi with programmatic API only (no UI)
+        // Add timeout to prevent infinite connecting state
+        const connectionTimeout = setTimeout(() => {
+          if (callStatus === 'Connecting...') {
+            setCallStatus('Connection timeout');
+            setIsCallActive(false);
+            vapiInstanceRef.current = null;
+            setTimeout(() => setCallStatus('Ready to call'), 3000);
+          }
+        }, 10000); // 10 second timeout
+
+        // Initialize Vapi with working configuration
         try {
           vapiInstanceRef.current = window.vapiSDK.run({
             apiKey: apiKey,
             assistant: assistant,
             config: {
-              // Minimal config to prevent any UI
+              // Basic working config
+              name: 'Automate Hub AI Agent',
+              firstMessage: 'Hello! I\'m the Automate Hub AI assistant. How can I help you today?',
+              // Disable default UI but allow functionality
               showWidget: false,
-              hideWidget: true,
-              customUI: true,
-              // Override all possible UI elements
-              theme: {
-                display: 'none',
-                visibility: 'hidden',
-                opacity: '0'
-              }
+              hideWidget: true
             }
           });
 
@@ -167,6 +173,11 @@ const PhoneCallers = () => {
 
         // Add event listeners for call state changes
         if (vapiInstanceRef.current) {
+          // Clear connection timeout
+          clearTimeout(connectionTimeout);
+          // Connection successful
+          setCallStatus('Connected - Speaking...');
+          
           vapiInstanceRef.current.on('call-start', () => {
             setCallStatus('Connected - Speaking...');
           });
@@ -185,6 +196,11 @@ const PhoneCallers = () => {
             vapiInstanceRef.current = null;
             setTimeout(() => setCallStatus('Ready to call'), 3000);
           });
+        } else {
+          // Connection failed
+          setCallStatus('Connection failed');
+          setIsCallActive(false);
+          setTimeout(() => setCallStatus('Ready to call'), 3000);
         }
       }
     } catch (error) {

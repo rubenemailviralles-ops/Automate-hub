@@ -48,10 +48,10 @@ function ScrollToTop() {
     // Reinitialize mobile hover effects when route changes
     reinitialize();
     
-    // Mobile scroll popup disabled
-    // setTimeout(() => {
-    //   refreshMobileScrollPopup();
-    // }, 500);
+    // Refresh mobile scroll popup on route change
+    setTimeout(() => {
+      refreshMobileScrollPopup();
+    }, 300);
   }, [pathname, hash, reinitialize]);
 
   return null;
@@ -60,6 +60,11 @@ function ScrollToTop() {
 function App() {
   // Initialize mobile hover effects
   useMobileHover();
+  
+  // Initialize mobile scroll popup on mount (mobile: reveal on scroll instead of hover/click)
+  useEffect(() => {
+    initMobileScrollPopup();
+  }, []);
   
   // Initialize chatbot positioning
   useChatbotPosition();

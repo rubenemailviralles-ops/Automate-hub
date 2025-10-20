@@ -1375,6 +1375,26 @@ select:focus-visible {
   }
 }
 
+/* Mobile scroll popup: mimic hover when in-view */
+@media (max-width: 1023px), (hover: none) and (pointer: coarse) {
+  /* Pop translation */
+  .in-view.hover\:-translate-y-2 { transform: translateY(-0.5rem) !important; }
+  .in-view.hover\:-translate-y-1 { transform: translateY(-0.25rem) !important; }
+  .in-view.hover\:scale-105 { transform: scale(1.05) !important; }
+
+  /* Pop shadow/border/background variants often paired with hover */
+  .in-view.hover\:shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25) !important; }
+  .in-view.hover\:shadow-xl { box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04) !important; }
+  .in-view.hover\:bg-white\/20 { background-color: rgba(255,255,255,0.2) !important; }
+  .in-view.hover\:border-white\/20 { border-color: rgba(255,255,255,0.2) !important; }
+  .in-view.hover\:border-blue-500\/50 { border-color: rgba(59,130,246,0.5) !important; }
+  .in-view.hover\:border-indigo-500\/50 { border-color: rgba(99,102,241,0.5) !important; }
+  .in-view.hover\:border-purple-500\/50 { border-color: rgba(168,85,247,0.5) !important; }
+
+  /* Smooth transition to mimic the PC feel */
+  [data-scroll-popup-container] { transition: transform 300ms, box-shadow 300ms, background-color 300ms, border-color 300ms; }
+}
+
 
 /* ============================================
    LOADING OPTIMIZATIONS

@@ -1,7 +1,7 @@
 name: DISABLED - old deploy
 
-on:
-  workflow_dispatch:
+# on:
+#   workflow_dispatch:
 
 permissions:
   contents: read

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Phone, Clock, TrendingUp, Shield, CheckCircle, ArrowRight, Users, BarChart3, ArrowLeft, Headphones, Network } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import CTASection from '../components/CTASection';
@@ -14,6 +14,78 @@ const PhoneCallers = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    // Vapi configuration
+    const assistant = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
+    const apiKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
+    
+    let vapiInstance = null;
+
+    // Load Vapi SDK
+    const loadVapiSDK = () => {
+      return new Promise((resolve, reject) => {
+        if (window.vapiSDK) {
+          resolve(window.vapiSDK);
+          return;
+        }
+
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/gh/VapiAI/html-script-tag@latest/dist/assets/index.js';
+        script.defer = true;
+        script.async = true;
+        script.onload = () => resolve(window.vapiSDK);
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    };
+
+    // Initialize Vapi
+    const initVapi = async () => {
+      try {
+        const vapiSDK = await loadVapiSDK();
+        
+        const startButton = document.getElementById('vapi-start-btn');
+        if (startButton) {
+          startButton.addEventListener('click', () => {
+            if (vapiInstance) {
+              vapiInstance.stop();
+              vapiInstance = null;
+              startButton.textContent = 'Start Voice Demo';
+              startButton.className = 'bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg';
+            } else {
+              vapiInstance = vapiSDK.run({
+                apiKey: apiKey,
+                assistant: assistant,
+                config: {
+                  // Customize the appearance
+                  theme: {
+                    primaryColor: '#6366f1', // indigo-500
+                    secondaryColor: '#8b5cf6', // purple-500
+                  }
+                }
+              });
+              
+              startButton.textContent = 'Stop Demo';
+              startButton.className = 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg';
+            }
+          });
+        }
+      } catch (error) {
+        console.error('Failed to load Vapi SDK:', error);
+      }
+    };
+
+    // Initialize when component mounts
+    initVapi();
+
+    // Cleanup on unmount
+    return () => {
+      if (vapiInstance) {
+        vapiInstance.stop();
+      }
+    };
+  }, []);
   
   return (
     <div className="pt-20">
@@ -133,115 +205,20 @@ const PhoneCallers = () => {
                 e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
               }}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center" style={{ transform: 'translateZ(10px)' }}>
-              {/* Phone Call Simulation */}
-              <div className="bg-gradient-to-br from-gray-900 to-black rounded-2xl p-8 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-500 to-blue-500 animate-pulse"></div>
-                
-                <div className="text-center mb-8">
-                  <div className="w-24 h-24 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
-                    <Phone className="w-12 h-12 text-white" />
-                  </div>
-                  <h3 className="text-white text-xl font-bold">Incoming Call</h3>
-                  <p className="text-gray-400">+1 (555) 123-4567</p>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4 animate-fade-in">
-                    <div className="flex items-center space-x-3 mb-2">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">AI</span>
-                      </div>
-                      <span className="text-green-400 font-semibold">AI Agent</span>
-                    </div>
-                    <p className="text-white text-sm">"Hello! Thank you for calling. How can I help you today?"</p>
-                  </div>
-
-                  <div className="bg-blue-500/20 border border-blue-500/30 rounded-lg p-4 animate-fade-in delay-1000">
-                    <div className="flex items-center space-x-3 mb-2">
-                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
-                        <Users className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="text-blue-400 font-semibold">Customer</span>
-                    </div>
-                    <p className="text-white text-sm">"Hi, I'm interested in your automation services."</p>
-                  </div>
-
-                  <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4 animate-fade-in delay-2000">
-                    <div className="flex items-center space-x-3 mb-2">
-                      <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                        <span className="text-white text-xs font-bold">AI</span>
-                      </div>
-                      <span className="text-green-400 font-semibold">AI Agent</span>
-                    </div>
-                    <p className="text-white text-sm">"Perfect! I'd love to help you with that. Can I get your name and email to send you some information?"</p>
-                  </div>
-
-                  <div className="flex items-center justify-center space-x-2 mt-6">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse delay-200"></div>
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse delay-400"></div>
-                    <span className="text-green-400 text-sm ml-2">Call in progress...</span>
+              <div className="flex items-center justify-center h-full">
+                <div className="text-center w-full">
+                  <Headphones className="w-16 h-16 mx-auto mb-6 text-indigo-400" />
+                  <h3 className="text-xl font-semibold text-white mb-4">Try Our AI Phone Agent</h3>
+                  <p className="text-gray-400 mb-6">Click to start a conversation with our AI assistant</p>
+                  <div id="vapi-demo-container" className="flex justify-center">
+                    <button 
+                      id="vapi-start-btn"
+                      className="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+                    >
+                      Start Voice Demo
+                    </button>
                   </div>
                 </div>
-              </div>
-
-              {/* Call Analytics Dashboard */}
-              <div className="bg-gray-900 rounded-2xl shadow-2xl overflow-hidden">
-                <div className="bg-gray-800 px-4 py-3 flex items-center space-x-2">
-                  <div className="flex items-center space-x-2">
-                    <BarChart3 className="w-4 h-4 text-indigo-400" />
-                    <span className="text-white text-sm font-medium">Call Analytics</span>
-                  </div>
-                  <div className="flex items-center space-x-1 ml-auto">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <span className="text-green-400 text-xs">Live</span>
-                  </div>
-                </div>
-
-                <div className="p-6 space-y-6">
-                  <div className="animate-slide-in-right">
-                    <h4 className="text-white font-semibold mb-3">Today's Performance</h4>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-gray-800 rounded-lg p-3 text-center">
-                        <div className="text-2xl font-bold text-green-400 animate-pulse">47</div>
-                        <div className="text-gray-400 text-xs">Calls Answered</div>
-                      </div>
-                      <div className="bg-gray-800 rounded-lg p-3 text-center">
-                        <div className="text-2xl font-bold text-blue-400 animate-pulse">32</div>
-                        <div className="text-gray-400 text-xs">Leads Captured</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="animate-slide-in-right delay-500">
-                    <h4 className="text-white font-semibold mb-3">Conversion Rate</h4>
-                    <div className="bg-gray-800 rounded-lg p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <span className="text-gray-300 text-sm">Call to Lead</span>
-                        <span className="text-green-400 text-sm font-bold">68%</span>
-                      </div>
-                      <div className="w-full bg-gray-700 rounded-full h-2">
-                        <div className="bg-gradient-to-r from-green-400 to-blue-500 h-2 rounded-full animate-pulse" style={{width: '68%'}}></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="animate-slide-in-right delay-1000">
-                    <h4 className="text-white font-semibold mb-3">Recent Actions</h4>
-                    <div className="space-y-2">
-                      <div className="bg-gray-800 rounded-lg p-3 flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-white text-sm">Lead qualified & scheduled callback</span>
-                      </div>
-                      <div className="bg-gray-800 rounded-lg p-3 flex items-center space-x-3">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-                        <span className="text-white text-sm">Follow-up email sent automatically</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
               </div>
 
               <ScrollReveal delay={300}>

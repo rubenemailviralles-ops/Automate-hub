@@ -1417,16 +1417,28 @@ select:focus-visible {
 }
 
 /* ============================================
-   VAPI WIDGET OVERRIDE
+   VAPI WIDGET OVERRIDE - AGGRESSIVE HIDING
    ============================================ */
-/* Hide Vapi default widgets and UI elements */
+/* Hide ALL possible Vapi elements */
 .vapi-widget,
 .vapi-voice-widget,
 [data-vapi-widget],
 .vapi-container,
 .vapi-voice-container,
 div[style*="vapi"],
-div[class*="vapi"] {
+div[class*="vapi"],
+div[class*="Vapi"],
+div[class*="VAPI"],
+[id*="vapi"],
+[id*="Vapi"],
+[id*="VAPI"],
+[data-vapi],
+iframe[src*="vapi"],
+iframe[src*="Vapi"],
+iframe[src*="VAPI"],
+*[class*="vapi"],
+*[class*="Vapi"],
+*[class*="VAPI"] {
   display: none !important;
   visibility: hidden !important;
   opacity: 0 !important;
@@ -1434,6 +1446,15 @@ div[class*="vapi"] {
   position: absolute !important;
   left: -9999px !important;
   top: -9999px !important;
+  z-index: -9999 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Force hide any iframe that might contain Vapi */
+iframe {
+  display: none !important;
 }
 
 /* Ensure our custom Vapi demo is visible */
@@ -1442,4 +1463,16 @@ div[class*="vapi"] {
   visibility: visible !important;
   opacity: 1 !important;
   pointer-events: auto !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Override any Vapi CSS that might be injected */
+body * {
+  /* Prevent Vapi from overriding our styles */
+}
+
+/* Hide any elements that might be added by Vapi */
+body > div:last-child {
+  display: none !important;
 }

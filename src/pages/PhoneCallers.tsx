@@ -24,7 +24,7 @@ const PhoneCallers = () => {
     const assistant = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
     const apiKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
 
-    // Load Vapi SDK
+    // Load Vapi SDK with custom configuration
     const loadVapiSDK = () => {
       return new Promise((resolve, reject) => {
         if (window.vapiSDK) {
@@ -37,7 +37,26 @@ const PhoneCallers = () => {
         script.defer = true;
         script.async = true;
         script.onload = () => {
-          setTimeout(() => resolve(window.vapiSDK), 100);
+          // Wait for SDK to fully initialize
+          setTimeout(() => {
+            // Immediately hide any default UI that might appear
+            const hideVapiUI = () => {
+              const vapiElements = document.querySelectorAll('[class*="vapi"], [id*="vapi"], [data-vapi], iframe[src*="vapi"]');
+              vapiElements.forEach(el => {
+                (el as HTMLElement).style.display = 'none';
+                (el as HTMLElement).style.visibility = 'hidden';
+                (el as HTMLElement).style.opacity = '0';
+                (el as HTMLElement).style.position = 'absolute';
+                (el as HTMLElement).style.left = '-9999px';
+                (el as HTMLElement).style.top = '-9999px';
+              });
+            };
+            
+            hideVapiUI();
+            setInterval(hideVapiUI, 500); // Keep hiding any new elements
+            
+            resolve(window.vapiSDK);
+          }, 200);
         };
         script.onerror = reject;
         document.head.appendChild(script);
@@ -85,40 +104,66 @@ const PhoneCallers = () => {
         setCallStatus('Connecting...');
         setIsCallActive(true);
 
-        // Initialize Vapi with minimal UI
-        vapiInstanceRef.current = window.vapiSDK.run({
-          apiKey: apiKey,
-          assistant: assistant,
-          config: {
-            name: 'Automate Hub AI Agent',
-            firstMessage: 'Hello! I\'m the Automate Hub AI assistant. How can I help you today?',
-            // Completely disable Vapi's default UI
-            showWidget: false,
-            hideWidget: true,
-            customUI: true,
-            // Minimal configuration to prevent default UI
-            theme: {
-              display: 'none',
-              visibility: 'hidden'
-            },
-            // Override any default styling
-            style: {
-              display: 'none !important',
-              visibility: 'hidden !important',
-              opacity: '0 !important'
+        // Initialize Vapi with programmatic API only (no UI)
+        try {
+          vapiInstanceRef.current = window.vapiSDK.run({
+            apiKey: apiKey,
+            assistant: assistant,
+            config: {
+              // Minimal config to prevent any UI
+              showWidget: false,
+              hideWidget: true,
+              customUI: true,
+              // Override all possible UI elements
+              theme: {
+                display: 'none',
+                visibility: 'hidden',
+                opacity: '0'
+              }
             }
-          }
-        });
-
-        // Force hide any Vapi widgets that might appear
-        setTimeout(() => {
-          const vapiElements = document.querySelectorAll('[class*="vapi"], [id*="vapi"], [data-vapi]');
-          vapiElements.forEach(el => {
-            (el as HTMLElement).style.display = 'none';
-            (el as HTMLElement).style.visibility = 'hidden';
-            (el as HTMLElement).style.opacity = '0';
           });
-        }, 100);
+
+          // Aggressively hide any Vapi UI elements
+          const hideAllVapiUI = () => {
+            // Hide by class names
+            const classSelectors = [
+              '[class*="vapi"]',
+              '[class*="Vapi"]', 
+              '[class*="VAPI"]',
+              '[id*="vapi"]',
+              '[data-vapi]',
+              'iframe[src*="vapi"]',
+              'div[style*="vapi"]'
+            ];
+            
+            classSelectors.forEach(selector => {
+              const elements = document.querySelectorAll(selector);
+              elements.forEach(el => {
+                const htmlEl = el as HTMLElement;
+                htmlEl.style.display = 'none';
+                htmlEl.style.visibility = 'hidden';
+                htmlEl.style.opacity = '0';
+                htmlEl.style.position = 'absolute';
+                htmlEl.style.left = '-9999px';
+                htmlEl.style.top = '-9999px';
+                htmlEl.style.zIndex = '-9999';
+              });
+            });
+          };
+
+          // Hide immediately and keep hiding
+          hideAllVapiUI();
+          const hideInterval = setInterval(hideAllVapiUI, 100);
+          
+          // Clear interval after 10 seconds
+          setTimeout(() => clearInterval(hideInterval), 10000);
+          
+        } catch (error) {
+          console.error('Vapi initialization error:', error);
+          setCallStatus('Failed to initialize voice system');
+          setIsCallActive(false);
+          return;
+        }
 
         // Add event listeners for call state changes
         if (vapiInstanceRef.current) {

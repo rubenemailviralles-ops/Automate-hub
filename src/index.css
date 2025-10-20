@@ -943,201 +943,34 @@ h6:not(:has(.bg-clip-text)) {
     transform: translateY(-140px);
   }
 
-  /* Mobile orb animations - remove impact/collision effects, keep smooth floating */
+  /* Mobile orb rebuild - hide extra orbs, keep only 3 spaced out orbs using exact PC animations */
+  .floating-orb-4,
+  .floating-orb-5,
+  .floating-orb-6,
+  .floating-orb-7 {
+    display: none !important;
+  }
+
+  /* Make remaining orbs smaller and more spaced out for mobile */
   .floating-orb-1 {
-    animation: mobileOrbit1 24s ease-in-out infinite;
+    width: 200px;
+    height: 200px;
+    top: 15%;
+    left: 5%;
   }
 
   .floating-orb-2 {
-    animation: mobileOrbit2 28s ease-in-out infinite;
-    animation-delay: -7s;
+    width: 250px;
+    height: 250px;
+    top: 70%;
+    right: 5%;
   }
 
   .floating-orb-3 {
-    animation: mobileOrbit3 20s ease-in-out infinite;
-    animation-delay: -10s;
-  }
-
-  .floating-orb-4 {
-    animation: mobileOrbit4 26s ease-in-out infinite;
-    animation-delay: -16s;
-  }
-
-  .floating-orb-5 {
-    animation: mobileOrbit5 23s ease-in-out infinite;
-    animation-delay: -11s;
-  }
-
-  .floating-orb-6 {
-    animation: mobileOrbit6 27s ease-in-out infinite;
-    animation-delay: -19s;
-  }
-
-  .floating-orb-7 {
-    animation: mobileOrbit7 21s ease-in-out infinite;
-    animation-delay: -13s;
-  }
-}
-
-/* Simple mobile orb animations - smooth floating like PC but without impact effects */
-@keyframes mobileOrbit1 {
-  0%, 100% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.75;
-    filter: blur(52px);
-  }
-  25% {
-    transform: translate(100px, -70px) scale(1.05);
-    opacity: 0.8;
-    filter: blur(50px);
-  }
-  50% {
-    transform: translate(150px, 50px) scale(1.08);
-    opacity: 0.75;
-    filter: blur(52px);
-  }
-  75% {
-    transform: translate(50px, 80px) scale(1.03);
-    opacity: 0.8;
-    filter: blur(50px);
-  }
-}
-
-@keyframes mobileOrbit2 {
-  0%, 100% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.7;
-    filter: blur(54px);
-  }
-  25% {
-    transform: translate(-120px, 80px) scale(1.06);
-    opacity: 0.75;
-    filter: blur(52px);
-  }
-  50% {
-    transform: translate(-180px, -40px) scale(1.1);
-    opacity: 0.7;
-    filter: blur(54px);
-  }
-  75% {
-    transform: translate(-60px, -100px) scale(1.04);
-    opacity: 0.75;
-    filter: blur(52px);
-  }
-}
-
-@keyframes mobileOrbit3 {
-  0%, 100% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.72;
-    filter: blur(54px);
-  }
-  25% {
-    transform: translate(70px, 100px) scale(1.05);
-    opacity: 0.78;
-    filter: blur(52px);
-  }
-  50% {
-    transform: translate(-50px, 120px) scale(1.08);
-    opacity: 0.72;
-    filter: blur(54px);
-  }
-  75% {
-    transform: translate(-90px, 40px) scale(1.04);
-    opacity: 0.78;
-    filter: blur(52px);
-  }
-}
-
-@keyframes mobileOrbit4 {
-  0%, 100% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.7;
-    filter: blur(52px);
-  }
-  25% {
-    transform: translate(-90px, -120px) scale(1.07);
-    opacity: 0.76;
-    filter: blur(50px);
-  }
-  50% {
-    transform: translate(60px, -160px) scale(1.1);
-    opacity: 0.7;
-    filter: blur(52px);
-  }
-  75% {
-    transform: translate(110px, -60px) scale(1.04);
-    opacity: 0.76;
-    filter: blur(50px);
-  }
-}
-
-@keyframes mobileOrbit5 {
-  0%, 100% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.68;
-    filter: blur(52px);
-  }
-  25% {
-    transform: translate(130px, 90px) scale(1.06);
-    opacity: 0.74;
-    filter: blur(50px);
-  }
-  50% {
-    transform: translate(180px, -30px) scale(1.09);
-    opacity: 0.68;
-    filter: blur(52px);
-  }
-  75% {
-    transform: translate(80px, -80px) scale(1.04);
-    opacity: 0.74;
-    filter: blur(50px);
-  }
-}
-
-@keyframes mobileOrbit6 {
-  0%, 100% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.7;
-    filter: blur(54px);
-  }
-  25% {
-    transform: translate(-110px, 70px) scale(1.06);
-    opacity: 0.75;
-    filter: blur(52px);
-  }
-  50% {
-    transform: translate(-160px, 130px) scale(1.08);
-    opacity: 0.7;
-    filter: blur(54px);
-  }
-  75% {
-    transform: translate(-70px, 50px) scale(1.04);
-    opacity: 0.75;
-    filter: blur(52px);
-  }
-}
-
-@keyframes mobileOrbit7 {
-  0%, 100% {
-    transform: translate(0px, 0px) scale(1);
-    opacity: 0.66;
-    filter: blur(54px);
-  }
-  25% {
-    transform: translate(80px, -80px) scale(1.05);
-    opacity: 0.72;
-    filter: blur(52px);
-  }
-  50% {
-    transform: translate(130px, 50px) scale(1.08);
-    opacity: 0.66;
-    filter: blur(54px);
-  }
-  75% {
-    transform: translate(50px, 100px) scale(1.04);
-    opacity: 0.72;
-    filter: blur(52px);
+    width: 180px;
+    height: 180px;
+    bottom: 25%;
+    left: 15%;
   }
 }
 

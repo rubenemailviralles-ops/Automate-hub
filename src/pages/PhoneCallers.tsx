@@ -83,6 +83,57 @@ const PhoneCallers = () => {
     };
   }, []);
 
+  const startWorkingDemo = () => {
+    // Use Web Speech API for actual voice demo
+    if ('speechSynthesis' in window) {
+      setCallStatus('Demo Mode - AI Speaking...');
+      
+      // Create a realistic AI agent conversation
+      const messages = [
+        "Hello! I'm the Automate Hub AI assistant. How can I help you today?",
+        "I can help you with automation services, lead generation, and business optimization.",
+        "Would you like to learn more about our AI phone agents or email automation?",
+        "I'm here 24/7 to assist with any questions you might have about our services."
+      ];
+      
+      let messageIndex = 0;
+      
+      const speakNextMessage = () => {
+        if (messageIndex < messages.length) {
+          const utterance = new SpeechSynthesisUtterance(messages[messageIndex]);
+          utterance.rate = 0.9;
+          utterance.pitch = 1.1;
+          utterance.volume = 0.8;
+          
+          utterance.onstart = () => {
+            setCallStatus('Demo Mode - AI Speaking...');
+          };
+          
+          utterance.onend = () => {
+            setCallStatus('Demo Mode - Listening...');
+            messageIndex++;
+            setTimeout(speakNextMessage, 3000); // 3 second pause between messages
+          };
+          
+          speechSynthesis.speak(utterance);
+        } else {
+          // Conversation complete
+          setCallStatus('Demo Mode - Conversation Complete');
+          setTimeout(() => {
+            setCallStatus('Demo Mode - Ready for new conversation');
+            messageIndex = 0; // Reset for next conversation
+          }, 2000);
+        }
+      };
+      
+      // Start the conversation
+      speakNextMessage();
+      
+    } else {
+      setCallStatus('Demo Mode - Audio not supported');
+    }
+  };
+
   const handleVapiToggle = async () => {
     const assistant = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
     const apiKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
@@ -91,6 +142,7 @@ const PhoneCallers = () => {
       if (isCallActive) {
         if (demoMode) {
           // Stop demo mode
+          speechSynthesis.cancel(); // Stop any ongoing speech
           setDemoMode(false);
           setIsCallActive(false);
           setCallStatus('Demo ended');
@@ -257,16 +309,14 @@ const PhoneCallers = () => {
               
           } catch (startError) {
             console.error('Failed to start Vapi call:', startError);
-            // Fallback to demo mode
-            console.log('Switching to demo mode');
+            // Fallback to working demo mode with actual audio
+            console.log('Switching to working demo mode');
             setDemoMode(true);
-            setCallStatus('Demo Mode - Simulated Call');
+            setCallStatus('Demo Mode - Starting...');
             setIsCallActive(true);
             
-            // Simulate a demo call
-            setTimeout(() => {
-              setCallStatus('Demo Mode - AI Speaking...');
-            }, 2000);
+            // Create a working voice demo with Web Speech API
+            startWorkingDemo();
           }
         } else {
           // Connection failed

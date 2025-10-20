@@ -32,17 +32,26 @@ function ScrollToTop() {
   const { reinitialize } = useMobileHover();
 
   React.useEffect(() => {
-    // If there's a hash, scroll to that element
-    if (hash) {
-      setTimeout(() => {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    } else {
-      // Otherwise scroll to top
+    // If this is a reload, always go to top and ignore hash
+    const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+    const isReload = navEntries && navEntries[0] && navEntries[0].type === 'reload';
+    if (isReload) {
       window.scrollTo(0, 0);
+      // do not honor hash on reload to avoid jumping to ROI section
+      // continue to reinitialize effects below
+    } else {
+    // If there's a hash, scroll to that element
+      if (hash) {
+        setTimeout(() => {
+          const element = document.querySelector(hash);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      } else {
+        // Otherwise scroll to top
+        window.scrollTo(0, 0);
+      }
     }
     
     // Reinitialize mobile hover effects when route changes
@@ -64,6 +73,15 @@ function App() {
   // Initialize mobile scroll popup on mount (mobile: reveal on scroll instead of hover/click)
   useEffect(() => {
     initMobileScrollPopup();
+  }, []);
+
+  // On hard reloads of non-home routes, redirect to homepage
+  useEffect(() => {
+    const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+    const isReload = navEntries && navEntries[0] && navEntries[0].type === 'reload';
+    if (isReload && window.location.pathname !== '/') {
+      window.location.replace('/');
+    }
   }, []);
   
   // Initialize chatbot positioning

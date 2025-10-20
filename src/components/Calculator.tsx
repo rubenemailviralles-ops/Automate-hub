@@ -221,10 +221,22 @@ const Calculator = () => {
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 16px' }}>
           
           <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-            <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '12px', color: 'white' }}>
-              💰 Calculate Your Potential Savings (Mobile)
+            <div style={{ 
+              display: 'inline-flex', 
+              alignItems: 'center', 
+              padding: '8px 16px', 
+              background: 'linear-gradient(to right, rgba(16,185,129,0.2), rgba(5,150,105,0.2))', 
+              border: '1px solid rgba(16,185,129,0.3)', 
+              borderRadius: '9999px', 
+              marginBottom: '16px' 
+            }}>
+              <CalculatorIcon className="w-4 h-4 text-green-400 mr-2" />
+              <span style={{ color: '#10b981', fontWeight: '500', fontSize: '14px' }}>ROI Calculator</span>
+            </div>
+            <h2 style={{ fontSize: '32px', fontWeight: 'bold', marginBottom: '12px', color: 'white' }}>
+              Calculate Your Potential Savings
             </h2>
-            <p style={{ fontSize: '14px', color: '#9ca3af' }}>
+            <p style={{ fontSize: '14px', color: '#9ca3af', maxWidth: '600px', margin: '0 auto' }}>
               See how much you could save by automating manual processes with AI
             </p>
           </div>

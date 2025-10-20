@@ -156,16 +156,29 @@ const PhoneCallers = () => {
           setTimeout(() => setCallStatus('Ready to call'), 2000);
         }
       } else {
-        // Start the call
+        // Try Vapi first, fallback to working demo
+        console.log('Attempting Vapi connection...');
+        
         if (!window.vapiSDK) {
-          setCallStatus('Loading voice system...');
+          console.log('Vapi SDK not loaded, using demo mode');
+          setCallStatus('Demo Mode - Starting...');
+          setIsCallActive(true);
+          setDemoMode(true);
+          startWorkingDemo();
           return;
         }
 
         setCallStatus('Connecting...');
         setIsCallActive(true);
 
-        // Initialize Vapi with proper configuration
+        // Try Vapi with timeout
+        const vapiTimeout = setTimeout(() => {
+          console.log('Vapi timeout, switching to demo mode');
+          setCallStatus('Demo Mode - Starting...');
+          setDemoMode(true);
+          startWorkingDemo();
+        }, 5000); // 5 second timeout
+
         try {
           console.log('Starting Vapi call with credentials:', { 
             assistant: assistant.substring(0, 8) + '...', 
@@ -177,12 +190,7 @@ const PhoneCallers = () => {
             assistant: assistant,
             config: {
               name: 'Automate Hub AI Agent',
-              firstMessage: 'Hello! I\'m the Automate Hub AI assistant. How can I help you today?',
-              // Enable voice functionality
-              voice: {
-                provider: 'elevenlabs',
-                voiceId: 'rachel' // or any voice you prefer
-              }
+              firstMessage: 'Hello! I\'m the Automate Hub AI assistant. How can I help you today?'
             }
           });
           
@@ -191,6 +199,7 @@ const PhoneCallers = () => {
           // Set up event listeners
           vapiInstanceRef.current.on('call-start', () => {
             console.log('Vapi call started');
+            clearTimeout(vapiTimeout);
             setCallStatus('Connected - Speaking...');
           });
           
@@ -214,10 +223,10 @@ const PhoneCallers = () => {
           
           vapiInstanceRef.current.on('error', (error) => {
             console.error('Vapi call error:', error);
-            setCallStatus('Connection failed');
-            setIsCallActive(false);
-            vapiInstanceRef.current = null;
-            setTimeout(() => setCallStatus('Ready to call'), 3000);
+            clearTimeout(vapiTimeout);
+            setCallStatus('Demo Mode - Starting...');
+            setDemoMode(true);
+            startWorkingDemo();
           });
           
           // Start the call
@@ -226,10 +235,10 @@ const PhoneCallers = () => {
           
         } catch (error) {
           console.error('Vapi initialization error:', error);
-          setCallStatus('Failed to start call');
-          setIsCallActive(false);
-          vapiInstanceRef.current = null;
-          setTimeout(() => setCallStatus('Ready to call'), 3000);
+          clearTimeout(vapiTimeout);
+          setCallStatus('Demo Mode - Starting...');
+          setDemoMode(true);
+          startWorkingDemo();
         }
       }
     } catch (error) {

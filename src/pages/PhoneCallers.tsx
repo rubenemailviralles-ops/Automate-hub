@@ -191,6 +191,16 @@ const PhoneCallers = () => {
             setCallStatus('Connected - Speaking...');
           });
           
+          vapiInstanceRef.current.on('speech-start', () => {
+            console.log('AI is speaking');
+            setCallStatus('AI Speaking - Listen...');
+          });
+          
+          vapiInstanceRef.current.on('speech-end', () => {
+            console.log('AI finished speaking');
+            setCallStatus('Connected - Listening...');
+          });
+          
           vapiInstanceRef.current.on('call-end', () => {
             console.log('Vapi call ended');
             setCallStatus('Call ended');
@@ -210,8 +220,41 @@ const PhoneCallers = () => {
           // Try to start the call immediately
           try {
             console.log('Starting Vapi call...');
-            vapiInstanceRef.current.start();
-            setCallStatus('Connected - Speaking...');
+            
+            // Check if browser supports audio
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+              console.error('Browser does not support audio');
+              setCallStatus('Audio not supported');
+              setIsCallActive(false);
+              vapiInstanceRef.current = null;
+              setTimeout(() => setCallStatus('Ready to call'), 3000);
+              return;
+            }
+            
+            // Request microphone permission first
+            navigator.mediaDevices.getUserMedia({ audio: true })
+              .then(() => {
+                console.log('Microphone permission granted');
+                
+                // Initialize audio context for better audio handling
+                if (window.AudioContext || window.webkitAudioContext) {
+                  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                  if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                  }
+                }
+                
+                vapiInstanceRef.current.start();
+                setCallStatus('Connected - Speaking...');
+              })
+              .catch((audioError) => {
+                console.error('Microphone permission denied:', audioError);
+                setCallStatus('Microphone permission required');
+                setIsCallActive(false);
+                vapiInstanceRef.current = null;
+                setTimeout(() => setCallStatus('Ready to call'), 3000);
+              });
+              
           } catch (startError) {
             console.error('Failed to start Vapi call:', startError);
             // Fallback to demo mode

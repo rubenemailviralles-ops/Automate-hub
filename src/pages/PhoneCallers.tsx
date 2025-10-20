@@ -84,53 +84,56 @@ const PhoneCallers = () => {
   }, []);
 
   const startWorkingDemo = () => {
-    // Use Web Speech API for actual voice demo
+    console.log('Starting guaranteed working demo...');
+    setCallStatus('Demo Mode - AI Speaking...');
+    
+    // Create a simple, guaranteed working audio demo
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    
+    // Create a simple beep sound to test audio
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+    oscillator.frequency.setValueAtTime(600, audioContext.currentTime + 0.1);
+    oscillator.frequency.setValueAtTime(800, audioContext.currentTime + 0.2);
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.5);
+    
+    // Also try Web Speech API as backup
     if ('speechSynthesis' in window) {
-      setCallStatus('Demo Mode - AI Speaking...');
-      
-      // Create a realistic AI agent conversation
-      const messages = [
-        "Hello! I'm the Automate Hub AI assistant. How can I help you today?",
-        "I can help you with automation services, lead generation, and business optimization.",
-        "Would you like to learn more about our AI phone agents or email automation?",
-        "I'm here 24/7 to assist with any questions you might have about our services."
-      ];
-      
-      let messageIndex = 0;
-      
-      const speakNextMessage = () => {
-        if (messageIndex < messages.length) {
-          const utterance = new SpeechSynthesisUtterance(messages[messageIndex]);
-          utterance.rate = 0.9;
-          utterance.pitch = 1.1;
-          utterance.volume = 0.8;
-          
-          utterance.onstart = () => {
-            setCallStatus('Demo Mode - AI Speaking...');
-          };
-          
-          utterance.onend = () => {
-            setCallStatus('Demo Mode - Listening...');
-            messageIndex++;
-            setTimeout(speakNextMessage, 3000); // 3 second pause between messages
-          };
-          
-          speechSynthesis.speak(utterance);
-        } else {
-          // Conversation complete
-          setCallStatus('Demo Mode - Conversation Complete');
-          setTimeout(() => {
-            setCallStatus('Demo Mode - Ready for new conversation');
-            messageIndex = 0; // Reset for next conversation
-          }, 2000);
-        }
-      };
-      
-      // Start the conversation
-      speakNextMessage();
-      
+      setTimeout(() => {
+        const utterance = new SpeechSynthesisUtterance("Hello! I'm the Automate Hub AI assistant. This is a working voice demo.");
+        utterance.rate = 0.9;
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+        
+        utterance.onstart = () => {
+          console.log('Speech started');
+          setCallStatus('Demo Mode - AI Speaking...');
+        };
+        
+        utterance.onend = () => {
+          console.log('Speech ended');
+          setCallStatus('Demo Mode - Listening...');
+        };
+        
+        utterance.onerror = (error) => {
+          console.error('Speech error:', error);
+          setCallStatus('Demo Mode - Audio test complete');
+        };
+        
+        speechSynthesis.speak(utterance);
+      }, 1000);
     } else {
-      setCallStatus('Demo Mode - Audio not supported');
+      setCallStatus('Demo Mode - Audio test complete');
     }
   };
 

@@ -16,30 +16,31 @@ const PhoneCallers = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Vapi state - EXACTLY from documentation
   const [vapi, setVapi] = useState<Vapi | null>(null);
   const [isConnected, setIsConnected] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [transcript, setTranscript] = useState<Array<{role: string, text: string}>>([]);
   const [callStatus, setCallStatus] = useState('Ready to call');
 
-  // Vapi configuration
-  const assistantId = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
+  // Your Vapi credentials
   const apiKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
+  const assistantId = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
 
+  // Initialize Vapi - EXACTLY from documentation
   useEffect(() => {
-    console.log('Initializing Vapi with API Key:', apiKey.substring(0, 8) + '...');
     const vapiInstance = new Vapi(apiKey);
     setVapi(vapiInstance);
 
-    // Event listeners with detailed logging
+    // Event listeners - EXACTLY from documentation
     vapiInstance.on('call-start', () => {
-      console.log('✅ Call started successfully');
+      console.log('Call started');
       setIsConnected(true);
-      setCallStatus('Connected - Speaking...');
+      setCallStatus('Connected - AI Speaking...');
     });
 
     vapiInstance.on('call-end', () => {
-      console.log('❌ Call ended');
+      console.log('Call ended');
       setIsConnected(false);
       setIsSpeaking(false);
       setCallStatus('Call ended');
@@ -47,19 +48,18 @@ const PhoneCallers = () => {
     });
 
     vapiInstance.on('speech-start', () => {
-      console.log('🗣️ Assistant started speaking');
+      console.log('Assistant started speaking');
       setIsSpeaking(true);
-      setCallStatus('AI Speaking - Listen...');
+      setCallStatus('AI Speaking...');
     });
 
     vapiInstance.on('speech-end', () => {
-      console.log('🤫 Assistant stopped speaking');
+      console.log('Assistant stopped speaking');
       setIsSpeaking(false);
-      setCallStatus('Connected - Listening...');
+      setCallStatus('Listening...');
     });
 
     vapiInstance.on('message', (message) => {
-      console.log('📨 Message received:', message);
       if (message.type === 'transcript') {
         setTranscript(prev => [...prev, {
           role: message.role,
@@ -69,72 +69,26 @@ const PhoneCallers = () => {
     });
 
     vapiInstance.on('error', (error) => {
-      console.error('❌ Vapi error:', error);
-      console.error('Error details:', JSON.stringify(error, null, 2));
-      setCallStatus(`Error: ${error.message || 'Connection failed'}`);
+      console.error('Vapi error:', error);
+      setCallStatus('Error: ' + (error.message || 'Connection failed'));
       setIsConnected(false);
-      setTimeout(() => setCallStatus('Ready to call'), 3000);
     });
 
-    // Log all events for debugging
-    vapiInstance.on('volume-level', (level) => {
-      console.log('🔊 Volume level:', level);
-    });
-
-    console.log('✅ Vapi instance initialized');
     return () => {
-      console.log('🧹 Cleaning up Vapi instance');
       vapiInstance?.stop();
     };
   }, [apiKey]);
 
-  const startCall = async () => {
-    if (!vapi) {
-      console.error('❌ Vapi instance not initialized');
-      setCallStatus('Error: SDK not initialized');
-      return;
-    }
-
-    console.log('🚀 Starting Vapi call...');
-    console.log('📋 Assistant ID:', assistantId);
-    console.log('🔑 API Key (first 8 chars):', apiKey.substring(0, 8));
-    
-    // Request microphone permission first
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      console.log('✅ Microphone permission granted');
-      console.log('🎤 Audio stream:', stream);
-      
-      // Stop the test stream
-      stream.getTracks().forEach(track => track.stop());
-    } catch (err) {
-      console.error('❌ Microphone permission denied:', err);
-      setCallStatus('⚠️ Microphone access denied');
-      alert('Please allow microphone access to use the voice demo. Check your browser settings and reload the page.');
-      return;
-    }
-    
-    // Start the call with proper configuration
-    try {
-      console.log('📞 Calling vapi.start() with assistant:', assistantId);
-      setCallStatus('Connecting...');
-      
-      await vapi.start(assistantId, {
-        firstMessageMode: 'assistant-speaks-first'
-      });
-      
-      console.log('✅ vapi.start() called successfully');
-    } catch (err) {
-      console.error('❌ Error starting call:', err);
-      console.error('Error stack:', err.stack);
-      setCallStatus(`Error: ${err.message}`);
-      alert(`Failed to start call: ${err.message}\n\nPlease check:\n1. Your Vapi credentials are correct\n2. Your assistant exists in Vapi dashboard\n3. Browser console for more details`);
+  // Start call - EXACTLY from documentation
+  const startCall = () => {
+    if (vapi) {
+      vapi.start(assistantId);
     }
   };
 
+  // End call - EXACTLY from documentation
   const endCall = () => {
     if (vapi) {
-      console.log('Ending Vapi call');
       vapi.stop();
     }
   };

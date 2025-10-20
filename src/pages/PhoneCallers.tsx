@@ -89,23 +89,46 @@ const PhoneCallers = () => {
   }, [apiKey]);
 
   const startCall = async () => {
-    if (vapi) {
-      console.log('Starting Vapi call with assistant:', assistantId);
+    if (!vapi) {
+      console.error('❌ Vapi instance not initialized');
+      setCallStatus('Error: SDK not initialized');
+      return;
+    }
+
+    console.log('🚀 Starting Vapi call...');
+    console.log('📋 Assistant ID:', assistantId);
+    console.log('🔑 API Key (first 8 chars):', apiKey.substring(0, 8));
+    
+    // Request microphone permission first
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      console.log('✅ Microphone permission granted');
+      console.log('🎤 Audio stream:', stream);
       
-      // Request microphone permission first
-      try {
-        await navigator.mediaDevices.getUserMedia({ audio: true });
-        console.log('Microphone permission granted');
-      } catch (err) {
-        console.error('Microphone permission denied:', err);
-        setCallStatus('Microphone access denied');
-        return;
-      }
+      // Stop the test stream
+      stream.getTracks().forEach(track => track.stop());
+    } catch (err) {
+      console.error('❌ Microphone permission denied:', err);
+      setCallStatus('⚠️ Microphone access denied');
+      alert('Please allow microphone access to use the voice demo. Check your browser settings and reload the page.');
+      return;
+    }
+    
+    // Start the call with proper configuration
+    try {
+      console.log('📞 Calling vapi.start() with assistant:', assistantId);
+      setCallStatus('Connecting...');
       
-      // Start the call with proper configuration
-      vapi.start(assistantId, {
+      await vapi.start(assistantId, {
         firstMessageMode: 'assistant-speaks-first'
       });
+      
+      console.log('✅ vapi.start() called successfully');
+    } catch (err) {
+      console.error('❌ Error starting call:', err);
+      console.error('Error stack:', err.stack);
+      setCallStatus(`Error: ${err.message}`);
+      alert(`Failed to start call: ${err.message}\n\nPlease check:\n1. Your Vapi credentials are correct\n2. Your assistant exists in Vapi dashboard\n3. Browser console for more details`);
     }
   };
 
@@ -296,8 +319,15 @@ const PhoneCallers = () => {
                   <p className="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
                     {isConnected 
                       ? 'Our AI is listening and ready to help. Speak naturally and ask anything about our services.'
-                      : 'Click the button below to start a live conversation with our AI phone agent. No setup required—just click and speak!'}
+                      : 'Click the button below to start a live conversation with our AI phone agent. You\'ll be asked for microphone permission—please allow it!'}
                   </p>
+                  
+                  {/* Debug info */}
+                  {!isConnected && (
+                    <div className="mb-6 text-xs text-gray-500">
+                      <p>💡 Tip: Open browser console (F12) to see detailed connection logs</p>
+                    </div>
+                  )}
 
                   {/* Control Button */}
                   <button 

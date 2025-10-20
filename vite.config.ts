@@ -9,23 +9,25 @@ export default defineConfig(({ mode }) => ({
   base: process.env.GITHUB_ACTIONS ? '/Automate-hub/' : '/',
   plugins: [
     react(),
-    // Custom plugin to copy service worker to dist
-    {
-      name: 'copy-service-worker',
-      closeBundle() {
-        try {
-          const distPath = resolve(__dirname, 'dist');
-          mkdirSync(distPath, { recursive: true });
-          copyFileSync(
-            resolve(__dirname, 'public/service-worker.js'),
-            resolve(distPath, 'service-worker.js')
-          );
-          console.log('✓ Service worker copied to dist/');
-        } catch (error) {
-          console.warn('Could not copy service worker:', error);
+    // Optional: copy service worker only when explicitly enabled
+    process.env.VITE_ENABLE_SW === 'true'
+      ? {
+          name: 'copy-service-worker',
+          closeBundle() {
+            try {
+              const distPath = resolve(__dirname, 'dist');
+              mkdirSync(distPath, { recursive: true });
+              copyFileSync(
+                resolve(__dirname, 'public/service-worker.js'),
+                resolve(distPath, 'service-worker.js')
+              );
+              console.log('✓ Service worker copied to dist/');
+            } catch (error) {
+              console.warn('Could not copy service worker:', error);
+            }
+          },
         }
-      },
-    },
+      : undefined,
     // Sentry plugin for source maps (only in production builds with auth token)
     mode === 'production' && process.env.SENTRY_AUTH_TOKEN
       ? sentryVitePlugin({

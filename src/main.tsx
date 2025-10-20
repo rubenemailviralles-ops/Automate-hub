@@ -9,6 +9,13 @@ import { initSentry } from './utils/sentry';
 // Initialize Sentry error tracking
 initSentry();
 
+// Unregister any existing service workers on GH Pages to avoid stale caches causing white screens
+if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then((regs) => {
+    regs.forEach((reg) => reg.unregister());
+  }).catch(() => {});
+}
+
 // Optimize scroll performance with passive event listeners
 if ('addEventListener' in window) {
   const passiveSupported = (() => {

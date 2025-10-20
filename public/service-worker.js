@@ -55,77 +55,9 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch event - network first, fallback to cache
+// Fetch event - always go to network to avoid stale white screens on GH Pages
 self.addEventListener('fetch', (event) => {
-  const { request } = event;
-  const url = new URL(request.url);
-
-  // Skip cross-origin requests
-  if (url.origin !== location.origin) {
-    return;
-  }
-
-  // Skip non-GET requests
-  if (request.method !== 'GET') {
-    return;
-  }
-
-  // Skip analytics and tracking requests
-  if (url.pathname.includes('/gtag/') || url.pathname.includes('/analytics/')) {
-    return;
-  }
-
-  event.respondWith(
-    caches.match(request)
-      .then((cachedResponse) => {
-        // Return cached version if available
-        if (cachedResponse) {
-          // Update cache in background (stale-while-revalidate)
-          fetch(request)
-            .then((response) => {
-              if (response && response.status === 200) {
-                caches.open(RUNTIME_CACHE).then((cache) => {
-                  cache.put(request, response);
-                });
-              }
-            })
-            .catch(() => {
-              // Network request failed, but we have cache
-            });
-          
-          return cachedResponse;
-        }
-
-        // No cache, fetch from network
-        return fetch(request)
-          .then((response) => {
-            // Don't cache non-successful responses
-            if (!response || response.status !== 200 || response.type === 'error') {
-              return response;
-            }
-
-            // Clone the response
-            const responseToCache = response.clone();
-
-            // Cache successful responses
-            caches.open(RUNTIME_CACHE)
-              .then((cache) => {
-                // Only cache same-origin requests
-                if (url.origin === location.origin) {
-                  cache.put(request, responseToCache);
-                }
-              });
-
-            return response;
-          })
-          .catch((error) => {
-            console.error('[Service Worker] Fetch failed:', error);
-            
-            // Return offline page if available
-            return caches.match('/index.html');
-          });
-      })
-  );
+  event.respondWith(fetch(event.request));
 });
 
 // Handle messages from clients

@@ -85,18 +85,61 @@ const PhoneCallers = () => {
         setCallStatus('Connecting...');
         setIsCallActive(true);
 
+        // Initialize Vapi with minimal UI
         vapiInstanceRef.current = window.vapiSDK.run({
           apiKey: apiKey,
           assistant: assistant,
           config: {
             name: 'Automate Hub AI Agent',
             firstMessage: 'Hello! I\'m the Automate Hub AI assistant. How can I help you today?',
+            // Completely disable Vapi's default UI
+            showWidget: false,
+            hideWidget: true,
+            customUI: true,
+            // Minimal configuration to prevent default UI
+            theme: {
+              display: 'none',
+              visibility: 'hidden'
+            },
+            // Override any default styling
+            style: {
+              display: 'none !important',
+              visibility: 'hidden !important',
+              opacity: '0 !important'
+            }
           }
         });
 
-        // Listen for call events
+        // Force hide any Vapi widgets that might appear
+        setTimeout(() => {
+          const vapiElements = document.querySelectorAll('[class*="vapi"], [id*="vapi"], [data-vapi]');
+          vapiElements.forEach(el => {
+            (el as HTMLElement).style.display = 'none';
+            (el as HTMLElement).style.visibility = 'hidden';
+            (el as HTMLElement).style.opacity = '0';
+          });
+        }, 100);
+
+        // Add event listeners for call state changes
         if (vapiInstanceRef.current) {
-          setCallStatus('Connected - Speaking...');
+          vapiInstanceRef.current.on('call-start', () => {
+            setCallStatus('Connected - Speaking...');
+          });
+          
+          vapiInstanceRef.current.on('call-end', () => {
+            setCallStatus('Call ended');
+            setIsCallActive(false);
+            vapiInstanceRef.current = null;
+            setTimeout(() => setCallStatus('Ready to call'), 2000);
+          });
+          
+          vapiInstanceRef.current.on('error', (error) => {
+            console.error('Vapi call error:', error);
+            setCallStatus('Connection failed');
+            setIsCallActive(false);
+            vapiInstanceRef.current = null;
+            setTimeout(() => setCallStatus('Ready to call'), 3000);
+          });
         }
       }
     } catch (error) {

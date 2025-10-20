@@ -1415,3 +1415,31 @@ select:focus-visible {
   backface-visibility: hidden;
   transform: translateZ(0);
 }
+
+/* ============================================
+   VAPI WIDGET OVERRIDE
+   ============================================ */
+/* Hide Vapi default widgets and UI elements */
+.vapi-widget,
+.vapi-voice-widget,
+[data-vapi-widget],
+.vapi-container,
+.vapi-voice-container,
+div[style*="vapi"],
+div[class*="vapi"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+}
+
+/* Ensure our custom Vapi demo is visible */
+#vapi-demo-container {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}

@@ -6,6 +6,7 @@ import { sentryVitePlugin } from '@sentry/vite-plugin';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  base: process.env.GITHUB_ACTIONS ? '/Automate-hub/' : '/',
   plugins: [
     react(),
     // Custom plugin to copy service worker to dist

@@ -157,11 +157,11 @@ const ContactForm = () => {
   };
 
   const handleContactClick = () => {
-    if (location.pathname === '/contact') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
+    // Only navigate if not already on contact page
+    if (location.pathname !== '/contact') {
       navigate('/contact');
     }
+    // Don't scroll if already on contact page - prevents false triggers
   };
 
   return (
@@ -180,12 +180,16 @@ const ContactForm = () => {
 
             <div className="space-y-8">
               <div className="flex items-center space-x-4">
-                <button onClick={handleContactClick} className="w-14 h-14 bg-white rounded-xl flex items-center justify-center hover:bg-gray-100 transition-colors">
+                <a 
+                  href="tel:+27826442575" 
+                  className="w-14 h-14 bg-white rounded-xl flex items-center justify-center hover:bg-gray-100 transition-colors"
+                  aria-label="Call us"
+                >
                   <Phone className="w-6 h-6 text-black" />
-                </button>
+                </a>
                 <div>
                   <h4 className="text-lg font-medium text-white heading-sophisticated">Phone</h4>
-                  <p className="text-gray-500 text-sophisticated">27+ 82 644 2575</p>
+                  <a href="tel:+27826442575" className="text-gray-500 text-sophisticated hover:text-gray-400 transition-colors">27+ 82 644 2575</a>
                 </div>
               </div>
 

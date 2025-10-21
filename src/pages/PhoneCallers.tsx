@@ -81,12 +81,28 @@ const PhoneCallers = () => {
 
   // Start call - EXACTLY from documentation
   const startCall = () => {
+    alert('BUTTON CLICKED! Check console (F12) for details.');
+    
     if (vapi) {
       console.log('🚀 STARTING CALL');
       console.log('Assistant ID:', assistantId);
       console.log('API Key:', apiKey);
+      
+      setCallStatus('Calling vapi.start()...');
+      
       vapi.start(assistantId);
-      console.log('✅ vapi.start() called');
+      
+      console.log('✅ vapi.start() called - waiting for response...');
+      
+      // Force a timeout to show error
+      setTimeout(() => {
+        if (!isConnected) {
+          const errorMsg = 'NO RESPONSE FROM VAPI AFTER 5 SECONDS!\n\nYour credentials are WRONG or your assistant does not exist.\n\nGo to https://dashboard.vapi.ai/ and verify:\n1. Your Public API Key\n2. Your Assistant ID exists';
+          console.error('❌ ' + errorMsg);
+          alert(errorMsg);
+          setCallStatus('Connection timeout - check credentials');
+        }
+      }, 5000);
     } else {
       console.error('❌ Vapi instance is null!');
       alert('ERROR: Vapi SDK not initialized. Refresh the page.');

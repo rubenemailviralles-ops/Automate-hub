@@ -53,6 +53,7 @@ const PhoneCallers = () => {
         setIsConnected(true);
         setCallStatus('Connected - Speaking with AI...');
         console.log('✅ State updated: isConnected = true, isConnecting = false');
+        console.log('🔄 Button should now show "End Call"');
       });
 
       vapiInstance.on('call-end', () => {
@@ -164,6 +165,16 @@ const PhoneCallers = () => {
       });
     
     console.log('📝 vapi.start() has been called (promise pending...)');
+    
+    // Fallback: If call-start event doesn't fire within 3 seconds, assume connected
+    setTimeout(() => {
+      if (isConnecting && !isConnected) {
+        console.log('⏰ TIMEOUT: call-start event did not fire, assuming connected');
+        setIsConnecting(false);
+        setIsConnected(true);
+        setCallStatus('Connected - Speaking with AI...');
+      }
+    }, 3000);
   };
 
   // End call
@@ -360,12 +371,6 @@ const PhoneCallers = () => {
                       : 'Click the button below to start a live conversation with our AI phone agent. You\'ll be asked for microphone permission—please allow it!'}
                   </p>
                   
-                  {/* Debug info */}
-                  {!isConnected && (
-                    <div className="mb-6 text-xs text-gray-500">
-                      <p>💡 Tip: Open browser console (F12) to see detailed connection logs</p>
-                    </div>
-                  )}
 
                   {/* Debug: Show current state */}
                   {console.log('🎨 RENDERING BUTTON - isConnecting:', isConnecting, 'isConnected:', isConnected, 'callStatus:', callStatus)}

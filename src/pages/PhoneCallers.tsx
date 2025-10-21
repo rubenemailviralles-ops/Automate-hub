@@ -19,6 +19,7 @@ const PhoneCallers = () => {
   // Vapi state - EXACTLY from documentation
   const [vapi, setVapi] = useState<Vapi | null>(null);
   const [isConnected, setIsConnected] = useState(false);
+  const [isConnecting, setIsConnecting] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [transcript, setTranscript] = useState<Array<{role: string, text: string}>>([]);
   const [callStatus, setCallStatus] = useState('Ready to call');
@@ -46,17 +47,19 @@ const PhoneCallers = () => {
         console.log('========================================');
         console.log('🎉 EVENT: call-start FIRED!');
         console.log('This means Vapi successfully connected!');
-        console.log('About to set isConnected to TRUE');
+        console.log('About to set isConnected to TRUE and isConnecting to FALSE');
         console.log('========================================');
+        setIsConnecting(false);
         setIsConnected(true);
         setCallStatus('Connected - Speaking with AI...');
-        console.log('✅ State updated: isConnected = true, callStatus = "Connected - Speaking with AI..."');
+        console.log('✅ State updated: isConnected = true, isConnecting = false');
       });
 
       vapiInstance.on('call-end', () => {
         console.log('========================================');
         console.log('📞 EVENT: call-end FIRED');
         console.log('========================================');
+        setIsConnecting(false);
         setIsConnected(false);
         setIsSpeaking(false);
         setCallStatus('Call ended');
@@ -91,8 +94,9 @@ const PhoneCallers = () => {
         console.error('Error object:', error);
         console.error('Error message:', error?.message);
         console.log('========================================');
-        setCallStatus('Error: ' + (error?.message || 'Unknown error'));
+        setIsConnecting(false);
         setIsConnected(false);
+        setCallStatus('Error: ' + (error?.message || 'Unknown error'));
       });
 
       console.log('✅ All event listeners registered');
@@ -126,7 +130,8 @@ const PhoneCallers = () => {
       return;
     }
     
-    console.log('⏳ Setting status to "Connecting..."');
+    console.log('⏳ Setting isConnecting to TRUE and status to "Connecting..."');
+    setIsConnecting(true);
     setCallStatus('Connecting...');
     
     console.log('📞 NOW CALLING vapi.start() with assistant ID...');
@@ -150,9 +155,10 @@ const PhoneCallers = () => {
         console.error('Full error object:', JSON.stringify(error, null, 2));
         console.log('========================================');
         
+        setIsConnecting(false);
+        setIsConnected(false);
         alert('FAILED TO START CALL!\n\nError: ' + (error?.message || String(error)) + '\n\nCheck console for details (F12)');
         setCallStatus('Failed to connect');
-        setIsConnected(false);
       });
     
     console.log('📝 vapi.start() has been called (promise pending...)');
@@ -163,6 +169,7 @@ const PhoneCallers = () => {
     console.log('📴 Ending call');
     if (vapi) {
       vapi.stop();
+      setIsConnecting(false);
       setIsConnected(false);
       setCallStatus('Call ended');
     }
@@ -359,20 +366,25 @@ const PhoneCallers = () => {
                   )}
 
                   {/* Debug: Show current state */}
-                  {console.log('🎨 RENDERING BUTTON - isConnected:', isConnected, 'callStatus:', callStatus)}
+                  {console.log('🎨 RENDERING BUTTON - isConnecting:', isConnecting, 'isConnected:', isConnected, 'callStatus:', callStatus)}
                   
                   {/* Control Button */}
                   <button 
                     onClick={isConnected ? endCall : startCall}
-                    key={isConnected ? 'connected' : 'disconnected'}
+                    disabled={isConnecting}
+                    key={isConnected ? 'connected' : isConnecting ? 'connecting' : 'disconnected'}
                     className={`group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white rounded-2xl transition-all duration-300 transform hover:scale-105 ${
                       isConnected 
                         ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700' 
+                        : isConnecting
+                        ? 'bg-gradient-to-r from-yellow-500 to-orange-500 opacity-90 cursor-wait'
                         : 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600'
                     }`}
                     style={{
                       boxShadow: isConnected
                         ? '0 10px 40px rgba(239, 68, 68, 0.4), 0 0 20px rgba(239, 68, 68, 0.3)'
+                        : isConnecting
+                        ? '0 10px 40px rgba(245, 158, 11, 0.4), 0 0 20px rgba(251, 146, 60, 0.3)'
                         : '0 10px 40px rgba(99, 102, 241, 0.4), 0 0 20px rgba(168, 85, 247, 0.3)'
                     }}
                   >
@@ -381,6 +393,11 @@ const PhoneCallers = () => {
                         <>
                           <Phone className="w-6 h-6 animate-pulse" />
                           <span>End Call</span>
+                        </>
+                      ) : isConnecting ? (
+                        <>
+                          <Phone className="w-6 h-6 animate-bounce" />
+                          <span>Calling...</span>
                         </>
                       ) : (
                         <>

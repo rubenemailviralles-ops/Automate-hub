@@ -94,7 +94,7 @@ const PhoneCallers = () => {
     }
   }, [apiKey, assistantId]);
 
-  // Start call with proper error handling
+  // Start call with proper configuration
   const startCall = async () => {
     console.log('🚀 Start button clicked');
     
@@ -108,14 +108,20 @@ const PhoneCallers = () => {
       console.log('📞 Starting call with assistant:', assistantId);
       setCallStatus('Connecting...');
       
-      // Call start with the assistant ID
-      await vapi.start(assistantId);
+      // Start call with assistant configuration object
+      await vapi.start({
+        assistantId: assistantId,
+      });
       
       console.log('✅ Call start requested successfully');
     } catch (error) {
       console.error('❌ Error starting call:', error);
-      setCallStatus('Failed to start call');
+      console.error('Error details:', error);
+      setCallStatus('Failed to start: ' + (error?.message || 'Unknown error'));
       setIsConnected(false);
+      
+      // Show error to user
+      alert('Failed to start voice agent. Please check console (F12) for details. Error: ' + (error?.message || 'Unknown'));
     }
   };
 

@@ -82,7 +82,14 @@ const PhoneCallers = () => {
   // Start call - EXACTLY from documentation
   const startCall = () => {
     if (vapi) {
+      console.log('🚀 STARTING CALL');
+      console.log('Assistant ID:', assistantId);
+      console.log('API Key:', apiKey);
       vapi.start(assistantId);
+      console.log('✅ vapi.start() called');
+    } else {
+      console.error('❌ Vapi instance is null!');
+      alert('ERROR: Vapi SDK not initialized. Refresh the page.');
     }
   };
 

@@ -168,91 +168,98 @@
   .floating-orb-1 {
     width: 300px;
     height: 300px;
-    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
-    background: rgba(99, 102, 241, 0.2);
-    filter: blur(60px);
+    /* Optimized: solid color + reduced blur for better performance */
+    background: rgba(99, 102, 241, 0.25);
+    filter: blur(40px);
     top: 10%;
     left: 10%;
     animation: galaxyOrbit1 24s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
-    box-shadow: 0 0 150px rgba(99, 102, 241, 0.6), 0 0 80px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 0 100px rgba(99, 102, 241, 0.4);
+    will-change: transform;
   }
 
   .floating-orb-2 {
     width: 400px;
     height: 400px;
-    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
-    background: rgba(168, 85, 247, 0.2);
-    filter: blur(65px);
+    /* Optimized: solid color + reduced blur for better performance */
+    background: rgba(168, 85, 247, 0.25);
+    filter: blur(45px);
     top: 60%;
     right: 10%;
     animation: galaxyOrbit2 28s cubic-bezier(0.42, 0, 0.58, 1) infinite;
     animation-delay: -7s;
-    box-shadow: 0 0 180px rgba(168, 85, 247, 0.5), 0 0 100px rgba(168, 85, 247, 0.4);
+    box-shadow: 0 0 120px rgba(168, 85, 247, 0.4);
+    will-change: transform;
   }
 
   .floating-orb-3 {
     width: 250px;
     height: 250px;
-    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
-    background: rgba(236, 72, 153, 0.2);
-    filter: blur(55px);
+    /* Optimized: solid color + reduced blur for better performance */
+    background: rgba(236, 72, 153, 0.25);
+    filter: blur(35px);
     bottom: 20%;
     left: 20%;
     animation: galaxyOrbit3 20s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     animation-delay: -10s;
-    box-shadow: 0 0 130px rgba(236, 72, 153, 0.5), 0 0 70px rgba(236, 72, 153, 0.4);
+    box-shadow: 0 0 90px rgba(236, 72, 153, 0.4);
+    will-change: transform;
   }
 
   .floating-orb-4 {
     width: 350px;
     height: 350px;
-    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
-    background: rgba(59, 130, 246, 0.2);
-    filter: blur(63px);
+    /* Optimized: solid color + reduced blur for better performance */
+    background: rgba(59, 130, 246, 0.25);
+    filter: blur(43px);
     top: 30%;
     right: 30%;
     animation: galaxyOrbit4 26s cubic-bezier(0.43, 0.02, 0.57, 0.98) infinite;
     animation-delay: -16s;
-    box-shadow: 0 0 160px rgba(59, 130, 246, 0.5), 0 0 90px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 0 110px rgba(59, 130, 246, 0.4);
+    will-change: transform;
   }
 
   .floating-orb-5 {
     width: 280px;
     height: 280px;
-    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
-    background: rgba(34, 211, 238, 0.18);
-    filter: blur(58px);
+    /* Optimized: solid color + reduced blur for better performance */
+    background: rgba(34, 211, 238, 0.22);
+    filter: blur(38px);
     top: 45%;
     left: 5%;
     animation: galaxyOrbit5 23s cubic-bezier(0.4, 0.1, 0.6, 0.9) infinite;
     animation-delay: -11s;
-    box-shadow: 0 0 140px rgba(34, 211, 238, 0.45), 0 0 75px rgba(34, 211, 238, 0.35);
+    box-shadow: 0 0 100px rgba(34, 211, 238, 0.4);
+    will-change: transform;
   }
 
   .floating-orb-6 {
     width: 320px;
     height: 320px;
-    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
-    background: rgba(16, 185, 129, 0.19);
-    filter: blur(61px);
+    /* Optimized: solid color + reduced blur for better performance */
+    background: rgba(16, 185, 129, 0.23);
+    filter: blur(41px);
     top: 15%;
     right: 15%;
     animation: galaxyOrbit6 27s cubic-bezier(0.44, 0.03, 0.56, 0.97) infinite;
     animation-delay: -19s;
-    box-shadow: 0 0 155px rgba(16, 185, 129, 0.48), 0 0 85px rgba(16, 185, 129, 0.38);
+    box-shadow: 0 0 105px rgba(16, 185, 129, 0.4);
+    will-change: transform;
   }
 
   .floating-orb-7 {
     width: 270px;
     height: 270px;
-    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
-    background: rgba(251, 146, 60, 0.18);
-    filter: blur(57px);
+    /* Optimized: solid color + reduced blur for better performance */
+    background: rgba(251, 146, 60, 0.22);
+    filter: blur(37px);
     bottom: 15%;
     right: 20%;
     animation: galaxyOrbit7 21s cubic-bezier(0.41, 0.05, 0.59, 0.95) infinite;
     animation-delay: -13s;
-    box-shadow: 0 0 135px rgba(251, 146, 60, 0.44), 0 0 72px rgba(251, 146, 60, 0.34);
+    box-shadow: 0 0 95px rgba(251, 146, 60, 0.4);
+    will-change: transform;
   }
   
   .animate-fade-in {
@@ -397,7 +404,6 @@
   0% {
     transform: translate(0px, 0px) scale(1);
     opacity: 0;
-    filter: blur(60px);
   }
   3% {
     opacity: 0.5;
@@ -405,40 +411,33 @@
   8% {
     transform: translate(120px, -80px) scale(1.05);
     opacity: 0.75;
-    filter: blur(52px);
   }
   15% {
     transform: translate(280px, -150px) scale(1.12);
     opacity: 0.88;
-    filter: blur(48px);
   }
   22% {
     /* Approaching collision */
     transform: translate(380px, -180px) scale(1.18);
     opacity: 0.95;
-    filter: blur(42px);
   }
   28% {
     /* COLLISION - Galaxy impact with distortion */
     transform: translate(420px, -190px) scale(1.28, 0.88) skew(-10deg, 4deg);
     opacity: 1;
-    filter: blur(32px) brightness(2.2) saturate(1.9);
   }
   34% {
     /* Shockwave ripple */
     transform: translate(440px, -185px) scale(1.15, 1.08) skew(-4deg, 1deg);
-    filter: blur(38px) brightness(1.7) saturate(1.5);
   }
   40% {
     /* Recovery phase */
     transform: translate(450px, -160px) scale(1.05);
     opacity: 0.82;
-    filter: blur(48px) brightness(1.1);
   }
   48% {
     transform: translate(420px, -100px) scale(1);
     opacity: 0.7;
-    filter: blur(52px);
   }
   58% {
     transform: translate(280px, 40px) scale(0.95);

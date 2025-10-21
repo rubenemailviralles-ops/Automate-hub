@@ -77,6 +77,16 @@ const Contact = () => {
     e.preventDefault();
 
     if (!validateForm()) {
+      // Scroll to first error field smoothly
+      setTimeout(() => {
+        const firstErrorField = document.querySelector('.border-red-500');
+        if (firstErrorField) {
+          firstErrorField.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'center'
+          });
+        }
+      }, 100);
       return;
     }
 

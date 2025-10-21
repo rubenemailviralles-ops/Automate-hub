@@ -406,9 +406,6 @@ const PhoneCallers = () => {
                         </>
                       )}
                     </span>
-                    
-                    {/* Shine effect */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transform -skew-x-12 group-hover:translate-x-full transition-all duration-700"></div>
                   </button>
 
                   {/* Features List */}

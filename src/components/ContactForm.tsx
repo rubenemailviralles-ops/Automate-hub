@@ -10,6 +10,12 @@ import {
   checkRateLimit,
   type FormErrors 
 } from '../utils/validation';
+import {
+  detectBot,
+  isDisposableEmail,
+  logSecurityEvent,
+  performSecurityCheck
+} from '../utils/security';
 
 const ContactForm = () => {
   const navigate = useNavigate();
@@ -20,10 +26,12 @@ const ContactForm = () => {
     company: '',
     phone: '',
     message: '',
-    budget: ''
+    budget: '',
+    honeypot: '' // Anti-bot honeypot field
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStartTime] = useState(Date.now()); // Track when form was opened
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -40,9 +48,55 @@ const ContactForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Check rate limiting - max 3 submissions per 5 minutes
+    // SECURITY CHECK 1: Bot detection
+    const botCheck = detectBot({
+      honeypotValue: formData.honeypot,
+      formStartTime: formStartTime,
+      email: formData.email
+    });
+    
+    if (botCheck.isLikelyBot) {
+      logSecurityEvent({
+        type: 'honeypot',
+        timestamp: Date.now(),
+        details: `Bot detected: ${botCheck.reasons.join(', ')} (Score: ${botCheck.score})`
+      });
+      // Silently fail for bots (don't reveal we detected them)
+      console.warn('🤖 Bot detected:', botCheck);
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setIsSubmitting(false);
+        alert('Thank you! We\'ll be in touch within 24 hours.');
+      }, 2000);
+      return;
+    }
+    
+    // SECURITY CHECK 2: Rate limiting
     if (!checkRateLimit('contact_form', 3, 5 * 60 * 1000)) {
+      logSecurityEvent({
+        type: 'rate_limit',
+        timestamp: Date.now(),
+        details: 'Contact form rate limit exceeded'
+      });
       alert('Too many submissions. Please wait a few minutes before trying again.');
+      return;
+    }
+    
+    // SECURITY CHECK 3: Disposable email detection
+    if (isDisposableEmail(formData.email)) {
+      logSecurityEvent({
+        type: 'disposable_email',
+        timestamp: Date.now(),
+        details: `Disposable email attempted: ${formData.email}`
+      });
+      setErrors({ ...errors, email: 'Please use a permanent email address' });
+      return;
+    }
+
+    // SECURITY CHECK 4: XSS and SQL injection patterns
+    const securityCheck = performSecurityCheck(formData.message);
+    if (!securityCheck.safe) {
+      alert('Your message contains potentially unsafe content. Please remove any HTML or scripts.');
       return;
     }
 
@@ -69,6 +123,11 @@ const ContactForm = () => {
     // If there are errors, show them and stop
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
+      logSecurityEvent({
+        type: 'validation_error',
+        timestamp: Date.now(),
+        details: 'Form validation failed'
+      });
       return;
     }
 
@@ -78,7 +137,7 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     // Handle form submission here
-    console.log('Form submitted (sanitized):', sanitizedData);
+    console.log('Form submitted (sanitized & verified):', sanitizedData);
     
     // Simulate submission
     setTimeout(() => {
@@ -91,7 +150,8 @@ const ContactForm = () => {
         company: '',
         phone: '',
         message: '',
-        budget: ''
+        budget: '',
+        honeypot: ''
       });
     }, 1000);
   };
@@ -284,6 +344,20 @@ const ContactForm = () => {
                   <option value="25k-50k">$25,000 - $50,000</option>
                   <option value="50k+">$50,000+</option>
                 </select>
+              </div>
+
+              {/* Honeypot field - hidden from humans, visible to bots */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="website">Website (leave blank)</label>
+                <input
+                  type="text"
+                  id="website"
+                  name="honeypot"
+                  value={formData.honeypot}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
 
               <div>

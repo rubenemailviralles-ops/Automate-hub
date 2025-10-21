@@ -67,6 +67,45 @@ Our CSP allows only:
 - Minimal data collection
 - No third-party cookies
 
+### 8. Advanced Bot Detection
+
+Multi-layered bot protection:
+- **Honeypot fields**: Hidden fields that only bots fill
+- **Timing analysis**: Detects forms filled too quickly (< 2 seconds)
+- **Disposable email detection**: Blocks 25+ known disposable email providers
+- **Behavioral analysis**: Combines multiple signals for bot scoring
+- **Silent failure**: Bots don't know they've been detected
+
+### 9. Attack Pattern Detection
+
+Real-time detection of:
+- **XSS (Cross-Site Scripting)** attempts
+- **SQL Injection** patterns
+- **Command Injection** attempts
+- Malicious payloads in user input
+
+### 10. Security Event Logging
+
+All security events are logged including:
+- Rate limit violations
+- Honeypot triggers
+- Disposable email attempts
+- XSS/SQL injection attempts
+- Validation failures
+- Last 100 events stored for analysis
+
+### 11. Mixed Content Protection
+
+- `upgrade-insecure-requests`: Automatically upgrades HTTP to HTTPS
+- `block-all-mixed-content`: Blocks any insecure content loading
+
+### 12. Security.txt
+
+RFC 9116 compliant security.txt file at:
+- `/.well-known/security.txt`
+- Contact information for security researchers
+- Clear disclosure policy
+
 ## Reporting Security Issues
 
 If you discover a security vulnerability, please email us at:
@@ -105,16 +144,25 @@ See `.env.example` for the template.
 
 ## Security Checklist
 
-- [x] HTTPS enforced site-wide
-- [x] Security headers implemented
-- [x] Content Security Policy (CSP)
+- [x] HTTPS enforced site-wide (with HSTS preload)
+- [x] Security headers implemented (11 headers)
+- [x] Content Security Policy (CSP) with mixed content blocking
 - [x] Input validation on all forms
 - [x] XSS protection via sanitization
-- [x] Rate limiting on forms
+- [x] SQL injection detection
+- [x] Rate limiting on forms (3 per 5 minutes)
+- [x] Honeypot anti-bot protection
+- [x] Disposable email blocking (25+ providers)
+- [x] Bot timing detection
+- [x] Security event logging
+- [x] Attack pattern detection (XSS, SQL injection)
 - [x] No sensitive data in client-side code
 - [x] Regular dependency updates
 - [x] Accessibility features (ARIA)
 - [x] Privacy-focused (minimal tracking)
+- [x] security.txt for responsible disclosure
+- [x] Mixed content protection
+- [x] Secure random number generation
 
 ## Updates
 

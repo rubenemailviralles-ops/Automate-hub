@@ -1,0 +1,21 @@
+# Our security address
+Contact: mailto:security@automate-hub.com
+
+# Our security policy
+Policy: https://automate-hub.com/SECURITY.md
+
+# Preferred Languages
+Preferred-Languages: en
+
+# Canonical URL
+Canonical: https://automate-hub.com/.well-known/security.txt
+
+# Expires
+Expires: 2026-12-31T23:59:59.000Z
+
+# Acknowledgments
+Acknowledgments: https://automate-hub.com/security-acknowledgments
+
+# Hiring
+Hiring: https://automate-hub.com/careers
+

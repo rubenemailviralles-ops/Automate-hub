@@ -99,8 +99,13 @@ export const invisibleAntiDebugging = () => {
     }
   });
 
-  // Disable right-click context menu
+  // Disable right-click context menu (but allow logo animation)
   document.addEventListener('contextmenu', (e) => {
+    // Allow right-click on logo for animation
+    const target = e.target as HTMLElement;
+    if (target && (target.id === 'logo-icon' || target.closest('#logo-icon'))) {
+      return true;
+    }
     e.preventDefault();
     return false;
   });

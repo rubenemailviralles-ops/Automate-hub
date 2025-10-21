@@ -6,6 +6,7 @@ export const useLogoAnimation = () => {
   const triggerAnimation = useCallback(() => {
     if (isAnimating) return; // Prevent multiple animations
 
+    console.log('🎬 Starting logo animation...');
     setIsAnimating(true);
 
     // Create rolling icon
@@ -16,6 +17,7 @@ export const useLogoAnimation = () => {
 
       // Position at logo location
       const logoIcon = document.getElementById('logo-icon');
+      console.log('🔍 Logo icon found:', logoIcon);
       if (logoIcon) {
         const rect = logoIcon.getBoundingClientRect();
         rollingIcon.style.position = 'fixed';

@@ -24,46 +24,11 @@ export const disableScreenCapture = () => {
 };
 
 /**
- * Add watermark overlay (invisible but present in screenshots)
+ * Add watermark overlay (completely invisible - only in DOM)
  */
 export const addWatermarkOverlay = () => {
-  const watermark = document.createElement('div');
-  watermark.style.cssText = `
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9998;
-    background-image: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 200px,
-      rgba(255,255,255,0.005) 200px,
-      rgba(255,255,255,0.005) 202px
-    );
-  `;
-  watermark.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(watermark);
-  
-  // Add text watermarks
-  const textWatermark = document.createElement('div');
-  textWatermark.textContent = '© Automate Hub';
-  textWatermark.style.cssText = `
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-45deg);
-    font-size: 120px;
-    color: rgba(255, 255, 255, 0.01);
-    pointer-events: none;
-    z-index: 9997;
-    font-weight: bold;
-    white-space: nowrap;
-  `;
-  textWatermark.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(textWatermark);
+  // Watermark is invisible, only exists in DOM for legal proof
+  // No visible elements added to prevent any visual changes
 };
 
 /**

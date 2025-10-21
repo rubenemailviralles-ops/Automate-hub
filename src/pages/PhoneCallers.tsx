@@ -24,7 +24,7 @@ const PhoneCallers = () => {
   const [transcript, setTranscript] = useState<Array<{role: string, text: string}>>([]);
   const [callStatus, setCallStatus] = useState('Ready to call');
 
-  // Your Vapi credentials
+  // Vapi Configuration
   const apiKey = "19c1b688-62d8-456b-badb-65e9dc6727b9";
   const assistantId = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
   const shareKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";

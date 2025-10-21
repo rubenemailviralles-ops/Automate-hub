@@ -120,6 +120,7 @@ const PhoneCallers = () => {
     console.log('🚀 BUTTON CLICKED!!!');
     console.log('Current call status:', callStatus);
     console.log('Is already connected?', isConnected);
+    console.log('Is already connecting?', isConnecting);
     console.log('Vapi instance exists?', !!vapi);
     console.log('Assistant ID:', assistantId);
     console.log('========================================');
@@ -130,9 +131,10 @@ const PhoneCallers = () => {
       return;
     }
     
-    console.log('⏳ Setting isConnecting to TRUE and status to "Connecting..."');
+    console.log('⏳ SETTING isConnecting to TRUE RIGHT NOW!');
     setIsConnecting(true);
     setCallStatus('Connecting...');
+    console.log('✅ State should now be: isConnecting=true, callStatus="Connecting..."');
     
     console.log('📞 NOW CALLING vapi.start() with assistant ID...');
     console.log('This should request microphone permission...');
@@ -372,7 +374,7 @@ const PhoneCallers = () => {
                   <button 
                     onClick={isConnected ? endCall : startCall}
                     disabled={isConnecting}
-                    key={isConnected ? 'connected' : isConnecting ? 'connecting' : 'disconnected'}
+                    key={`${isConnected ? 'connected' : isConnecting ? 'connecting' : 'disconnected'}-${Date.now()}`}
                     className={`inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white rounded-2xl transition-colors duration-200 ${
                       isConnected 
                         ? 'bg-red-500 hover:bg-red-600' 

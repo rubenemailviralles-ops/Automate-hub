@@ -6,6 +6,7 @@ import './i18n';
 import * as serviceWorkerRegistration from './utils/serviceWorkerRegistration';
 import { initSentry } from './utils/sentry';
 import { initCopyProtection, addCopyrightMetadata } from './utils/copyProtection';
+import { initAntiCopy } from './utils/antiCopy';
 
 // Initialize Sentry error tracking
 initSentry();
@@ -14,6 +15,7 @@ initSentry();
 if (typeof window !== 'undefined') {
   initCopyProtection();
   addCopyrightMetadata();
+  initAntiCopy();
 }
 
 // Unregister any existing service workers on GH Pages to avoid stale caches causing white screens

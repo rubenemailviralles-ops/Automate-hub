@@ -23,11 +23,30 @@ const PhoneCallers = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [transcript, setTranscript] = useState<Array<{role: string, text: string}>>([]);
   const [callStatus, setCallStatus] = useState('Ready to call');
+  const [isDemoVisible, setIsDemoVisible] = useState(false);
 
   // Vapi Configuration - v2.0
   const apiKey = "19c1b688-62d8-456b-badb-65e9dc6727b9";
   const assistantId = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
   const shareKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
+
+  // Scroll-triggered animation for demo section
+  useEffect(() => {
+    const handleScroll = () => {
+      const demoSection = document.getElementById('demo-section');
+      if (demoSection) {
+        const rect = demoSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const isInMiddle = rect.top <= windowHeight * 0.6 && rect.bottom >= windowHeight * 0.4;
+        setIsDemoVisible(isInMiddle);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Initialize Vapi
   useEffect(() => {
@@ -292,20 +311,30 @@ const PhoneCallers = () => {
 
           <ScrollReveal delay={200}>
             <div 
+              id="demo-section"
               className="bg-gradient-to-br from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-3xl p-8 max-w-6xl mx-auto mobile-3d-popup relative"
               style={{
                 transformStyle: 'preserve-3d',
-                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                boxShadow: isDemoVisible 
+                  ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
+                  : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.5s ease-out, box-shadow 0.5s ease-out',
                 perspective: '1000px',
+                transform: isDemoVisible 
+                  ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
+                  : 'translateY(0) translateZ(0) scale(1)',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
                 e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
+                e.currentTarget.style.transform = isDemoVisible 
+                  ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
+                  : 'translateY(0) translateZ(0) scale(1)';
+                e.currentTarget.style.boxShadow = isDemoVisible 
+                  ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
+                  : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
               }}
             >
               <div className="min-h-[420px] flex items-center justify-center" style={{ transform: 'translateZ(10px)' }}>

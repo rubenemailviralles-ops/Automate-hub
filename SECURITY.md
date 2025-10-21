@@ -106,6 +106,44 @@ RFC 9116 compliant security.txt file at:
 - Contact information for security researchers
 - Clear disclosure policy
 
+### 13. Copy Protection & Copyright Security
+
+Multi-layer protection against unauthorized copying:
+
+**Technical Protections (Production Only):**
+- ✅ Disabled right-click context menu
+- ✅ Disabled F12 / DevTools keyboard shortcuts
+- ✅ Disabled Ctrl+U (view source)
+- ✅ Disabled Ctrl+S (save page)
+- ✅ Disabled text selection (except form inputs)
+- ✅ Disabled Ctrl+C/Ctrl+A (except form inputs)
+- ✅ Disabled image drag & drop
+- ✅ Print screen detection with clipboard clearing
+- ✅ Screenshot detection via visibility API
+- ✅ Console warnings for potential copiers
+- ✅ DevTools open detection
+- ✅ Copy event modification (adds copyright notice)
+- ✅ Browser translation disabled (prevents content extraction)
+- ✅ Automated scraping detection
+
+**Visible Deterrents:**
+- ✅ Copyright notices in footer
+- ✅ "Unauthorized copying prohibited" text
+
+**Invisible Protections:**
+- ✅ Hidden watermark overlays in DOM
+- ✅ Invisible copyright text in page
+- ✅ Copyright meta tags in HTML
+- ✅ HTML source code copyright comments
+- ✅ Fingerprinting system (tracks visitors)
+- ✅ COPYRIGHT.txt file for legal documentation
+
+**Legal Protection:**
+- ✅ Comprehensive COPYRIGHT.txt file
+- ✅ DMCA takedown procedures
+- ✅ Legal contact information
+- ✅ Clear usage restrictions
+
 ## Reporting Security Issues
 
 If you discover a security vulnerability, please email us at:
@@ -144,6 +182,7 @@ See `.env.example` for the template.
 
 ## Security Checklist
 
+**Attack & Exploit Protection:**
 - [x] HTTPS enforced site-wide (with HSTS preload)
 - [x] Security headers implemented (11 headers)
 - [x] Content Security Policy (CSP) with mixed content blocking
@@ -163,6 +202,24 @@ See `.env.example` for the template.
 - [x] security.txt for responsible disclosure
 - [x] Mixed content protection
 - [x] Secure random number generation
+
+**Copy Protection & Copyright:**
+- [x] Right-click disabled (production)
+- [x] DevTools shortcuts disabled (F12, Ctrl+Shift+I, etc.)
+- [x] Text selection disabled (except inputs)
+- [x] Copy/paste keyboard shortcuts blocked
+- [x] Image drag & drop disabled
+- [x] Screenshot detection & warnings
+- [x] Console warnings for developers
+- [x] DevTools detection system
+- [x] Invisible watermarks in DOM
+- [x] Copyright notices in all source files
+- [x] Meta tags for copyright ownership
+- [x] Fingerprinting system
+- [x] Scraping bot detection
+- [x] Browser translation disabled
+- [x] COPYRIGHT.txt legal documentation
+- [x] Modified clipboard on copy events
 
 ## Updates
 

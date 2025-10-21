@@ -23,23 +23,38 @@ const PhoneCallers = () => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [transcript, setTranscript] = useState<Array<{role: string, text: string}>>([]);
   const [callStatus, setCallStatus] = useState('Ready to call');
-  const [isDemoVisible, setIsDemoVisible] = useState(false);
+  const [visibleBlocks, setVisibleBlocks] = useState<Set<string>>(new Set());
 
   // Vapi Configuration - v2.0
   const apiKey = "19c1b688-62d8-456b-badb-65e9dc6727b9";
   const assistantId = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
   const shareKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
 
-  // Scroll-triggered animation for demo section
+  // Scroll-triggered animation for all mobile blocks
   useEffect(() => {
     const handleScroll = () => {
-      const demoSection = document.getElementById('demo-section');
-      if (demoSection) {
-        const rect = demoSection.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const isInMiddle = rect.top <= windowHeight * 0.6 && rect.bottom >= windowHeight * 0.4;
-        setIsDemoVisible(isInMiddle);
-      }
+      const blockIds = [
+        'demo-section',
+        'feature-1', 'feature-2', 'feature-3', 'feature-4', 'feature-5', 'feature-6',
+        'benefit-1', 'benefit-2',
+        'cta-section'
+      ];
+      
+      const newVisibleBlocks = new Set<string>();
+      
+      blockIds.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          const isInMiddle = rect.top <= windowHeight * 0.6 && rect.bottom >= windowHeight * 0.4;
+          if (isInMiddle) {
+            newVisibleBlocks.add(id);
+          }
+        }
+      });
+      
+      setVisibleBlocks(newVisibleBlocks);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -315,12 +330,12 @@ const PhoneCallers = () => {
               className="bg-gradient-to-br from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-3xl p-8 max-w-6xl mx-auto mobile-3d-popup relative"
               style={{
                 transformStyle: 'preserve-3d',
-                boxShadow: isDemoVisible 
+                boxShadow: visibleBlocks.has('demo-section')
                   ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
                   : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                 transition: 'transform 0.5s ease-out, box-shadow 0.5s ease-out',
                 perspective: '1000px',
-                transform: isDemoVisible 
+                transform: visibleBlocks.has('demo-section')
                   ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
                   : 'translateY(0) translateZ(0) scale(1)',
               }}
@@ -329,10 +344,10 @@ const PhoneCallers = () => {
                 e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = isDemoVisible 
+                e.currentTarget.style.transform = visibleBlocks.has('demo-section')
                   ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
                   : 'translateY(0) translateZ(0) scale(1)';
-                e.currentTarget.style.boxShadow = isDemoVisible 
+                e.currentTarget.style.boxShadow = visibleBlocks.has('demo-section')
                   ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
                   : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
               }}
@@ -522,12 +537,18 @@ const PhoneCallers = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: '1000px' }}>
             <ScrollReveal delay={100}>
               <div 
+                id="feature-1"
                 className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  boxShadow: visibleBlocks.has('feature-1')
+                    ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
+                    : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                  transition: 'transform 0.5s ease-out, box-shadow 0.5s ease-out, border-color 0.3s',
+                  transform: visibleBlocks.has('feature-1')
+                    ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
+                    : 'translateY(0) translateZ(0) scale(1)',
                 }}
                 onMouseMove={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect();
@@ -568,12 +589,18 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={200}>
               <div 
+                id="feature-2"
                 className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  boxShadow: visibleBlocks.has('feature-2')
+                    ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
+                    : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                  transition: 'transform 0.5s ease-out, box-shadow 0.5s ease-out, border-color 0.3s',
+                  transform: visibleBlocks.has('feature-2')
+                    ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
+                    : 'translateY(0) translateZ(0) scale(1)',
                 }}
                 onMouseMove={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect();
@@ -614,12 +641,18 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={300}>
               <div 
+                id="feature-3"
                 className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  boxShadow: visibleBlocks.has('feature-3')
+                    ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
+                    : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                  transition: 'transform 0.5s ease-out, box-shadow 0.5s ease-out, border-color 0.3s',
+                  transform: visibleBlocks.has('feature-3')
+                    ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
+                    : 'translateY(0) translateZ(0) scale(1)',
                 }}
                 onMouseMove={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect();
@@ -660,12 +693,18 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={400}>
               <div 
+                id="feature-4"
                 className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  boxShadow: visibleBlocks.has('feature-4')
+                    ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
+                    : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                  transition: 'transform 0.5s ease-out, box-shadow 0.5s ease-out, border-color 0.3s',
+                  transform: visibleBlocks.has('feature-4')
+                    ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
+                    : 'translateY(0) translateZ(0) scale(1)',
                 }}
                 onMouseMove={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect();
@@ -706,12 +745,18 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={500}>
               <div 
+                id="feature-5"
                 className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  boxShadow: visibleBlocks.has('feature-5')
+                    ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
+                    : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                  transition: 'transform 0.5s ease-out, box-shadow 0.5s ease-out, border-color 0.3s',
+                  transform: visibleBlocks.has('feature-5')
+                    ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
+                    : 'translateY(0) translateZ(0) scale(1)',
                 }}
                 onMouseMove={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect();
@@ -752,12 +797,18 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={600}>
               <div 
+                id="feature-6"
                 className="bg-black/50 border border-white/10 rounded-2xl p-8 hover-pop mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  boxShadow: visibleBlocks.has('feature-6')
+                    ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
+                    : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                  transition: 'transform 0.5s ease-out, box-shadow 0.5s ease-out, border-color 0.3s',
+                  transform: visibleBlocks.has('feature-6')
+                    ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
+                    : 'translateY(0) translateZ(0) scale(1)',
                 }}
                 onMouseMove={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect();
@@ -904,12 +955,18 @@ const PhoneCallers = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12" style={{ perspective: '1000px' }}>
             <ScrollReveal delay={200}>
               <div 
+                id="benefit-1"
                 className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  boxShadow: visibleBlocks.has('benefit-1')
+                    ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
+                    : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                  transition: 'transform 0.5s ease-out, box-shadow 0.5s ease-out, border-color 0.3s',
+                  transform: visibleBlocks.has('benefit-1')
+                    ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
+                    : 'translateY(0) translateZ(0) scale(1)',
                 }}
                 onMouseMove={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect();
@@ -976,12 +1033,18 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={300}>
               <div 
+                id="benefit-2"
                 className="bg-white/5 border border-white/10 rounded-2xl p-8 mobile-3d-tilt relative"
                 style={{
                   transformStyle: 'preserve-3d',
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  boxShadow: visibleBlocks.has('benefit-2')
+                    ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
+                    : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                   background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                  transition: 'transform 0.5s ease-out, box-shadow 0.5s ease-out, border-color 0.3s',
+                  transform: visibleBlocks.has('benefit-2')
+                    ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
+                    : 'translateY(0) translateZ(0) scale(1)',
                 }}
                 onMouseMove={(e) => {
                   const rect = e.currentTarget.getBoundingClientRect();
@@ -1050,10 +1113,16 @@ const PhoneCallers = () => {
           {/* In-content CTA */}
           <ScrollReveal delay={400}>
             <div 
+              id="cta-section"
               className="bg-gradient-to-r from-indigo-500/10 to-purple-600/10 border border-indigo-500/30 rounded-2xl p-8 max-w-4xl mx-auto text-center mobile-3d-popup"
               style={{
-                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                boxShadow: visibleBlocks.has('cta-section')
+                  ? '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)' 
+                  : '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.5s ease-out, box-shadow 0.5s ease-out',
+                transform: visibleBlocks.has('cta-section')
+                  ? 'translateY(-8px) translateZ(20px) scale(1.02)' 
+                  : 'translateY(0) translateZ(0) scale(1)',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';

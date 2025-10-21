@@ -153,11 +153,7 @@ export const detectDevTools = () => {
  * Add invisible copyright watermark to page
  */
 export const addInvisibleWatermark = () => {
-  const watermark = document.createElement('div');
-  watermark.textContent = `© ${new Date().getFullYear()} Automate Hub. All Rights Reserved. Unauthorized copying prohibited.`;
-  watermark.style.cssText = 'position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;';
-  watermark.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(watermark);
+  // Disabled - no visual watermarks to keep site appearance unchanged
 };
 
 /**

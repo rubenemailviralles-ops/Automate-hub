@@ -5,9 +5,16 @@ import './index.css';
 import './i18n';
 import * as serviceWorkerRegistration from './utils/serviceWorkerRegistration';
 import { initSentry } from './utils/sentry';
+import { initCopyProtection, addCopyrightMetadata } from './utils/copyProtection';
 
 // Initialize Sentry error tracking
 initSentry();
+
+// Initialize copy protection (production only)
+if (typeof window !== 'undefined') {
+  initCopyProtection();
+  addCopyrightMetadata();
+}
 
 // Unregister any existing service workers on GH Pages to avoid stale caches causing white screens
 if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {

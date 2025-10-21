@@ -24,8 +24,9 @@ const PhoneCallers = () => {
   const [callStatus, setCallStatus] = useState('Ready to call');
 
   // Your Vapi credentials
-  const apiKey = "19c1b688-62d8-456b-badb-65e9dc6727b9"; // CORRECT PUBLIC API KEY
+  const apiKey = "19c1b688-62d8-456b-badb-65e9dc6727b9";
   const assistantId = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
+  const shareKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
 
   // Initialize Vapi
   useEffect(() => {
@@ -94,35 +95,35 @@ const PhoneCallers = () => {
     }
   }, [apiKey, assistantId]);
 
-  // Start call with proper configuration
-  const startCall = async () => {
-    console.log('🚀 Start button clicked');
+  // Start call - simplest possible implementation
+  const startCall = () => {
+    console.log('🚀 BUTTON CLICKED - Starting call');
+    console.log('Vapi instance exists?', !!vapi);
+    console.log('Assistant ID:', assistantId);
     
     if (!vapi) {
-      console.error('❌ Vapi not initialized');
-      setCallStatus('Please refresh the page');
+      console.error('❌ No Vapi instance');
+      alert('ERROR: Vapi not loaded. Please refresh page.');
       return;
     }
     
-    try {
-      console.log('📞 Starting call with assistant:', assistantId);
-      setCallStatus('Connecting...');
-      
-      // Start call with assistant configuration object
-      await vapi.start({
-        assistantId: assistantId,
+    setCallStatus('Connecting...');
+    console.log('📞 Calling vapi.start() with assistant ID...');
+    
+    // Most basic Vapi call - just pass the string
+    vapi.start(assistantId).then(() => {
+      console.log('✅ vapi.start() completed successfully');
+    }).catch((error: any) => {
+      console.error('❌ vapi.start() failed:', error);
+      console.error('Error details:', {
+        message: error?.message,
+        name: error?.name,
+        stack: error?.stack
       });
-      
-      console.log('✅ Call start requested successfully');
-    } catch (error) {
-      console.error('❌ Error starting call:', error);
-      console.error('Error details:', error);
-      setCallStatus('Failed to start: ' + (error?.message || 'Unknown error'));
+      alert('FAILED TO START: ' + (error?.message || String(error)));
+      setCallStatus('Failed to connect');
       setIsConnected(false);
-      
-      // Show error to user
-      alert('Failed to start voice agent. Please check console (F12) for details. Error: ' + (error?.message || 'Unknown'));
-    }
+    });
   };
 
   // End call

@@ -166,15 +166,17 @@ const PhoneCallers = () => {
     
     console.log('📝 vapi.start() has been called (promise pending...)');
     
-    // Fallback: If call-start event doesn't fire within 3 seconds, assume connected
+    // Fallback: If call-start event doesn't fire within 2 seconds, assume connected
     setTimeout(() => {
+      console.log('⏰ TIMEOUT CHECK: isConnecting =', isConnecting, 'isConnected =', isConnected);
       if (isConnecting && !isConnected) {
-        console.log('⏰ TIMEOUT: call-start event did not fire, assuming connected');
+        console.log('⏰ TIMEOUT: call-start event did not fire, forcing connected state');
         setIsConnecting(false);
         setIsConnected(true);
         setCallStatus('Connected - Speaking with AI...');
+        console.log('🔄 FORCED: Button should now show "End Call"');
       }
-    }, 3000);
+    }, 2000);
   };
 
   // End call

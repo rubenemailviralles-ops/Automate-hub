@@ -29,54 +29,66 @@ const PhoneCallers = () => {
 
   // Initialize Vapi - EXACTLY from documentation
   useEffect(() => {
-    const vapiInstance = new Vapi(apiKey);
-    setVapi(vapiInstance);
+    console.log('🔧 Creating Vapi instance...');
+    console.log('Vapi SDK loaded:', typeof Vapi);
+    
+    try {
+      const vapiInstance = new Vapi(apiKey);
+      console.log('✅ Vapi instance created:', vapiInstance);
+      setVapi(vapiInstance);
 
-    // Event listeners - EXACTLY from documentation
-    vapiInstance.on('call-start', () => {
-      console.log('Call started');
-      setIsConnected(true);
-      setCallStatus('Connected - AI Speaking...');
-    });
+      // Event listeners - EXACTLY from documentation
+      vapiInstance.on('call-start', () => {
+        console.log('✅✅✅ Call started');
+        alert('SUCCESS! Call connected!');
+        setIsConnected(true);
+        setCallStatus('Connected - AI Speaking...');
+      });
 
-    vapiInstance.on('call-end', () => {
-      console.log('Call ended');
-      setIsConnected(false);
-      setIsSpeaking(false);
-      setCallStatus('Call ended');
-      setTimeout(() => setCallStatus('Ready to call'), 2000);
-    });
+      vapiInstance.on('call-end', () => {
+        console.log('Call ended');
+        setIsConnected(false);
+        setIsSpeaking(false);
+        setCallStatus('Call ended');
+        setTimeout(() => setCallStatus('Ready to call'), 2000);
+      });
 
-    vapiInstance.on('speech-start', () => {
-      console.log('Assistant started speaking');
-      setIsSpeaking(true);
-      setCallStatus('AI Speaking...');
-    });
+      vapiInstance.on('speech-start', () => {
+        console.log('Assistant started speaking');
+        setIsSpeaking(true);
+        setCallStatus('AI Speaking...');
+      });
 
-    vapiInstance.on('speech-end', () => {
-      console.log('Assistant stopped speaking');
-      setIsSpeaking(false);
-      setCallStatus('Listening...');
-    });
+      vapiInstance.on('speech-end', () => {
+        console.log('Assistant stopped speaking');
+        setIsSpeaking(false);
+        setCallStatus('Listening...');
+      });
 
-    vapiInstance.on('message', (message) => {
-      if (message.type === 'transcript') {
-        setTranscript(prev => [...prev, {
-          role: message.role,
-          text: message.transcript
-        }]);
-      }
-    });
+      vapiInstance.on('message', (message) => {
+        console.log('Message:', message);
+        if (message.type === 'transcript') {
+          setTranscript(prev => [...prev, {
+            role: message.role,
+            text: message.transcript
+          }]);
+        }
+      });
 
-    vapiInstance.on('error', (error) => {
-      console.error('Vapi error:', error);
-      setCallStatus('Error: ' + (error.message || 'Connection failed'));
-      setIsConnected(false);
-    });
+      vapiInstance.on('error', (error) => {
+        console.error('❌❌❌ Vapi error:', error);
+        alert('VAPI ERROR: ' + (error.message || JSON.stringify(error)));
+        setCallStatus('Error: ' + (error.message || 'Connection failed'));
+        setIsConnected(false);
+      });
 
-    return () => {
-      vapiInstance?.stop();
-    };
+      return () => {
+        vapiInstance?.stop();
+      };
+    } catch (err) {
+      console.error('❌ Failed to create Vapi instance:', err);
+      alert('ERROR creating Vapi: ' + err.message);
+    }
   }, [apiKey]);
 
   // Start call - EXACTLY from documentation

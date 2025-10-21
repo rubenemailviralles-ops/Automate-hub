@@ -30,24 +30,31 @@ const PhoneCallers = () => {
 
   // Initialize Vapi
   useEffect(() => {
-    console.log('🔧 Initializing Vapi...');
+    console.log('========================================');
+    console.log('🔧 INITIALIZING VAPI');
     console.log('API Key:', apiKey);
     console.log('Assistant ID:', assistantId);
+    console.log('========================================');
     
     try {
       const vapiInstance = new Vapi(apiKey);
-      console.log('✅ Vapi instance created successfully');
+      console.log('✅ Vapi instance created');
       setVapi(vapiInstance);
 
-      // Set up event listeners
+      // Set up event listeners with detailed logging
       vapiInstance.on('call-start', () => {
-        console.log('✅ Call started successfully!');
+        console.log('========================================');
+        console.log('🎉 EVENT: call-start FIRED!');
+        console.log('This means Vapi successfully connected!');
+        console.log('========================================');
         setIsConnected(true);
         setCallStatus('Connected - Speaking with AI...');
       });
 
       vapiInstance.on('call-end', () => {
-        console.log('📞 Call ended');
+        console.log('========================================');
+        console.log('📞 EVENT: call-end FIRED');
+        console.log('========================================');
         setIsConnected(false);
         setIsSpeaking(false);
         setCallStatus('Call ended');
@@ -55,19 +62,19 @@ const PhoneCallers = () => {
       });
 
       vapiInstance.on('speech-start', () => {
-        console.log('🗣️ AI started speaking');
+        console.log('🗣️ EVENT: speech-start');
         setIsSpeaking(true);
         setCallStatus('AI Speaking...');
       });
 
       vapiInstance.on('speech-end', () => {
-        console.log('🎤 AI stopped speaking');
+        console.log('🎤 EVENT: speech-end');
         setIsSpeaking(false);
         setCallStatus('Listening...');
       });
 
       vapiInstance.on('message', (message) => {
-        console.log('💬 Message received:', message);
+        console.log('💬 EVENT: message -', message);
         if (message.type === 'transcript' && message.transcript) {
           setTranscript(prev => [...prev, {
             role: message.role || 'user',
@@ -77,10 +84,16 @@ const PhoneCallers = () => {
       });
 
       vapiInstance.on('error', (error) => {
-        console.error('❌ Vapi error:', error);
-        setCallStatus('Error occurred: ' + (error?.message || 'Unknown error'));
+        console.log('========================================');
+        console.error('❌ EVENT: error FIRED');
+        console.error('Error object:', error);
+        console.error('Error message:', error?.message);
+        console.log('========================================');
+        setCallStatus('Error: ' + (error?.message || 'Unknown error'));
         setIsConnected(false);
       });
+
+      console.log('✅ All event listeners registered');
 
       // Cleanup on unmount
       return () => {
@@ -97,9 +110,13 @@ const PhoneCallers = () => {
 
   // Start call - simplest possible implementation
   const startCall = () => {
-    console.log('🚀 BUTTON CLICKED - Starting call');
+    console.log('========================================');
+    console.log('🚀 BUTTON CLICKED!!!');
+    console.log('Current call status:', callStatus);
+    console.log('Is already connected?', isConnected);
     console.log('Vapi instance exists?', !!vapi);
     console.log('Assistant ID:', assistantId);
+    console.log('========================================');
     
     if (!vapi) {
       console.error('❌ No Vapi instance');
@@ -107,23 +124,36 @@ const PhoneCallers = () => {
       return;
     }
     
+    console.log('⏳ Setting status to "Connecting..."');
     setCallStatus('Connecting...');
-    console.log('📞 Calling vapi.start() with assistant ID...');
+    
+    console.log('📞 NOW CALLING vapi.start() with assistant ID...');
+    console.log('This should request microphone permission...');
     
     // Most basic Vapi call - just pass the string
-    vapi.start(assistantId).then(() => {
-      console.log('✅ vapi.start() completed successfully');
-    }).catch((error: any) => {
-      console.error('❌ vapi.start() failed:', error);
-      console.error('Error details:', {
-        message: error?.message,
-        name: error?.name,
-        stack: error?.stack
+    vapi.start(assistantId)
+      .then((result) => {
+        console.log('========================================');
+        console.log('✅ vapi.start() PROMISE RESOLVED');
+        console.log('Result:', result);
+        console.log('========================================');
+      })
+      .catch((error: any) => {
+        console.log('========================================');
+        console.error('❌ vapi.start() PROMISE REJECTED');
+        console.error('Error:', error);
+        console.error('Error type:', typeof error);
+        console.error('Error message:', error?.message);
+        console.error('Error name:', error?.name);
+        console.error('Full error object:', JSON.stringify(error, null, 2));
+        console.log('========================================');
+        
+        alert('FAILED TO START CALL!\n\nError: ' + (error?.message || String(error)) + '\n\nCheck console for details (F12)');
+        setCallStatus('Failed to connect');
+        setIsConnected(false);
       });
-      alert('FAILED TO START: ' + (error?.message || String(error)));
-      setCallStatus('Failed to connect');
-      setIsConnected(false);
-    });
+    
+    console.log('📝 vapi.start() has been called (promise pending...)');
   };
 
   // End call

@@ -78,10 +78,9 @@ const PhoneCallers = () => {
 
       // Set up event listeners
       vapiInstance.on('call-start', () => {
-        console.log('🎉 Call started - Connected!');
-        setIsConnecting(false);
-        setIsConnected(true);
-        setCallStatus('Connected - Speaking with AI...');
+        console.log('🎉 Call started - waiting for bot to speak...');
+        // Keep showing "Calling..." until bot actually speaks
+        setCallStatus('Calling...');
       });
 
       vapiInstance.on('call-end', () => {
@@ -94,7 +93,10 @@ const PhoneCallers = () => {
       });
 
       vapiInstance.on('speech-start', () => {
-        console.log('🗣️ AI speaking');
+        console.log('🗣️ AI speaking - NOW CONNECTED!');
+        // When bot starts speaking, that's when we show "End Call"
+        setIsConnecting(false);
+        setIsConnected(true);
         setIsSpeaking(true);
         setCallStatus('AI Speaking...');
       });
@@ -136,11 +138,9 @@ const PhoneCallers = () => {
     }
   }, [apiKey, assistantId]);
 
-  // Start call - simplified and more reliable
+  // Start call - wait for bot to speak before showing connected
   const startCall = () => {
-    console.log('========================================');
-    console.log('🚀 BUTTON CLICKED - Starting call');
-    console.log('========================================');
+    console.log('🚀 Starting call...');
     
     if (!vapi) {
       console.error('❌ No Vapi instance');
@@ -150,16 +150,13 @@ const PhoneCallers = () => {
     
     // Set connecting state immediately
     setIsConnecting(true);
-    setCallStatus('Connecting...');
+    setCallStatus('Calling...');
     
     // Start the Vapi call
     vapi.start(assistantId)
       .then((result) => {
-        console.log('✅ vapi.start() succeeded:', result);
-        // Immediately set connected state when promise resolves
-        setIsConnecting(false);
-        setIsConnected(true);
-        setCallStatus('Connected - Speaking with AI...');
+        console.log('✅ Call started, waiting for bot to speak...');
+        // Keep connecting state until bot speaks (speech-start event)
       })
       .catch((error: any) => {
         console.error('❌ vapi.start() failed:', error);
@@ -168,15 +165,6 @@ const PhoneCallers = () => {
         setCallStatus('Failed to connect');
         alert('Failed to start call: ' + (error?.message || String(error)));
       });
-    
-    // Aggressive fallback: Force connected state after 1.5 seconds regardless
-    // This ensures the button changes on all devices/browsers
-    setTimeout(() => {
-      setIsConnecting(false);
-      setIsConnected(true);
-      setCallStatus('Connected - Speaking with AI...');
-      console.log('⏰ Fallback: Forced connected state');
-    }, 1500);
   };
 
   // End call

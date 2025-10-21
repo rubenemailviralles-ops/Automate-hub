@@ -26,15 +26,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-      radial-gradient(ellipse 80% 50% at 20% 40%, rgba(99, 102, 241, 0.12) 0%, transparent 50%),
-      radial-gradient(ellipse 60% 40% at 80% 60%, rgba(168, 85, 247, 0.10) 0%, transparent 50%),
-      linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
-    background-size: 
-      300% 200%,
-      250% 180%,
-      100% 100%;
-    /* Reduced from 6 animations to 2 for better scroll performance */
+    /* Optimized: Replaced complex radial gradients with simple linear gradient for better GPU performance */
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+    background-size: 100% 100%;
+    /* Keeping animations for visual appeal */
     animation: 
       waveFlow1 30s ease-in-out infinite,
       subtleGlow 40s ease-in-out infinite;
@@ -173,7 +168,9 @@
   .floating-orb-1 {
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.8) 0%, rgba(99, 102, 241, 0.4) 30%, rgba(99, 102, 241, 0.1) 60%, transparent 80%);
+    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
+    background: rgba(99, 102, 241, 0.2);
+    filter: blur(60px);
     top: 10%;
     left: 10%;
     animation: galaxyOrbit1 24s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
@@ -183,7 +180,9 @@
   .floating-orb-2 {
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.7) 0%, rgba(168, 85, 247, 0.35) 30%, rgba(168, 85, 247, 0.1) 60%, transparent 80%);
+    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
+    background: rgba(168, 85, 247, 0.2);
+    filter: blur(65px);
     top: 60%;
     right: 10%;
     animation: galaxyOrbit2 28s cubic-bezier(0.42, 0, 0.58, 1) infinite;
@@ -194,7 +193,9 @@
   .floating-orb-3 {
     width: 250px;
     height: 250px;
-    background: radial-gradient(circle, rgba(236, 72, 153, 0.7) 0%, rgba(236, 72, 153, 0.35) 30%, rgba(236, 72, 153, 0.1) 60%, transparent 80%);
+    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
+    background: rgba(236, 72, 153, 0.2);
+    filter: blur(55px);
     bottom: 20%;
     left: 20%;
     animation: galaxyOrbit3 20s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -205,7 +206,9 @@
   .floating-orb-4 {
     width: 350px;
     height: 350px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.7) 0%, rgba(59, 130, 246, 0.35) 30%, rgba(59, 130, 246, 0.1) 60%, transparent 80%);
+    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
+    background: rgba(59, 130, 246, 0.2);
+    filter: blur(63px);
     top: 30%;
     right: 30%;
     animation: galaxyOrbit4 26s cubic-bezier(0.43, 0.02, 0.57, 0.98) infinite;
@@ -216,7 +219,9 @@
   .floating-orb-5 {
     width: 280px;
     height: 280px;
-    background: radial-gradient(circle, rgba(34, 211, 238, 0.65) 0%, rgba(34, 211, 238, 0.32) 30%, rgba(34, 211, 238, 0.08) 60%, transparent 80%);
+    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
+    background: rgba(34, 211, 238, 0.18);
+    filter: blur(58px);
     top: 45%;
     left: 5%;
     animation: galaxyOrbit5 23s cubic-bezier(0.4, 0.1, 0.6, 0.9) infinite;
@@ -227,7 +232,9 @@
   .floating-orb-6 {
     width: 320px;
     height: 320px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.68) 0%, rgba(16, 185, 129, 0.34) 30%, rgba(16, 185, 129, 0.09) 60%, transparent 80%);
+    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
+    background: rgba(16, 185, 129, 0.19);
+    filter: blur(61px);
     top: 15%;
     right: 15%;
     animation: galaxyOrbit6 27s cubic-bezier(0.44, 0.03, 0.56, 0.97) infinite;
@@ -238,7 +245,9 @@
   .floating-orb-7 {
     width: 270px;
     height: 270px;
-    background: radial-gradient(circle, rgba(251, 146, 60, 0.63) 0%, rgba(251, 146, 60, 0.31) 30%, rgba(251, 146, 60, 0.08) 60%, transparent 80%);
+    /* Optimized: solid color + blur instead of radial-gradient for better GPU performance */
+    background: rgba(251, 146, 60, 0.18);
+    filter: blur(57px);
     bottom: 15%;
     right: 20%;
     animation: galaxyOrbit7 21s cubic-bezier(0.41, 0.05, 0.59, 0.95) infinite;
@@ -996,10 +1005,9 @@ h6:not(:has(.bg-clip-text)) {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(ellipse 120% 80% at 30% 60%, rgba(255, 140, 0, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 100% 60% at 70% 40%, rgba(255, 165, 0, 0.06) 0%, transparent 60%);
-  background-size: 200% 150%, 180% 120%;
+  /* Optimized: simplified gradient for better GPU performance */
+  background: rgba(255, 140, 0, 0.04);
+  background-size: 100% 100%;
   animation: sectionWave 40s ease-in-out infinite;
   z-index: 0;
   pointer-events: none;

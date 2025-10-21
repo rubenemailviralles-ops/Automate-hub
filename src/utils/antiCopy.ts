@@ -133,7 +133,7 @@ export const clearClipboardPeriodically = () => {
 export const initAntiCopy = () => {
   if (import.meta.env.PROD) {
     disableScreenCapture();
-    addWatermarkOverlay();
+    // addWatermarkOverlay(); // DISABLED - No visible watermarks
     obfuscateEmails();
     detectScraping();
     disableTranslation();

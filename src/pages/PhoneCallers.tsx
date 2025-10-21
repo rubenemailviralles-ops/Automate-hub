@@ -373,22 +373,22 @@ const PhoneCallers = () => {
                     onClick={isConnected ? endCall : startCall}
                     disabled={isConnecting}
                     key={isConnected ? 'connected' : isConnecting ? 'connecting' : 'disconnected'}
-                    className={`group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white rounded-2xl transition-all duration-300 transform hover:scale-105 ${
+                    className={`inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white rounded-2xl transition-colors duration-200 ${
                       isConnected 
-                        ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700' 
+                        ? 'bg-red-500 hover:bg-red-600' 
                         : isConnecting
-                        ? 'bg-gradient-to-r from-yellow-500 to-orange-500 opacity-90 cursor-wait'
-                        : 'bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600'
+                        ? 'bg-yellow-500 opacity-90 cursor-wait'
+                        : 'bg-indigo-500 hover:bg-indigo-600'
                     }`}
                     style={{
                       boxShadow: isConnected
-                        ? '0 10px 40px rgba(239, 68, 68, 0.4), 0 0 20px rgba(239, 68, 68, 0.3)'
+                        ? '0 4px 20px rgba(239, 68, 68, 0.3)'
                         : isConnecting
-                        ? '0 10px 40px rgba(245, 158, 11, 0.4), 0 0 20px rgba(251, 146, 60, 0.3)'
-                        : '0 10px 40px rgba(99, 102, 241, 0.4), 0 0 20px rgba(168, 85, 247, 0.3)'
+                        ? '0 4px 20px rgba(245, 158, 11, 0.3)'
+                        : '0 4px 20px rgba(99, 102, 241, 0.3)'
                     }}
                   >
-                    <span className="relative z-10 flex items-center space-x-3">
+                    <span className="flex items-center space-x-3">
                       {isConnected ? (
                         <>
                           <Phone className="w-6 h-6 animate-pulse" />

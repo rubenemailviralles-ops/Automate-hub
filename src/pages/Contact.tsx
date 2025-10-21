@@ -112,7 +112,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ overflowX: 'hidden' }}>
+    <div className="min-h-screen" style={{ overflowX: 'hidden', scrollBehavior: 'auto' }}>
       <SEO 
         title="Contact Us - Automate Hub | Get in Touch for AI Automation Solutions"
         description="Contact Automate Hub for AI automation solutions. Get free consultation, custom automation recommendations, and expert guidance. Transform your business with our AI-powered automation services."
@@ -212,17 +212,17 @@ const Contact = () => {
                 minHeight: '600px', // Prevent height changes from causing scrollbar flicker
               }}
             >
-              <div className="mb-6 transition-all duration-500 ease-in-out">
-                <h2 className={`text-2xl font-bold text-white mb-2 transition-all duration-500 ${submitSuccess ? 'opacity-0 transform -translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+              <div className="mb-6">
+                <h2 className={`text-2xl font-bold text-white mb-2 ${submitSuccess ? 'hidden' : ''}`}>
                   {t('contact.sendMessage')}
                 </h2>
-                <p className={`text-gray-400 text-sm transition-all duration-500 ${submitSuccess ? 'opacity-0 transform -translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+                <p className={`text-gray-400 text-sm ${submitSuccess ? 'hidden' : ''}`}>
                   Fill out the form and we'll contact you within 24 hours. Or <Link to="/book-consultation" className="text-cyan-400 hover:text-cyan-300 transition-colors font-semibold">book a free consultation</Link> for immediate assistance.
                 </p>
               </div>
 
               {submitSuccess ? (
-                <div className="text-center p-8 animate-fade-in">
+                <div className="text-center p-8">
                   <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 animate-bounce">
                     <Send className="w-8 h-8 text-green-400" />
                   </div>
@@ -238,7 +238,7 @@ const Contact = () => {
                   </Link>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className={`space-y-4 transition-all duration-500 ${submitSuccess ? 'opacity-0 transform translate-y-4' : 'opacity-100 transform translate-y-0'}`}>
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {/* Full Name */}
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-400 mb-2">

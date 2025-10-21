@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Send, Phone, Mail, MapPin } from 'lucide-react';
+import { Send, Phone, Mail, MapPin, AlertCircle } from 'lucide-react';
+import { 
+  sanitizeFormData, 
+  validateEmail, 
+  validateRequired, 
+  validatePhone, 
+  validateMessage,
+  checkRateLimit,
+  type FormErrors 
+} from '../utils/validation';
 
 const ContactForm = () => {
   const navigate = useNavigate();
@@ -13,19 +22,78 @@ const ContactForm = () => {
     message: '',
     budget: ''
   });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+    // Clear error for this field when user types
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: '' });
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Check rate limiting - max 3 submissions per 5 minutes
+    if (!checkRateLimit('contact_form', 3, 5 * 60 * 1000)) {
+      alert('Too many submissions. Please wait a few minutes before trying again.');
+      return;
+    }
+
+    // Validate all fields
+    const newErrors: FormErrors = {};
+    
+    const nameValidation = validateRequired(formData.name, 'Name');
+    if (!nameValidation.isValid) newErrors.name = nameValidation.error!;
+    
+    const emailValidation = validateEmail(formData.email);
+    if (!emailValidation.isValid) newErrors.email = emailValidation.error!;
+    
+    const companyValidation = validateRequired(formData.company, 'Company');
+    if (!companyValidation.isValid) newErrors.company = companyValidation.error!;
+    
+    if (formData.phone) {
+      const phoneValidation = validatePhone(formData.phone);
+      if (!phoneValidation.isValid) newErrors.phone = phoneValidation.error!;
+    }
+    
+    const messageValidation = validateMessage(formData.message, 20);
+    if (!messageValidation.isValid) newErrors.message = messageValidation.error!;
+
+    // If there are errors, show them and stop
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    // Sanitize form data to prevent XSS attacks
+    const sanitizedData = sanitizeFormData(formData);
+    
+    setIsSubmitting(true);
+    
     // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you! We\'ll be in touch within 24 hours.');
+    console.log('Form submitted (sanitized):', sanitizedData);
+    
+    // Simulate submission
+    setTimeout(() => {
+      setIsSubmitting(false);
+      alert('Thank you! We\'ll be in touch within 24 hours.');
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        company: '',
+        phone: '',
+        message: '',
+        budget: ''
+      });
+    }, 1000);
   };
 
   const handleContactClick = () => {
@@ -108,11 +176,20 @@ const ContactForm = () => {
                     id="name"
                     name="name"
                     required
+                    maxLength={100}
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-5 py-4 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated"
+                    className={`w-full px-5 py-4 bg-black border ${errors.name ? 'border-red-500' : 'border-white/20'} rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated`}
                     placeholder="John Doe"
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? 'name-error' : undefined}
                   />
+                  {errors.name && (
+                    <p id="name-error" className="mt-2 text-sm text-red-400 flex items-center">
+                      <AlertCircle className="w-4 h-4 mr-1" />
+                      {errors.name}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-3 text-sophisticated">
@@ -123,11 +200,20 @@ const ContactForm = () => {
                     id="email"
                     name="email"
                     required
+                    maxLength={100}
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-5 py-4 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated"
+                    className={`w-full px-5 py-4 bg-black border ${errors.email ? 'border-red-500' : 'border-white/20'} rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated`}
                     placeholder="john@company.com"
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? 'email-error' : undefined}
                   />
+                  {errors.email && (
+                    <p id="email-error" className="mt-2 text-sm text-red-400 flex items-center">
+                      <AlertCircle className="w-4 h-4 mr-1" />
+                      {errors.email}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -141,11 +227,20 @@ const ContactForm = () => {
                     id="company"
                     name="company"
                     required
+                    maxLength={100}
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-5 py-4 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated"
+                    className={`w-full px-5 py-4 bg-black border ${errors.company ? 'border-red-500' : 'border-white/20'} rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated`}
                     placeholder="Your Company"
+                    aria-invalid={!!errors.company}
+                    aria-describedby={errors.company ? 'company-error' : undefined}
                   />
+                  {errors.company && (
+                    <p id="company-error" className="mt-2 text-sm text-red-400 flex items-center">
+                      <AlertCircle className="w-4 h-4 mr-1" />
+                      {errors.company}
+                    </p>
+                  )}
                 </div>
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-3 text-sophisticated">
@@ -155,11 +250,20 @@ const ContactForm = () => {
                     type="tel"
                     id="phone"
                     name="phone"
+                    maxLength={20}
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-5 py-4 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated"
+                    className={`w-full px-5 py-4 bg-black border ${errors.phone ? 'border-red-500' : 'border-white/20'} rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated`}
                     placeholder="+1 (555) 123-4567"
+                    aria-invalid={!!errors.phone}
+                    aria-describedby={errors.phone ? 'phone-error' : undefined}
                   />
+                  {errors.phone && (
+                    <p id="phone-error" className="mt-2 text-sm text-red-400 flex items-center">
+                      <AlertCircle className="w-4 h-4 mr-1" />
+                      {errors.phone}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -191,19 +295,29 @@ const ContactForm = () => {
                   name="message"
                   required
                   rows={4}
+                  maxLength={2000}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-5 py-4 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all resize-none text-sophisticated"
+                  className={`w-full px-5 py-4 bg-black border ${errors.message ? 'border-red-500' : 'border-white/20'} rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all resize-none text-sophisticated`}
                   placeholder="Describe your current challenges and what you'd like to achieve with AI automation..."
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? 'message-error' : undefined}
                 ></textarea>
+                {errors.message && (
+                  <p id="message-error" className="mt-2 text-sm text-red-400 flex items-center">
+                    <AlertCircle className="w-4 h-4 mr-1" />
+                    {errors.message}
+                  </p>
+                )}
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-white text-black hover:bg-gray-100 px-8 py-5 rounded-xl font-medium text-lg transition-all duration-500 transform hover:scale-105 flex items-center justify-center text-sophisticated"
+                disabled={isSubmitting}
+                className={`w-full ${isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-white hover:bg-gray-100 hover:scale-105'} text-black px-8 py-5 rounded-xl font-medium text-lg transition-all duration-500 transform flex items-center justify-center text-sophisticated`}
               >
                 <Send className="mr-2 w-5 h-5" />
-                Book My Free Consultation
+                {isSubmitting ? 'Sending...' : 'Book My Free Consultation'}
               </button>
 
               <p className="text-sm text-gray-600 text-center text-sophisticated">

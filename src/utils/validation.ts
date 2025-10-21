@@ -149,3 +149,95 @@ export const hasFormErrors = (errors: FormErrors): boolean => {
   return Object.keys(errors).length > 0;
 };
 
+/**
+ * Sanitize user input to prevent XSS attacks
+ * Removes potentially dangerous characters and HTML tags
+ */
+export const sanitizeInput = (input: string): string => {
+  if (!input) return '';
+  
+  return input
+    .trim()
+    // Remove HTML tags
+    .replace(/<[^>]*>/g, '')
+    // Remove script tags and content
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    // Remove event handlers
+    .replace(/on\w+\s*=\s*["'][^"']*["']/gi, '')
+    // Remove javascript: protocol
+    .replace(/javascript:/gi, '')
+    // Limit length to prevent DoS
+    .substring(0, 10000);
+};
+
+/**
+ * Sanitize all fields in a form object
+ */
+export const sanitizeFormData = <T extends Record<string, any>>(formData: T): T => {
+  const sanitized = { ...formData };
+  
+  Object.keys(sanitized).forEach((key) => {
+    if (typeof sanitized[key] === 'string') {
+      sanitized[key] = sanitizeInput(sanitized[key]);
+    }
+  });
+  
+  return sanitized;
+};
+
+/**
+ * Validate URL format
+ */
+export const validateURL = (url: string): ValidationResult => {
+  if (!url || url.trim() === '') {
+    return { isValid: false, error: 'URL is required' };
+  }
+
+  try {
+    new URL(url);
+    // Only allow http and https protocols
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      return { isValid: false, error: 'URL must start with http:// or https://' };
+    }
+    return { isValid: true };
+  } catch {
+    return { isValid: false, error: 'Please enter a valid URL' };
+  }
+};
+
+/**
+ * Rate limiting helper - Check if too many requests
+ * Usage: Store timestamps in localStorage and check intervals
+ */
+export const checkRateLimit = (
+  key: string,
+  maxAttempts: number,
+  timeWindowMs: number
+): boolean => {
+  try {
+    const now = Date.now();
+    const attemptsKey = `ratelimit_${key}`;
+    const stored = localStorage.getItem(attemptsKey);
+    const attempts: number[] = stored ? JSON.parse(stored) : [];
+    
+    // Remove old attempts outside time window
+    const recentAttempts = attempts.filter(
+      timestamp => now - timestamp < timeWindowMs
+    );
+    
+    // Check if limit exceeded
+    if (recentAttempts.length >= maxAttempts) {
+      return false; // Rate limit exceeded
+    }
+    
+    // Add current attempt
+    recentAttempts.push(now);
+    localStorage.setItem(attemptsKey, JSON.stringify(recentAttempts));
+    
+    return true; // Within rate limit
+  } catch {
+    // If localStorage fails, allow the action
+    return true;
+  }
+};
+

@@ -7,15 +7,8 @@
  * Disable print screen and screenshots (limited effectiveness)
  */
 export const disableScreenCapture = () => {
-  // Detect print screen key
-  document.addEventListener('keyup', (e) => {
-    if (e.key === 'PrintScreen') {
-      navigator.clipboard.writeText('');
-      alert('Screenshots are disabled for copyright protection.');
-    }
-  });
-  
-  // Detect when page visibility changes (might be screenshot tool)
+  // DISABLED - No visual alerts that affect user experience
+  // Only silent clipboard protection
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       navigator.clipboard.writeText('© 2025 Automate Hub - Proprietary Content');
@@ -132,7 +125,8 @@ export const clearClipboardPeriodically = () => {
  */
 export const initAntiCopy = () => {
   if (import.meta.env.PROD) {
-    disableScreenCapture();
+    // DISABLED - No visual alerts or popups that affect user experience
+    // disableScreenCapture(); // DISABLED - No popup alerts
     // addWatermarkOverlay(); // DISABLED - No visible watermarks
     obfuscateEmails();
     detectScraping();

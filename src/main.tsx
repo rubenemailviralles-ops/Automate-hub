@@ -5,18 +5,15 @@ import './index.css';
 import './i18n';
 import * as serviceWorkerRegistration from './utils/serviceWorkerRegistration';
 import { initSentry } from './utils/sentry';
-import { initCopyProtection, addCopyrightMetadata } from './utils/copyProtection';
-import { initAntiCopy } from './utils/antiCopy';
+import { initInvisibleSecurity } from './utils/invisibleSecurity';
 
 // Initialize Sentry error tracking
 initSentry();
 
 // Initialize copy protection (production only)
 if (typeof window !== 'undefined') {
-  // DISABLED - No copy protection to avoid any watermark issues
-  // initCopyProtection();
-  // addCopyrightMetadata();
-  // initAntiCopy();
+  // Initialize invisible security (no visual impact)
+  initInvisibleSecurity();
 }
 
 // Unregister any existing service workers on GH Pages to avoid stale caches causing white screens

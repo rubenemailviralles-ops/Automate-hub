@@ -144,14 +144,9 @@ const Footer = () => {
 
         <ScrollReveal delay={300}>
           <div className="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
-            <div className="text-center md:text-left">
-              <p className="text-gray-500 text-sm">
-                © {new Date().getFullYear()} Automate Hub. All rights reserved.
-              </p>
-              <p className="text-gray-600 text-xs mt-1">
-                Unauthorized copying, modification, or distribution prohibited.
-              </p>
-            </div>
+            <p className="text-gray-500 text-sm">
+              © {new Date().getFullYear()} Automate Hub. All rights reserved.
+            </p>
             <nav className="flex space-x-4 mt-3 md:mt-0" aria-label="Legal links">
               <button onClick={handlePrivacyClick} className="text-gray-500 hover:text-white text-sm transition-colors" aria-label="View privacy policy">
                 Privacy Policy

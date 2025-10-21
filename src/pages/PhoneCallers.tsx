@@ -46,9 +46,11 @@ const PhoneCallers = () => {
         console.log('========================================');
         console.log('🎉 EVENT: call-start FIRED!');
         console.log('This means Vapi successfully connected!');
+        console.log('About to set isConnected to TRUE');
         console.log('========================================');
         setIsConnected(true);
         setCallStatus('Connected - Speaking with AI...');
+        console.log('✅ State updated: isConnected = true, callStatus = "Connected - Speaking with AI..."');
       });
 
       vapiInstance.on('call-end', () => {
@@ -356,9 +358,13 @@ const PhoneCallers = () => {
                     </div>
                   )}
 
+                  {/* Debug: Show current state */}
+                  {console.log('🎨 RENDERING BUTTON - isConnected:', isConnected, 'callStatus:', callStatus)}
+                  
                   {/* Control Button */}
                   <button 
                     onClick={isConnected ? endCall : startCall}
+                    key={isConnected ? 'connected' : 'disconnected'}
                     className={`group relative inline-flex items-center justify-center px-10 py-5 text-lg font-bold text-white rounded-2xl transition-all duration-300 transform hover:scale-105 ${
                       isConnected 
                         ? 'bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700' 

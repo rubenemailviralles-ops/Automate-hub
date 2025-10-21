@@ -24,29 +24,29 @@ const PhoneCallers = () => {
   const [callStatus, setCallStatus] = useState('Ready to call');
 
   // Your Vapi credentials
-  const apiKey = "6b197fc0-3d91-4e7b-801d-801097fb79ae";
+  const apiKey = "19c1b688-62d8-456b-badb-65e9dc6727b9"; // CORRECT PUBLIC API KEY
   const assistantId = "ec9c6b34-41ce-4589-b10d-aa52504306a7";
 
-  // Initialize Vapi - EXACTLY from documentation
+  // Initialize Vapi
   useEffect(() => {
-    console.log('🔧 Creating Vapi instance...');
-    console.log('Vapi SDK loaded:', typeof Vapi);
+    console.log('🔧 Initializing Vapi...');
+    console.log('API Key:', apiKey);
+    console.log('Assistant ID:', assistantId);
     
     try {
       const vapiInstance = new Vapi(apiKey);
-      console.log('✅ Vapi instance created:', vapiInstance);
+      console.log('✅ Vapi instance created successfully');
       setVapi(vapiInstance);
 
-      // Event listeners - EXACTLY from documentation
+      // Set up event listeners
       vapiInstance.on('call-start', () => {
-        console.log('✅✅✅ Call started');
-        alert('SUCCESS! Call connected!');
+        console.log('✅ Call started successfully!');
         setIsConnected(true);
-        setCallStatus('Connected - AI Speaking...');
+        setCallStatus('Connected - Speaking with AI...');
       });
 
       vapiInstance.on('call-end', () => {
-        console.log('Call ended');
+        console.log('📞 Call ended');
         setIsConnected(false);
         setIsSpeaking(false);
         setCallStatus('Call ended');
@@ -54,77 +54,78 @@ const PhoneCallers = () => {
       });
 
       vapiInstance.on('speech-start', () => {
-        console.log('Assistant started speaking');
+        console.log('🗣️ AI started speaking');
         setIsSpeaking(true);
         setCallStatus('AI Speaking...');
       });
 
       vapiInstance.on('speech-end', () => {
-        console.log('Assistant stopped speaking');
+        console.log('🎤 AI stopped speaking');
         setIsSpeaking(false);
         setCallStatus('Listening...');
       });
 
       vapiInstance.on('message', (message) => {
-        console.log('Message:', message);
-        if (message.type === 'transcript') {
+        console.log('💬 Message received:', message);
+        if (message.type === 'transcript' && message.transcript) {
           setTranscript(prev => [...prev, {
-            role: message.role,
+            role: message.role || 'user',
             text: message.transcript
           }]);
         }
       });
 
       vapiInstance.on('error', (error) => {
-        console.error('❌❌❌ Vapi error:', error);
-        alert('VAPI ERROR: ' + (error.message || JSON.stringify(error)));
-        setCallStatus('Error: ' + (error.message || 'Connection failed'));
+        console.error('❌ Vapi error:', error);
+        setCallStatus('Error occurred: ' + (error?.message || 'Unknown error'));
         setIsConnected(false);
       });
 
+      // Cleanup on unmount
       return () => {
-        vapiInstance?.stop();
-      };
-    } catch (err) {
-      console.error('❌ Failed to create Vapi instance:', err);
-      alert('ERROR creating Vapi: ' + err.message);
-    }
-  }, [apiKey]);
-
-  // Start call - EXACTLY from documentation
-  const startCall = () => {
-    alert('BUTTON CLICKED! Check console (F12) for details.');
-    
-    if (vapi) {
-      console.log('🚀 STARTING CALL');
-      console.log('Assistant ID:', assistantId);
-      console.log('API Key:', apiKey);
-      
-      setCallStatus('Calling vapi.start()...');
-      
-      vapi.start(assistantId);
-      
-      console.log('✅ vapi.start() called - waiting for response...');
-      
-      // Force a timeout to show error
-      setTimeout(() => {
-        if (!isConnected) {
-          const errorMsg = 'NO RESPONSE FROM VAPI AFTER 5 SECONDS!\n\nYour credentials are WRONG or your assistant does not exist.\n\nGo to https://dashboard.vapi.ai/ and verify:\n1. Your Public API Key\n2. Your Assistant ID exists';
-          console.error('❌ ' + errorMsg);
-          alert(errorMsg);
-          setCallStatus('Connection timeout - check credentials');
+        console.log('🧹 Cleaning up Vapi instance');
+        if (vapiInstance) {
+          vapiInstance.stop();
         }
-      }, 5000);
-    } else {
-      console.error('❌ Vapi instance is null!');
-      alert('ERROR: Vapi SDK not initialized. Refresh the page.');
+      };
+    } catch (error) {
+      console.error('❌ Failed to initialize Vapi:', error);
+      setCallStatus('Failed to initialize');
+    }
+  }, [apiKey, assistantId]);
+
+  // Start call with proper error handling
+  const startCall = async () => {
+    console.log('🚀 Start button clicked');
+    
+    if (!vapi) {
+      console.error('❌ Vapi not initialized');
+      setCallStatus('Please refresh the page');
+      return;
+    }
+    
+    try {
+      console.log('📞 Starting call with assistant:', assistantId);
+      setCallStatus('Connecting...');
+      
+      // Call start with the assistant ID
+      await vapi.start(assistantId);
+      
+      console.log('✅ Call start requested successfully');
+    } catch (error) {
+      console.error('❌ Error starting call:', error);
+      setCallStatus('Failed to start call');
+      setIsConnected(false);
     }
   };
 
-  // End call - EXACTLY from documentation
+  // End call
   const endCall = () => {
+    console.log('📴 Ending call');
     if (vapi) {
       vapi.stop();
+      setIsConnected(false);
+      setCallStatus('Call ended');
     }
   };
   

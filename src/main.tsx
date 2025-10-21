@@ -13,9 +13,10 @@ initSentry();
 
 // Initialize copy protection (production only)
 if (typeof window !== 'undefined') {
-  initCopyProtection();
-  addCopyrightMetadata();
-  initAntiCopy();
+  // DISABLED - No copy protection to avoid any watermark issues
+  // initCopyProtection();
+  // addCopyrightMetadata();
+  // initAntiCopy();
 }
 
 // Unregister any existing service workers on GH Pages to avoid stale caches causing white screens

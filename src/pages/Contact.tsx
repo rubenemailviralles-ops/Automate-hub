@@ -112,7 +112,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" style={{ overflowX: 'hidden' }}>
       <SEO 
         title="Contact Us - Automate Hub | Get in Touch for AI Automation Solutions"
         description="Contact Automate Hub for AI automation solutions. Get free consultation, custom automation recommendations, and expert guidance. Transform your business with our AI-powered automation services."
@@ -206,9 +206,10 @@ const Contact = () => {
 
           {/* Right Side - Contact Form */}
             <div 
-              className="bg-gray-800/30 backdrop-blur-sm rounded-3xl p-8 border border-gray-700/50 relative"
+              className="bg-gray-800/40 rounded-3xl p-8 border border-gray-700/50 relative"
               style={{
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                minHeight: '600px', // Prevent height changes from causing scrollbar flicker
               }}
             >
               <div className="mb-6 transition-all duration-500 ease-in-out">

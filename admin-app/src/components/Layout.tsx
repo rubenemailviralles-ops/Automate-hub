@@ -7,7 +7,8 @@ import {
   Archive, 
   Menu, 
   X,
-  Bot
+  Bot,
+  Download
 } from 'lucide-react'
 
 interface LayoutProps {
@@ -23,6 +24,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: 'Contact Messages', href: '/contact', icon: MessageSquare },
     { name: 'Consultations', href: '/consultations', icon: Calendar },
     { name: 'Archives', href: '/archives', icon: Archive },
+    { name: 'Install App', href: '/install', icon: Download },
   ]
 
   const isActive = (path: string) => {
@@ -110,14 +112,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {children}
       </main>
-      
-      {/* Footer with Install Instructions */}
-      <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-gray-800/50">
-        <p className="text-center text-gray-500 text-sm">
-          💡 <strong>Tip:</strong> Install this app on your phone - 
-          <span className="text-gray-400"> iPhone: Tap Share → Add to Home Screen | Android: Menu → Install app</span>
-        </p>
-      </footer>
     </div>
   )
 }

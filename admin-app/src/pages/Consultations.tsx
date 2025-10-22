@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Calendar, Copy, Check, Archive, Mail, Phone, Clock, Building } from 'lucide-react'
 import { supabase, ConsultationBooking } from '../lib/supabase'
+import { subscribeToConsultations } from '../utils/realtimeSubscriptions'
 
 const Consultations: React.FC = () => {
   const [consultations, setConsultations] = useState<ConsultationBooking[]>([])
@@ -9,6 +10,18 @@ const Consultations: React.FC = () => {
 
   useEffect(() => {
     fetchConsultations()
+    
+    // Subscribe to real-time updates
+    const subscription = subscribeToConsultations((newConsultation) => {
+      // Add new consultation to the list
+      setConsultations(prev => [newConsultation, ...prev])
+    })
+    
+    return () => {
+      if (subscription) {
+        supabase.removeChannel(subscription)
+      }
+    }
   }, [])
 
   const fetchConsultations = async () => {

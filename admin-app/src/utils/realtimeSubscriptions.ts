@@ -5,7 +5,7 @@ let contactSubscription: any = null;
 let consultationSubscription: any = null;
 
 // Subscribe to new contact messages
-export const subscribeToContacts = () => {
+export const subscribeToContacts = (onNewContact?: (contact: any) => void) => {
   console.log('🔄 Subscribing to contact messages...');
   
   contactSubscription = supabase
@@ -20,6 +20,11 @@ export const subscribeToContacts = () => {
       (payload) => {
         console.log('🔔 NEW CONTACT MESSAGE:', payload.new);
         notifyNewContact(payload.new);
+        
+        // Trigger data refresh if callback provided
+        if (onNewContact) {
+          onNewContact(payload.new);
+        }
       }
     )
     .subscribe((status) => {
@@ -30,7 +35,7 @@ export const subscribeToContacts = () => {
 };
 
 // Subscribe to new consultation bookings
-export const subscribeToConsultations = () => {
+export const subscribeToConsultations = (onNewConsultation?: (consultation: any) => void) => {
   console.log('🔄 Subscribing to consultation bookings...');
   
   consultationSubscription = supabase
@@ -45,6 +50,11 @@ export const subscribeToConsultations = () => {
       (payload) => {
         console.log('🔔 NEW CONSULTATION BOOKING:', payload.new);
         notifyNewConsultation(payload.new);
+        
+        // Trigger data refresh if callback provided
+        if (onNewConsultation) {
+          onNewConsultation(payload.new);
+        }
       }
     )
     .subscribe((status) => {

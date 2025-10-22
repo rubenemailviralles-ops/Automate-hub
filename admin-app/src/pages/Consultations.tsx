@@ -118,12 +118,6 @@ const Consultations: React.FC = () => {
                       {formatDate(consultation.created_at)}
                     </span>
                   </div>
-                  {consultation.company && (
-                    <div className="flex items-center space-x-2 mb-2">
-                      <Building className="w-4 h-4 text-gray-400" />
-                      <span className="text-gray-300">{consultation.company}</span>
-                    </div>
-                  )}
                   {consultation.service_interest && (
                     <p className="text-gray-300 mb-2">
                       <span className="text-gray-400">Service Interest:</span> {consultation.service_interest}

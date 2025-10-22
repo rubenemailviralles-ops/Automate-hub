@@ -102,21 +102,15 @@ const ConsultationBooking = () => {
     e.preventDefault();
 
     if (!validateForm()) {
-      // Scroll to the form section when validation fails
-      const formSection = document.getElementById('consultation-form');
-      if (formSection) {
-        formSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
+      console.log('🚀 Submitting consultation booking to Supabase...');
+      
+      const { data, error } = await supabase
         .from('consultation_bookings')
         .insert([
           {
@@ -128,10 +122,16 @@ const ConsultationBooking = () => {
           }
         ]);
 
-      if (error) throw error;
+      console.log('📊 Supabase response:', { data, error });
 
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
+      if (error) {
+        console.error('❌ Supabase error:', error);
+        throw error;
+      }
+
+      console.log('✅ Consultation booking submitted successfully');
+      
+      // Reset form and show success
       setFormData({
         fullName: '',
         email: '',
@@ -140,13 +140,15 @@ const ConsultationBooking = () => {
         areaOfService: ''
       });
       
-      // Scroll to top after successful submission
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      
+      // Scroll to top to see success message
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       console.error('Error submitting consultation booking:', error);
-      alert('There was an error booking your consultation. Please try again or contact us directly.');
-    } finally {
       setIsSubmitting(false);
+      alert('There was an error booking your consultation. Please try again or contact us directly.');
     }
   };
 

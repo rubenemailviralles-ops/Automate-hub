@@ -12,28 +12,32 @@ npm run build
 
 ## 🌐 Step 2: Deploy (Choose One)
 
-### Option A: Netlify (Easiest - FREE)
+### Option A: GitHub Pages (Easiest - FREE & Automatic! ⚡)
+
+**Already set up for you!** Just enable it:
+
+1. Go to your GitHub repository
+2. Click **Settings** → **Pages**
+3. Under "Source", select: **GitHub Actions**
+4. ✅ **DONE!** Auto-deploys on every push!
+
+**Your URL:** `https://YOUR-USERNAME.github.io/YOUR-REPO/admin/`
+
+📖 [Full GitHub Deploy Guide](./GITHUB_DEPLOY.md)
+
+### Option B: Netlify (Also Easy - FREE)
 
 1. Go to [netlify.com](https://app.netlify.com/)
-2. Sign in with GitHub
-3. Click "Add new site" → "Deploy manually"
-4. Drag & drop the `admin-app/dist` folder
-5. ✅ **DONE! Your app is live!**
+2. Drag & drop the `admin-app/dist` folder
+3. ✅ **DONE!**
 
-### Option B: Vercel (FREE)
+### Option C: Vercel (FREE)
 
 ```bash
 npm install -g vercel
 cd admin-app
 vercel --prod
 ```
-
-### Option C: GitHub Pages (FREE)
-
-1. Push your code to GitHub
-2. Go to Settings → Pages
-3. Select `main` branch and `/admin-app/dist` folder
-4. ✅ **DONE!**
 
 ## 📱 Step 3: Install on Your Devices
 

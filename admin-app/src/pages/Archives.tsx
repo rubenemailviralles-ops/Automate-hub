@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Archive, MessageSquare, Calendar, Clock, Mail, Phone } from 'lucide-react'
+import { Archive, MessageSquare, Calendar, Clock, Mail, Phone, Trash2 } from 'lucide-react'
 import { supabase, ContactMessage, ConsultationBooking } from '../lib/supabase'
 
 const Archives: React.FC = () => {
@@ -36,6 +36,46 @@ const Archives: React.FC = () => {
       console.error('Error fetching archives:', error)
     } finally {
       setLoading(false)
+    }
+  }
+
+  const deleteMessage = async (id: string, name: string) => {
+    const confirmed = confirm(`Are you sure you want to permanently delete the message from ${name}?\n\nThis cannot be undone.`)
+    if (!confirmed) return
+
+    try {
+      const { error } = await supabase
+        .from('contact_submissions')
+        .delete()
+        .eq('id', id)
+
+      if (error) throw error
+
+      setArchivedMessages(archivedMessages.filter(msg => msg.id !== id))
+      alert('Message deleted successfully')
+    } catch (error) {
+      console.error('Error deleting message:', error)
+      alert('Error deleting message')
+    }
+  }
+
+  const deleteConsultation = async (id: string, name: string) => {
+    const confirmed = confirm(`Are you sure you want to permanently delete the consultation from ${name}?\n\nThis cannot be undone.`)
+    if (!confirmed) return
+
+    try {
+      const { error } = await supabase
+        .from('consultation_bookings')
+        .delete()
+        .eq('id', id)
+
+      if (error) throw error
+
+      setArchivedConsultations(archivedConsultations.filter(c => c.id !== id))
+      alert('Consultation deleted successfully')
+    } catch (error) {
+      console.error('Error deleting consultation:', error)
+      alert('Error deleting consultation')
     }
   }
 
@@ -119,11 +159,24 @@ const Archives: React.FC = () => {
                       </span>
                     </div>
                     <p className="text-gray-300 mb-4">{message.message}</p>
-                    <div className="flex items-center space-x-2 text-sm text-gray-400">
-                      <Mail className="w-4 h-4" />
-                      <span>{message.email}</span>
-                      <Phone className="w-4 h-4 ml-4" />
-                      <span>{message.phone}</span>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2 text-sm text-gray-400">
+                        <Mail className="w-4 h-4" />
+                        <span>{message.email}</span>
+                        {message.phone && (
+                          <>
+                            <Phone className="w-4 h-4 ml-4" />
+                            <span>{message.phone}</span>
+                          </>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => deleteMessage(message.id, message.name)}
+                        className="bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-lg text-sm font-medium hover:bg-red-500/30 transition-colors flex items-center space-x-1"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                        <span>Delete</span>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -171,11 +224,24 @@ const Archives: React.FC = () => {
                     {consultation.message && (
                       <p className="text-gray-300 mb-4">{consultation.message}</p>
                     )}
-                    <div className="flex items-center space-x-2 text-sm text-gray-400">
-                      <Mail className="w-4 h-4" />
-                      <span>{consultation.email}</span>
-                      <Phone className="w-4 h-4 ml-4" />
-                      <span>{consultation.phone}</span>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2 text-sm text-gray-400">
+                        <Mail className="w-4 h-4" />
+                        <span>{consultation.email}</span>
+                        {consultation.phone && (
+                          <>
+                            <Phone className="w-4 h-4 ml-4" />
+                            <span>{consultation.phone}</span>
+                          </>
+                        )}
+                      </div>
+                      <button
+                        onClick={() => deleteConsultation(consultation.id, consultation.full_name)}
+                        className="bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-lg text-sm font-medium hover:bg-red-500/30 transition-colors flex items-center space-x-1"
+                      >
+                        <Trash2 className="w-4 h-4" />
+                        <span>Delete</span>
+                      </button>
                     </div>
                   </div>
                 </div>

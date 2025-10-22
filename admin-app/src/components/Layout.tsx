@@ -85,13 +85,24 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </div>
             </div>
 
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 rounded-lg bg-gray-800/50 text-gray-300 hover:text-white transition-colors"
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            <div className="flex items-center space-x-2">
+              {/* Install Button - Always Visible */}
+              <button
+                onClick={handleInstallClick}
+                className="hidden sm:flex items-center px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 bg-green-600/20 text-green-400 border border-green-500/30 hover:bg-green-600/30"
+              >
+                <Download className="w-4 h-4 mr-1" />
+                Install
+              </button>
+              
+              {/* Mobile menu button */}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="lg:hidden p-2 rounded-lg bg-gray-800/50 text-gray-300 hover:text-white transition-colors"
+              >
+                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
 
           {/* Desktop Navigation */}

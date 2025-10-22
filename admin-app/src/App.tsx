@@ -6,6 +6,7 @@ import ContactMessages from './pages/ContactMessages'
 import Consultations from './pages/Consultations'
 import Archives from './pages/Archives'
 import Install from './pages/Install'
+import NotificationStatus from './pages/NotificationStatus'
 import { initNotifications, getNotificationPermission } from './utils/notifications'
 import { initRealtimeSubscriptions, unsubscribeAll } from './utils/realtimeSubscriptions'
 import { Bell, BellOff } from 'lucide-react'
@@ -79,22 +80,22 @@ function App() {
         )}
         
         {/* Notification Status Indicator */}
-        <div className="fixed bottom-4 right-4 z-40">
+        <a
+          href="/notifications"
+          className="fixed bottom-4 right-4 z-40"
+        >
           {notificationsEnabled ? (
-            <div className="bg-green-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center space-x-2">
+            <div className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full shadow-lg flex items-center space-x-2 transition-colors cursor-pointer">
               <Bell className="w-4 h-4" />
               <span className="text-sm font-medium">Notifications ON</span>
             </div>
           ) : (
-            <button
-              onClick={handleEnableNotifications}
-              className="bg-gray-700 text-gray-300 px-4 py-2 rounded-full shadow-lg flex items-center space-x-2 hover:bg-gray-600 transition-colors"
-            >
+            <div className="bg-gray-700 hover:bg-gray-600 text-gray-300 px-4 py-2 rounded-full shadow-lg flex items-center space-x-2 transition-colors cursor-pointer">
               <BellOff className="w-4 h-4" />
               <span className="text-sm font-medium">Enable Alerts</span>
-            </button>
+            </div>
           )}
-        </div>
+        </a>
         
         <Layout>
           <Routes>
@@ -103,6 +104,7 @@ function App() {
             <Route path="/consultations" element={<Consultations />} />
             <Route path="/archives" element={<Archives />} />
             <Route path="/install" element={<Install />} />
+            <Route path="/notifications" element={<NotificationStatus />} />
           </Routes>
         </Layout>
       </div>

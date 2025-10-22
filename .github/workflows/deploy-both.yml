@@ -1,0 +1,79 @@
+name: Deploy Main Site + Admin App to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      # Build Main Site
+      - name: Setup Node for Main Site
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install Main Site Dependencies
+        run: npm ci
+        
+      - name: Build Main Site
+        run: npm run build
+        env:
+          GITHUB_ACTIONS: true
+          
+      # Build Admin App
+      - name: Install Admin App Dependencies
+        run: |
+          cd admin-app
+          npm ci
+          
+      - name: Build Admin App
+        run: |
+          cd admin-app
+          npm run build
+          
+      # Combine both builds
+      - name: Combine Builds
+        run: |
+          echo "Copying main site to _site..."
+          mkdir -p _site
+          cp -r dist/* _site/
+          
+          echo "Copying admin app to _site/admin..."
+          mkdir -p _site/admin
+          cp -r admin-app/dist/* _site/admin/
+          
+          echo "Contents of _site:"
+          ls -la _site/
+          echo "Contents of _site/admin:"
+          ls -la _site/admin/
+          
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './_site'
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

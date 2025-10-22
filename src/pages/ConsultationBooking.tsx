@@ -131,11 +131,16 @@ const ConsultationBooking = () => {
           {
             name: formData.fullName,
             email: formData.email,
-            phone: formData.phone,
-            company: formData.companyName,
-            service: formData.areaOfService,
+            phone: formData.phone || null,
+            company: formData.companyName || null,
+            service: formData.areaOfService || null,
+            message: null,
+            preferred_date: null,
+            preferred_time: null,
+            is_booked: false
           }
-        ]);
+        ])
+        .select();
 
       console.log('📊 Supabase response:', { data, error });
 

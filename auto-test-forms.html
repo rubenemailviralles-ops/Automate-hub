@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Automated Form Testing</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Automated Form Testing</h1>
+    <div id="results"></div>
+    <button onclick="runAllTests()">🚀 Run All Tests</button>
+    
+    <script>
+        const supabaseUrl = 'https://vibevjzpdkvttbfdtive.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpYmV2anpwZGt2dHRiZmR0aXZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4NzcwNTUsImV4cCI6MjA3NDQ1MzA1NX0.eA5mWnDKodvPwCvSYZvWaguiTizIKYnfTjQwRj_27dE';
+        
+        const { createClient } = supabase;
+        const supabaseClient = createClient(supabaseUrl, supabaseKey);
+        
+        async function testContactForm() {
+            console.log('📝 Testing Contact Form...');
+            const results = document.getElementById('results');
+            results.innerHTML += '<p>📝 Testing Contact Form...</p>';
+            
+            try {
+                const contactData = {
+                    name: 'Auto Test User',
+                    email: 'autotest@example.com',
+                    phone: '+1234567890',
+                    message: 'This is an automated test message from the contact form',
+                    company: 'Test Company',
+                    budget: '10k-25k'
+                };
+                
+                const { data, error } = await supabaseClient
+                    .from('contact_submissions')
+                    .insert([contactData])
+                    .select();
+                
+                if (error) {
+                    results.innerHTML += `<p style="color: red;">❌ Contact Form Error: ${error.message}</p>`;
+                    console.error('Contact Form Error:', error);
+                    return false;
+                } else {
+                    results.innerHTML += `<p style="color: green;">✅ Contact Form Success! ID: ${data[0].id}</p>`;
+                    console.log('Contact Form Success:', data);
+                    return true;
+                }
+            } catch (err) {
+                results.innerHTML += `<p style="color: red;">❌ Contact Form Exception: ${err.message}</p>`;
+                console.error('Contact Form Exception:', err);
+                return false;
+            }
+        }
+        
+        async function testConsultationForm() {
+            console.log('📅 Testing Consultation Form...');
+            const results = document.getElementById('results');
+            results.innerHTML += '<p>📅 Testing Consultation Form...</p>';
+            
+            try {
+                const consultationData = {
+                    name: 'Auto Test User',
+                    email: 'autotest@example.com',
+                    phone: '+1234567890',
+                    company: 'Test Company',
+                    service: 'website-creation'
+                };
+                
+                const { data, error } = await supabaseClient
+                    .from('consultation_bookings')
+                    .insert([consultationData])
+                    .select();
+                
+                if (error) {
+                    results.innerHTML += `<p style="color: red;">❌ Consultation Form Error: ${error.message}</p>`;
+                    console.error('Consultation Form Error:', error);
+                    return false;
+                } else {
+                    results.innerHTML += `<p style="color: green;">✅ Consultation Form Success! ID: ${data[0].id}</p>`;
+                    console.log('Consultation Form Success:', data);
+                    return true;
+                }
+            } catch (err) {
+                results.innerHTML += `<p style="color: red;">❌ Consultation Form Exception: ${err.message}</p>`;
+                console.error('Consultation Form Exception:', err);
+                return false;
+            }
+        }
+        
+        async function runAllTests() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<h2>🧪 Running Automated Tests...</h2>';
+            
+            console.log('🚀 Starting automated form tests...');
+            
+            // Test 1: Contact Form
+            const contactSuccess = await testContactForm();
+            
+            // Wait 1 second between tests
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            // Test 2: Consultation Form
+            const consultationSuccess = await testConsultationForm();
+            
+            // Summary
+            results.innerHTML += '<h3>📊 Test Summary:</h3>';
+            results.innerHTML += `<p>Contact Form: ${contactSuccess ? '✅ PASSED' : '❌ FAILED'}</p>`;
+            results.innerHTML += `<p>Consultation Form: ${consultationSuccess ? '✅ PASSED' : '❌ FAILED'}</p>`;
+            
+            if (contactSuccess && consultationSuccess) {
+                results.innerHTML += '<p style="color: green; font-weight: bold;">🎉 ALL TESTS PASSED! Check your Supabase tables.</p>';
+            } else {
+                results.innerHTML += '<p style="color: red; font-weight: bold;">❌ SOME TESTS FAILED! Check the errors above.</p>';
+            }
+            
+            console.log('🏁 Tests completed');
+        }
+    </script>
+</body>
+</html>

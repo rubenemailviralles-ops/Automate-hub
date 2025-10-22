@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Final Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Final Test</h1>
+    <div id="results"></div>
+    <button onclick="testContact()">Test Contact Form</button>
+    <button onclick="testConsultation()">Test Consultation Form</button>
+    
+    <script>
+        const supabaseUrl = 'https://vibevjzpdkvttbfdtive.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpYmV2anpwZGt2dHRiZmR0aXZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4NzcwNTUsImV4cCI6MjA3NDQ1MzA1NX0.eA5mWnDKodvPwCvSYZvWaguiTizIKYnfTjQwRj_27dE';
+        
+        const { createClient } = supabase;
+        const supabaseClient = createClient(supabaseUrl, supabaseKey);
+        
+        async function testContact() {
+            const results = document.getElementById('results');
+            results.innerHTML += '<p>Testing Contact Form...</p>';
+            
+            try {
+                const { data, error } = await supabaseClient
+                    .from('contact_submissions')
+                    .insert([{
+                        full_name: 'Test User',
+                        email: 'test@example.com',
+                        message: 'Test message'
+                    }])
+                    .select();
+                
+                if (error) {
+                    results.innerHTML += `<p style="color: red;">Contact Error: ${error.message}</p>`;
+                } else {
+                    results.innerHTML += `<p style="color: green;">Contact Success! ID: ${data[0].id}</p>`;
+                }
+            } catch (err) {
+                results.innerHTML += `<p style="color: red;">Contact Exception: ${err.message}</p>`;
+            }
+        }
+        
+        async function testConsultation() {
+            const results = document.getElementById('results');
+            results.innerHTML += '<p>Testing Consultation Form...</p>';
+            
+            try {
+                const { data, error } = await supabaseClient
+                    .from('consultation_bookings')
+                    .insert([{
+                        full_name: 'Test User',
+                        email: 'test@example.com',
+                        phone: '123-456-7890',
+                        company_name: 'Test Company',
+                        area_of_service: 'website-creation'
+                    }])
+                    .select();
+                
+                if (error) {
+                    results.innerHTML += `<p style="color: red;">Consultation Error: ${error.message}</p>`;
+                } else {
+                    results.innerHTML += `<p style="color: green;">Consultation Success! ID: ${data[0].id}</p>`;
+                }
+            } catch (err) {
+                results.innerHTML += `<p style="color: red;">Consultation Exception: ${err.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

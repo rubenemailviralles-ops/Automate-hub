@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Supabase Connection</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Debug Supabase Connection</h1>
+    <div id="results"></div>
+    <button onclick="debugConnection()">🔍 Debug Connection</button>
+    <button onclick="testInsert()">📝 Test Insert</button>
+    
+    <script>
+        const supabaseUrl = 'https://vibevjzpdkvttbfdtive.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpYmV2anpwZGt2dHRiZmR0aXZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4NzcwNTUsImV4cCI6MjA3NDQ1MzA1NX0.eA5mWnDKodvPwCvSYZvWaguiTizIKYnfTjQwRj_27dE';
+        
+        const { createClient } = supabase;
+        const supabaseClient = createClient(supabaseUrl, supabaseKey);
+        
+        async function debugConnection() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<h2>🔍 Debugging Connection...</h2>';
+            
+            try {
+                console.log('🔗 Supabase URL:', supabaseUrl);
+                console.log('🔑 Supabase Key:', supabaseKey ? 'Present' : 'Missing');
+                console.log('📡 Supabase Client:', supabaseClient);
+                
+                results.innerHTML += '<p>🔗 Supabase URL: ' + supabaseUrl + '</p>';
+                results.innerHTML += '<p>🔑 Supabase Key: ' + (supabaseKey ? 'Present' : 'Missing') + '</p>';
+                
+                // Test basic connection
+                console.log('🧪 Testing basic connection...');
+                const { data, error } = await supabaseClient
+                    .from('contact_submissions')
+                    .select('*')
+                    .limit(1);
+                
+                if (error) {
+                    results.innerHTML += '<p style="color: red;">❌ Connection Error: ' + error.message + '</p>';
+                    console.error('Connection Error:', error);
+                } else {
+                    results.innerHTML += '<p style="color: green;">✅ Connection Success! Found ' + data.length + ' records</p>';
+                    console.log('Connection Success:', data);
+                }
+                
+            } catch (err) {
+                results.innerHTML += '<p style="color: red;">❌ Exception: ' + err.message + '</p>';
+                console.error('Exception:', err);
+            }
+        }
+        
+        async function testInsert() {
+            const results = document.getElementById('results');
+            results.innerHTML += '<h3>📝 Testing Insert...</h3>';
+            
+            try {
+                console.log('🧪 Testing insert...');
+                const { data, error } = await supabaseClient
+                    .from('contact_submissions')
+                    .insert([{
+                        name: 'Debug Test User',
+                        email: 'debug@example.com',
+                        message: 'Debug test message'
+                    }])
+                    .select();
+                
+                if (error) {
+                    results.innerHTML += '<p style="color: red;">❌ Insert Error: ' + error.message + '</p>';
+                    console.error('Insert Error:', error);
+                } else {
+                    results.innerHTML += '<p style="color: green;">✅ Insert Success! ID: ' + data[0].id + '</p>';
+                    console.log('Insert Success:', data);
+                }
+                
+            } catch (err) {
+                results.innerHTML += '<p style="color: red;">❌ Insert Exception: ' + err.message + '</p>';
+                console.error('Insert Exception:', err);
+            }
+        }
+    </script>
+</body>
+</html>

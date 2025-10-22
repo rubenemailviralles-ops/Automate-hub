@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Website Forms</title>
+</head>
+<body>
+    <h1>Test Your Website Forms</h1>
+    <div id="results"></div>
+    
+    <button onclick="testContactForm()">📝 Test Contact Form</button>
+    <button onclick="testConsultationForm()">📅 Test Consultation Form</button>
+    <button onclick="testBothForms()">🚀 Test Both Forms</button>
+    
+    <script>
+        function testContactForm() {
+            console.log('📝 Opening Contact Form...');
+            const results = document.getElementById('results');
+            results.innerHTML += '<p>📝 Opening Contact Form...</p>';
+            
+            // Open your website's contact form
+            const contactWindow = window.open('https://automate-hub.com/contact', '_blank');
+            
+            if (contactWindow) {
+                results.innerHTML += '<p style="color: blue;">📝 Contact form opened in new tab. Please fill it out and submit.</p>';
+                results.innerHTML += '<p>📋 Form should submit to: contact_submissions table</p>';
+            } else {
+                results.innerHTML += '<p style="color: red;">❌ Could not open contact form (popup blocked?)</p>';
+            }
+        }
+        
+        function testConsultationForm() {
+            console.log('📅 Opening Consultation Form...');
+            const results = document.getElementById('results');
+            results.innerHTML += '<p>📅 Opening Consultation Form...</p>';
+            
+            // Open your website's consultation form
+            const consultationWindow = window.open('https://automate-hub.com/book-consultation', '_blank');
+            
+            if (consultationWindow) {
+                results.innerHTML += '<p style="color: blue;">📅 Consultation form opened in new tab. Please fill it out and submit.</p>';
+                results.innerHTML += '<p>📋 Form should submit to: consultation_bookings table</p>';
+            } else {
+                results.innerHTML += '<p style="color: red;">❌ Could not open consultation form (popup blocked?)</p>';
+            }
+        }
+        
+        function testBothForms() {
+            console.log('🚀 Opening Both Forms...');
+            const results = document.getElementById('results');
+            results.innerHTML = '<h2>🧪 Testing Both Forms</h2>';
+            
+            // Open both forms
+            testContactForm();
+            setTimeout(() => {
+                testConsultationForm();
+            }, 1000);
+            
+            results.innerHTML += '<p style="color: green; font-weight: bold;">🎯 Both forms opened! Fill them out and check your Supabase tables.</p>';
+        }
+    </script>
+</body>
+</html>

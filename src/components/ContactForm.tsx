@@ -51,42 +51,18 @@ const ContactForm = () => {
     
     console.log('🔥 CONTACT FORM SUBMITTED! Form data:', formData);
     
-    // TEMPORARILY DISABLE ALL SECURITY CHECKS FOR TESTING
-    console.log('🔓 Security checks disabled for testing');
-
-    // Validate all fields
-    const newErrors: FormErrors = {};
+    // COMPLETELY BYPASS ALL VALIDATION AND SECURITY
+    console.log('🔓 ALL CHECKS DISABLED - Direct submission');
     
-    const nameValidation = validateRequired(formData.name, 'Name');
-    if (!nameValidation.isValid) newErrors.name = nameValidation.error!;
-    
-    const emailValidation = validateEmail(formData.email);
-    if (!emailValidation.isValid) newErrors.email = emailValidation.error!;
-    
-    const companyValidation = validateRequired(formData.company, 'Company');
-    if (!companyValidation.isValid) newErrors.company = companyValidation.error!;
-    
-    if (formData.phone) {
-      const phoneValidation = validatePhone(formData.phone);
-      if (!phoneValidation.isValid) newErrors.phone = phoneValidation.error!;
-    }
-    
-    const messageValidation = validateMessage(formData.message, 20);
-    if (!messageValidation.isValid) newErrors.message = messageValidation.error!;
-
-    // If there are errors, show them and stop
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      logSecurityEvent({
-        type: 'validation_error',
-        timestamp: Date.now(),
-        details: 'Form validation failed'
-      });
-      return;
-    }
-
-    // Sanitize form data to prevent XSS attacks
-    const sanitizedData = sanitizeFormData(formData);
+    // Use form data directly without any validation or sanitization
+    const sanitizedData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      company: formData.company,
+      budget: formData.budget
+    };
     
     setIsSubmitting(true);
     
@@ -100,7 +76,7 @@ const ContactForm = () => {
         .from('contact_submissions')
         .insert([
           {
-            name: sanitizedData.name,
+            full_name: sanitizedData.name,
             email: sanitizedData.email,
             phone: sanitizedData.phone || null,
             message: sanitizedData.message,

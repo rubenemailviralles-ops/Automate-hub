@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { MessageSquare, Copy, Check, Archive, Mail, Phone, Clock } from 'lucide-react'
 import { supabase, ContactMessage } from '../lib/supabase'
-import { subscribeToContacts } from '../utils/realtimeSubscriptions'
 
 const ContactMessages: React.FC = () => {
   const [messages, setMessages] = useState<ContactMessage[]>([])
@@ -10,18 +9,6 @@ const ContactMessages: React.FC = () => {
 
   useEffect(() => {
     fetchMessages()
-    
-    // Subscribe to real-time updates
-    const subscription = subscribeToContacts((newContact) => {
-      // Add new message to the list
-      setMessages(prev => [newContact, ...prev])
-    })
-    
-    return () => {
-      if (subscription) {
-        supabase.removeChannel(subscription)
-      }
-    }
   }, [])
 
   const fetchMessages = async () => {

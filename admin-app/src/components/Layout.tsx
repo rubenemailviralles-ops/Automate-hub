@@ -8,8 +8,7 @@ import {
   Menu, 
   X,
   Bot,
-  Download,
-  Bell
+  Download
 } from 'lucide-react'
 
 interface LayoutProps {
@@ -25,7 +24,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: 'Contact Messages', href: '/contact', icon: MessageSquare },
     { name: 'Consultations', href: '/consultations', icon: Calendar },
     { name: 'Archives', href: '/archives', icon: Archive },
-    { name: 'Notifications', href: '/notifications', icon: Bell },
     { name: 'Install App', href: '/install', icon: Download },
   ]
 

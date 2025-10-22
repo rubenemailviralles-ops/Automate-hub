@@ -9,7 +9,7 @@ export const supabase = createClient(supabaseUrl, supabaseKey)
 // Database types - matching your Supabase structure
 export interface ContactMessage {
   id: string
-  full_name: string
+  name: string
   email: string
   phone?: string
   message?: string
@@ -22,11 +22,11 @@ export interface ContactMessage {
 
 export interface ConsultationBooking {
   id: string
-  full_name: string
+  name: string
   email: string
   phone?: string
-  company_name?: string
-  area_of_service?: string
+  company?: string
+  service?: string
   created_at: string
   is_booked?: boolean
   archived_at?: string

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Layout from './components/Layout'
 import Dashboard from './pages/Dashboard'
 import ContactMessages from './pages/ContactMessages'
@@ -80,8 +80,8 @@ function App() {
         )}
         
         {/* Notification Status Indicator */}
-        <a
-          href="/notifications"
+        <Link
+          to="/notifications"
           className="fixed bottom-4 right-4 z-40"
         >
           {notificationsEnabled ? (
@@ -95,7 +95,7 @@ function App() {
               <span className="text-sm font-medium">Enable Alerts</span>
             </div>
           )}
-        </a>
+        </Link>
         
         <Layout>
           <Routes>

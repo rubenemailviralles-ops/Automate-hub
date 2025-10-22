@@ -110,7 +110,7 @@ const Archives: React.FC = () => {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="text-lg font-semibold text-white">{message.name}</h3>
+                      <h3 className="text-lg font-semibold text-white">{message.full_name}</h3>
                       <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded">
                         {formatDate(message.created_at)}
                       </span>
@@ -152,7 +152,7 @@ const Archives: React.FC = () => {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
                     <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="text-lg font-semibold text-white">{consultation.name}</h3>
+                      <h3 className="text-lg font-semibold text-white">{consultation.full_name}</h3>
                       <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded">
                         {formatDate(consultation.created_at)}
                       </span>

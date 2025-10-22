@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  
+  body {
+    font-family: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    overflow-x: hidden;
+    background: #000000;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
+    background-size: 100% 100%;
+    animation: 
+      waveFlow1 30s ease-in-out infinite,
+      subtleGlow 40s ease-in-out infinite;
+    z-index: -1;
+    pointer-events: none;
+    will-change: background-position;
+  }
+}
+
+@keyframes waveFlow1 {
+  0%, 100% {
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+  }
+  25% {
+    background-position: 25% 25%, 75% 75%, 60% 40%;
+  }
+  50% {
+    background-position: 50% 50%, 50% 50%, 40% 60%;
+  }
+  75% {
+    background-position: 75% 75%, 25% 25%, 60% 40%;
+  }
+}
+
+@keyframes subtleGlow {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Floating orbs for background */
+.floating-orb-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(99, 102, 241, 0.25);
+  filter: blur(40px);
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  animation: galaxyOrbit1 24s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  box-shadow: 0 0 100px rgba(99, 102, 241, 0.4);
+  will-change: transform;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.floating-orb-2 {
+  width: 250px;
+  height: 250px;
+  background: rgba(236, 72, 153, 0.25);
+  filter: blur(35px);
+  position: fixed;
+  bottom: 20%;
+  left: 20%;
+  animation: galaxyOrbit2 20s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation-delay: -10s;
+  box-shadow: 0 0 90px rgba(236, 72, 153, 0.4);
+  will-change: transform;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.floating-orb-3 {
+  width: 350px;
+  height: 350px;
+  background: rgba(59, 130, 246, 0.25);
+  filter: blur(43px);
+  position: fixed;
+  top: 30%;
+  right: 30%;
+  animation: galaxyOrbit3 26s cubic-bezier(0.43, 0.02, 0.57, 0.98) infinite;
+  animation-delay: -16s;
+  box-shadow: 0 0 110px rgba(59, 130, 246, 0.4);
+  will-change: transform;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes galaxyOrbit1 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(200px, 150px) scale(1.1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(400px, 300px) scale(1.2);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translate(200px, 450px) scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes galaxyOrbit2 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.7;
+  }
+  30% {
+    transform: translate(-150px, -200px) scale(1.15);
+    opacity: 0.85;
+  }
+  60% {
+    transform: translate(-300px, -100px) scale(1.25);
+    opacity: 0.9;
+  }
+  85% {
+    transform: translate(-100px, 100px) scale(1.1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes galaxyOrbit3 {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  40% {
+    transform: translate(250px, -180px) scale(1.2);
+    opacity: 0.9;
+  }
+  70% {
+    transform: translate(100px, -350px) scale(1.3);
+    opacity: 0.95;
+  }
+  90% {
+    transform: translate(-50px, -200px) scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+    opacity: 0;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.8);
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

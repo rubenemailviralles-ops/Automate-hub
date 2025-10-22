@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { 
   Home, 
@@ -7,10 +7,8 @@ import {
   Archive, 
   Menu, 
   X,
-  Bot,
-  Download
+  Bot
 } from 'lucide-react'
-import InstallGuide from './InstallGuide'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -18,44 +16,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [showInstallGuide, setShowInstallGuide] = useState(false)
-  const [deferredPrompt, setDeferredPrompt] = useState<any>(null)
-  const [isInstallable, setIsInstallable] = useState(false)
   const location = useLocation()
-
-  useEffect(() => {
-    // Listen for the install prompt
-    const handler = (e: any) => {
-      e.preventDefault()
-      setDeferredPrompt(e)
-      setIsInstallable(true)
-    }
-    
-    window.addEventListener('beforeinstallprompt', handler)
-    
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handler)
-    }
-  }, [])
-
-  const handleInstallClick = async () => {
-    if (!deferredPrompt) {
-      // Show visual install guide
-      setShowInstallGuide(true)
-      return
-    }
-
-    // Browser supports auto-install prompt
-    deferredPrompt.prompt()
-    const { outcome } = await deferredPrompt.userChoice
-    
-    if (outcome === 'accepted') {
-      console.log('App installed!')
-    }
-    
-    setDeferredPrompt(null)
-    setIsInstallable(false)
-  }
 
   const navigation = [
     { name: 'Dashboard', href: '/', icon: Home },
@@ -87,24 +48,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
-              {/* Install Button - Always Visible */}
-              <button
-                onClick={handleInstallClick}
-                className="hidden sm:flex items-center px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 bg-green-600/20 text-green-400 border border-green-500/30 hover:bg-green-600/30"
-              >
-                <Download className="w-4 h-4 mr-1" />
-                Install
-              </button>
-              
-              {/* Mobile menu button */}
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="lg:hidden p-2 rounded-lg bg-gray-800/50 text-gray-300 hover:text-white transition-colors"
-              >
-                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
+            {/* Mobile menu button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="lg:hidden p-2 rounded-lg bg-gray-800/50 text-gray-300 hover:text-white transition-colors"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
 
           {/* Desktop Navigation */}
@@ -126,15 +76,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </Link>
               )
             })}
-            
-            {/* Install App Button */}
-            <button
-              onClick={handleInstallClick}
-              className="ml-auto flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-green-600/20 text-green-400 border border-green-500/30 hover:bg-green-600/30"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Install App
-            </button>
           </nav>
         </div>
 
@@ -160,18 +101,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </Link>
                 )
               })}
-              
-              {/* Install App Button - Mobile */}
-              <button
-                onClick={() => {
-                  handleInstallClick()
-                  setIsMenuOpen(false)
-                }}
-                className="w-full flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 bg-green-600/20 text-green-400 border border-green-500/30 hover:bg-green-600/30"
-              >
-                <Download className="w-4 h-4 mr-3" />
-                Install App on Phone
-              </button>
             </div>
           </div>
         )}
@@ -182,8 +111,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         {children}
       </main>
       
-      {/* Install Guide Popup */}
-      {showInstallGuide && <InstallGuide onClose={() => setShowInstallGuide(false)} />}
+      {/* Footer with Install Instructions */}
+      <footer className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 border-t border-gray-800/50">
+        <p className="text-center text-gray-500 text-sm">
+          💡 <strong>Tip:</strong> Install this app on your phone - 
+          <span className="text-gray-400"> iPhone: Tap Share → Add to Home Screen | Android: Menu → Install app</span>
+        </p>
+      </footer>
     </div>
   )
 }

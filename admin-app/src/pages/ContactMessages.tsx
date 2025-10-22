@@ -17,7 +17,8 @@ const ContactMessages: React.FC = () => {
       const { data, error } = await supabase
         .from('contact_submissions')
         .select('*')
-        .eq('is_read', false)
+        .or('is_read.is.null,is_read.eq.false')
+        .is('archived_at', null)
         .order('created_at', { ascending: false })
 
       console.log('📊 Supabase response:', { data, error })
@@ -64,6 +65,32 @@ const ContactMessages: React.FC = () => {
     }
   }
 
+  const markAllAsRead = async () => {
+    if (messages.length === 0) return
+    
+    const confirmed = confirm(`Mark all ${messages.length} messages as read?`)
+    if (!confirmed) return
+    
+    try {
+      const ids = messages.map(m => m.id)
+      const { error } = await supabase
+        .from('contact_submissions')
+        .update({ 
+          is_read: true,
+          archived_at: new Date().toISOString()
+        })
+        .in('id', ids)
+
+      if (error) throw error
+      
+      setMessages([])
+      alert('All messages marked as read!')
+    } catch (error) {
+      console.error('Error marking all as read:', error)
+      alert('Error marking all as read')
+    }
+  }
+
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -85,14 +112,24 @@ const ContactMessages: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-white mb-2">Contact Messages</h1>
           <p className="text-gray-400">Manage contact form submissions</p>
         </div>
-        <div className="flex items-center space-x-2 text-sm text-gray-400">
-          <MessageSquare className="w-4 h-4" />
-          <span>{messages.length} unread messages</span>
+        <div className="flex items-center gap-3">
+          <div className="flex items-center space-x-2 text-sm text-gray-400">
+            <MessageSquare className="w-4 h-4" />
+            <span>{messages.length} unread</span>
+          </div>
+          {messages.length > 0 && (
+            <button
+              onClick={markAllAsRead}
+              className="bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-2 rounded-lg text-sm font-medium hover:bg-orange-500/30 transition-colors whitespace-nowrap"
+            >
+              Mark All as Read
+            </button>
+          )}
         </div>
       </div>
 

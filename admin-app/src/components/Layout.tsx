@@ -38,15 +38,27 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) {
-      alert('To install:\n\niPhone: Tap Share → Add to Home Screen\n\nAndroid: Tap menu → Install app')
+      // Detect platform and show specific instructions
+      const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent)
+      const isAndroid = /Android/.test(navigator.userAgent)
+      
+      if (isIOS) {
+        alert('📱 To Install on iPhone:\n\n1. Tap the Share button (⬆️) at the bottom\n2. Scroll and tap "Add to Home Screen"\n3. Tap "Add"\n\n✅ App will be on your home screen!')
+      } else if (isAndroid) {
+        alert('📱 To Install on Android:\n\n1. Tap the menu (⋮) in top-right\n2. Tap "Install app" or "Add to Home screen"\n3. Tap "Install"\n\n✅ App will be in your app drawer!')
+      } else {
+        alert('💻 To Install:\n\nLook for the install icon (⊕) in your browser\'s address bar and click it!')
+      }
       return
     }
 
+    // Browser supports auto-install prompt
     deferredPrompt.prompt()
     const { outcome } = await deferredPrompt.userChoice
     
     if (outcome === 'accepted') {
       console.log('App installed!')
+      alert('✅ App installed successfully!')
     }
     
     setDeferredPrompt(null)

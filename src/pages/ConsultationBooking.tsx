@@ -146,10 +146,12 @@ const ConsultationBooking = () => {
       }
 
       console.log('✅ Consultation booking submitted to Supabase successfully');
-      alert('Thank you! Your consultation has been booked. We\'ll contact you within 24 hours to confirm your appointment time.');
-
-      setIsSubmitting(false);
+      
+      // Set success state FIRST
       setSubmitSuccess(true);
+      setIsSubmitting(false);
+      
+      // Reset form
       setFormData({
         fullName: '',
         email: '',
@@ -159,9 +161,8 @@ const ConsultationBooking = () => {
       });
     } catch (error) {
       console.error('Error submitting consultation booking:', error);
-      alert('There was an error booking your consultation. Please try again or contact us directly.');
-    } finally {
       setIsSubmitting(false);
+      alert('There was an error booking your consultation. Please try again or contact us directly.');
     }
   };
 

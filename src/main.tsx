@@ -13,10 +13,10 @@ initSentry();
 
 // Initialize copy protection (production only)
 if (typeof window !== 'undefined') {
-  // Initialize invisible security (no visual impact)
-  initInvisibleSecurity();
-  initAdvancedCopyProtection();
-  console.log('🔒 Security features enabled');
+  // DISABLED - Interfering with Supabase form submissions
+  // initInvisibleSecurity();
+  // initAdvancedCopyProtection();
+  console.log('🔓 Security DISABLED - Forms should work now');
 }
 
 // Unregister any existing service workers on GH Pages to avoid stale caches causing white screens

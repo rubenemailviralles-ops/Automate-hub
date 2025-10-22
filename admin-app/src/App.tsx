@@ -80,22 +80,22 @@ function App() {
         )}
         
         {/* Notification Status Indicator */}
-        <Link
-          to="/notifications"
-          className="fixed bottom-4 right-4 z-40"
-        >
+        <div className="fixed bottom-4 right-4 z-40">
           {notificationsEnabled ? (
-            <div className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full shadow-lg flex items-center space-x-2 transition-colors cursor-pointer">
+            <div className="bg-green-500 text-white px-4 py-2 rounded-full shadow-lg flex items-center space-x-2">
               <Bell className="w-4 h-4" />
               <span className="text-sm font-medium">Notifications ON</span>
             </div>
           ) : (
-            <div className="bg-gray-700 hover:bg-gray-600 text-gray-300 px-4 py-2 rounded-full shadow-lg flex items-center space-x-2 transition-colors cursor-pointer">
+            <button
+              onClick={handleEnableNotifications}
+              className="bg-gray-700 hover:bg-gray-600 text-gray-300 px-4 py-2 rounded-full shadow-lg flex items-center space-x-2 transition-colors cursor-pointer"
+            >
               <BellOff className="w-4 h-4" />
               <span className="text-sm font-medium">Enable Alerts</span>
-            </div>
+            </button>
           )}
-        </Link>
+        </div>
         
         <Layout>
           <Routes>

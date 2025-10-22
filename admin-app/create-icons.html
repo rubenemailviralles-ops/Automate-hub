@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create PWA Icons</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .icon-container { margin: 20px 0; }
+        canvas { border: 1px solid #ccc; margin: 10px; }
+        .download-btn { 
+            background: #007bff; 
+            color: white; 
+            padding: 10px 20px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 PWA Icon Generator for Automate Hub Admin</h1>
+    <p>Click the download buttons to save each icon to your computer:</p>
+    
+    <div class="icon-container">
+        <h3>📱 Mobile Icons</h3>
+        <canvas id="icon96" width="96" height="96"></canvas>
+        <button class="download-btn" onclick="downloadIcon('icon96', 'icon-96x96.png')">Download 96x96</button>
+        
+        <canvas id="icon144" width="144" height="144"></canvas>
+        <button class="download-btn" onclick="downloadIcon('icon144', 'icon-144x144.png')">Download 144x144</button>
+        
+        <canvas id="icon192" width="192" height="192"></canvas>
+        <button class="download-btn" onclick="downloadIcon('icon192', 'icon-192x192.png')">Download 192x192</button>
+    </div>
+    
+    <div class="icon-container">
+        <h3>🖥️ Desktop Icons</h3>
+        <canvas id="icon512" width="512" height="512"></canvas>
+        <button class="download-btn" onclick="downloadIcon('icon512', 'icon-512x512.png')">Download 512x512</button>
+    </div>
+
+    <script>
+        function createIcon(canvasId, size) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#000000');
+            gradient.addColorStop(1, '#0a0a0a');
+            
+            // Fill background
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, size, size);
+            
+            // Dashboard icon
+            const padding = size * 0.1;
+            const iconSize = size - (padding * 2);
+            
+            // Main dashboard rectangle
+            ctx.fillStyle = '#007bff';
+            ctx.fillRect(padding, padding, iconSize, iconSize * 0.7);
+            
+            // Inner screen
+            ctx.fillStyle = '#000000';
+            ctx.fillRect(padding + size * 0.02, padding + size * 0.02, iconSize - size * 0.04, iconSize * 0.7 - size * 0.04);
+            
+            // Dashboard elements
+            const cardPadding = size * 0.02;
+            const cardWidth = (iconSize - size * 0.06) / 2;
+            const cardHeight = size * 0.08;
+            
+            // Header bar
+            ctx.fillStyle = '#007bff';
+            ctx.fillRect(padding + cardPadding, padding + cardPadding, iconSize - cardPadding * 2, cardHeight);
+            
+            // Dashboard cards
+            const colors = ['#28a745', '#dc3545', '#ffc107', '#17a2b8'];
+            const cardY = padding + cardPadding + cardHeight + size * 0.01;
+            
+            colors.forEach((color, index) => {
+                ctx.fillStyle = color;
+                const x = padding + cardPadding + (index % 2) * (cardWidth + size * 0.01);
+                const y = cardY + Math.floor(index / 2) * (cardHeight + size * 0.01);
+                ctx.fillRect(x, y, cardWidth, cardHeight);
+            });
+            
+            // "A" letter
+            ctx.fillStyle = '#007bff';
+            ctx.font = `bold ${size * 0.15}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.fillText('A', size / 2, size * 0.9);
+        }
+        
+        function downloadIcon(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // Generate all icons
+        createIcon('icon96', 96);
+        createIcon('icon144', 144);
+        createIcon('icon192', 192);
+        createIcon('icon512', 512);
+    </script>
+</body>
+</html>

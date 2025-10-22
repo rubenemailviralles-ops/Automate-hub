@@ -5,12 +5,53 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Automate Hub Admin</title>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Admin dashboard for Automate Hub - manage contact messages and consultations" />
+    <meta name="theme-color" content="#007bff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="AH Admin" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="/icon-192x192.png" />
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon-96x96.png" />
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Preconnect to Supabase for faster loading -->
+    <link rel="preconnect" href="https://vibevjzpdkvttbfdtive.supabase.co" />
   </head>
-  <body>
+  <body class="bg-primary-dark text-text-light font-sans">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- PWA Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
   </body>
 </html>

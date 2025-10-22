@@ -133,11 +133,7 @@ const ConsultationBooking = () => {
             email: formData.email,
             phone: formData.phone || null,
             company: formData.companyName || null,
-            service: formData.areaOfService || null,
-            message: null,
-            preferred_date: null,
-            preferred_time: null,
-            is_booked: false
+            service: formData.areaOfService || null
           }
         ])
         .select();

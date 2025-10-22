@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { 
   Home, 
@@ -8,7 +8,8 @@ import {
   Menu, 
   X,
   Bot,
-  Bug
+  Bug,
+  Download
 } from 'lucide-react'
 
 interface LayoutProps {
@@ -17,7 +18,41 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null)
+  const [isInstallable, setIsInstallable] = useState(false)
   const location = useLocation()
+
+  useEffect(() => {
+    // Listen for the install prompt
+    const handler = (e: any) => {
+      e.preventDefault()
+      setDeferredPrompt(e)
+      setIsInstallable(true)
+    }
+    
+    window.addEventListener('beforeinstallprompt', handler)
+    
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handler)
+    }
+  }, [])
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) {
+      alert('To install:\n\niPhone: Tap Share → Add to Home Screen\n\nAndroid: Tap menu → Install app')
+      return
+    }
+
+    deferredPrompt.prompt()
+    const { outcome } = await deferredPrompt.userChoice
+    
+    if (outcome === 'accepted') {
+      console.log('App installed!')
+    }
+    
+    setDeferredPrompt(null)
+    setIsInstallable(false)
+  }
 
   const navigation = [
     { name: 'Dashboard', href: '/', icon: Home },
@@ -60,7 +95,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-1 pb-4">
+          <nav className="hidden lg:flex space-x-1 pb-4 items-center">
             {navigation.map((item) => {
               const Icon = item.icon
               return (
@@ -78,6 +113,15 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 </Link>
               )
             })}
+            
+            {/* Install App Button */}
+            <button
+              onClick={handleInstallClick}
+              className="ml-auto flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-green-600/20 text-green-400 border border-green-500/30 hover:bg-green-600/30"
+            >
+              <Download className="w-4 h-4 mr-2" />
+              Install App
+            </button>
           </nav>
         </div>
 
@@ -103,6 +147,18 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   </Link>
                 )
               })}
+              
+              {/* Install App Button - Mobile */}
+              <button
+                onClick={() => {
+                  handleInstallClick()
+                  setIsMenuOpen(false)
+                }}
+                className="w-full flex items-center px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 bg-green-600/20 text-green-400 border border-green-500/30 hover:bg-green-600/30"
+              >
+                <Download className="w-4 h-4 mr-3" />
+                Install App on Phone
+              </button>
             </div>
           </div>
         )}

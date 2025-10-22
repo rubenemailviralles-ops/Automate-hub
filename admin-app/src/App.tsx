@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Layout from './components/Layout'
 import Dashboard from './pages/Dashboard'
 import ContactMessages from './pages/ContactMessages'
@@ -105,6 +105,7 @@ function App() {
             <Route path="/archives" element={<Archives />} />
             <Route path="/install" element={<Install />} />
             <Route path="/notifications" element={<NotificationStatus />} />
+            <Route path="*" element={<Dashboard />} />
           </Routes>
         </Layout>
       </div>

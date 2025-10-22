@@ -147,37 +147,41 @@ const Archives: React.FC = () => {
                 className="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="text-lg font-semibold text-white">{message.name}</h3>
-                      <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
+                    <h3 className="text-lg font-semibold text-white">{message.name}</h3>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded whitespace-nowrap">
                         {formatDate(message.created_at)}
                       </span>
                       <span className="text-xs text-green-400 bg-green-500/20 px-2 py-1 rounded">
                         Read
                       </span>
                     </div>
-                    <p className="text-gray-300 mb-4">{message.message}</p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2 text-sm text-gray-400">
-                        <Mail className="w-4 h-4" />
-                        <span>{message.email}</span>
-                        {message.phone && (
-                          <>
-                            <Phone className="w-4 h-4 ml-4" />
-                            <span>{message.phone}</span>
-                          </>
-                        )}
+                  </div>
+                  
+                  <p className="text-gray-300 text-sm">{message.message}</p>
+                  
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div className="flex flex-col gap-2 text-sm text-gray-400">
+                      <div className="flex items-center space-x-2">
+                        <Mail className="w-4 h-4 flex-shrink-0" />
+                        <span className="break-all">{message.email}</span>
                       </div>
-                      <button
-                        onClick={() => deleteMessage(message.id, message.name)}
-                        className="bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-lg text-sm font-medium hover:bg-red-500/30 transition-colors flex items-center space-x-1"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                        <span>Delete</span>
-                      </button>
+                      {message.phone && (
+                        <div className="flex items-center space-x-2">
+                          <Phone className="w-4 h-4 flex-shrink-0" />
+                          <span>{message.phone}</span>
+                        </div>
+                      )}
                     </div>
+                    <button
+                      onClick={() => deleteMessage(message.id, message.name)}
+                      className="w-full sm:w-auto bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-2 rounded-lg text-sm font-medium hover:bg-red-500/30 transition-colors flex items-center justify-center space-x-1"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                      <span>Delete</span>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -202,47 +206,49 @@ const Archives: React.FC = () => {
                 className="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3 mb-2">
-                      <h3 className="text-lg font-semibold text-white">{consultation.name}</h3>
-                      <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between flex-wrap gap-2 mb-2">
+                    <h3 className="text-lg font-semibold text-white">{consultation.full_name}</h3>
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded whitespace-nowrap">
                         {formatDate(consultation.created_at)}
                       </span>
                       <span className="text-xs text-green-400 bg-green-500/20 px-2 py-1 rounded">
                         Booked
                       </span>
                     </div>
-                    {consultation.company && (
-                      <p className="text-gray-300 mb-2">{consultation.company}</p>
-                    )}
-                    {consultation.service_interest && (
-                      <p className="text-gray-300 mb-2">
-                        <span className="text-gray-400">Service:</span> {consultation.service_interest}
-                      </p>
-                    )}
-                    {consultation.message && (
-                      <p className="text-gray-300 mb-4">{consultation.message}</p>
-                    )}
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2 text-sm text-gray-400">
-                        <Mail className="w-4 h-4" />
-                        <span>{consultation.email}</span>
-                        {consultation.phone && (
-                          <>
-                            <Phone className="w-4 h-4 ml-4" />
-                            <span>{consultation.phone}</span>
-                          </>
-                        )}
+                  </div>
+                  
+                  {consultation.company_name && (
+                    <p className="text-gray-400 text-sm">Company: {consultation.company_name}</p>
+                  )}
+                  {consultation.area_of_service && (
+                    <p className="text-gray-400 text-sm">Service: {consultation.area_of_service}</p>
+                  )}
+                  {consultation.message && (
+                    <p className="text-gray-300 text-sm">{consultation.message}</p>
+                  )}
+                  
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                    <div className="flex flex-col gap-2 text-sm text-gray-400">
+                      <div className="flex items-center space-x-2">
+                        <Mail className="w-4 h-4 flex-shrink-0" />
+                        <span className="break-all">{consultation.email}</span>
                       </div>
-                      <button
-                        onClick={() => deleteConsultation(consultation.id, consultation.full_name)}
-                        className="bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-1 rounded-lg text-sm font-medium hover:bg-red-500/30 transition-colors flex items-center space-x-1"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                        <span>Delete</span>
-                      </button>
+                      {consultation.phone && (
+                        <div className="flex items-center space-x-2">
+                          <Phone className="w-4 h-4 flex-shrink-0" />
+                          <span>{consultation.phone}</span>
+                        </div>
+                      )}
                     </div>
+                    <button
+                      onClick={() => deleteConsultation(consultation.id, consultation.full_name)}
+                      className="w-full sm:w-auto bg-red-500/20 text-red-400 border border-red-500/30 px-3 py-2 rounded-lg text-sm font-medium hover:bg-red-500/30 transition-colors flex items-center justify-center space-x-1"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                      <span>Delete</span>
+                    </button>
                   </div>
                 </div>
               </div>

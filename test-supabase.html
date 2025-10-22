@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supabase Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Supabase Connection Test</h1>
+    <div id="results"></div>
+    
+    <script>
+        const supabaseUrl = 'https://vibevjzpdkvttbfdtive.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpYmV2anpwZGt2dHRiZmR0aXZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4NzcwNTUsImV4cCI6MjA3NDQ1MzA1NX0.eA5mWnDKodvPwCvSYZvWaguiTizIKYnfTjQwRj_27dE';
+        
+        const { createClient } = supabase;
+        const supabaseClient = createClient(supabaseUrl, supabaseKey);
+        
+        async function testConnection() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<p>Testing connection...</p>';
+            
+            try {
+                // Test 1: Basic connection
+                console.log('Testing basic connection...');
+                const { data, error } = await supabaseClient
+                    .from('contact_submissions')
+                    .select('*')
+                    .limit(1);
+                
+                if (error) {
+                    results.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+                    console.error('Error:', error);
+                } else {
+                    results.innerHTML = `<p style="color: green;">✅ Connection successful! Found ${data.length} records.</p>`;
+                    console.log('Success:', data);
+                }
+                
+                // Test 2: Try to insert
+                console.log('Testing insert...');
+                const { data: insertData, error: insertError } = await supabaseClient
+                    .from('contact_submissions')
+                    .insert([{
+                        name: 'Test User',
+                        email: 'test@example.com',
+                        message: 'Test message'
+                    }])
+                    .select();
+                
+                if (insertError) {
+                    results.innerHTML += `<p style="color: red;">Insert Error: ${insertError.message}</p>`;
+                    console.error('Insert Error:', insertError);
+                } else {
+                    results.innerHTML += `<p style="color: green;">✅ Insert successful! ID: ${insertData[0].id}</p>`;
+                    console.log('Insert Success:', insertData);
+                }
+                
+            } catch (err) {
+                results.innerHTML = `<p style="color: red;">Exception: ${err.message}</p>`;
+                console.error('Exception:', err);
+            }
+        }
+        
+        testConnection();
+    </script>
+</body>
+</html>

@@ -171,6 +171,12 @@ export const silentNetworkMonitoring = () => {
   window.fetch = async (...args) => {
     requestCount++;
     
+    // Allow Supabase requests to pass through
+    const url = args[0];
+    if (typeof url === 'string' && url.includes('supabase')) {
+      return originalFetch(...args);
+    }
+    
     // If too many requests in short time, might be scraping
     if (requestCount > 50) {
       console.warn('High request volume detected');

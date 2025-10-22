@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <h1>Form Test</h1>
+    <form id="testForm">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="Message" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="result"></div>
+    
+    <script>
+        const supabaseUrl = 'https://vibevjzpdkvttbfdtive.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpYmV2anpwZGt2dHRiZmR0aXZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4NzcwNTUsImV4cCI6MjA3NDQ1MzA1NX0.eA5mWnDKodvPwCvSYZvWaguiTizIKYnfTjQwRj_27dE';
+        
+        const { createClient } = supabase;
+        const supabaseClient = createClient(supabaseUrl, supabaseKey);
+        
+        document.getElementById('testForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                message: formData.get('message')
+            };
+            
+            console.log('🚀 Submitting:', data);
+            
+            try {
+                const { data: result, error } = await supabaseClient
+                    .from('contact_submissions')
+                    .insert([data])
+                    .select();
+                
+                if (error) {
+                    document.getElementById('result').innerHTML = `<p style="color: red;">❌ Error: ${error.message}</p>`;
+                    console.error('Error:', error);
+                } else {
+                    document.getElementById('result').innerHTML = `<p style="color: green;">✅ Success! ID: ${result[0].id}</p>`;
+                    console.log('Success:', result);
+                }
+            } catch (err) {
+                document.getElementById('result').innerHTML = `<p style="color: red;">❌ Exception: ${err.message}</p>`;
+                console.error('Exception:', err);
+            }
+        });
+    </script>
+</body>
+</html>

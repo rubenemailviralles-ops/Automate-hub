@@ -104,6 +104,8 @@ const ConsultationBooking = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    console.log('🔥 CONSULTATION FORM SUBMITTED! Form data:', formData);
+
     if (!validateForm()) {
       // Scroll to the form section when validation fails
       const formSection = document.getElementById('consultation-form');
@@ -119,20 +121,30 @@ const ConsultationBooking = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
+      console.log('🚀 Submitting consultation booking to Supabase...', formData);
+      console.log('🔗 Supabase client:', supabase);
+      console.log('🔗 Supabase URL:', supabase.supabaseUrl);
+      
+      const { data, error } = await supabase
         .from('consultation_bookings')
         .insert([
           {
-            full_name: formData.fullName,
+            name: formData.fullName,
             email: formData.email,
             phone: formData.phone,
-            company_name: formData.companyName,
-            area_of_service: formData.areaOfService,
+            company: formData.companyName,
+            service: formData.areaOfService,
           }
         ]);
 
-      if (error) throw error;
+      console.log('📊 Supabase response:', { data, error });
 
+      if (error) {
+        console.error('❌ Supabase error:', error);
+        throw error;
+      }
+
+      console.log('✅ Consultation booking submitted to Supabase successfully');
       alert('Thank you! Your consultation has been booked. We\'ll contact you within 24 hours to confirm your appointment time.');
 
       setIsSubmitting(false);

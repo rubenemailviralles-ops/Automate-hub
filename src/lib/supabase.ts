@@ -1,31 +1,12 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+// Force use of real Supabase client with hardcoded credentials
+const supabaseUrl = 'https://vibevjzpdkvttbfdtive.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZpYmV2anpwZGt2dHRiZmR0aXZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTg4NzcwNTUsImV4cCI6MjA3NDQ1MzA1NX0.eA5mWnDKodvPwCvSYZvWaguiTizIKYnfTjQwRj_27dE';
 
-// In static hosting (e.g., GitHub Pages), env vars are not available.
-// Do NOT crash the app — provide a no-op fallback client so pages render.
-function createNoopClient() {
-  const noop = async () => ({ data: null, error: null } as any);
-  return {
-    from() {
-      return {
-        insert: noop,
-        upsert: noop,
-        select: noop,
-        update: noop,
-        delete: noop,
-      } as any;
-    },
-  } as any;
-}
+console.log('🔗 Supabase URL:', supabaseUrl);
+console.log('🔑 Supabase Key:', supabaseAnonKey ? 'Present' : 'Missing');
 
-export const supabase =
-  supabaseUrl && supabaseAnonKey
-    ? createClient(supabaseUrl, supabaseAnonKey)
-    : createNoopClient();
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  // eslint-disable-next-line no-console
-  console.warn('[Supabase] Environment variables missing. Using no-op client (forms will not persist).');
-}
+console.log('✅ Supabase client created successfully');

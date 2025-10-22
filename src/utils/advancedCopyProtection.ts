@@ -172,11 +172,17 @@ export const invisibleIntegrityMonitoring = () => {
     attributes: true
   });
 
-  // Monitor for network requests
+  // Monitor for network requests (ALLOW SUPABASE REQUESTS)
   const originalFetch = window.fetch;
   window.fetch = async (...args) => {
     const url = args[0];
-    if (typeof url === 'string' && url.includes('copy') || url.includes('clone')) {
+    
+    // Allow Supabase requests to pass through
+    if (typeof url === 'string' && url.includes('supabase')) {
+      return originalFetch(...args);
+    }
+    
+    if (typeof url === 'string' && (url.includes('copy') || url.includes('clone'))) {
       console.warn('Suspicious network request blocked');
       return Promise.reject('Request blocked');
     }

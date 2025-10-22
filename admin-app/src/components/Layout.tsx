@@ -8,7 +8,6 @@ import {
   Menu, 
   X,
   Bot,
-  Bug,
   Download
 } from 'lucide-react'
 
@@ -59,7 +58,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: 'Contact Messages', href: '/contact', icon: MessageSquare },
     { name: 'Consultations', href: '/consultations', icon: Calendar },
     { name: 'Archives', href: '/archives', icon: Archive },
-    { name: 'Debug', href: '/debug', icon: Bug },
   ]
 
   const isActive = (path: string) => {

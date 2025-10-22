@@ -355,37 +355,6 @@ const ContactForm = () => {
                 {isSubmitting ? 'Sending...' : 'Book My Free Consultation'}
               </button>
 
-              {/* TEST BUTTON - BYPASS ALL SECURITY */}
-              <button
-                type="button"
-                onClick={async () => {
-                  console.log('🧪 TEST BUTTON CLICKED - Bypassing all security');
-                  try {
-                    const { data, error } = await supabase
-                      .from('contact_submissions')
-                      .insert([{
-                        name: 'TEST USER',
-                        email: 'test@example.com',
-                        message: 'TEST MESSAGE FROM BUTTON'
-                      }])
-                      .select();
-                    
-                    console.log('🧪 TEST RESULT:', { data, error });
-                    if (error) {
-                      alert('Test failed: ' + error.message);
-                    } else {
-                      alert('Test successful! Check your Supabase table.');
-                    }
-                  } catch (err) {
-                    console.error('🧪 TEST ERROR:', err);
-                    alert('Test error: ' + err);
-                  }
-                }}
-                className="w-full bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-xl font-medium text-lg transition-all duration-500 transform flex items-center justify-center mt-4"
-              >
-                🧪 TEST SUPABASE (Bypass Security)
-              </button>
-
               <p className="text-sm text-gray-600 text-center text-sophisticated">
                 We'll respond within 2 hours during business hours
               </p>

@@ -5,7 +5,6 @@ import Dashboard from './pages/Dashboard'
 import ContactMessages from './pages/ContactMessages'
 import Consultations from './pages/Consultations'
 import Archives from './pages/Archives'
-import Debug from './pages/Debug'
 import { initNotifications, getNotificationPermission } from './utils/notifications'
 import { initRealtimeSubscriptions, unsubscribeAll } from './utils/realtimeSubscriptions'
 import { Bell, BellOff } from 'lucide-react'
@@ -102,7 +101,6 @@ function App() {
             <Route path="/contact" element={<ContactMessages />} />
             <Route path="/consultations" element={<Consultations />} />
             <Route path="/archives" element={<Archives />} />
-            <Route path="/debug" element={<Debug />} />
           </Routes>
         </Layout>
       </div>

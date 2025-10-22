@@ -13,10 +13,11 @@ const ContactMessages: React.FC = () => {
 
   const fetchMessages = async () => {
     try {
-      console.log('🔍 Fetching messages from contact_submissions...')
+      console.log('🔍 Fetching unread messages from contact_submissions...')
       const { data, error } = await supabase
         .from('contact_submissions')
         .select('*')
+        .eq('is_read', false)
         .order('created_at', { ascending: false })
 
       console.log('📊 Supabase response:', { data, error })

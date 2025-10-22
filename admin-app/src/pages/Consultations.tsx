@@ -13,10 +13,11 @@ const Consultations: React.FC = () => {
 
   const fetchConsultations = async () => {
     try {
-      console.log('🔍 Fetching consultations from consultation_bookings...')
+      console.log('🔍 Fetching unbooked consultations from consultation_bookings...')
       const { data, error } = await supabase
         .from('consultation_bookings')
         .select('*')
+        .eq('is_booked', false)
         .order('created_at', { ascending: false })
 
       console.log('📊 Supabase response:', { data, error })

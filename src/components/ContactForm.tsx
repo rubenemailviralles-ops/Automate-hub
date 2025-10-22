@@ -76,7 +76,7 @@ const ContactForm = () => {
         .from('contact_submissions')
         .insert([
           {
-            full_name: sanitizedData.name,
+            name: sanitizedData.name,
             email: sanitizedData.email,
             phone: sanitizedData.phone || null,
             message: sanitizedData.message,

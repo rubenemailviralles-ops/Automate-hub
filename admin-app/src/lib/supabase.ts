@@ -25,6 +25,7 @@ export interface ConsultationBooking {
   name: string
   email: string
   phone?: string
+  company?: string
   service?: string
   created_at: string
   is_booked?: boolean

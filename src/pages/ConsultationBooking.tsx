@@ -126,6 +126,7 @@ const ConsultationBooking = () => {
             name: formData.fullName,
             email: formData.email,
             phone: formData.phone || null,
+            company: formData.companyName || null,
             service: formData.areaOfService || null,
           }
         ]);

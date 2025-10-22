@@ -32,17 +32,18 @@ const ConsultationBooking = () => {
     try {
       console.log('🚀 Submitting consultation booking to Supabase...', formData);
       console.log('🔗 Supabase client:', supabase);
+      console.log('🔗 Supabase URL:', supabase.supabaseUrl);
       
-      // Submit to Supabase
+      // Submit to Supabase - match exact working contact form pattern
       const { data, error } = await supabase
         .from('consultation_bookings')
         .insert([
           {
             name: formData.name,
             email: formData.email,
-            phone: formData.phone || null,
-            company: formData.company || null,
-            service: formData.service || null
+            phone: formData.phone,
+            company: formData.company,
+            service: formData.service
           }
         ]);
 
@@ -50,10 +51,15 @@ const ConsultationBooking = () => {
 
       if (error) {
         console.error('❌ Supabase error:', error);
+        console.error('❌ Error message:', error.message);
+        console.error('❌ Error details:', error.details);
+        console.error('❌ Error hint:', error.hint);
+        alert(`Supabase Error: ${error.message}`);
         throw error;
       }
 
       console.log('✅ Consultation booking submitted to Supabase successfully');
+      alert('Thank you! We will contact you within 24 hours.');
       
       // Reset form
       setFormData({
@@ -67,7 +73,6 @@ const ConsultationBooking = () => {
       setSubmitSuccess(true);
     } catch (error) {
       console.error('❌ Error submitting consultation:', error);
-      alert('There was an error booking your consultation. Please try again or contact us directly.');
     } finally {
       setIsSubmitting(false);
     }

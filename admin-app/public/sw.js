@@ -93,31 +93,72 @@ self.addEventListener('sync', (event) => {
   }
 });
 
-// Push notifications (for future use)
+// Push notifications
 self.addEventListener('push', (event) => {
+  console.log('[SW] Push notification received');
+  
   if (event.data) {
     const data = event.data.json();
     const options = {
-      body: data.body,
+      body: data.body || 'New lead received!',
       icon: '/icon-192x192.png',
       badge: '/icon-96x96.png',
-      vibrate: [100, 50, 100],
+      vibrate: [200, 100, 200, 100, 200],
+      tag: data.tag || 'automate-hub-notification',
+      requireInteraction: true,
       data: {
         dateOfArrival: Date.now(),
-        primaryKey: 1
-      }
+        url: data.url || '/',
+        ...data
+      },
+      actions: [
+        {
+          action: 'view',
+          title: 'View',
+          icon: '/icon-96x96.png'
+        },
+        {
+          action: 'close',
+          title: 'Close',
+          icon: '/icon-96x96.png'
+        }
+      ]
     };
 
     event.waitUntil(
-      self.registration.showNotification(data.title, options)
+      self.registration.showNotification(data.title || 'New Lead!', options)
     );
   }
 });
 
 // Notification click handler
 self.addEventListener('notificationclick', (event) => {
+  console.log('[SW] Notification clicked:', event.action);
+  
   event.notification.close();
+  
+  if (event.action === 'close') {
+    return;
+  }
+  
+  // Get URL from notification data
+  const urlToOpen = event.notification.data?.url || '/';
+  
   event.waitUntil(
-    clients.openWindow('/')
+    clients.matchAll({ type: 'window', includeUncontrolled: true })
+      .then((clientList) => {
+        // Check if app is already open
+        for (const client of clientList) {
+          if (client.url.includes(self.location.origin) && 'focus' in client) {
+            client.focus();
+            client.navigate(urlToOpen);
+            return;
+          }
+        }
+        // If not open, open new window
+        if (clients.openWindow) {
+          return clients.openWindow(urlToOpen);
+        }
+      })
   );
 });

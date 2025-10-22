@@ -69,13 +69,14 @@ const ConsultationBooking = () => {
       newErrors.email = 'Please enter a valid email address';
     }
 
-    if (!formData.companyName.trim()) {
-      newErrors.companyName = 'Company name is required';
-    }
+    // Phone and company are optional
+    // if (!formData.companyName.trim()) {
+    //   newErrors.companyName = 'Company name is required';
+    // }
 
-    if (!formData.phone.trim()) {
-      newErrors.phone = 'Phone number is required';
-    }
+    // if (!formData.phone.trim()) {
+    //   newErrors.phone = 'Phone number is required';
+    // }
 
     if (!formData.areaOfService) {
       newErrors.areaOfService = 'Please select an area of service';

@@ -110,19 +110,17 @@ const ContactMessages: React.FC = () => {
               className="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-lg font-semibold text-white">{message.name}</h3>
-                    <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded">
-                      {formatDate(message.created_at)}
-                    </span>
-                  </div>
-                  <p className="text-gray-300 mb-4">{message.message}</p>
+              <div className="mb-4">
+                <div className="flex items-center justify-between flex-wrap gap-3 mb-3">
+                  <h3 className="text-lg font-semibold text-white">{message.name}</h3>
+                  <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded">
+                    {formatDate(message.created_at)}
+                  </span>
                 </div>
+                <p className="text-gray-300 mb-4">{message.message}</p>
                 <button
                   onClick={() => markAsRead(message.id)}
-                  className="bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-2 rounded-lg text-sm font-medium hover:bg-orange-500/30 transition-colors"
+                  className="w-full sm:w-auto bg-orange-500/20 text-orange-400 border border-orange-500/30 px-4 py-2 rounded-lg text-sm font-medium hover:bg-orange-500/30 transition-colors"
                 >
                   Mark as Read
                 </button>

@@ -110,38 +110,36 @@ const Consultations: React.FC = () => {
               className="bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-lg font-semibold text-white">{consultation.full_name}</h3>
-                    <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded">
-                      {formatDate(consultation.created_at)}
+              <div className="mb-4">
+                <div className="flex items-center justify-between flex-wrap gap-3 mb-3">
+                  <h3 className="text-lg font-semibold text-white">{consultation.full_name}</h3>
+                  <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded">
+                    {formatDate(consultation.created_at)}
+                  </span>
+                </div>
+                {consultation.company_name && <p className="text-gray-400 text-sm mb-2">Company: {consultation.company_name}</p>}
+                {consultation.area_of_service && <p className="text-gray-400 text-sm mb-2">Service: {consultation.area_of_service}</p>}
+                {consultation.service_interest && (
+                  <p className="text-gray-300 mb-2">
+                    <span className="text-gray-400">Service Interest:</span> {consultation.service_interest}
+                  </p>
+                )}
+                {consultation.message && (
+                  <p className="text-gray-300 mb-4">{consultation.message}</p>
+                )}
+                {(consultation.preferred_date || consultation.preferred_time) && (
+                  <div className="flex items-center space-x-2 text-sm text-gray-400 mb-4">
+                    <Clock className="w-4 h-4" />
+                    <span>
+                      {consultation.preferred_date && `Date: ${consultation.preferred_date}`}
+                      {consultation.preferred_date && consultation.preferred_time && ' • '}
+                      {consultation.preferred_time && `Time: ${consultation.preferred_time}`}
                     </span>
                   </div>
-                  {consultation.company_name && <p className="text-gray-400 text-sm mb-2">Company: {consultation.company_name}</p>}
-                  {consultation.area_of_service && <p className="text-gray-400 text-sm mb-2">Service: {consultation.area_of_service}</p>}
-                  {consultation.service_interest && (
-                    <p className="text-gray-300 mb-2">
-                      <span className="text-gray-400">Service Interest:</span> {consultation.service_interest}
-                    </p>
-                  )}
-                  {consultation.message && (
-                    <p className="text-gray-300 mb-4">{consultation.message}</p>
-                  )}
-                  {(consultation.preferred_date || consultation.preferred_time) && (
-                    <div className="flex items-center space-x-2 text-sm text-gray-400 mb-4">
-                      <Clock className="w-4 h-4" />
-                      <span>
-                        {consultation.preferred_date && `Date: ${consultation.preferred_date}`}
-                        {consultation.preferred_date && consultation.preferred_time && ' • '}
-                        {consultation.preferred_time && `Time: ${consultation.preferred_time}`}
-                      </span>
-                    </div>
-                  )}
-                </div>
+                )}
                 <button
                   onClick={() => markAsBooked(consultation.id)}
-                  className="bg-green-500/20 text-green-400 border border-green-500/30 px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-500/30 transition-colors"
+                  className="w-full sm:w-auto bg-green-500/20 text-green-400 border border-green-500/30 px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-500/30 transition-colors"
                 >
                   Mark as Booked
                 </button>

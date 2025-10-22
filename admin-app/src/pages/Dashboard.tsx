@@ -46,12 +46,13 @@ const Dashboard: React.FC = () => {
 
   const statCards = [
     {
-      title: 'Total Messages',
-      value: stats.totalMessages,
-      icon: MessageSquare,
-      color: 'text-blue-400',
-      bgColor: 'bg-blue-500/10',
-      borderColor: 'border-blue-500/30'
+      title: 'Pending Consultations',
+      value: stats.pendingConsultations,
+      icon: Clock,
+      color: 'text-purple-400',
+      bgColor: 'bg-purple-500/10',
+      borderColor: 'border-purple-500/30',
+      link: '/consultations'
     },
     {
       title: 'Unread Messages',
@@ -59,7 +60,8 @@ const Dashboard: React.FC = () => {
       icon: MessageSquare,
       color: 'text-orange-400',
       bgColor: 'bg-orange-500/10',
-      borderColor: 'border-orange-500/30'
+      borderColor: 'border-orange-500/30',
+      link: '/contact'
     },
     {
       title: 'Total Consultations',
@@ -67,15 +69,17 @@ const Dashboard: React.FC = () => {
       icon: Calendar,
       color: 'text-green-400',
       bgColor: 'bg-green-500/10',
-      borderColor: 'border-green-500/30'
+      borderColor: 'border-green-500/30',
+      link: '/consultations'
     },
     {
-      title: 'Pending Consultations',
-      value: stats.pendingConsultations,
-      icon: Clock,
-      color: 'text-purple-400',
-      bgColor: 'bg-purple-500/10',
-      borderColor: 'border-purple-500/30'
+      title: 'Total Messages',
+      value: stats.totalMessages,
+      icon: MessageSquare,
+      color: 'text-blue-400',
+      bgColor: 'bg-blue-500/10',
+      borderColor: 'border-blue-500/30',
+      link: '/contact'
     }
   ]
 
@@ -92,9 +96,10 @@ const Dashboard: React.FC = () => {
         {statCards.map((stat, index) => {
           const Icon = stat.icon
           return (
-            <div
+            <Link
               key={index}
-              className={`${stat.bgColor} ${stat.borderColor} border rounded-xl p-6 backdrop-blur-sm animate-fade-in`}
+              to={stat.link}
+              className={`${stat.bgColor} ${stat.borderColor} border rounded-xl p-6 backdrop-blur-sm animate-fade-in hover:scale-105 transition-all cursor-pointer`}
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-center justify-between">
@@ -106,7 +111,7 @@ const Dashboard: React.FC = () => {
                   <Icon className={`w-6 h-6 ${stat.color}`} />
                 </div>
               </div>
-            </div>
+            </Link>
           )
         })}
       </div>

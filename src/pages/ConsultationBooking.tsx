@@ -123,11 +123,11 @@ const ConsultationBooking = () => {
         .from('consultation_bookings')
         .insert([
           {
-            name: formData.fullName,
+            full_name: formData.fullName,
             email: formData.email,
             phone: formData.phone || null,
-            company: formData.companyName || null,
-            service: formData.areaOfService || null,
+            company_name: formData.companyName || null,
+            area_of_service: formData.areaOfService || null,
           }
         ]);
 

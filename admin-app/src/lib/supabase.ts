@@ -22,11 +22,11 @@ export interface ContactMessage {
 
 export interface ConsultationBooking {
   id: string
-  name: string
+  full_name: string
   email: string
   phone?: string
-  company?: string
-  service?: string
+  company_name?: string
+  area_of_service?: string
   created_at: string
   is_booked?: boolean
   archived_at?: string

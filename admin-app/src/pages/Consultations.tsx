@@ -113,13 +113,13 @@ const Consultations: React.FC = () => {
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">
-                    <h3 className="text-lg font-semibold text-white">{consultation.name}</h3>
+                    <h3 className="text-lg font-semibold text-white">{consultation.full_name}</h3>
                     <span className="text-xs text-gray-400 bg-gray-700/50 px-2 py-1 rounded">
                       {formatDate(consultation.created_at)}
                     </span>
                   </div>
-                  {consultation.company && <p className="text-gray-400 text-sm mb-2">Company: {consultation.company}</p>}
-                  {consultation.service && <p className="text-gray-400 text-sm mb-2">Service: {consultation.service}</p>}
+                  {consultation.company_name && <p className="text-gray-400 text-sm mb-2">Company: {consultation.company_name}</p>}
+                  {consultation.area_of_service && <p className="text-gray-400 text-sm mb-2">Service: {consultation.area_of_service}</p>}
                   {consultation.service_interest && (
                     <p className="text-gray-300 mb-2">
                       <span className="text-gray-400">Service Interest:</span> {consultation.service_interest}

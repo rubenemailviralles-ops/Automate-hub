@@ -1,16 +1,8 @@
 # ⚡ Quick Start - Deploy Your Admin App in 5 Minutes
 
-## 🚀 Step 1: Generate App Icons
+## 🚀 Step 1: Build the App
 
-1. Open `admin-app/create-icons.html` in your browser
-2. Right-click each icon and save as:
-   - `icon-96x96.png`
-   - `icon-144x144.png`
-   - `icon-192x192.png`
-   - `icon-512x512.png`
-3. Save all icons in `admin-app/public/` folder
-
-## 📦 Step 2: Build the App
+✅ **Icons Already Included!** - Using your main site logo for consistent branding
 
 ```bash
 cd admin-app
@@ -18,7 +10,7 @@ npm install
 npm run build
 ```
 
-## 🌐 Step 3: Deploy (Choose One)
+## 🌐 Step 2: Deploy (Choose One)
 
 ### Option A: Netlify (Easiest - FREE)
 
@@ -43,7 +35,7 @@ vercel --prod
 3. Select `main` branch and `/admin-app/dist` folder
 4. ✅ **DONE!**
 
-## 📱 Step 4: Install on Your Devices
+## 📱 Step 3: Install on Your Devices
 
 ### On Your Phone:
 1. Open the admin app URL in your phone browser
@@ -57,7 +49,7 @@ vercel --prod
 3. Click "Install"
 4. App opens in its own window! 💻
 
-## 🔔 Step 5: Enable Notifications
+## 🔔 Step 4: Enable Notifications
 
 1. Open your admin app
 2. Click the blue banner at the top: **"Enable Notifications"**

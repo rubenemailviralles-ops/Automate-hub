@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <script>
+    // Redirect to index.html with the path as a parameter
+    const path = window.location.pathname.replace('/Automate-hub/admin', '');
+    window.location.href = '/Automate-hub/admin/' + (path ? '#' + path : '');
+  </script>
+</head>
+<body style="background: #000; color: #fff; display: flex; align-items: center; justify-content: center; height: 100vh; font-family: sans-serif;">
+  <div style="text-align: center;">
+    <h1>Redirecting...</h1>
+    <p>If you're not redirected, <a href="/Automate-hub/admin/" style="color: #007bff;">click here</a>.</p>
+  </div>
+</body>
+</html>
+

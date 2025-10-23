@@ -60,7 +60,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row md:justify-center gap-16">
           {/* Company Info */}
           <ScrollReveal delay={0}>
-            <div className="flex-1">
+            <div className="md:w-80">
               <Link to="/" className="flex items-center space-x-3 mb-4" aria-label="Automate Hub home page">
                 <div className="w-10 h-10 bg-gradient-to-br from-white to-gray-300 rounded-xl flex items-center justify-center shadow-lg" aria-hidden="true">
                   <Bot className="w-6 h-6 text-black" aria-hidden="true" />
@@ -112,7 +112,7 @@ const Footer = () => {
 
           {/* Services */}
           <ScrollReveal delay={100}>
-            <div className="flex-1">
+            <div className="md:w-48">
               <nav aria-label="Services links">
               <h3 className="text-base font-bold text-white mb-4">Services</h3>
               <ul className="space-y-2">
@@ -134,7 +134,7 @@ const Footer = () => {
 
           {/* Company */}
           <ScrollReveal delay={200}>
-            <div className="flex-1">
+            <div className="md:w-32">
               <nav aria-label="Company links">
               <h3 className="text-base font-bold text-white mb-4">Company</h3>
               <ul className="space-y-2">

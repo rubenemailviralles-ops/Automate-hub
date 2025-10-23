@@ -57,10 +57,10 @@ const Footer = () => {
   return (
     <footer className="seamless-section border-t border-white/5 py-20" role="contentinfo" aria-label="Site footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Company Info */}
           <ScrollReveal delay={0}>
-            <div className="col-span-1 md:col-span-2">
+            <div className="col-span-1">
               <Link to="/" className="flex items-center space-x-3 mb-4" aria-label="Automate Hub home page">
                 <div className="w-10 h-10 bg-gradient-to-br from-white to-gray-300 rounded-xl flex items-center justify-center shadow-lg" aria-hidden="true">
                   <Bot className="w-6 h-6 text-black" aria-hidden="true" />

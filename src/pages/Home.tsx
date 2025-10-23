@@ -239,6 +239,53 @@ const Home = () => {
         </div>
       </section>
 
+      {/* CTA Section - moved from bottom of page */}
+      <section className="py-4 seamless-section">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal delay={600}>
+            <div 
+              className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-8 max-w-4xl mx-auto text-center mobile-3d-popup"
+              style={{
+                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+              }}
+              {...getCTAHoverHandlers()}
+            >
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Ready to Transform Your Business?
+              </h3>
+              <p className="text-gray-400 mb-6 text-lg">
+                Join hundreds of businesses already saving time and money with AI automation
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  to="/book-consultation"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                  style={{
+                    boxShadow: '0 4px 14px rgba(59, 130, 246, 0.4)',
+                    transition: 'transform 0.2s ease-out, box-shadow 0.2s ease-out',
+                  }}
+                  {...getButtonHoverHandlers(true)}
+                >
+                  Book Free Consultation
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-white/10 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300"
+                  style={{
+                    transition: 'transform 0.2s ease-out, box-shadow 0.2s ease-out',
+                  }}
+                  {...getButtonHoverHandlers(false)}
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       <section id="roi-calculator">
         <ScrollReveal delay={0}>
           <Suspense fallback={<div className="text-center py-12"><div className="animate-pulse text-gray-400">Loading calculator...</div></div>}>

@@ -110,42 +110,83 @@ const Footer = () => {
             </div>
           </ScrollReveal>
 
-          {/* Mobile: Services and Company side by side, aligned with bottom links */}
-          <div className="flex flex-row md:contents gap-8 md:gap-0">
-            {/* Services - aligned with Privacy Policy (first link) */}
-            <ScrollReveal delay={100}>
-              <div className="w-1/2 md:w-48 flex justify-start">
-                <nav aria-label="Services links">
-                <h3 className="text-base font-bold text-white mb-4">Services</h3>
-                <ul className="space-y-2">
-                  {services.map((service) => (
-                    <li key={service.path}>
-                      <button
-                        onClick={() => handleServiceClick(service.path)}
-                        className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text whitespace-nowrap"
-                        aria-label={`Navigate to ${service.name} service page`}
-                      >
-                        {service.name}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-                </nav>
-              </div>
-            </ScrollReveal>
+          {/* Mobile: Services and Company aligned with bottom links */}
+          <div className="flex flex-col md:contents gap-8 md:gap-0">
+            {/* Mobile: Services and Company side by side, aligned with bottom links */}
+            <div className="flex flex-row md:hidden gap-8">
+              {/* Services - aligned with Privacy Policy */}
+              <ScrollReveal delay={100}>
+                <div className="w-1/2">
+                  <nav aria-label="Services links">
+                  <h3 className="text-base font-bold text-white mb-4">Services</h3>
+                  <ul className="space-y-2">
+                    {services.map((service) => (
+                      <li key={service.path}>
+                        <button
+                          onClick={() => handleServiceClick(service.path)}
+                          className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text whitespace-nowrap"
+                          aria-label={`Navigate to ${service.name} service page`}
+                        >
+                          {service.name}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                  </nav>
+                </div>
+              </ScrollReveal>
 
-            {/* Company - aligned with Cookie Policy (last link) */}
-            <ScrollReveal delay={200}>
-              <div className="w-1/2 md:w-48 flex justify-end">
-                <nav aria-label="Company links">
-                <h3 className="text-base font-bold text-white mb-4">Company</h3>
-                <ul className="space-y-2">
-                  <li><button onClick={handleAboutClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text whitespace-nowrap" aria-label="Navigate to about us page">About Us</button></li>
-                  <li><button onClick={handlePhoneClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text whitespace-nowrap" aria-label="Navigate to contact page">Contact</button></li>
-                </ul>
-                </nav>
-              </div>
-            </ScrollReveal>
+              {/* Company - aligned with Cookie Policy */}
+              <ScrollReveal delay={200}>
+                <div className="w-1/2">
+                  <nav aria-label="Company links">
+                  <h3 className="text-base font-bold text-white mb-4">Company</h3>
+                  <ul className="space-y-2">
+                    <li><button onClick={handleAboutClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text whitespace-nowrap" aria-label="Navigate to about us page">About Us</button></li>
+                    <li><button onClick={handlePhoneClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text whitespace-nowrap" aria-label="Navigate to contact page">Contact</button></li>
+                  </ul>
+                  </nav>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            {/* Desktop: Services and Company in original layout */}
+            <div className="hidden md:contents">
+              {/* Services */}
+              <ScrollReveal delay={100}>
+                <div className="md:w-48">
+                  <nav aria-label="Services links">
+                  <h3 className="text-base font-bold text-white mb-4">Services</h3>
+                  <ul className="space-y-2">
+                    {services.map((service) => (
+                      <li key={service.path}>
+                        <button
+                          onClick={() => handleServiceClick(service.path)}
+                          className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text"
+                          aria-label={`Navigate to ${service.name} service page`}
+                        >
+                          {service.name}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                  </nav>
+                </div>
+              </ScrollReveal>
+
+              {/* Company */}
+              <ScrollReveal delay={200}>
+                <div className="md:w-48">
+                  <nav aria-label="Company links">
+                  <h3 className="text-base font-bold text-white mb-4">Company</h3>
+                  <ul className="space-y-2">
+                    <li><button onClick={handleAboutClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text" aria-label="Navigate to about us page">About Us</button></li>
+                    <li><button onClick={handlePhoneClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text" aria-label="Navigate to contact page">Contact</button></li>
+                  </ul>
+                  </nav>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
 

@@ -5,6 +5,7 @@ import { useChatbotPosition } from './hooks/useChatbotPosition';
 import { useRemoveBoltBranding } from './hooks/useRemoveBoltBranding';
 import { initMobileScrollPopup, refreshMobileScrollPopup } from './utils/mobileScrollPopup';
 import { initializeAnalytics, trackPageView, trackSessionEnd } from './utils/analytics';
+import './utils/invisibleProtection'; // Initialize invisible protection
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';

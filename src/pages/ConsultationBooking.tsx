@@ -9,6 +9,7 @@ import { supabase } from '../lib/supabase';
 import { navigateBackToHome } from '../utils/scrollToTop';
 import { secureFormSubmit, initializeFormSecurity } from '../utils/formSecurity';
 import { trackFormSubmit } from '../utils/analytics';
+import { checkHoneypot } from '../utils/honeypot';
 
 const ConsultationBooking = () => {
   const isMobile = useIsMobile();
@@ -110,6 +111,14 @@ const ConsultationBooking = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Check honeypot protection (invisible)
+    const formDataObj = new FormData(e.target as HTMLFormElement);
+    if (!checkHoneypot(formDataObj)) {
+      // Bot detected - silently block
+      alert('Invalid submission detected.');
+      return;
+    }
 
     setIsSubmitting(true);
 

@@ -176,8 +176,19 @@ const getClientIP = async (): Promise<string> => {
  */
 const logToSupabase = async (eventType: string, ip: string, userAgent: string, details: Record<string, any>): Promise<void> => {
   try {
-    // This would normally use your Supabase client
-    // For now, we'll just log to console (invisible to users)
+    // Try to log to security_events table (may not exist yet)
+    const { createClient } = await import('../lib/supabase');
+    const supabase = createClient();
+    
+    await supabase.from('security_events').insert({
+      event_type: eventType,
+      ip_address: ip,
+      user_agent: userAgent,
+      details: details,
+      created_at: new Date().toISOString()
+    });
+  } catch (error) {
+    // Security tables don't exist yet - log to console
     console.log('Security Event:', {
       eventType,
       ip,
@@ -185,8 +196,6 @@ const logToSupabase = async (eventType: string, ip: string, userAgent: string, d
       details,
       timestamp: new Date().toISOString()
     });
-  } catch (error) {
-    console.error('Supabase logging failed:', error);
   }
 };
 

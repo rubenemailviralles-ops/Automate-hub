@@ -932,7 +932,8 @@ const CRMIntegration = () => {
             </ScrollReveal>
           </div>
 
-          <div className="space-y-6 faq-container">
+          <div className="max-w-4xl mx-auto">
+            <div className="space-y-6 faq-container">
             <ScrollReveal delay={200}>
               <div 
                 className="bg-white/5 border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10" 
@@ -1140,6 +1141,7 @@ const CRMIntegration = () => {
                 )}
               </div>
             </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>

@@ -45,6 +45,19 @@
       will-change: auto;
       background-position: 0% 0%, 100% 100%, 50% 50%;
     }
+    
+    /* Prevent any layout shifts on mobile */
+    body {
+      overflow-x: hidden;
+      position: relative;
+    }
+    
+    /* Force hardware acceleration and prevent background movement */
+    .floating-orb {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      will-change: transform;
+    }
   }
 }
 
@@ -1359,19 +1372,32 @@ select:focus-visible {
   /* Fix mobile FAQ button selection outline */
   button:focus,
   button:active,
-  button:focus-visible {
+  button:focus-visible,
+  button:focus-within {
     outline: none !important;
     -webkit-tap-highlight-color: transparent !important;
     -webkit-user-select: none !important;
     -moz-user-select: none !important;
     -ms-user-select: none !important;
     user-select: none !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  /* Remove all focus outlines on mobile */
+  *:focus,
+  *:active,
+  *:focus-visible {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
   }
   
   /* Prevent background movement on FAQ dropdowns */
   .faq-container {
-    contain: layout style;
+    contain: layout style paint;
     will-change: auto;
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
   
   /* Smooth FAQ transitions without affecting background */
@@ -1379,6 +1405,25 @@ select:focus-visible {
     transform: translateZ(0);
     backface-visibility: hidden;
     perspective: 1000px;
+    contain: layout style;
+  }
+  
+  /* Prevent any transform from affecting parent elements */
+  .faq-container * {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  /* Fix for iOS Safari */
+  button {
+    -webkit-appearance: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
   }
 }
 

@@ -1150,7 +1150,7 @@ const PhoneCallers = () => {
             </ScrollReveal>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 faq-container">
             <ScrollReveal delay={200}>
               <div 
                 className="bg-white/5 border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10" 
@@ -1158,7 +1158,7 @@ const PhoneCallers = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 0 ? null : 0)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">How realistic do AI phone agents sound?</h3>
                   <ChevronDown 
@@ -1168,7 +1168,7 @@ const PhoneCallers = () => {
                   />
                 </button>
                 {openFAQ === 0 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Our AI phone agents use advanced natural language processing and text-to-speech technology to sound remarkably human. They understand context, can handle complex conversations, respond naturally to interruptions, and adapt their tone appropriately. Most callers don't realize they're speaking with AI, and those who do are impressed by the quality of interaction.
                     </p>
@@ -1184,7 +1184,7 @@ const PhoneCallers = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 1 ? null : 1)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">Can AI phone agents handle complex customer inquiries?</h3>
                   <ChevronDown 
@@ -1194,7 +1194,7 @@ const PhoneCallers = () => {
                   />
                 </button>
                 {openFAQ === 1 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Yes! Our AI agents are trained on your specific business, products, and services. They can answer detailed questions, provide product information, troubleshoot common issues, and qualify leads. For highly complex or sensitive matters, they can seamlessly transfer to a human agent while providing the agent with full conversation context.
                     </p>
@@ -1210,7 +1210,7 @@ const PhoneCallers = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 2 ? null : 2)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">How do you set up and customize the AI phone system?</h3>
                   <ChevronDown 
@@ -1220,7 +1220,7 @@ const PhoneCallers = () => {
                   />
                 </button>
                 {openFAQ === 2 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Setup typically takes 1-2 weeks. We start by understanding your business, call flows, and common scenarios. Then we train the AI on your specific needs, integrate with your existing phone system and CRM, test thoroughly, and fine-tune responses. You'll have full control over scripts, escalation rules, and how the AI handles different situations.
                     </p>
@@ -1236,7 +1236,7 @@ const PhoneCallers = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 3 ? null : 3)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">What happens to call recordings and transcripts?</h3>
                   <ChevronDown 
@@ -1246,7 +1246,7 @@ const PhoneCallers = () => {
                   />
                 </button>
                 {openFAQ === 3 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Every call is automatically transcribed and stored securely in your CRM or preferred system. You get full conversation logs, key highlights, sentiment analysis, and action items. All data is encrypted and compliant with privacy regulations. You can search past conversations, analyze trends, and use insights to improve your service.
                     </p>
@@ -1262,7 +1262,7 @@ const PhoneCallers = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 4 ? null : 4)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">Can the AI book appointments directly into our calendar?</h3>
                   <ChevronDown 
@@ -1272,7 +1272,7 @@ const PhoneCallers = () => {
                   />
                 </button>
                 {openFAQ === 4 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Yes! The AI integrates with popular calendar systems like Google Calendar, Outlook, and Calendly. It checks availability in real-time, books appointments, sends confirmations, and adds reminders. It handles rescheduling, cancellations, and time zone conversions automatically, ensuring your calendar stays perfectly organized.
                     </p>
@@ -1288,7 +1288,7 @@ const PhoneCallers = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 5 ? null : 5)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">What languages do the AI phone agents support?</h3>
                   <ChevronDown 
@@ -1298,7 +1298,7 @@ const PhoneCallers = () => {
                   />
                 </button>
                 {openFAQ === 5 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Our AI agents support 20+ languages including English, Spanish, French, German, Mandarin, Japanese, and more. They can detect the caller's language automatically and switch seamlessly, or use a specific language based on your business needs. This allows you to serve international customers without hiring multilingual staff.
                     </p>
@@ -1314,7 +1314,7 @@ const PhoneCallers = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 6 ? null : 6)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">How much does AI phone automation cost?</h3>
                   <ChevronDown 
@@ -1324,7 +1324,7 @@ const PhoneCallers = () => {
                   />
                 </button>
                 {openFAQ === 6 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Pricing starts at $500/month for basic phone answering service with up to 100 calls. More comprehensive solutions with advanced features, integrations, and higher call volumes range from $1,000-$3,000/month. We offer custom pricing based on your specific needs and call volume. <Link to="/book-consultation" className="text-indigo-400 hover:text-indigo-300 transition-colors">Book a consultation</Link> to discuss pricing.
                     </p>

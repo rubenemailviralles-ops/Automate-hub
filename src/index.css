@@ -1355,6 +1355,31 @@ select:focus-visible {
   * {
     -webkit-tap-highlight-color: transparent !important;
   }
+  
+  /* Fix mobile FAQ button selection outline */
+  button:focus,
+  button:active,
+  button:focus-visible {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+  }
+  
+  /* Prevent background movement on FAQ dropdowns */
+  .faq-container {
+    contain: layout style;
+    will-change: auto;
+  }
+  
+  /* Smooth FAQ transitions without affecting background */
+  .faq-dropdown {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
 }
 
 /* Mobile scroll popup: mimic hover when in-view */

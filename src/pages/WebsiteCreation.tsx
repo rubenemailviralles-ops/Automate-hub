@@ -810,7 +810,7 @@ const WebsiteCreation = () => {
             </ScrollReveal>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 faq-container">
             <ScrollReveal delay={200}>
               <div 
                 className="bg-white/5 border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10" 
@@ -818,7 +818,7 @@ const WebsiteCreation = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 0 ? null : 0)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">How long does it take to build a website?</h3>
                   <ChevronDown 
@@ -828,7 +828,7 @@ const WebsiteCreation = () => {
                   />
                 </button>
                 {openFAQ === 0 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Our typical website development timeline is 2-4 weeks, depending on complexity. Simple business websites can be completed in 2 weeks, while more complex sites with custom features, AI chatbots, and advanced integrations may take 3-4 weeks. We work efficiently while ensuring every detail meets our quality standards.
                     </p>
@@ -844,7 +844,7 @@ const WebsiteCreation = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 1 ? null : 1)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">Do you provide website hosting and maintenance?</h3>
                   <ChevronDown 
@@ -854,7 +854,7 @@ const WebsiteCreation = () => {
                   />
                 </button>
                 {openFAQ === 1 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Yes! We offer comprehensive hosting and maintenance packages. Your website will be hosted on enterprise-grade servers with 99.9% uptime guarantee. Our maintenance includes regular updates, security patches, backups, and technical support. You can focus on your business while we handle all technical aspects.
                     </p>
@@ -870,7 +870,7 @@ const WebsiteCreation = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 2 ? null : 2)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">Can you redesign my existing website?</h3>
                   <ChevronDown 
@@ -880,7 +880,7 @@ const WebsiteCreation = () => {
                   />
                 </button>
                 {openFAQ === 2 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Absolutely! We specialize in website redesigns and modernization. We'll analyze your current site, preserve what works, and transform outdated elements with modern design and AI-powered features. We can migrate your content, improve SEO, add automation, and create a fresh, conversion-focused design while maintaining your brand identity.
                     </p>
@@ -896,7 +896,7 @@ const WebsiteCreation = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 3 ? null : 3)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">Will my website be mobile-friendly and SEO optimized?</h3>
                   <ChevronDown 
@@ -906,7 +906,7 @@ const WebsiteCreation = () => {
                   />
                 </button>
                 {openFAQ === 3 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Every website we build is mobile-first and fully responsive, working perfectly on all devices. SEO optimization is built-in from day one with clean code structure, fast loading speeds, proper meta tags, structured data, and technical SEO best practices. We ensure your site ranks well and provides an excellent user experience on any device.
                     </p>
@@ -922,7 +922,7 @@ const WebsiteCreation = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 4 ? null : 4)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">What AI features can you integrate into my website?</h3>
                   <ChevronDown 
@@ -932,7 +932,7 @@ const WebsiteCreation = () => {
                   />
                 </button>
                 {openFAQ === 4 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       We integrate advanced AI features including 24/7 chatbots for customer support and lead capture, automated appointment scheduling, intelligent form analysis, personalized content recommendations, and behavior-based automation. These AI tools work seamlessly with your CRM, email marketing, and phone systems to create a complete automation ecosystem.
                     </p>
@@ -948,7 +948,7 @@ const WebsiteCreation = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 5 ? null : 5)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">Can I update the website content myself?</h3>
                   <ChevronDown 
@@ -958,7 +958,7 @@ const WebsiteCreation = () => {
                   />
                 </button>
                 {openFAQ === 5 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Yes! We build user-friendly content management systems that allow you to easily update text, images, blog posts, and other content without technical knowledge. We provide comprehensive training and documentation. For complex updates or technical changes, our support team is always available to assist you.
                     </p>
@@ -974,7 +974,7 @@ const WebsiteCreation = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 6 ? null : 6)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">What happens if I need changes after the website launches?</h3>
                   <ChevronDown 
@@ -984,7 +984,7 @@ const WebsiteCreation = () => {
                   />
                 </button>
                 {openFAQ === 6 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       We offer ongoing support and maintenance packages. Minor updates and tweaks are handled quickly, usually within 24-48 hours. For larger feature additions or redesigns, we'll provide a quote and timeline. All our websites are built with scalability in mind, making future enhancements straightforward and cost-effective.
                     </p>
@@ -1000,7 +1000,7 @@ const WebsiteCreation = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 7 ? null : 7)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">How much does a custom website cost?</h3>
                   <ChevronDown 
@@ -1010,7 +1010,7 @@ const WebsiteCreation = () => {
                   />
                 </button>
                 {openFAQ === 7 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Website costs vary based on complexity, features, and integrations needed. A basic business website starts around $2,500, while advanced sites with AI features, custom integrations, and automation can range from $5,000-$15,000+. We offer flexible payment plans and provide detailed quotes after understanding your specific requirements. <Link to="/book-consultation" className="text-blue-400 hover:text-blue-300 transition-colors">Book a free consultation</Link> to get a custom quote.
                     </p>

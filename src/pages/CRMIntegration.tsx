@@ -932,7 +932,7 @@ const CRMIntegration = () => {
             </ScrollReveal>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 faq-container">
             <ScrollReveal delay={200}>
               <div 
                 className="bg-white/5 border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10" 
@@ -940,7 +940,7 @@ const CRMIntegration = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 0 ? null : 0)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">Which CRM systems do you integrate with?</h3>
                   <ChevronDown 
@@ -950,7 +950,7 @@ const CRMIntegration = () => {
                   />
                 </button>
                 {openFAQ === 0 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       We integrate with all major CRM platforms including Salesforce, HubSpot, Pipedrive, Zoho CRM, Monday.com, ActiveCampaign, and many others. We also work with custom CRMs and can connect virtually any system through APIs. If your CRM has an API, we can integrate it seamlessly with your business processes.
                     </p>
@@ -966,7 +966,7 @@ const CRMIntegration = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 1 ? null : 1)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">How long does CRM integration take?</h3>
                   <ChevronDown 
@@ -976,7 +976,7 @@ const CRMIntegration = () => {
                   />
                 </button>
                 {openFAQ === 1 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Basic CRM integrations typically take 1-2 weeks, while complex multi-system integrations with custom workflows may take 3-4 weeks. The timeline depends on the number of systems being connected, data migration requirements, and custom automation rules. We provide a detailed project timeline after assessing your specific needs.
                     </p>
@@ -992,7 +992,7 @@ const CRMIntegration = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 2 ? null : 2)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">Will you migrate our existing data?</h3>
                   <ChevronDown 
@@ -1002,7 +1002,7 @@ const CRMIntegration = () => {
                   />
                 </button>
                 {openFAQ === 2 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Yes! We handle complete data migration including contacts, deals, tasks, notes, and custom fields. We ensure data integrity throughout the process, remove duplicates, validate information, and map fields correctly. Your historical data is preserved and properly organized in the new system without any loss.
                     </p>
@@ -1018,7 +1018,7 @@ const CRMIntegration = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 3 ? null : 3)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">Can you automate our sales and marketing workflows?</h3>
                   <ChevronDown 
@@ -1028,7 +1028,7 @@ const CRMIntegration = () => {
                   />
                 </button>
                 {openFAQ === 3 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Absolutely! We create intelligent automation workflows that handle lead assignment, follow-up sequences, deal stage progression, task creation, email campaigns, and much more. Our AI-powered automation can score leads, trigger actions based on customer behavior, and ensure no opportunity falls through the cracks.
                     </p>
@@ -1044,7 +1044,7 @@ const CRMIntegration = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 4 ? null : 4)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">What if we use multiple systems that need to work together?</h3>
                   <ChevronDown 
@@ -1054,7 +1054,7 @@ const CRMIntegration = () => {
                   />
                 </button>
                 {openFAQ === 4 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Multi-system integration is our specialty. We connect your CRM with email marketing platforms, phone systems, accounting software, project management tools, and more. Data flows seamlessly between systems in real-time, eliminating manual data entry and ensuring all your tools stay synchronized automatically.
                     </p>
@@ -1070,7 +1070,7 @@ const CRMIntegration = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 5 ? null : 5)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">Do you provide training on the integrated CRM system?</h3>
                   <ChevronDown 
@@ -1080,7 +1080,7 @@ const CRMIntegration = () => {
                   />
                 </button>
                 {openFAQ === 5 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Yes! We provide comprehensive training for your team including video tutorials, written documentation, and live training sessions. We ensure everyone understands how to use the automated workflows, where to find information, and how to leverage the system for maximum productivity. Ongoing support is available whenever you need it.
                     </p>
@@ -1096,7 +1096,7 @@ const CRMIntegration = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 6 ? null : 6)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">How secure is the data during integration?</h3>
                   <ChevronDown 
@@ -1106,7 +1106,7 @@ const CRMIntegration = () => {
                   />
                 </button>
                 {openFAQ === 6 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       Security is our top priority. We use encrypted connections, follow industry best practices, and comply with data protection regulations like GDPR. All API connections are secured with authentication tokens, data transfers are encrypted, and we never store sensitive information longer than necessary. Your data remains completely secure throughout the integration process.
                     </p>
@@ -1122,7 +1122,7 @@ const CRMIntegration = () => {
               >
                 <button
                   onClick={() => setOpenFAQ(openFAQ === 7 ? null : 7)}
-                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors focus:outline-none"
                 >
                   <h3 className="text-xl font-bold text-white">What does CRM integration cost?</h3>
                   <ChevronDown 
@@ -1132,7 +1132,7 @@ const CRMIntegration = () => {
                   />
                 </button>
                 {openFAQ === 7 && (
-                  <div className="px-6 pb-6">
+                  <div className="px-6 pb-6 faq-dropdown">
                     <p className="text-gray-400 leading-relaxed">
                       CRM integration pricing varies based on complexity. Basic single-system integrations start around $1,500, while comprehensive multi-system integrations with custom automation can range from $3,500-$10,000+. We offer flexible payment plans and provide detailed quotes after understanding your systems and requirements. <Link to="/book-consultation" className="text-purple-400 hover:text-purple-300 transition-colors">Schedule a consultation</Link> for a custom quote.
                     </p>

@@ -57,7 +57,7 @@ const Footer = () => {
   return (
     <footer className="seamless-section border-t border-white/5 py-20" role="contentinfo" aria-label="Site footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:justify-center gap-16">
+        <div className="flex flex-col md:flex-row md:justify-start gap-16">
           {/* Company Info */}
           <ScrollReveal delay={0}>
             <div className="md:w-80">

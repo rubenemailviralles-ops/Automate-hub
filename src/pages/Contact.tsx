@@ -125,8 +125,21 @@ const Contact = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
-          {/* Left Side - Contact Info */}
-          <div className="space-y-8">
+          {/* Mobile: Header stays above form, contact info moves below */}
+          <div className="lg:hidden">
+            {/* Mobile Header */}
+            <div className="mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                {t('contact.title')}
+              </h1>
+              <p className="text-xl text-gray-300 mb-8">
+                {t('contact.subtitle')}
+              </p>
+            </div>
+          </div>
+
+          {/* Desktop: Left Side - Contact Info */}
+          <div className="space-y-8 hidden lg:block">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
                   {t('contact.title')}
@@ -379,6 +392,63 @@ const Contact = () => {
                 </form>
               )}
             </div>
+
+          {/* Mobile: Contact Info below form */}
+          <div className="lg:hidden mt-12">
+            <div className="space-y-6">
+              <div className="flex items-center space-x-4">
+                <div 
+                  className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center relative"
+                  style={{
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  }}
+                >
+                  <Phone className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">Phone</h3>
+                  <p className="text-gray-400">(+27) 82 644 2575</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div 
+                  className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-2xl flex items-center justify-center relative"
+                  style={{
+                    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  }}
+                >
+                  <Mail className="w-8 h-8 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1">Email</h3>
+                  <p className="text-gray-400">automate.hub1@gmail.com</p>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-white mb-4">What to Expect:</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    Free consultation to understand your needs
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    Custom automation recommendations for websites, CRM systems, and phone systems
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    Clear timeline and next steps
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    No pressure, just helpful guidance
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       

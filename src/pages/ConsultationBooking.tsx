@@ -170,8 +170,46 @@ const ConsultationBooking = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
-            {/* Left Side - Content */}
-            <div className="animate-slide-in-left order-2 lg:order-1">
+            {/* Mobile: Header stays above form, benefits move below */}
+            <div className="lg:hidden">
+              {/* Mobile Header */}
+              <div className="animate-slide-in-left mb-8">
+                <div 
+                  className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-6 backdrop-blur-sm mobile-3d-tilt"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(59, 130, 246, 0.2)',
+                    transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
+                    perspective: '1000px',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(15px) scale(1.05)';
+                    e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.5), 0 4px 15px rgba(59, 130, 246, 0.3)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateZ(0) scale(1)';
+                    e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(59, 130, 246, 0.2)';
+                  }}
+                >
+                  <Calendar className="w-4 h-4 text-blue-400 mr-2" style={{ transform: 'translateZ(5px)' }} />
+                  <span className="text-blue-400 font-medium text-sm" style={{ transform: 'translateZ(5px)' }}>Free Consultation</span>
+                </div>
+
+                <TypeWriter 
+                  text="Book Your Free" 
+                  as="h1"
+                  className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight"
+                  delay={100}
+                >
+                  <span className="text-blue-400">
+                    Strategy Session
+                  </span>
+                </TypeWriter>
+              </div>
+            </div>
+
+            {/* Desktop: Left Side - Content */}
+            <div className="animate-slide-in-left hidden lg:block">
               <div 
                 className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-6 backdrop-blur-sm mobile-3d-tilt"
                 style={{
@@ -199,7 +237,7 @@ const ConsultationBooking = () => {
                 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight"
                 delay={100}
               >
-                <span className={`block ${isMobile ? 'text-blue-400' : 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'}`}>
+                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                   Strategy Session
                 </span>
               </TypeWriter>
@@ -616,6 +654,82 @@ const ConsultationBooking = () => {
               <ArrowLeft className="mr-2 w-4 h-4" />
               Back to Homepage
             </button>
+          </div>
+
+          {/* Mobile: Benefits content below form */}
+          <div className="lg:hidden mt-12">
+            <ScrollReveal delay={200}>
+              <p className="text-base text-gray-400 mb-8 leading-relaxed">
+                Ready to transform your business with AI automation? Explore our <Link to="/website-creation" className="text-blue-400 hover:text-blue-300 transition-colors">website development</Link>, <Link to="/crm-integration" className="text-purple-400 hover:text-purple-300 transition-colors">CRM automation</Link>, <Link to="/phone-callers" className="text-indigo-400 hover:text-indigo-300 transition-colors">AI calling services</Link>, and <Link to="/email-outreach" className="text-pink-400 hover:text-pink-300 transition-colors">email marketing automation</Link>. <Link to="/#roi-calculator" className="text-green-400 hover:text-green-300 transition-colors font-semibold">Check your ROI potential</Link> then schedule a personalized consultation.
+              </p>
+            </ScrollReveal>
+
+            <div className="space-y-4 mb-8">
+              <ScrollReveal delay={300}>
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold mb-1">100% Free</h3>
+                    <p className="text-gray-400 text-sm">No hidden costs or obligations</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={400}>
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold mb-1">30 Minute Session</h3>
+                    <p className="text-gray-400 text-sm">Focused strategy discussion</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={500}>
+                <div className="flex items-start space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold mb-1">Custom Plan</h3>
+                    <p className="text-gray-400 text-sm">Tailored recommendations for your business</p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
+
+            <ScrollReveal delay={600}>
+              <div 
+                className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-xl p-4 mobile-3d-tilt relative"
+                style={{
+                  transformStyle: 'preserve-3d',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
+                  transition: 'transform 0.1s ease-out, border-color 0.3s',
+                  perspective: '1000px',
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const x = e.clientX - rect.left;
+                  const y = e.clientY - rect.top;
+                  const centerX = rect.width / 2;
+                  const centerY = rect.height / 2;
+                  const rotateX = (y - centerY) / 40;
+                  const rotateY = (centerX - x) / 40;
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(5px)`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+                }}
+              >
+                <p className="text-gray-300 text-sm" style={{ transform: 'translateZ(10px)' }}>
+                  <span className="text-white font-bold">What you'll get:</span> Expert insights, automation roadmap, ROI analysis, and clear next stepsΓÇöall in one session.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>

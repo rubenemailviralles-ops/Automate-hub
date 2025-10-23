@@ -337,7 +337,7 @@
 
 @keyframes fadeIn {
   from {
-    opacity: 0;
+    opacity: 0.8;
   }
   to {
     opacity: 1;
@@ -346,7 +346,7 @@
 
 @keyframes fadeInUp {
   from {
-    opacity: 0;
+    opacity: 0.8;
     transform: translateY(40px);
   }
   to {
@@ -357,7 +357,7 @@
 
 @keyframes slideInUp {
   from {
-    opacity: 0;
+    opacity: 0.8;
     transform: translateY(100px) scale(0.95);
   }
   to {
@@ -368,7 +368,7 @@
 
 @keyframes slideInLeft {
   from {
-    opacity: 0;
+    opacity: 0.8;
     transform: translateX(-50px);
   }
   to {
@@ -379,7 +379,7 @@
 
 @keyframes slideInRight {
   from {
-    opacity: 0;
+    opacity: 0.8;
     transform: translateX(50px);
   }
   to {
@@ -390,7 +390,7 @@
 
 @keyframes scaleIn {
   from {
-    opacity: 0;
+    opacity: 0.8;
     transform: scale(0.9);
   }
   to {
@@ -403,23 +403,23 @@
 @keyframes galaxyOrbit1 {
   0% {
     transform: translate(0px, 0px) scale(1);
-    opacity: 0;
+    opacity: 0.8;
   }
   3% {
-    opacity: 0.5;
+    opacity: 0.9;
   }
   8% {
     transform: translate(120px, -80px) scale(1.05);
-    opacity: 0.75;
+    opacity: 0.95;
   }
   15% {
     transform: translate(280px, -150px) scale(1.12);
-    opacity: 0.88;
+    opacity: 1;
   }
   22% {
     /* Approaching collision */
     transform: translate(380px, -180px) scale(1.18);
-    opacity: 0.95;
+    opacity: 1;
   }
   28% {
     /* COLLISION - Galaxy impact with distortion */
@@ -433,34 +433,34 @@
   40% {
     /* Recovery phase */
     transform: translate(450px, -160px) scale(1.05);
-    opacity: 0.82;
+    opacity: 0.9;
   }
   48% {
     transform: translate(420px, -100px) scale(1);
-    opacity: 0.7;
+    opacity: 0.8;
   }
   58% {
     transform: translate(280px, 40px) scale(0.95);
-    opacity: 0.55;
+    opacity: 0.7;
   }
   68% {
     transform: translate(120px, 120px) scale(1.02);
-    opacity: 0.7;
+    opacity: 0.8;
   }
   78% {
     transform: translate(-60px, 80px) scale(1.05);
-    opacity: 0.8;
+    opacity: 0.9;
   }
   88% {
     transform: translate(-30px, 40px) scale(1);
-    opacity: 0.65;
+    opacity: 0.8;
   }
   95% {
-    opacity: 0.3;
+    opacity: 0.7;
   }
   100% {
     transform: translate(0px, 0px) scale(1);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px);
   }
 }
@@ -468,11 +468,11 @@
 @keyframes galaxyOrbit2 {
   0% {
     transform: translate(0px, 0px) scale(1) rotate(0deg);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px);
   }
   5% {
-    opacity: 0.6;
+    opacity: 0.9;
   }
   12% {
     transform: translate(-150px, 100px) scale(1.08) rotate(20deg);
@@ -533,7 +533,7 @@
   }
   100% {
     transform: translate(0px, 0px) scale(1) rotate(0deg);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px);
   }
 }
@@ -541,7 +541,7 @@
 @keyframes galaxyOrbit3 {
   0% {
     transform: translate(0px, 0px) scale(1);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px) hue-rotate(0deg);
   }
   4% {
@@ -606,7 +606,7 @@
   }
   100% {
     transform: translate(0px, 0px) scale(1);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px) hue-rotate(0deg);
   }
 }
@@ -614,7 +614,7 @@
 @keyframes galaxyOrbit4 {
   0% {
     transform: translate(0px, 0px) scale(1) rotate(0deg);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px);
   }
   4% {
@@ -679,7 +679,7 @@
   }
   100% {
     transform: translate(0px, 0px) scale(1) rotate(0deg);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px);
   }
 }
@@ -688,7 +688,7 @@
 @keyframes galaxyOrbit5 {
   0% {
     transform: translate(0px, 0px) scale(1);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px);
   }
   5% {
@@ -730,7 +730,7 @@
   }
   100% {
     transform: translate(0px, 0px) scale(1);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px);
   }
 }
@@ -738,7 +738,7 @@
 @keyframes galaxyOrbit6 {
   0% {
     transform: translate(0px, 0px) scale(1) rotate(0deg);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px);
   }
   6% {
@@ -780,7 +780,7 @@
   }
   100% {
     transform: translate(0px, 0px) scale(1) rotate(0deg);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px);
   }
 }
@@ -788,7 +788,7 @@
 @keyframes galaxyOrbit7 {
   0% {
     transform: translate(0px, 0px) scale(1);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px);
   }
   4% {
@@ -830,7 +830,7 @@
   }
   100% {
     transform: translate(0px, 0px) scale(1);
-    opacity: 0;
+    opacity: 0.8;
     filter: blur(60px);
   }
 }
@@ -960,34 +960,76 @@ h6:not(:has(.bg-clip-text)) {
     transform: translateY(-140px);
   }
 
-  /* Mobile orb rebuild - hide extra orbs, keep only 3 spaced out orbs using exact PC animations */
-  .floating-orb-4,
-  .floating-orb-5,
-  .floating-orb-6,
-  .floating-orb-7 {
-    display: none !important;
+  /* Mobile orb rebuild - add orbs for top, middle, and bottom sections */
+  .floating-orb-4 {
+    display: block !important;
+    width: 220px;
+    height: 220px;
+    top: 5%;
+    right: 10%;
+    background: rgba(59, 130, 246, 0.3);
+    filter: blur(35px);
+    opacity: 0.8;
+    animation: galaxyOrbit1 20s ease-in-out infinite;
   }
 
-  /* Make remaining orbs smaller and more spaced out for mobile */
-  .floating-orb-1 {
+  .floating-orb-5 {
+    display: block !important;
     width: 200px;
     height: 200px;
-    top: 15%;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(168, 85, 247, 0.25);
+    filter: blur(40px);
+    opacity: 0.7;
+    animation: galaxyOrbit2 25s ease-in-out infinite;
+  }
+
+  .floating-orb-6 {
+    display: block !important;
+    width: 180px;
+    height: 180px;
+    bottom: 10%;
+    right: 20%;
+    background: rgba(34, 197, 94, 0.3);
+    filter: blur(30px);
+    opacity: 0.6;
+    animation: galaxyOrbit3 18s ease-in-out infinite;
+  }
+
+  /* Make existing orbs more visible and remove disappearing effect */
+  .floating-orb-1 {
+    width: 250px;
+    height: 250px;
+    top: 10%;
     left: 5%;
+    background: rgba(99, 102, 241, 0.4);
+    filter: blur(35px);
+    opacity: 0.9;
+    animation: galaxyOrbit1 22s ease-in-out infinite;
   }
 
   .floating-orb-2 {
-    width: 250px;
-    height: 250px;
-    top: 70%;
+    width: 280px;
+    height: 280px;
+    top: 60%;
     right: 5%;
+    background: rgba(168, 85, 247, 0.35);
+    filter: blur(40px);
+    opacity: 0.8;
+    animation: galaxyOrbit2 26s ease-in-out infinite;
   }
 
   .floating-orb-3 {
-    width: 180px;
-    height: 180px;
-    bottom: 25%;
-    left: 15%;
+    width: 200px;
+    height: 200px;
+    bottom: 20%;
+    left: 10%;
+    background: rgba(236, 72, 153, 0.3);
+    filter: blur(32px);
+    opacity: 0.7;
+    animation: galaxyOrbit3 20s ease-in-out infinite;
   }
 }
 
@@ -1087,7 +1129,7 @@ h6:not(:has(.bg-clip-text)) {
 
 @keyframes dropdownFadeIn {
   from {
-    opacity: 0;
+    opacity: 0.8;
     transform: translateY(6px) scale(0.98);
   }
   to {
@@ -1104,7 +1146,7 @@ h6:not(:has(.bg-clip-text)) {
 
 @keyframes mobileMenuFadeIn {
   from {
-    opacity: 0;
+    opacity: 0.8;
     transform: translateY(-8px) scaleY(0.97);
   }
   to {

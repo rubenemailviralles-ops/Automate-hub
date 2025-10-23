@@ -1,5 +1,5 @@
-import React from 'react';
-import { Mail, Target, BarChart3, Users, Zap, TrendingUp, ArrowLeft, CheckCircle, ArrowRight, Sparkles, Network } from 'lucide-react';
+import React, { useState } from 'react';
+import { Mail, Target, BarChart3, Users, Zap, TrendingUp, ArrowLeft, CheckCircle, ArrowRight, Sparkles, Network, ChevronDown } from 'lucide-react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import CTASection from '../components/CTASection';
 import TypeWriter from '../components/TypeWriter';
@@ -14,6 +14,7 @@ const EmailOutreach = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const location = useLocation();
+  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   
   return (
     <div className="pt-20">
@@ -814,78 +815,183 @@ const EmailOutreach = () => {
           <div className="space-y-6">
             <ScrollReveal delay={200}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
+                className="bg-white/5 border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10" 
+                style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
-                <h3 className="text-xl font-bold text-white mb-3">How does AI personalization work for emails?</h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Our AI analyzes each prospect's digital footprint including their website, social media, company news, and industry trends. It then crafts unique, personalized email content that references specific details about their business, challenges, and opportunities. This makes each email feel like it was written by a human who researched them personally, dramatically increasing response rates.
-                </p>
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === 0 ? null : 0)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                >
+                  <h3 className="text-xl font-bold text-white">How does AI personalization work for emails?</h3>
+                  <ChevronDown 
+                    className={`w-5 h-5 text-white transition-transform duration-300 ${
+                      openFAQ === 0 ? 'rotate-180' : ''
+                    }`} 
+                  />
+                </button>
+                {openFAQ === 0 && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-400 leading-relaxed">
+                      Our AI analyzes each prospect's digital footprint including their website, social media, company news, and industry trends. It then crafts unique, personalized email content that references specific details about their business, challenges, and opportunities. This makes each email feel like it was written by a human who researched them personally, dramatically increasing response rates.
+                    </p>
+                  </div>
+                )}
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={250}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
+                className="bg-white/5 border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10" 
+                style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
-                <h3 className="text-xl font-bold text-white mb-3">How many emails can I send per day?</h3>
-                <p className="text-gray-400 leading-relaxed">
-                  We recommend starting with 50-100 emails per day per sending account to maintain optimal deliverability. Our system includes email warmup protocols that gradually increase volume over time. For larger campaigns, we can set up multiple sending accounts with domain rotation, allowing you to scale to thousands of emails daily while maintaining high inbox placement rates.
-                </p>
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === 1 ? null : 1)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                >
+                  <h3 className="text-xl font-bold text-white">How many emails can I send per day?</h3>
+                  <ChevronDown 
+                    className={`w-5 h-5 text-white transition-transform duration-300 ${
+                      openFAQ === 1 ? 'rotate-180' : ''
+                    }`} 
+                  />
+                </button>
+                {openFAQ === 1 && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-400 leading-relaxed">
+                      We recommend starting with 50-100 emails per day per sending account to maintain optimal deliverability. Our system includes email warmup protocols that gradually increase volume over time. For larger campaigns, we can set up multiple sending accounts with domain rotation, allowing you to scale to thousands of emails daily while maintaining high inbox placement rates.
+                    </p>
+                  </div>
+                )}
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
+                className="bg-white/5 border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10" 
+                style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
-                <h3 className="text-xl font-bold text-white mb-3">Will my emails end up in spam folders?</h3>
-                <p className="text-gray-400 leading-relaxed">
-                  We implement comprehensive deliverability best practices including proper SPF, DKIM, and DMARC setup, email warmup protocols, spam score checking, and content optimization. We monitor sender reputation, use rotating IP addresses, and follow all email service provider guidelines. Our typical inbox placement rate is 85-95%, far above industry averages.
-                </p>
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === 2 ? null : 2)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                >
+                  <h3 className="text-xl font-bold text-white">Will my emails end up in spam folders?</h3>
+                  <ChevronDown 
+                    className={`w-5 h-5 text-white transition-transform duration-300 ${
+                      openFAQ === 2 ? 'rotate-180' : ''
+                    }`} 
+                  />
+                </button>
+                {openFAQ === 2 && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-400 leading-relaxed">
+                      We implement comprehensive deliverability best practices including proper SPF, DKIM, and DMARC setup, email warmup protocols, spam score checking, and content optimization. We monitor sender reputation, use rotating IP addresses, and follow all email service provider guidelines. Our typical inbox placement rate is 85-95%, far above industry averages.
+                    </p>
+                  </div>
+                )}
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={350}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
+                className="bg-white/5 border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10" 
+                style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
-                <h3 className="text-xl font-bold text-white mb-3">Can you write the email content for us?</h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Yes! Our AI can generate complete email sequences based on your offer, target audience, and goals. We create subject lines, body copy, and calls-to-action optimized for conversions. You'll review and approve all content before campaigns launch. We also provide templates and frameworks if you prefer to write your own content with AI assistance.
-                </p>
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === 3 ? null : 3)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                >
+                  <h3 className="text-xl font-bold text-white">Can you write the email content for us?</h3>
+                  <ChevronDown 
+                    className={`w-5 h-5 text-white transition-transform duration-300 ${
+                      openFAQ === 3 ? 'rotate-180' : ''
+                    }`} 
+                  />
+                </button>
+                {openFAQ === 3 && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-400 leading-relaxed">
+                      Yes! Our AI can generate complete email sequences based on your offer, target audience, and goals. We create subject lines, body copy, and calls-to-action optimized for conversions. You'll review and approve all content before campaigns launch. We also provide templates and frameworks if you prefer to write your own content with AI assistance.
+                    </p>
+                  </div>
+                )}
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={400}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
+                className="bg-white/5 border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10" 
+                style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
-                <h3 className="text-xl font-bold text-white mb-3">How do you handle email responses and follow-ups?</h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Our system automatically detects replies and stops automated sequences immediately to prevent awkward follow-ups. Responses are logged in your CRM with notifications sent to your team. The AI can even analyze response sentiment and categorize replies (interested, not interested, out of office) to help you prioritize your manual outreach efforts.
-                </p>
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === 4 ? null : 4)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                >
+                  <h3 className="text-xl font-bold text-white">How do you handle email responses and follow-ups?</h3>
+                  <ChevronDown 
+                    className={`w-5 h-5 text-white transition-transform duration-300 ${
+                      openFAQ === 4 ? 'rotate-180' : ''
+                    }`} 
+                  />
+                </button>
+                {openFAQ === 4 && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-400 leading-relaxed">
+                      Our system automatically detects replies and stops automated sequences immediately to prevent awkward follow-ups. Responses are logged in your CRM with notifications sent to your team. The AI can even analyze response sentiment and categorize replies (interested, not interested, out of office) to help you prioritize your manual outreach efforts.
+                    </p>
+                  </div>
+                )}
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={450}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
+                className="bg-white/5 border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10" 
+                style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
-                <h3 className="text-xl font-bold text-white mb-3">Can I A/B test different email variations?</h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Absolutely! Our platform includes advanced A/B testing capabilities. Test different subject lines, email copy, send times, calls-to-action, and more. The system automatically tracks performance metrics and can even auto-select winning variations to maximize your results. You get detailed analytics showing what works best for your audience.
-                </p>
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === 5 ? null : 5)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                >
+                  <h3 className="text-xl font-bold text-white">Can I A/B test different email variations?</h3>
+                  <ChevronDown 
+                    className={`w-5 h-5 text-white transition-transform duration-300 ${
+                      openFAQ === 5 ? 'rotate-180' : ''
+                    }`} 
+                  />
+                </button>
+                {openFAQ === 5 && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-400 leading-relaxed">
+                      Absolutely! Our platform includes advanced A/B testing capabilities. Test different subject lines, email copy, send times, calls-to-action, and more. The system automatically tracks performance metrics and can even auto-select winning variations to maximize your results. You get detailed analytics showing what works best for your audience.
+                    </p>
+                  </div>
+                )}
               </div>
             </ScrollReveal>
 
             <ScrollReveal delay={500}>
               <div 
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-white/20 hover:bg-white/10" style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
+                className="bg-white/5 border border-white/10 rounded-2xl transition-all duration-300 hover:border-white/20 hover:bg-white/10" 
+                style={{ boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)' }}
               >
-                <h3 className="text-xl font-bold text-white mb-3">How much does email automation cost?</h3>
-                <p className="text-gray-400 leading-relaxed">
-                  Email automation pricing starts at $300/month for up to 1,000 contacts and 10,000 emails. Advanced plans with AI personalization, unlimited sending, and premium features range from $800-$2,500/month. Enterprise solutions with dedicated IPs and custom integrations are available. <Link to="/book-consultation" className="text-pink-400 hover:text-pink-300 transition-colors">Get a custom quote</Link> based on your needs.
-                </p>
+                <button
+                  onClick={() => setOpenFAQ(openFAQ === 6 ? null : 6)}
+                  className="w-full p-6 text-left flex items-center justify-between hover:bg-white/5 transition-colors"
+                >
+                  <h3 className="text-xl font-bold text-white">How much does email automation cost?</h3>
+                  <ChevronDown 
+                    className={`w-5 h-5 text-white transition-transform duration-300 ${
+                      openFAQ === 6 ? 'rotate-180' : ''
+                    }`} 
+                  />
+                </button>
+                {openFAQ === 6 && (
+                  <div className="px-6 pb-6">
+                    <p className="text-gray-400 leading-relaxed">
+                      Email automation pricing starts at $300/month for up to 1,000 contacts and 10,000 emails. Advanced plans with AI personalization, unlimited sending, and premium features range from $800-$2,500/month. Enterprise solutions with dedicated IPs and custom integrations are available. <Link to="/book-consultation" className="text-pink-400 hover:text-pink-300 transition-colors">Get a custom quote</Link> based on your needs.
+                    </p>
+                  </div>
+                )}
               </div>
             </ScrollReveal>
           </div>

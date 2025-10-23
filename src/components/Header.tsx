@@ -223,7 +223,7 @@ const Header = () => {
                       key={service.path}
                       to={service.path}
                       role="menuitem"
-                      className="block px-4 py-3 text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                      className="block px-4 py-3 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                       onClick={(e) => {
                         handleServiceClick(service.path, e);
                         if (service.path === '/website-creation') handleWebsiteCreationClick(e);

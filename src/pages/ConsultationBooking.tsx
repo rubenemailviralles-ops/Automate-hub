@@ -171,7 +171,7 @@ const ConsultationBooking = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             
             {/* Left Side - Content */}
-            <div className="animate-slide-in-left">
+            <div className="animate-slide-in-left order-2 lg:order-1">
               <div 
                 className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-6 backdrop-blur-sm mobile-3d-tilt"
                 style={{
@@ -279,7 +279,7 @@ const ConsultationBooking = () => {
             </div>
 
             {/* Right Side - Form */}
-            <div className="animate-slide-in-right">
+            <div className="animate-slide-in-right order-1 lg:order-2">
               <div 
                 className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm shadow-2xl mobile-3d-popup relative"
                 style={{

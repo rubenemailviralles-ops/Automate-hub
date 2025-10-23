@@ -396,6 +396,28 @@ const Contact = () => {
           {/* Mobile: Contact Info below form */}
           <div className="lg:hidden mt-12">
             <div className="space-y-6">
+              <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-white mb-4">What to Expect:</h3>
+                <ul className="space-y-3 text-gray-300">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    Free consultation to understand your needs
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    Custom automation recommendations for websites, CRM systems, and phone systems
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    Clear timeline and next steps
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
+                    No pressure, just helpful guidance
+                  </li>
+                </ul>
+              </div>
+
               <div className="flex items-center space-x-4">
                 <div 
                   className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center relative"
@@ -424,28 +446,6 @@ const Contact = () => {
                   <h3 className="text-lg font-semibold text-white mb-1">Email</h3>
                   <p className="text-gray-400">automate.hub1@gmail.com</p>
                 </div>
-              </div>
-
-              <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-6">
-                <h3 className="text-lg font-semibold text-white mb-4">What to Expect:</h3>
-                <ul className="space-y-3 text-gray-300">
-                  <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                    Free consultation to understand your needs
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                    Custom automation recommendations for websites, CRM systems, and phone systems
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                    Clear timeline and next steps
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-green-400 mr-3 mt-0.5 flex-shrink-0" />
-                    No pressure, just helpful guidance
-                  </li>
-                </ul>
               </div>
             </div>
           </div>

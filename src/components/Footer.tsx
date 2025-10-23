@@ -110,11 +110,11 @@ const Footer = () => {
             </div>
           </ScrollReveal>
 
-          {/* Mobile: Services and Company aligned with bottom links */}
-          <div className="flex flex-col md:contents gap-8 md:gap-0">
+          {/* Mobile: Services and Company side by side, aligned with bottom links */}
+          <div className="flex flex-row md:contents gap-8 md:gap-0">
             {/* Services - aligned with Privacy Policy */}
             <ScrollReveal delay={100}>
-              <div className="w-full md:w-48">
+              <div className="w-1/2 md:w-48">
                 <nav aria-label="Services links">
                 <h3 className="text-base font-bold text-white mb-4">Services</h3>
                 <ul className="space-y-2">
@@ -136,7 +136,7 @@ const Footer = () => {
 
             {/* Company - aligned with Cookie Policy */}
             <ScrollReveal delay={200}>
-              <div className="w-full md:w-48">
+              <div className="w-1/2 md:w-48">
                 <nav aria-label="Company links">
                 <h3 className="text-base font-bold text-white mb-4">Company</h3>
                 <ul className="space-y-2">

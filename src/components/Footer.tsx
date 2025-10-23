@@ -110,8 +110,19 @@ const Footer = () => {
             </div>
           </ScrollReveal>
 
-          {/* Services */}
+          {/* Company */}
           <ScrollReveal delay={100}>
+            <nav aria-label="Company links">
+              <h3 className="text-base font-bold text-white mb-4">Company</h3>
+              <ul className="space-y-2">
+                <li><button onClick={handleAboutClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text" aria-label="Navigate to about us page">About Us</button></li>
+                <li><button onClick={handlePhoneClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text" aria-label="Navigate to contact page">Contact</button></li>
+              </ul>
+            </nav>
+          </ScrollReveal>
+
+          {/* Services */}
+          <ScrollReveal delay={200}>
             <nav aria-label="Services links">
               <h3 className="text-base font-bold text-white mb-4">Services</h3>
               <ul className="space-y-2">
@@ -126,17 +137,6 @@ const Footer = () => {
                     </button>
                   </li>
                 ))}
-              </ul>
-            </nav>
-          </ScrollReveal>
-
-          {/* Company */}
-          <ScrollReveal delay={200}>
-            <nav aria-label="Company links">
-              <h3 className="text-base font-bold text-white mb-4">Company</h3>
-              <ul className="space-y-2">
-                <li><button onClick={handleAboutClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text" aria-label="Navigate to about us page">About Us</button></li>
-                <li><button onClick={handlePhoneClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text" aria-label="Navigate to contact page">Contact</button></li>
               </ul>
             </nav>
           </ScrollReveal>

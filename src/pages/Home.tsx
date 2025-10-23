@@ -240,7 +240,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section - moved from bottom of page */}
-      <section className="py-4 seamless-section">
+      <section className="py-2 seamless-section">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal delay={600}>
             <div 

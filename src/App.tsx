@@ -4,6 +4,7 @@ import { useMobileHover } from './hooks/useMobileHover';
 import { useChatbotPosition } from './hooks/useChatbotPosition';
 import { useRemoveBoltBranding } from './hooks/useRemoveBoltBranding';
 import { initMobileScrollPopup, refreshMobileScrollPopup } from './utils/mobileScrollPopup';
+import { initializeAnalytics, trackPageView, trackSessionEnd } from './utils/analytics';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -59,6 +60,10 @@ function ScrollToTop() {
       }
     }
     
+    // Track page view for analytics
+    const pageTitle = document.title || 'Automate Hub';
+    trackPageView(pageTitle, pathname);
+    
     // Reinitialize mobile hover effects when route changes
     reinitialize();
     
@@ -85,6 +90,22 @@ function App() {
 
   // Remove external branding overlays
   useRemoveBoltBranding();
+
+  // Initialize analytics tracking
+  useEffect(() => {
+    initializeAnalytics();
+    
+    // Track session end when user leaves
+    const handleBeforeUnload = () => {
+      trackSessionEnd();
+    };
+    
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
 
   return (

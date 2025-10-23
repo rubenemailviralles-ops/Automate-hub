@@ -8,7 +8,8 @@ import {
   Menu, 
   X,
   Bot,
-  Download
+  Download,
+  BarChart3
 } from 'lucide-react'
 
 interface LayoutProps {
@@ -23,6 +24,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     { name: 'Dashboard', href: '/', icon: Home },
     { name: 'Contact Messages', href: '/contact', icon: MessageSquare },
     { name: 'Consultations', href: '/consultations', icon: Calendar },
+    { name: 'Analytics', href: '/analytics', icon: BarChart3 },
     { name: 'Archives', href: '/archives', icon: Archive },
     { name: 'Install App', href: '/install', icon: Download },
   ]

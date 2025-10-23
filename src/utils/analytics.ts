@@ -1,11 +1,15 @@
 /**
- * Google Analytics Tracking Utilities
+ * Enhanced Analytics Tracking Utilities
+ * 
+ * Tracks events to both Google Analytics and custom Supabase analytics
  * 
  * Usage:
- * import { trackEvent, trackPageView } from '@/utils/analytics';
+ * import { trackEvent, trackPageView, trackButtonClick } from '@/utils/analytics';
  * 
  * trackEvent('button_click', { button_name: 'Book Consultation' });
  */
+
+import { supabase } from '../lib/supabase';
 
 // Extend Window interface to include gtag
 declare global {
@@ -19,31 +23,143 @@ declare global {
   }
 }
 
+// Generate a unique session ID
+const getSessionId = (): string => {
+  let sessionId = sessionStorage.getItem('analytics_session_id');
+  if (!sessionId) {
+    sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    sessionStorage.setItem('analytics_session_id', sessionId);
+  }
+  return sessionId;
+};
+
+// Get user agent info
+const getUserInfo = () => {
+  const userAgent = navigator.userAgent;
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+  const isTablet = /iPad|Android(?=.*\bMobile\b)/i.test(userAgent);
+  
+  let deviceType = 'desktop';
+  if (isMobile) deviceType = 'mobile';
+  else if (isTablet) deviceType = 'tablet';
+
+  return {
+    userAgent,
+    deviceType,
+    browser: getBrowserName(userAgent),
+    os: getOSName(userAgent)
+  };
+};
+
+const getBrowserName = (userAgent: string): string => {
+  if (userAgent.includes('Chrome')) return 'Chrome';
+  if (userAgent.includes('Firefox')) return 'Firefox';
+  if (userAgent.includes('Safari')) return 'Safari';
+  if (userAgent.includes('Edge')) return 'Edge';
+  return 'Other';
+};
+
+const getOSName = (userAgent: string): string => {
+  if (userAgent.includes('Windows')) return 'Windows';
+  if (userAgent.includes('Mac')) return 'macOS';
+  if (userAgent.includes('Linux')) return 'Linux';
+  if (userAgent.includes('Android')) return 'Android';
+  if (userAgent.includes('iOS')) return 'iOS';
+  return 'Other';
+};
+
 /**
- * Track custom events in Google Analytics
+ * Track custom events in both Google Analytics and Supabase
  * @param eventName - Name of the event (e.g., 'button_click', 'form_submit')
  * @param eventParams - Additional parameters for the event
  */
-export const trackEvent = (
+export const trackEvent = async (
   eventName: string,
   eventParams?: Record<string, any>
 ) => {
+  // Track in Google Analytics
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, eventParams);
+  }
+
+  // Track in Supabase
+  try {
+    const sessionId = getSessionId();
+    const userInfo = getUserInfo();
+    
+    await supabase.from('analytics_events').insert({
+      event_type: eventParams?.event_type || 'custom',
+      event_name: eventName,
+      page_path: window.location.pathname,
+      user_agent: userInfo.userAgent,
+      session_id: sessionId,
+      metadata: {
+        ...eventParams,
+        device_type: userInfo.deviceType,
+        browser: userInfo.browser,
+        os: userInfo.os,
+        timestamp: new Date().toISOString()
+      }
+    });
+  } catch (error) {
+    console.error('Error tracking event:', error);
   }
 };
 
 /**
- * Track page views (useful for SPA navigation)
+ * Track page views in both Google Analytics and Supabase
  * @param pageTitle - Title of the page
  * @param pagePath - Path of the page
  */
-export const trackPageView = (pageTitle: string, pagePath: string) => {
+export const trackPageView = async (pageTitle: string, pagePath: string) => {
+  // Track in Google Analytics
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'page_view', {
       page_title: pageTitle,
       page_path: pagePath,
     });
+  }
+
+  // Track in Supabase
+  try {
+    const sessionId = getSessionId();
+    const userInfo = getUserInfo();
+    
+    // Insert page view
+    await supabase.from('analytics_page_views').insert({
+      session_id: sessionId,
+      page_path: pagePath,
+      page_title: pageTitle,
+      referrer: document.referrer,
+      metadata: {
+        device_type: userInfo.deviceType,
+        browser: userInfo.browser,
+        os: userInfo.os
+      }
+    });
+
+    // Update or create session
+    await supabase.from('analytics_sessions').upsert({
+      session_id: sessionId,
+      user_agent: userInfo.userAgent,
+      device_type: userInfo.deviceType,
+      browser: userInfo.browser,
+      os: userInfo.os,
+      page_views: 1,
+      events_count: 0
+    }, {
+      onConflict: 'session_id',
+      ignoreDuplicates: false
+    });
+
+    // Track as event
+    await trackEvent('page_view', {
+      event_type: 'page_view',
+      page_title: pageTitle,
+      page_path: pagePath
+    });
+  } catch (error) {
+    console.error('Error tracking page view:', error);
   }
 };
 
@@ -52,50 +168,40 @@ export const trackPageView = (pageTitle: string, pagePath: string) => {
  * @param buttonName - Name/label of the button
  * @param location - Where the button is located (e.g., 'hero', 'footer')
  */
-export const trackButtonClick = (buttonName: string, location?: string) => {
-  trackEvent('button_click', {
+export const trackButtonClick = async (buttonName: string, location?: string) => {
+  await trackEvent('button_click', {
+    event_type: 'button_click',
     button_name: buttonName,
-    button_location: location,
+    location: location,
+    page_path: window.location.pathname
   });
 };
 
 /**
  * Track form submissions
- * @param formName - Name of the form (e.g., 'contact', 'consultation')
+ * @param formName - Name of the form
  * @param success - Whether the submission was successful
  */
-export const trackFormSubmit = (formName: string, success: boolean = true) => {
-  trackEvent('form_submit', {
+export const trackFormSubmit = async (formName: string, success: boolean = true) => {
+  await trackEvent('form_submit', {
+    event_type: 'form_submit',
     form_name: formName,
     success: success,
+    page_path: window.location.pathname
   });
 };
 
 /**
- * Track outbound link clicks
- * @param url - The URL being clicked
- * @param linkText - Text of the link
- */
-export const trackOutboundLink = (url: string, linkText?: string) => {
-  trackEvent('click', {
-    event_category: 'outbound',
-    event_label: linkText || url,
-    transport_type: 'beacon',
-    event_callback: () => {
-      // Callback after tracking
-    },
-  });
-};
-
-/**
- * Track CTA (Call-to-Action) clicks
+ * Track CTA clicks
  * @param ctaName - Name of the CTA
- * @param ctaLocation - Location of the CTA
+ * @param location - Where the CTA is located
  */
-export const trackCTAClick = (ctaName: string, ctaLocation: string) => {
-  trackEvent('cta_click', {
+export const trackCTAClick = async (ctaName: string, location?: string) => {
+  await trackEvent('cta_click', {
+    event_type: 'cta_click',
     cta_name: ctaName,
-    cta_location: ctaLocation,
+    location: location,
+    page_path: window.location.pathname
   });
 };
 
@@ -103,48 +209,85 @@ export const trackCTAClick = (ctaName: string, ctaLocation: string) => {
  * Track service page views
  * @param serviceName - Name of the service
  */
-export const trackServiceView = (serviceName: string) => {
-  trackEvent('service_view', {
+export const trackServiceView = async (serviceName: string) => {
+  await trackEvent('service_view', {
+    event_type: 'service_view',
     service_name: serviceName,
+    page_path: window.location.pathname
   });
 };
 
 /**
  * Track consultation bookings
- * @param source - Where the booking originated from
+ * @param step - Which step of the booking process
  */
-export const trackConsultationBooking = (source: string) => {
-  trackEvent('consultation_booking', {
-    booking_source: source,
-    value: 1, // You can assign a monetary value
+export const trackConsultationBooking = async (step: string) => {
+  await trackEvent('consultation_booking', {
+    event_type: 'consultation_booking',
+    step: step,
+    page_path: window.location.pathname
   });
 };
 
 /**
  * Track email contact attempts
+ * @param method - How they contacted (form, phone, email)
  */
-export const trackEmailContact = () => {
-  trackEvent('contact_email', {
-    contact_method: 'email',
+export const trackEmailContact = async (method: string) => {
+  await trackEvent('email_contact', {
+    event_type: 'email_contact',
+    method: method,
+    page_path: window.location.pathname
   });
 };
 
 /**
- * Track phone contact attempts
+ * Track scroll depth
+ * @param depth - Percentage scrolled (0-100)
  */
-export const trackPhoneContact = () => {
-  trackEvent('contact_phone', {
-    contact_method: 'phone',
+export const trackScrollDepth = async (depth: number) => {
+  await trackEvent('scroll_depth', {
+    event_type: 'scroll_depth',
+    depth: depth,
+    page_path: window.location.pathname
   });
 };
 
 /**
- * Track scroll depth (how far users scroll)
- * @param percentage - Scroll depth percentage (25, 50, 75, 100)
+ * Initialize analytics session
  */
-export const trackScrollDepth = (percentage: number) => {
-  trackEvent('scroll_depth', {
-    percent_scrolled: percentage,
-  });
+export const initializeAnalytics = async () => {
+  const sessionId = getSessionId();
+  const userInfo = getUserInfo();
+  
+  try {
+    // Create or update session
+    await supabase.from('analytics_sessions').upsert({
+      session_id: sessionId,
+      user_agent: userInfo.userAgent,
+      device_type: userInfo.deviceType,
+      browser: userInfo.browser,
+      os: userInfo.os,
+      started_at: new Date().toISOString()
+    }, {
+      onConflict: 'session_id'
+    });
+  } catch (error) {
+    console.error('Error initializing analytics:', error);
+  }
 };
 
+/**
+ * Track session end
+ */
+export const trackSessionEnd = async () => {
+  const sessionId = getSessionId();
+  
+  try {
+    await supabase.from('analytics_sessions').update({
+      ended_at: new Date().toISOString()
+    }).eq('session_id', sessionId);
+  } catch (error) {
+    console.error('Error tracking session end:', error);
+  }
+};

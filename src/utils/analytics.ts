@@ -1,7 +1,8 @@
 /**
- * Enhanced Analytics Tracking Utilities
+ * Enhanced Analytics Tracking Utilities with Security
  * 
  * Tracks events to both Google Analytics and custom Supabase analytics
+ * Includes invisible security measures to protect against abuse
  * 
  * Usage:
  * import { trackEvent, trackPageView, trackButtonClick } from '@/utils/analytics';
@@ -10,6 +11,14 @@
  */
 
 import { supabase } from '../lib/supabase';
+import { 
+  checkRateLimit, 
+  logSecurityEvent, 
+  isBot, 
+  detectSpam, 
+  validateFormInput,
+  SECURITY_EVENTS 
+} from './security';
 
 // Extend Window interface to include gtag
 declare global {
@@ -69,7 +78,7 @@ const getOSName = (userAgent: string): string => {
 };
 
 /**
- * Track custom events in both Google Analytics and Supabase
+ * Track custom events in both Google Analytics and Supabase with security
  * @param eventName - Name of the event (e.g., 'button_click', 'form_submit')
  * @param eventParams - Additional parameters for the event
  */
@@ -77,6 +86,46 @@ export const trackEvent = async (
   eventName: string,
   eventParams?: Record<string, any>
 ) => {
+  // Security checks (invisible to users)
+  const userInfo = getUserInfo();
+  
+  // Check for bot activity
+  if (isBot(userInfo.userAgent)) {
+    await logSecurityEvent(SECURITY_EVENTS.BOT_DETECTED, {
+      eventName,
+      userAgent: userInfo.userAgent
+    });
+    return; // Don't track bot events
+  }
+  
+  // Check rate limiting
+  const isAllowed = await checkRateLimit('analytics', 'client');
+  if (!isAllowed) {
+    await logSecurityEvent(SECURITY_EVENTS.RATE_LIMIT_EXCEEDED, {
+      eventName,
+      endpoint: 'analytics'
+    });
+    return; // Block excessive requests
+  }
+  
+  // Validate and sanitize event parameters
+  if (eventParams) {
+    for (const [key, value] of Object.entries(eventParams)) {
+      if (typeof value === 'string') {
+        const validation = validateFormInput(value);
+        if (!validation.isValid) {
+          await logSecurityEvent(SECURITY_EVENTS.INVALID_REQUEST, {
+            eventName,
+            parameter: key,
+            value: value
+          });
+          return; // Block suspicious content
+        }
+        eventParams[key] = validation.sanitized;
+      }
+    }
+  }
+
   // Track in Google Analytics
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, eventParams);
@@ -85,7 +134,6 @@ export const trackEvent = async (
   // Track in Supabase
   try {
     const sessionId = getSessionId();
-    const userInfo = getUserInfo();
     
     await supabase.from('analytics_events').insert({
       event_type: eventParams?.event_type || 'custom',
@@ -178,11 +226,21 @@ export const trackButtonClick = async (buttonName: string, location?: string) =>
 };
 
 /**
- * Track form submissions
+ * Track form submissions with spam detection
  * @param formName - Name of the form
  * @param success - Whether the submission was successful
+ * @param formData - Form data to check for spam (optional)
  */
-export const trackFormSubmit = async (formName: string, success: boolean = true) => {
+export const trackFormSubmit = async (formName: string, success: boolean = true, formData?: Record<string, string>) => {
+  // Check for spam if form data is provided
+  if (formData && detectSpam(formData)) {
+    await logSecurityEvent(SECURITY_EVENTS.FORM_SPAM, {
+      formName,
+      formData: Object.keys(formData) // Only log keys, not values
+    });
+    return; // Don't track spam submissions
+  }
+  
   await trackEvent('form_submit', {
     event_type: 'form_submit',
     form_name: formName,

@@ -7,6 +7,8 @@ import SEO from '../components/SEO';
 import { useIsMobile } from '../utils/mobileDetection';
 import { supabase } from '../lib/supabase';
 import { navigateBackToHome } from '../utils/scrollToTop';
+import { secureFormSubmit, initializeFormSecurity } from '../utils/formSecurity';
+import { trackFormSubmit } from '../utils/analytics';
 
 const ConsultationBooking = () => {
   const isMobile = useIsMobile();
@@ -22,6 +24,11 @@ const ConsultationBooking = () => {
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  // Initialize form security on component mount
+  React.useEffect(() => {
+    initializeFormSecurity();
+  }, []);
 
   const serviceOptions = [
     {
@@ -104,49 +111,43 @@ const ConsultationBooking = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      // Scroll to the form section when validation fails
-      const formSection = document.getElementById('consultation-form');
-      if (formSection) {
-        formSection.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-      return;
-    }
-
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
-        .from('consultation_bookings')
-        .insert([
-          {
-            full_name: formData.fullName,
-            email: formData.email,
-            phone: formData.phone || null,
-            company_name: formData.companyName || null,
-            area_of_service: formData.areaOfService || null,
-          }
-        ]);
+      // Use secure form submission with built-in validation and security
+      const result = await secureFormSubmit('consultation', formData, async (sanitizedData) => {
+        const { error } = await supabase
+          .from('consultation_bookings')
+          .insert([
+            {
+              full_name: sanitizedData.fullName,
+              email: sanitizedData.email,
+              phone: sanitizedData.phone || null,
+              company_name: sanitizedData.companyName || null,
+              area_of_service: sanitizedData.areaOfService || null,
+            }
+          ]);
 
-      if (error) {
-        alert(`Error: ${error.message}`);
-        throw error;
-      }
-
-      alert('Thank you! Your consultation has been booked. We\'ll contact you within 24 hours to confirm your appointment time.');
-
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({
-        fullName: '',
-        email: '',
-        phone: '',
-        companyName: '',
-        areaOfService: ''
+        if (error) throw error;
+        return true;
       });
+
+      if (result.success) {
+        alert('Thank you! Your consultation has been booked. We\'ll contact you within 24 hours to confirm your appointment time.');
+        setSubmitSuccess(true);
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          companyName: '',
+          areaOfService: ''
+        });
+        
+        // Track successful form submission
+        await trackFormSubmit('consultation', true, formData);
+      } else {
+        alert(result.error || 'There was an error booking your consultation. Please try again or contact us directly.');
+      }
     } catch (error) {
       console.error('Error submitting consultation booking:', error);
       alert('There was an error booking your consultation. Please try again or contact us directly.');

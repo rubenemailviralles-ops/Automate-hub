@@ -1,338 +1,259 @@
 /**
- * Advanced Security Utilities
- * Additional security features for enhanced protection
+ * Invisible Security Utilities
+ * 
+ * This file contains security functions that work behind the scenes
+ * to protect your website without any visual changes.
  */
 
+// Rate limiting configuration
+const RATE_LIMITS = {
+  contactForm: { maxRequests: 5, windowMs: 15 * 60 * 1000 }, // 5 requests per 15 minutes
+  consultationForm: { maxRequests: 3, windowMs: 15 * 60 * 1000 }, // 3 requests per 15 minutes
+  analytics: { maxRequests: 100, windowMs: 60 * 1000 }, // 100 requests per minute
+};
+
+// Security event types
+export const SECURITY_EVENTS = {
+  RATE_LIMIT_EXCEEDED: 'rate_limit_exceeded',
+  SUSPICIOUS_ACTIVITY: 'suspicious_activity',
+  FORM_SPAM: 'form_spam',
+  INVALID_REQUEST: 'invalid_request',
+  BOT_DETECTED: 'bot_detected'
+} as const;
+
 /**
- * Honeypot field checker
- * If honeypot field has value, it's likely a bot
+ * Check if request is from a bot
  */
-export const isHoneypotFilled = (honeypotValue: string): boolean => {
-  return honeypotValue !== null && honeypotValue !== undefined && honeypotValue.trim() !== '';
+export const isBot = (userAgent: string): boolean => {
+  const botPatterns = [
+    /bot/i, /crawler/i, /spider/i, /scraper/i, /curl/i, /wget/i,
+    /python/i, /java/i, /php/i, /go-http/i, /okhttp/i,
+    /facebookexternalhit/i, /twitterbot/i, /linkedinbot/i,
+    /whatsapp/i, /telegrambot/i, /slackbot/i
+  ];
+  
+  return botPatterns.some(pattern => pattern.test(userAgent));
 };
 
 /**
- * Check if email is from a disposable email provider
- * Common disposable email domains to block
+ * Check if IP is suspicious based on patterns
  */
-const DISPOSABLE_EMAIL_DOMAINS = [
-  'tempmail.com', 'guerrillamail.com', '10minutemail.com', 'throwaway.email',
-  'mailinator.com', 'trashmail.com', 'yopmail.com', 'maildrop.cc',
-  'sharklasers.com', 'guerrillamail.info', 'grr.la', 'guerrillamail.biz',
-  'spam4.me', 'mailnesia.com', 'temp-mail.org', 'getnada.com',
-  'fakeinbox.com', 'emailondeck.com', 'mintemail.com', 'mytemp.email',
-  'mohmal.com', 'rootfest.net', 'discard.email', 'discardmail.com'
-];
-
-export const isDisposableEmail = (email: string): boolean => {
-  if (!email) return false;
+export const isSuspiciousIP = (ip: string): boolean => {
+  // Check for common VPN/proxy patterns
+  const suspiciousPatterns = [
+    /^10\./, /^192\.168\./, /^172\.(1[6-9]|2[0-9]|3[0-1])\./, // Private IPs
+    /^127\./, /^::1$/, /^localhost$/i // Localhost
+  ];
   
-  const domain = email.split('@')[1]?.toLowerCase();
-  if (!domain) return false;
-  
-  return DISPOSABLE_EMAIL_DOMAINS.includes(domain);
+  return suspiciousPatterns.some(pattern => pattern.test(ip));
 };
 
 /**
- * Detect bot-like behavior based on timing
- * Humans typically take at least 2-3 seconds to fill a form
+ * Validate form input for security
  */
-export const detectBotTiming = (formStartTime: number): boolean => {
-  const formDuration = Date.now() - formStartTime;
-  const MIN_HUMAN_TIME = 2000; // 2 seconds minimum
+export const validateFormInput = (input: string): { isValid: boolean; sanitized: string } => {
+  // Remove potentially dangerous characters
+  const sanitized = input
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '') // Remove script tags
+    .replace(/javascript:/gi, '') // Remove javascript: protocols
+    .replace(/on\w+\s*=/gi, '') // Remove event handlers
+    .replace(/<iframe\b[^>]*>/gi, '') // Remove iframes
+    .replace(/<object\b[^>]*>/gi, '') // Remove objects
+    .replace(/<embed\b[^>]*>/gi, '') // Remove embeds
+    .trim();
   
-  return formDuration < MIN_HUMAN_TIME;
-};
-
-/**
- * Security event logger
- * Logs security events for monitoring
- */
-export interface SecurityEvent {
-  type: 'rate_limit' | 'honeypot' | 'disposable_email' | 'bot_timing' | 'xss_attempt' | 'validation_error';
-  timestamp: number;
-  details?: string;
-  userAgent?: string;
-}
-
-export const logSecurityEvent = (event: SecurityEvent): void => {
-  const logEntry = {
-    ...event,
-    timestamp: event.timestamp || Date.now(),
-    userAgent: event.userAgent || navigator.userAgent,
+  // Check for suspicious patterns
+  const suspiciousPatterns = [
+    /<script/i, /javascript:/i, /vbscript:/i, /onload=/i, /onerror=/i,
+    /eval\(/i, /expression\(/i, /url\(/i, /@import/i
+  ];
+  
+  const hasSuspiciousContent = suspiciousPatterns.some(pattern => pattern.test(input));
+  
+  return {
+    isValid: !hasSuspiciousContent && sanitized.length > 0,
+    sanitized
   };
-  
-  // Log to console in development
-  if (import.meta.env.DEV) {
-    console.warn('🔒 Security Event:', logEntry);
-  }
-  
-  // Store in localStorage for analysis (last 100 events)
+};
+
+/**
+ * Rate limiting check
+ */
+export const checkRateLimit = async (endpoint: string, ip: string): Promise<boolean> => {
   try {
-    const storageKey = 'security_events';
-    const stored = localStorage.getItem(storageKey);
-    const events: SecurityEvent[] = stored ? JSON.parse(stored) : [];
+    const key = `rate_limit_${endpoint}_${ip}`;
+    const stored = localStorage.getItem(key);
+    const now = Date.now();
     
-    events.push(logEntry);
+    if (stored) {
+      const data = JSON.parse(stored);
+      const windowStart = data.windowStart;
+      const requestCount = data.count;
+      const limit = RATE_LIMITS[endpoint as keyof typeof RATE_LIMITS];
+      
+      if (limit) {
+        // Check if we're still in the same window
+        if (now - windowStart < limit.windowMs) {
+          if (requestCount >= limit.maxRequests) {
+            // Log rate limit exceeded
+            await logSecurityEvent(SECURITY_EVENTS.RATE_LIMIT_EXCEEDED, {
+              endpoint,
+              ip,
+              requestCount,
+              limit: limit.maxRequests
+            });
+            return false;
+          }
+          // Increment count
+          localStorage.setItem(key, JSON.stringify({
+            windowStart,
+            count: requestCount + 1
+          }));
+        } else {
+          // New window
+          localStorage.setItem(key, JSON.stringify({
+            windowStart: now,
+            count: 1
+          }));
+        }
+      }
+    } else {
+      // First request
+      localStorage.setItem(key, JSON.stringify({
+        windowStart: now,
+        count: 1
+      }));
+    }
     
-    // Keep only last 100 events
-    const recentEvents = events.slice(-100);
-    localStorage.setItem(storageKey, JSON.stringify(recentEvents));
-    
-    // TODO: In production, send to analytics/monitoring service
-    // Example: sendToSentry(logEntry);
+    return true;
   } catch (error) {
-    console.error('Failed to log security event:', error);
+    console.error('Rate limit check failed:', error);
+    return true; // Allow request if rate limiting fails
   }
 };
 
 /**
- * Get all security events from storage
+ * Log security events (invisible to users)
  */
-export const getSecurityEvents = (): SecurityEvent[] => {
+export const logSecurityEvent = async (eventType: string, details: Record<string, any>): Promise<void> => {
   try {
-    const stored = localStorage.getItem('security_events');
-    return stored ? JSON.parse(stored) : [];
+    // Get user info
+    const userAgent = navigator.userAgent;
+    const ip = await getClientIP();
+    
+    // Check for suspicious activity
+    if (isBot(userAgent)) {
+      await logToSupabase(SECURITY_EVENTS.BOT_DETECTED, ip, userAgent, details);
+    }
+    
+    if (isSuspiciousIP(ip)) {
+      await logToSupabase(SECURITY_EVENTS.SUSPICIOUS_ACTIVITY, ip, userAgent, details);
+    }
+    
+    // Log the main event
+    await logToSupabase(eventType, ip, userAgent, details);
+  } catch (error) {
+    console.error('Security logging failed:', error);
+  }
+};
+
+/**
+ * Get client IP (approximate)
+ */
+const getClientIP = async (): Promise<string> => {
+  try {
+    // Use a service to get IP (invisible to users)
+    const response = await fetch('https://api.ipify.org?format=json');
+    const data = await response.json();
+    return data.ip || 'unknown';
   } catch {
-    return [];
+    return 'unknown';
   }
 };
 
 /**
- * Clear security event logs
+ * Log to Supabase (invisible)
  */
-export const clearSecurityEvents = (): void => {
+const logToSupabase = async (eventType: string, ip: string, userAgent: string, details: Record<string, any>): Promise<void> => {
   try {
-    localStorage.removeItem('security_events');
+    // This would normally use your Supabase client
+    // For now, we'll just log to console (invisible to users)
+    console.log('Security Event:', {
+      eventType,
+      ip,
+      userAgent,
+      details,
+      timestamp: new Date().toISOString()
+    });
   } catch (error) {
-    console.error('Failed to clear security events:', error);
+    console.error('Supabase logging failed:', error);
   }
 };
 
 /**
- * Check if user is using a VPN/Proxy (basic detection)
- * This is a simple check - for production use a dedicated service
+ * Validate email format
  */
-export const detectVPN = (): boolean => {
-  // Check for common VPN indicators in timezone vs locale mismatch
+export const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email) && email.length <= 254;
+};
+
+/**
+ * Validate phone number format
+ */
+export const validatePhone = (phone: string): boolean => {
+  const phoneRegex = /^[\+]?[1-9][\d]{0,15}$/;
+  return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
+};
+
+/**
+ * Sanitize text input
+ */
+export const sanitizeText = (text: string): string => {
+  return text
+    .replace(/[<>]/g, '') // Remove angle brackets
+    .replace(/javascript:/gi, '') // Remove javascript protocols
+    .replace(/on\w+\s*=/gi, '') // Remove event handlers
+    .trim()
+    .substring(0, 1000); // Limit length
+};
+
+/**
+ * Check for form spam patterns
+ */
+export const detectSpam = (formData: Record<string, string>): boolean => {
+  const spamPatterns = [
+    /viagra/i, /casino/i, /poker/i, /loan/i, /debt/i,
+    /free money/i, /click here/i, /buy now/i, /act now/i,
+    /limited time/i, /guaranteed/i, /no risk/i
+  ];
+  
+  const allText = Object.values(formData).join(' ').toLowerCase();
+  
+  return spamPatterns.some(pattern => pattern.test(allText));
+};
+
+/**
+ * Generate secure form token (invisible)
+ */
+export const generateFormToken = (): string => {
+  const timestamp = Date.now().toString();
+  const random = Math.random().toString(36).substring(2);
+  return btoa(timestamp + random).replace(/[^a-zA-Z0-9]/g, '');
+};
+
+/**
+ * Validate form token
+ */
+export const validateFormToken = (token: string): boolean => {
   try {
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    const locale = navigator.language;
+    const decoded = atob(token);
+    const timestamp = parseInt(decoded.substring(0, 13));
+    const now = Date.now();
     
-    // Basic heuristic - if timezone is generic (like UTC), might be VPN
-    // This is NOT foolproof, just a basic indicator
-    return timezone === 'UTC' || timezone === 'Etc/UTC';
+    // Token valid for 1 hour
+    return (now - timestamp) < 3600000;
   } catch {
     return false;
   }
 };
-
-/**
- * Generate CSRF token
- * Use for protecting state-changing operations
- */
-export const generateCSRFToken = (): string => {
-  const array = new Uint8Array(32);
-  crypto.getRandomValues(array);
-  return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
-};
-
-/**
- * Validate CSRF token
- */
-export const validateCSRFToken = (token: string, storedToken: string): boolean => {
-  return token === storedToken && token.length === 64;
-};
-
-/**
- * Store CSRF token in session storage
- */
-export const storeCSRFToken = (token: string): void => {
-  try {
-    sessionStorage.setItem('csrf_token', token);
-  } catch (error) {
-    console.error('Failed to store CSRF token:', error);
-  }
-};
-
-/**
- * Retrieve CSRF token from session storage
- */
-export const getCSRFToken = (): string | null => {
-  try {
-    return sessionStorage.getItem('csrf_token');
-  } catch {
-    return null;
-  }
-};
-
-/**
- * Enhanced XSS detection
- * Detects potential XSS patterns in user input
- */
-export const detectXSSPatterns = (input: string): boolean => {
-  if (!input) return false;
-  
-  const xssPatterns = [
-    /<script[\s\S]*?>[\s\S]*?<\/script>/gi,
-    /javascript:/gi,
-    /on\w+\s*=/gi,
-    /<iframe/gi,
-    /<object/gi,
-    /<embed/gi,
-    /eval\(/gi,
-    /expression\(/gi,
-    /vbscript:/gi,
-    /onload=/gi,
-    /onerror=/gi,
-  ];
-  
-  return xssPatterns.some(pattern => pattern.test(input));
-};
-
-/**
- * SQL Injection detection (basic)
- * Detects potential SQL injection patterns
- */
-export const detectSQLInjection = (input: string): boolean => {
-  if (!input) return false;
-  
-  const sqlPatterns = [
-    /(\b(SELECT|INSERT|UPDATE|DELETE|DROP|CREATE|ALTER|EXEC|EXECUTE)\b)/gi,
-    /(union\s+select)/gi,
-    /(or\s+1\s*=\s*1)/gi,
-    /(and\s+1\s*=\s*1)/gi,
-    /'?\s*or\s*'?\s*'?\s*=\s*'?/gi,
-    /--/g,
-    /;.*?drop/gi,
-  ];
-  
-  return sqlPatterns.some(pattern => pattern.test(input));
-};
-
-/**
- * Comprehensive security check for user input
- */
-export interface SecurityCheckResult {
-  safe: boolean;
-  threats: string[];
-}
-
-export const performSecurityCheck = (input: string): SecurityCheckResult => {
-  const threats: string[] = [];
-  
-  if (detectXSSPatterns(input)) {
-    threats.push('XSS attempt detected');
-    logSecurityEvent({ type: 'xss_attempt', timestamp: Date.now(), details: 'XSS pattern detected' });
-  }
-  
-  if (detectSQLInjection(input)) {
-    threats.push('SQL injection attempt detected');
-    logSecurityEvent({ type: 'xss_attempt', timestamp: Date.now(), details: 'SQL injection pattern detected' });
-  }
-  
-  return {
-    safe: threats.length === 0,
-    threats
-  };
-};
-
-/**
- * Check if user interaction seems legitimate
- * Combines multiple bot detection methods
- */
-export interface BotDetectionResult {
-  isLikelyBot: boolean;
-  reasons: string[];
-  score: number; // 0-100, higher = more likely bot
-}
-
-export const detectBot = (params: {
-  honeypotValue?: string;
-  formStartTime?: number;
-  email?: string;
-}): BotDetectionResult => {
-  const reasons: string[] = [];
-  let score = 0;
-  
-  // Check honeypot
-  if (params.honeypotValue && isHoneypotFilled(params.honeypotValue)) {
-    reasons.push('Honeypot field filled');
-    score += 70;
-  }
-  
-  // Check timing
-  if (params.formStartTime && detectBotTiming(params.formStartTime)) {
-    reasons.push('Form filled too quickly');
-    score += 40;
-  }
-  
-  // Check disposable email
-  if (params.email && isDisposableEmail(params.email)) {
-    reasons.push('Disposable email detected');
-    score += 30;
-  }
-  
-  // Check VPN (low confidence indicator)
-  if (detectVPN()) {
-    reasons.push('VPN/Proxy detected');
-    score += 10;
-  }
-  
-  return {
-    isLikelyBot: score >= 50,
-    reasons,
-    score: Math.min(score, 100)
-  };
-};
-
-/**
- * Secure data comparison (prevents timing attacks)
- * Use for comparing passwords, tokens, etc.
- */
-export const secureCompare = (a: string, b: string): boolean => {
-  if (a.length !== b.length) {
-    return false;
-  }
-  
-  let result = 0;
-  for (let i = 0; i < a.length; i++) {
-    result |= a.charCodeAt(i) ^ b.charCodeAt(i);
-  }
-  
-  return result === 0;
-};
-
-/**
- * Generate secure random string
- */
-export const generateSecureRandomString = (length: number = 32): string => {
-  const array = new Uint8Array(length);
-  crypto.getRandomValues(array);
-  return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('').substring(0, length);
-};
-
-/**
- * Check if request origin is allowed
- */
-export const isAllowedOrigin = (origin: string): boolean => {
-  const allowedOrigins = [
-    'https://automate-hub.com',
-    'https://www.automate-hub.com',
-    'http://localhost:5173', // Development
-    'http://localhost:4173', // Preview
-  ];
-  
-  return allowedOrigins.includes(origin);
-};
-
-/**
- * Sanitize filename to prevent directory traversal
- */
-export const sanitizeFilename = (filename: string): string => {
-  return filename
-    .replace(/[^a-zA-Z0-9._-]/g, '_') // Replace unsafe chars
-    .replace(/\.{2,}/g, '.') // Remove multiple dots
-    .substring(0, 255); // Limit length
-};
-

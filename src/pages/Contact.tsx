@@ -9,6 +9,8 @@ import StructuredData from '../components/StructuredData';
 import { useIsMobile } from '../utils/mobileDetection';
 import { supabase } from '../lib/supabase';
 import { navigateBackToHome } from '../utils/scrollToTop';
+import { secureFormSubmit, validateForm, initializeFormSecurity } from '../utils/formSecurity';
+import { trackFormSubmit } from '../utils/analytics';
 
 const Contact = () => {
   const isMobile = useIsMobile();
@@ -25,6 +27,11 @@ const Contact = () => {
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  // Initialize form security on component mount
+  React.useEffect(() => {
+    initializeFormSecurity();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -76,38 +83,43 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      // Just show errors, no scrolling to prevent false triggers
-      return;
-    }
-
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase
-        .from('contact_submissions')
-        .insert([
-          {
-            name: formData.name,
-            email: formData.email,
-            phone: formData.phone,
-            business_name: formData.businessName,
-            message: formData.message,
-          }
-        ]);
+      // Use secure form submission with built-in validation and security
+      const result = await secureFormSubmit('contact', formData, async (sanitizedData) => {
+        const { error } = await supabase
+          .from('contact_submissions')
+          .insert([
+            {
+              name: sanitizedData.name,
+              email: sanitizedData.email,
+              phone: sanitizedData.phone,
+              business_name: sanitizedData.businessName,
+              message: sanitizedData.message,
+            }
+          ]);
 
-      if (error) throw error;
+        if (error) throw error;
+        return true;
+      });
 
-      alert('Thank you for the message! You will be hearing from us soon.');
-
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({ name: '', email: '', phone: '', businessName: '', message: '' });
-      setErrors({});
+      if (result.success) {
+        alert('Thank you for the message! You will be hearing from us soon.');
+        setSubmitSuccess(true);
+        setFormData({ name: '', email: '', phone: '', businessName: '', message: '' });
+        setErrors({});
+        
+        // Track successful form submission
+        await trackFormSubmit('contact', true, formData);
+      } else {
+        setErrors({ submit: result.error || 'Failed to submit form. Please try again.' });
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
-      setIsSubmitting(false);
       setErrors({ submit: 'Failed to submit form. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 

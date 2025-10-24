@@ -963,14 +963,9 @@ h6:not(:has(.bg-clip-text)) {
 
 /* Only apply chatbot animation on mobile devices */
 @media (max-width: 768px) {
-  /* When user scrolls near bottom, lift chatbot up */
-  body.near-bottom #VG_OVERLAY_CONTAINER {
-    transform: translateY(-120px);
-  }
-  
   /* Ensure chatbot doesn't interfere with footer on mobile */
   body.near-bottom #VG_OVERLAY_CONTAINER {
-    transform: translateY(-140px);
+    transform: translateY(-60px);
   }
 
   /* Mobile orb rebuild - add orbs for top, middle, and bottom sections */

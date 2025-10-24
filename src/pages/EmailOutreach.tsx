@@ -37,12 +37,12 @@ const EmailOutreach = () => {
           { name: 'Deliverability Optimization', description: 'Maximize inbox placement rates' },
         ]}
       />
-      <section className="py-24 seamless-section relative overflow-hidden">
+      <section className="py-16 md:py-20 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
             <ScrollReveal delay={0}>
               <div 
-                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500/20 to-rose-600/20 border border-pink-500/30 rounded-full mb-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500/20 to-rose-600/20 border border-pink-500/30 rounded-full mb-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(236, 72, 153, 0.2)',
@@ -66,7 +66,7 @@ const EmailOutreach = () => {
             <TypeWriter 
               text="Emails That" 
               as="h1"
-              className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight"
+              className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight"
               delay={100}
             >
               <span className={`block ${isMobile ? 'text-pink-400' : 'bg-gradient-to-r from-pink-400 to-rose-400 bg-clip-text text-transparent'}`}>
@@ -75,7 +75,7 @@ const EmailOutreach = () => {
             </TypeWriter>
 
             <ScrollReveal delay={200}>
-              <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed">
                 Scale your outreach with AI-powered email campaigns that feel personal, drive engagement, and convert 
                 prospects into customers at unprecedented rates. <Link to="/#roi-calculator" className="text-pink-400 hover:text-pink-300 transition-colors font-semibold">Use our ROI calculator</Link> to 
                 see how email automation can boost your revenue.
@@ -84,7 +84,7 @@ const EmailOutreach = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-gradient-to-r from-pink-500/10 to-rose-600/10 border border-pink-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-pink-500/50"
+                className="bg-gradient-to-r from-pink-500/10 to-rose-600/10 border border-pink-500/30 rounded-2xl p-6 max-w-2xl mx-auto mb-8 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-pink-500/50"
                 style={{
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                 }}

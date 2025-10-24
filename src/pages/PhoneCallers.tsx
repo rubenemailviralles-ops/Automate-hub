@@ -201,12 +201,12 @@ const PhoneCallers = () => {
         ]}
       />
       {/* Hero Section */}
-      <section className="py-24 seamless-section relative overflow-hidden">
+      <section className="py-16 md:py-20 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
             <ScrollReveal delay={0}>
               <div 
-                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-500/20 to-purple-600/20 border border-indigo-500/30 rounded-full mb-8 backdrop-blur-sm mobile-3d-tilt"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-500/20 to-purple-600/20 border border-indigo-500/30 rounded-full mb-6 backdrop-blur-sm mobile-3d-tilt"
                 style={{
                   transformStyle: 'preserve-3d',
                   boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(99, 102, 241, 0.2)',
@@ -230,7 +230,7 @@ const PhoneCallers = () => {
             <TypeWriter 
               text="Never Miss a" 
               as="h1"
-              className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight"
+              className="text-5xl md:text-6xl font-bold mb-6 text-white leading-tight"
               delay={100}
             >
               <span className={`block ${isMobile ? 'text-indigo-400' : 'bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent'}`}>
@@ -239,7 +239,7 @@ const PhoneCallers = () => {
             </TypeWriter>
 
             <ScrollReveal delay={200}>
-              <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed">
                 Many businesses miss important calls due to unavailability. Our AI phone agents ensure every call 
                 is answered professionally, helping you capture more opportunities and serve customers better. <Link to="/#roi-calculator" className="text-indigo-400 hover:text-indigo-300 transition-colors font-semibold">Calculate your ROI</Link> and 
                 discover how much revenue you're losing from missed calls.
@@ -248,7 +248,7 @@ const PhoneCallers = () => {
 
             <ScrollReveal delay={300}>
               <div 
-                className="bg-indigo-500/10 border border-indigo-500/30 rounded-2xl p-8 max-w-2xl mx-auto mb-12 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-indigo-500/50"
+                className="bg-indigo-500/10 border border-indigo-500/30 rounded-2xl p-6 max-w-2xl mx-auto mb-8 relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-indigo-500/50"
                 style={{
                   boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
                 }}

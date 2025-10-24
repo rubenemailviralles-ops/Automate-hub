@@ -196,7 +196,7 @@ const ConsultationBooking = () => {
                   className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight"
                   delay={100}
                 >
-                  <span className="block text-blue-400">
+                  <span className="block text-blue-400 mb-1">
                     Strategy Session
                   </span>
                 </TypeWriter>
@@ -212,7 +212,7 @@ const ConsultationBooking = () => {
                 className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight"
                 delay={100}
               >
-                <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-1">
                   Strategy Session
                 </span>
               </TypeWriter>

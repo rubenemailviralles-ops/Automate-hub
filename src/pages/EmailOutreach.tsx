@@ -17,7 +17,7 @@ const EmailOutreach = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   
   return (
-    <div className="pt-16 md:pt-20">
+    <div>
       <SEO
         title="AI Email Outreach & Marketing Automation | Personalized Email Campaigns | Automate Hub"
         description="Scale your outreach with AI-powered email marketing automation. Hyper-personalized email campaigns, automated follow-ups, A/B testing, and advanced analytics. Boost open rates and conversions with intelligent email systems."

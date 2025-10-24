@@ -17,7 +17,7 @@ const WebsiteCreation = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   
   return (
-    <div>
+    <div className="pt-16 md:pt-20">
       <SEO
         title="Professional Website Creation Services | AI-Powered Web Development | Automate Hub"
         description="Transform your business with professional website creation services. AI-powered web development, mobile-first design, SEO optimization, and conversion-focused websites that drive results. Get your custom website built from scratch."

@@ -180,7 +180,7 @@ const PhoneCallers = () => {
   };
   
   return (
-    <div>
+    <div className="pt-16 md:pt-20">
       <SEO
         title="AI Phone Agents & Virtual Callers | 24/7 Customer Service Automation | Automate Hub"
         description="Never miss a call with AI phone agents. 24/7 customer service automation, lead qualification, appointment scheduling, and professional call handling. Transform your business communication with intelligent phone systems."

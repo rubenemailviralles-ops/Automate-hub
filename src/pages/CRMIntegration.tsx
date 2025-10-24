@@ -17,7 +17,7 @@ const CRMIntegration = () => {
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   
   return (
-    <div>
+    <div className="pt-16 md:pt-20">
       <SEO
         title="CRM Integration & Automation Services | AI-Powered Customer Data Management | Automate Hub"
         description="Streamline your business with intelligent CRM integration services. AI-powered customer data management, automated workflows, lead scoring, and seamless system connections. Boost productivity and reduce manual work."

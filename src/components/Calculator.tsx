@@ -202,24 +202,17 @@ const Calculator = () => {
               </div>
             </div>
 
-            <div 
-              className="bg-white/5 border border-white/10 rounded-lg p-3 md:p-4 text-center hidden md:block relative"
-              style={{
-                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-              }}
-            >
-              <p className="text-gray-400 text-sm">
-                <Link 
-                  to="/book-consultation"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
-                  style={{
-                    boxShadow: '0 4px 14px rgba(59, 130, 246, 0.4)',
-                    transition: 'transform 0.2s ease-out, box-shadow 0.2s ease-out',
-                  }}
-                >
-                  🚀 Start automating today and see real results in weeks, not months
-                </Link>
-              </p>
+            <div className="text-center hidden md:block">
+              <Link 
+                to="/book-consultation"
+                className="inline-flex items-center justify-center px-10 py-5 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                style={{
+                  boxShadow: '0 4px 14px rgba(59, 130, 246, 0.4)',
+                  transition: 'transform 0.2s ease-out, box-shadow 0.2s ease-out',
+                }}
+              >
+                🚀 Start automating today and see real results in weeks, not months
+              </Link>
             </div>
           </div>
         </div>

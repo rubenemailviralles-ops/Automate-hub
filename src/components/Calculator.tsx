@@ -211,7 +211,11 @@ const Calculator = () => {
               <p className="text-gray-400 text-sm">
                 <Link 
                   to="/book-consultation"
-                  className="inline-flex items-center justify-center bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                  style={{
+                    boxShadow: '0 4px 14px rgba(59, 130, 246, 0.4)',
+                    transition: 'transform 0.2s ease-out, box-shadow 0.2s ease-out',
+                  }}
                 >
                   🚀 Start automating today and see real results in weeks, not months
                 </Link>
@@ -425,6 +429,20 @@ const Calculator = () => {
                   <div style={{ fontSize: '14px', fontWeight: '600', color: '#10b981' }}>{formatCurrency(weeklySavings)}</div>
                 </div>
               </div>
+            </div>
+
+            {/* Mobile CTA Button */}
+            <div style={{ textAlign: 'center', marginTop: '16px' }}>
+              <Link 
+                to="/book-consultation"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-700 transition-all duration-300"
+                style={{
+                  boxShadow: '0 4px 14px rgba(59, 130, 246, 0.4)',
+                  transition: 'transform 0.2s ease-out, box-shadow 0.2s ease-out',
+                }}
+              >
+                🚀 Start automating today and see real results in weeks, not months
+              </Link>
             </div>
 
           </div>

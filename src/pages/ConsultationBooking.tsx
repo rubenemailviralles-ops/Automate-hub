@@ -189,26 +189,6 @@ const ConsultationBooking = () => {
             <div className="lg:hidden">
               {/* Mobile Header */}
               <div className="animate-slide-in-left mb-8">
-                <div 
-                  className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-6 backdrop-blur-sm mobile-3d-tilt"
-                  style={{
-                    transformStyle: 'preserve-3d',
-                    boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(59, 130, 246, 0.2)',
-                    transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
-                    perspective: '1000px',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateZ(15px) scale(1.05)';
-                    e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.5), 0 4px 15px rgba(59, 130, 246, 0.3)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateZ(0) scale(1)';
-                    e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(59, 130, 246, 0.2)';
-                  }}
-                >
-                  <Calendar className="w-4 h-4 text-blue-400 mr-2" style={{ transform: 'translateZ(5px)' }} />
-                  <span className="text-blue-400 font-medium text-sm" style={{ transform: 'translateZ(5px)' }}>Free Consultation</span>
-                </div>
 
                 <TypeWriter 
                   text="Book Your Free" 
@@ -225,26 +205,6 @@ const ConsultationBooking = () => {
 
             {/* Desktop: Left Side - Content */}
             <div className="animate-slide-in-left hidden lg:block">
-              <div 
-                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-6 backdrop-blur-sm mobile-3d-tilt"
-                style={{
-                  transformStyle: 'preserve-3d',
-                  boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(59, 130, 246, 0.2)',
-                  transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
-                  perspective: '1000px',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(15px) scale(1.05)';
-                  e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.5), 0 4px 15px rgba(59, 130, 246, 0.3)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateZ(0) scale(1)';
-                  e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(59, 130, 246, 0.2)';
-                }}
-              >
-                <Calendar className="w-4 h-4 text-blue-400 mr-2" style={{ transform: 'translateZ(5px)' }} />
-                <span className="text-blue-400 font-medium text-sm" style={{ transform: 'translateZ(5px)' }}>Free Consultation</span>
-              </div>
 
               <TypeWriter 
                 text="Book Your Free" 

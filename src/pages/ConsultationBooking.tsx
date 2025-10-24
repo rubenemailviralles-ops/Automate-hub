@@ -191,7 +191,7 @@ const ConsultationBooking = () => {
               <div className="animate-slide-in-left mb-8">
 
                 <TypeWriter 
-                  text="Book Your Free" 
+                  text="Book Your Free " 
                   as="h1"
                   className="text-4xl md:text-5xl font-bold mb-6 text-white leading-tight"
                   delay={100}
@@ -285,7 +285,7 @@ const ConsultationBooking = () => {
                   }}
                 >
                   <p className="text-gray-300 text-sm" style={{ transform: 'translateZ(10px)' }}>
-                    <span className="text-white font-bold">What you'll get:</span> Expert insights, automation roadmap, ROI analysis, and clear next stepsΓÇöall in one session.
+                    <span className="text-white font-bold text-base bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">What you'll get:</span> Expert insights, automation roadmap, ROI analysis, and clear next steps—all in one session.
                   </p>
                 </div>
               </ScrollReveal>
@@ -592,7 +592,7 @@ const ConsultationBooking = () => {
                 }}
               >
                 <p className="text-gray-300 text-sm" style={{ transform: 'translateZ(10px)' }}>
-                  <span className="text-white font-bold">What you'll get:</span> Expert insights, automation roadmap, ROI analysis, and clear next stepsΓÇöall in one session.
+                  <span className="text-white font-bold text-base bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">What you'll get:</span> Expert insights, automation roadmap, ROI analysis, and clear next steps—all in one session.
                 </p>
               </div>
             </ScrollReveal>

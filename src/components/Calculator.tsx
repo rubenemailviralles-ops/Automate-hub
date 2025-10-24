@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Calculator as CalculatorIcon, DollarSign, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Calculator = () => {
   const [employees, setEmployees] = useState(5);
@@ -208,7 +209,12 @@ const Calculator = () => {
               }}
             >
               <p className="text-gray-400 text-sm">
-                🚀 Start automating today and see real results in weeks, not months
+                <Link 
+                  to="/book-consultation"
+                  className="inline-flex items-center justify-center bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                >
+                  🚀 Start automating today and see real results in weeks, not months
+                </Link>
               </p>
             </div>
           </div>

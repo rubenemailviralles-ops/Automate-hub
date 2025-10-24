@@ -173,7 +173,7 @@ const ConsultationBooking = () => {
   const selectedService = serviceOptions.find(service => service.value === formData.areaOfService);
 
   return (
-    <div className="pt-20">
+    <div>
       <SEO
         title="Book Free AI Automation Consultation | Strategy Session | Automate Hub"
         description="Book your free 30-minute AI automation consultation with Automate Hub experts. Get a custom automation roadmap, ROI analysis, and clear next steps for your business. No pressure, just helpful guidance."

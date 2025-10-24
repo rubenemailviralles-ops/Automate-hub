@@ -15,12 +15,17 @@ const ConsultationBooking = () => {
   const isMobile = useIsMobile();
   const navigate = useNavigate();
   const location = useLocation();
+  
+  // Get service from URL parameters
+  const urlParams = new URLSearchParams(location.search);
+  const serviceFromUrl = urlParams.get('service');
+  
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phone: '',
     companyName: '',
-    areaOfService: ''
+    areaOfService: serviceFromUrl || ''
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);

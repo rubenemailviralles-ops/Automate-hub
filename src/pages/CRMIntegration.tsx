@@ -875,7 +875,7 @@ const CRMIntegration = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
-                  to="/book-consultation"
+                  to="/book-consultation?service=crm-integration"
                   className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold rounded-xl hover:from-purple-600 hover:to-pink-700 transition-all duration-300"
                   style={{
                     boxShadow: '0 4px 14px rgba(168, 85, 247, 0.4)',

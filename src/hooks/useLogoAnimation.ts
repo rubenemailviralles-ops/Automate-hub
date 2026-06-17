@@ -6,123 +6,124 @@ export const useLogoAnimation = () => {
   const triggerAnimation = useCallback(() => {
     if (isAnimating) return; // Prevent multiple animations
 
-    console.log('🎬 Starting NEW easter egg animation...');
     setIsAnimating(true);
 
-    // Get all header elements
-    const header = document.querySelector('header');
-    const logoIcon = document.getElementById('logo-icon');
-    const navItems = document.querySelectorAll('.nav-item');
-    const mobileMenuButton = document.querySelector('[data-mobile-menu]');
-    
-    if (!header || !logoIcon) {
-      console.log('❌ Header or logo not found');
-      setIsAnimating(false);
-      return;
-    }
+    // Create rolling icon
+    const createRollingIcon = () => {
+      document.querySelectorAll('.rolling-icon').forEach(icon => icon.remove());
+      const rollingIcon = document.createElement('div');
+      rollingIcon.className = 'rolling-icon';
 
-    // Create rolling elements array
-    const rollingElements: HTMLElement[] = [];
-    
-    // Clone logo for rolling
-    const rollingLogo = logoIcon.cloneNode(true) as HTMLElement;
-    rollingLogo.id = 'rolling-logo';
-    rollingLogo.style.position = 'fixed';
-    rollingLogo.style.zIndex = '10000';
-    rollingLogo.style.pointerEvents = 'none';
-    rollingLogo.style.transition = 'none';
-    
-    // Clone nav items for rolling
-    navItems.forEach((item, index) => {
-      const clonedItem = item.cloneNode(true) as HTMLElement;
-      clonedItem.id = `rolling-nav-${index}`;
-      clonedItem.style.position = 'fixed';
-      clonedItem.style.zIndex = '10000';
-      clonedItem.style.pointerEvents = 'none';
-      clonedItem.style.transition = 'none';
-      rollingElements.push(clonedItem);
-    });
+      // Position at logo location
+      const logoIcon = document.getElementById('logo-icon');
+      if (logoIcon) {
+        const rect = logoIcon.getBoundingClientRect();
+        rollingIcon.style.position = 'fixed';
+        rollingIcon.style.left = `${rect.left}px`;
+        rollingIcon.style.top = `${rect.top}px`;
+        rollingIcon.style.width = `${rect.width}px`;
+        rollingIcon.style.height = `${rect.height}px`;
+        rollingIcon.style.zIndex = '9999';
+        rollingIcon.style.pointerEvents = 'none';
 
-    // Position rolling elements at their original locations
-    const logoRect = logoIcon.getBoundingClientRect();
-    rollingLogo.style.left = `${logoRect.left}px`;
-    rollingLogo.style.top = `${logoRect.top}px`;
-    rollingLogo.style.width = `${logoRect.width}px`;
-    rollingLogo.style.height = `${logoRect.height}px`;
-    
-    rollingElements.forEach((element, index) => {
-      const originalItem = navItems[index] as HTMLElement;
-      const rect = originalItem.getBoundingClientRect();
-      element.style.left = `${rect.left}px`;
-      element.style.top = `${rect.top}px`;
-      element.style.width = `${rect.width}px`;
-      element.style.height = `${rect.height}px`;
-    });
+        const clonedLogo = logoIcon.cloneNode(true) as HTMLElement;
+        clonedLogo.removeAttribute('id');
+        clonedLogo.removeAttribute('data-nav-item');
+        clonedLogo.style.pointerEvents = 'none';
+        clonedLogo.classList.remove(
+          'cursor-pointer',
+          'logo-scared',
+          'logo-hidden',
+          'nav-item',
+          'nav-brand-icon'
+        );
+        if (!clonedLogo.classList.contains('logo-normal')) {
+          clonedLogo.classList.add('logo-normal');
+        }
 
-    // Add rolling elements to page
-    document.body.appendChild(rollingLogo);
-    rollingElements.forEach(element => document.body.appendChild(element));
-
-    // Hide original elements
-    logoIcon.style.opacity = '0';
-    navItems.forEach(item => {
-      (item as HTMLElement).style.opacity = '0';
-    });
-
-    // Start rolling animation (2 seconds)
-    setTimeout(() => {
-      rollingLogo.style.transition = 'transform 2s cubic-bezier(0.4, 0, 0.2, 1)';
-      rollingLogo.style.transform = 'translateX(100vw) rotate(720deg)';
+        rollingIcon.appendChild(clonedLogo);
+      }
       
-      rollingElements.forEach((element, index) => {
-        setTimeout(() => {
-          element.style.transition = 'transform 2s cubic-bezier(0.4, 0, 0.2, 1)';
-          element.style.transform = `translateX(100vw) rotate(${360 + (index * 45)}deg)`;
-        }, index * 100);
+      document.body.appendChild(rollingIcon);
+      return rollingIcon;
+    };
+
+    // Start animation sequence
+    setTimeout(() => {
+      const rollingIcon = createRollingIcon();
+      
+      // Animate rolling across the page
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          rollingIcon.style.transition = 'transform 2s cubic-bezier(0.4, 0, 0.2, 1)';
+          rollingIcon.style.transform = 'translateX(100vw) rotate(720deg)';
+        });
       });
-    }, 100);
 
-    // Start return animation (2 seconds)
-    setTimeout(() => {
-      // Remove rolling elements
-      rollingLogo.remove();
-      rollingElements.forEach(element => element.remove());
-
-      // Show original elements with return animation
-      logoIcon.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-      logoIcon.style.opacity = '1';
-      logoIcon.style.transform = 'translateX(-50px)';
-      
-      setTimeout(() => {
-        logoIcon.style.transform = 'translateX(0)';
-      }, 50);
-
+      // Hide nav items and show dropdowns falling
+      const navItems = document.querySelectorAll('.nav-item');
       navItems.forEach((item, index) => {
         setTimeout(() => {
-          const element = item as HTMLElement;
-          element.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-          element.style.opacity = '1';
-          element.style.transform = 'translateX(-30px)';
+          item.classList.add('nav-item-hide');
           
-          setTimeout(() => {
-            element.style.transform = 'translateX(0)';
-          }, 50);
-        }, index * 100);
+          // Show dropdown falling effect
+          const dropdown = item.querySelector('.dropdown-menu');
+          if (dropdown) {
+            dropdown.classList.add('dropdown-falling');
+          }
+        }, 200 + (index * 100));
       });
 
-      // Reset animation state
+      // Remove rolling icon and start return animation
       setTimeout(() => {
-        navItems.forEach(item => {
-          const element = item as HTMLElement;
-          element.style.transition = '';
-          element.style.transform = '';
+        rollingIcon.remove();
+        
+        // Create returning icon from left
+        const returningIcon = createRollingIcon();
+        returningIcon.style.left = `calc(-${returningIcon.style.width || '40px'} - 40px)`;
+        returningIcon.style.transform = 'translateX(0) rotate(-360deg)';
+
+        requestAnimationFrame(() => {
+          const logoIcon = document.getElementById('logo-icon');
+          if (logoIcon) {
+            const rect = logoIcon.getBoundingClientRect();
+            requestAnimationFrame(() => {
+              returningIcon.style.transition = 'transform 1.2s cubic-bezier(0.4, 0, 0.2, 1)';
+              returningIcon.style.transform = `translateX(${rect.left + rect.width / 2}px) rotate(0deg)`;
+            });
+          }
         });
-        logoIcon.style.transition = '';
-        logoIcon.style.transform = '';
-        setIsAnimating(false);
-        console.log('✅ Animation completed');
-      }, 1000);
-    }, 2000);
+
+        // Fade back nav items
+        setTimeout(() => {
+          navItems.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.remove('nav-item-hide', 'nav-item-animating');
+              item.classList.add('nav-item-fade-back');
+              
+              // Hide dropdown falling effect
+              const dropdown = item.querySelector('.dropdown-menu');
+              if (dropdown) {
+                dropdown.classList.remove('dropdown-falling');
+              }
+            }, index * 80);
+          });
+        }, 800);
+
+        // Clean up returning icon
+        setTimeout(() => {
+          returningIcon.remove();
+        }, 1100);
+
+        // Reset all states
+        setTimeout(() => {
+          navItems.forEach(item => {
+            item.classList.remove('nav-item-fade-back');
+          });
+          setIsAnimating(false);
+        }, 2000);
+      }, 2200);
+    }, 300);
   }, [isAnimating]);
 
   return { isAnimating, triggerAnimation };

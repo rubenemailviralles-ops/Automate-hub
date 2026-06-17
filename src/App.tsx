@@ -1,78 +1,33 @@
-import React, { Suspense, lazy, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useMobileHover } from './hooks/useMobileHover';
 import { useChatbotPosition } from './hooks/useChatbotPosition';
 import { useRemoveBoltBranding } from './hooks/useRemoveBoltBranding';
-import { initMobileScrollPopup, refreshMobileScrollPopup } from './utils/mobileScrollPopup';
-import { initializeAnalytics, trackPageView, trackSessionEnd } from './utils/analytics';
-import './utils/invisibleProtection'; // Initialize invisible protection
 import Header from './components/Header';
+import Home from './pages/Home';
+import WebsiteCreation from './pages/WebsiteCreation';
+import CRMIntegration from './pages/CRMIntegration';
+import PhoneCallers from './pages/PhoneCallers';
+import EmailOutreach from './pages/EmailOutreach';
+import AboutUs from './pages/AboutUs';
+import Contact from './pages/Contact';
+import EmailContact from './pages/EmailContact';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import CookiePolicy from './pages/CookiePolicy';
+import ConsultationBooking from './pages/ConsultationBooking';
 import Footer from './components/Footer';
-import LoadingSpinner from './components/LoadingSpinner';
-import ErrorBoundary from './components/ErrorBoundary';
-import Breadcrumbs from './components/Breadcrumbs';
-
-// Lazy load page components for better performance
-const Home = lazy(() => import('./pages/Home'));
-const WebsiteCreation = lazy(() => import('./pages/WebsiteCreation'));
-const CRMIntegration = lazy(() => import('./pages/CRMIntegration'));
-const PhoneCallers = lazy(() => import('./pages/PhoneCallers'));
-const EmailOutreach = lazy(() => import('./pages/EmailOutreach'));
-const AboutUs = lazy(() => import('./pages/AboutUs'));
-const Contact = lazy(() => import('./pages/Contact'));
-const EmailContact = lazy(() => import('./pages/EmailContact'));
-const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
-const TermsOfService = lazy(() => import('./pages/TermsOfService'));
-const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
-const ConsultationBooking = lazy(() => import('./pages/ConsultationBooking'));
-const ABTestDashboard = lazy(() => import('./components/ABTestDashboard'));
-const NotFound = lazy(() => import('./pages/NotFound'));
 
 // Component to handle scrolling to top on route change
 function ScrollToTop() {
-  const { pathname, hash } = useLocation();
+  const { pathname } = useLocation();
   const { reinitialize } = useMobileHover();
 
   React.useEffect(() => {
-    // Check if this is a page reload
-    const navEntries = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
-    const isReload = navEntries && navEntries[0] && navEntries[0].type === 'reload';
-    
-    if (isReload) {
-      // On reload, clear any hash from URL and scroll to top
-      if (window.location.hash) {
-        // Use history.replaceState to remove hash without triggering navigation
-        window.history.replaceState(null, '', window.location.pathname);
-      }
-      window.scrollTo(0, 0);
-    } else {
-      // Normal navigation (not a reload)
-      // If there's a hash, scroll to that element
-      if (hash) {
-        setTimeout(() => {
-          const element = document.querySelector(hash);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 100);
-      } else {
-        // Otherwise scroll to top
-        window.scrollTo(0, 0);
-      }
-    }
-    
-    // Track page view for analytics
-    const pageTitle = document.title || 'Automate Hub';
-    trackPageView(pageTitle, pathname);
-    
+    window.scrollTo(0, 0);
     // Reinitialize mobile hover effects when route changes
     reinitialize();
-    
-    // Refresh mobile scroll popup on route change
-    setTimeout(() => {
-      refreshMobileScrollPopup();
-    }, 300);
-  }, [pathname, hash, reinitialize]);
+  }, [pathname]);
 
   return null;
 }
@@ -81,74 +36,37 @@ function App() {
   // Initialize mobile hover effects
   useMobileHover();
   
-  // Initialize mobile scroll popup on mount (mobile: reveal on scroll instead of hover/click)
-  useEffect(() => {
-    initMobileScrollPopup();
-  }, []);
-  
   // Initialize chatbot positioning
   useChatbotPosition();
 
   // Remove external branding overlays
   useRemoveBoltBranding();
 
-  // Initialize analytics tracking
-  useEffect(() => {
-    initializeAnalytics();
-    
-    // Track session end when user leaves
-    const handleBeforeUnload = () => {
-      trackSessionEnd();
-    };
-    
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
-
-
   return (
     <Router>
       <ScrollToTop />
-      <a href="#main-content" className="skip-to-main">
-        Skip to main content
-      </a>
       <div className="min-h-screen text-white relative">
         {/* Floating background orbs */}
-        <div className="floating-orb floating-orb-1" aria-hidden="true"></div>
-        <div className="floating-orb floating-orb-2" aria-hidden="true"></div>
-        <div className="floating-orb floating-orb-3" aria-hidden="true"></div>
-        <div className="floating-orb floating-orb-4" aria-hidden="true"></div>
-        <div className="floating-orb floating-orb-5" aria-hidden="true"></div>
-        <div className="floating-orb floating-orb-6" aria-hidden="true"></div>
-        <div className="floating-orb floating-orb-7" aria-hidden="true"></div>
+        <div className="floating-orb floating-orb-1"></div>
+        <div className="floating-orb floating-orb-2"></div>
+        <div className="floating-orb floating-orb-3"></div>
+        <div className="floating-orb floating-orb-4"></div>
         
         <Header />
-        <Breadcrumbs />
-        <ErrorBoundary>
-          <main id="main-content" role="main">
-            <Suspense fallback={<LoadingSpinner />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/website-creation" element={<WebsiteCreation />} />
-                <Route path="/crm-integration" element={<CRMIntegration />} />
-                <Route path="/phone-callers" element={<PhoneCallers />} />
-                <Route path="/email-outreach" element={<EmailOutreach />} />
-                <Route path="/about" element={<AboutUs />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/email-contact" element={<EmailContact />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/terms-of-service" element={<TermsOfService />} />
-                <Route path="/cookie-policy" element={<CookiePolicy />} />
-                <Route path="/book-consultation" element={<ConsultationBooking />} />
-                <Route path="/ab-testing" element={<ABTestDashboard />} />
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
-            </Suspense>
-          </main>
-        </ErrorBoundary>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/website-creation" element={<WebsiteCreation />} />
+          <Route path="/crm-integration" element={<CRMIntegration />} />
+          <Route path="/phone-callers" element={<PhoneCallers />} />
+          <Route path="/email-outreach" element={<EmailOutreach />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/email-contact" element={<EmailContact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/book-consultation" element={<ConsultationBooking />} />
+        </Routes>
         <Footer />
       </div>
     </Router>

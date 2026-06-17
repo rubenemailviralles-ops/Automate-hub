@@ -1,79 +1,34 @@
 import React from 'react';
-import { Shield, Eye, Lock, Database, UserCheck, Globe, ArrowLeft } from 'lucide-react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import ScrollReveal from '../components/ScrollReveal';
-import TypeWriter from '../components/TypeWriter';
-import SEO from '../components/SEO';
-import { useIsMobile } from '../utils/mobileDetection';
-import { navigateBackToHome } from '../utils/scrollToTop';
+import { Shield, Eye, Lock, Database, UserCheck, Globe } from 'lucide-react';
 
 const PrivacyPolicy = () => {
-  const isMobile = useIsMobile();
-  const navigate = useNavigate();
-  const location = useLocation();
-  
   return (
     <div className="pt-20">
-      <SEO
-        title="Privacy Policy | Data Protection & Security | Automate Hub"
-        description="Learn how Automate Hub protects your personal information and data. Our comprehensive privacy policy covers data collection, usage, security measures, and your rights regarding personal information."
-        keywords="privacy policy, data protection, personal information security, data privacy, GDPR compliance, data security, privacy rights, information protection, data handling, privacy policy"
-        canonicalUrl="https://automate-hub.com/privacy-policy"
-      />
       {/* Hero Section */}
       <section className="py-24 seamless-section relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center">
-            <div 
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
-              style={{
-                transformStyle: 'preserve-3d',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(59, 130, 246, 0.2)',
-                transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
-                perspective: '1000px',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateZ(15px) scale(1.05)';
-                e.currentTarget.style.boxShadow = '0 12px 30px rgba(0, 0, 0, 0.5), 0 4px 15px rgba(59, 130, 246, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateZ(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 8px 20px rgba(0, 0, 0, 0.4), 0 2px 10px rgba(59, 130, 246, 0.2)';
-              }}
-            >
-              <Shield className="w-5 h-5 text-blue-400 mr-2" style={{ transform: 'translateZ(5px)' }} />
-              <span className="text-blue-400 font-medium" style={{ transform: 'translateZ(5px)' }}>Privacy & Data Protection</span>
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-blue-500/30 rounded-full mb-8 backdrop-blur-sm">
+              <Shield className="w-5 h-5 text-blue-400 mr-2" />
+              <span className="text-blue-400 font-medium">Privacy & Data Protection</span>
             </div>
 
-            <TypeWriter 
-              text="Privacy" 
-              as="h1"
-              className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight"
-              delay={100}
-            >
-              <span className={`block ${isMobile ? 'text-blue-400' : 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'}`}>
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-white leading-tight">
+              Privacy
+              <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 Policy
               </span>
-            </TypeWriter>
+            </h1>
 
-            <ScrollReveal delay={200}>
-              <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
-                Your privacy is important to us. This policy explains how we collect, use, and protect your information.
+            <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-4xl mx-auto leading-relaxed">
+              Your privacy is important to us. This policy explains how we collect, use, and protect your information.
+            </p>
+
+            <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-6 max-w-2xl mx-auto">
+              <p className="text-gray-300">
+                <strong className="text-white">Last Updated:</strong> January 1, 2025
               </p>
-            </ScrollReveal>
-
-            <ScrollReveal delay={300}>
-              <div 
-                className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-6 max-w-2xl mx-auto relative transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:border-blue-500/50"
-                style={{
-                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                }}
-              >
-                <p className="text-gray-300">
-                  <strong className="text-white">Last Updated:</strong> January 1, 2025
-                </p>
-              </div>
-            </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
@@ -82,35 +37,29 @@ const PrivacyPolicy = () => {
       <section className="py-24 seamless-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <ScrollReveal delay={100}>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Lock className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Secure</h3>
-                <p className="text-gray-400 text-sm">Your data is encrypted and protected with industry-standard security measures.</p>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Lock className="w-8 h-8 text-white" />
               </div>
-            </ScrollReveal>
+              <h3 className="text-lg font-bold text-white mb-2">Secure</h3>
+              <p className="text-gray-400 text-sm">Your data is encrypted and protected with industry-standard security measures.</p>
+            </div>
 
-            <ScrollReveal delay={200}>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <Eye className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Transparent</h3>
-                <p className="text-gray-400 text-sm">We clearly explain what data we collect and how we use it.</p>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Eye className="w-8 h-8 text-white" />
               </div>
-            </ScrollReveal>
+              <h3 className="text-lg font-bold text-white mb-2">Transparent</h3>
+              <p className="text-gray-400 text-sm">We clearly explain what data we collect and how we use it.</p>
+            </div>
 
-            <ScrollReveal delay={300}>
-              <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <UserCheck className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2">Your Control</h3>
-                <p className="text-gray-400 text-sm">You have full control over your personal information and can request changes anytime.</p>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <UserCheck className="w-8 h-8 text-white" />
               </div>
-            </ScrollReveal>
+              <h3 className="text-lg font-bold text-white mb-2">Your Control</h3>
+              <p className="text-gray-400 text-sm">You have full control over your personal information and can request changes anytime.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -118,25 +67,8 @@ const PrivacyPolicy = () => {
       {/* Privacy Policy Content */}
       <section className="py-24 seamless-section">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal delay={0}>
-            <div 
-              className="bg-white/5 border border-white/10 rounded-3xl p-12 mobile-3d-popup relative"
-              style={{
-                transformStyle: 'preserve-3d',
-                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)',
-                transition: 'transform 0.3s ease-out, box-shadow 0.3s ease-out',
-                perspective: '1000px',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-8px) translateZ(20px) scale(1.02)';
-                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 2px 16px rgba(0, 0, 0, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0) translateZ(0) scale(1)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2)';
-              }}
-            >
-              <div className="prose prose-invert max-w-none">
+          <div className="bg-white/5 border border-white/10 rounded-3xl p-12">
+            <div className="prose prose-invert max-w-none">
               
               <h2 className="text-3xl font-bold text-white mb-6 flex items-center">
                 <Database className="w-8 h-8 mr-3" />
@@ -270,22 +202,6 @@ const PrivacyPolicy = () => {
               </div>
 
             </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Back to Homepage */}
-      <section className="py-12 seamless-section">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <button 
-              onClick={() => navigateBackToHome(navigate, location.state)}
-              className="inline-flex items-center text-gray-400 hover:text-white transition-all duration-300 hover-pop-text cursor-pointer"
-            >
-              <ArrowLeft className="mr-2 w-4 h-4" />
-              Back to Homepage
-            </button>
           </div>
         </div>
       </section>

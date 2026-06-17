@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Bot, Twitter, Mail, Phone, Linkedin } from 'lucide-react';
-import ScrollReveal from './ScrollReveal';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -55,159 +54,82 @@ const Footer = () => {
   };
 
   return (
-    <footer className="seamless-section border-t border-white/5 py-20" role="contentinfo" aria-label="Site footer">
+    <footer className="seamless-section border-t border-white/5 py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:justify-between gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {/* Company Info */}
-          <ScrollReveal delay={0}>
-            <div className="w-full md:w-64 mb-8 md:mb-0">
-              <Link to="/" className="flex items-center space-x-3 mb-4" aria-label="Automate Hub home page">
-                <div className="w-10 h-10 bg-gradient-to-br from-white to-gray-300 rounded-xl flex items-center justify-center shadow-lg" aria-hidden="true">
-                  <Bot className="w-6 h-6 text-black" aria-hidden="true" />
-                </div>
-                <span className="text-2xl font-bold text-white tracking-tight" aria-hidden="true">
-                  Automate Hub
-                </span>
-              </Link>
-              <p className="text-gray-400 mb-6 max-w-md leading-relaxed text-sm">
-                Transforming businesses with cutting-edge AI automation solutions. 
-                Scale your operations, boost conversions, and unlock exponential growth.
-              </p>
-              <div className="flex space-x-3" role="group" aria-label="Social media links">
-                <a 
-                  href="https://x.com/Automate_hub1" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                  aria-label="Follow us on Twitter/X (opens in new tab)"
-                >
-                  <Twitter className="w-5 h-5 text-gray-400 group-hover:text-white" aria-hidden="true" />
-                </a>
-                <a 
-                  href="https://www.linkedin.com/in/ruben-germeshuys-bbb478385/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                  aria-label="Connect with us on LinkedIn (opens in new tab)"
-                >
-                  <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-white" aria-hidden="true" />
-                </a>
-                <button 
-                  onClick={handleEmailClick} 
-                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                  aria-label="Contact us via email"
-                >
-                  <Mail className="w-5 h-5 text-gray-400 group-hover:text-white" aria-hidden="true" />
-                </button>
-                <button 
-                  onClick={handlePhoneClick} 
-                  className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                  aria-label="Contact us by phone"
-                >
-                  <Phone className="w-5 h-5 text-gray-400 group-hover:text-white" aria-hidden="true" />
-                </button>
+          <div className="col-span-1 md:col-span-2">
+            <Link to="/" className="flex items-center space-x-3 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-white to-gray-300 rounded-xl flex items-center justify-center shadow-lg">
+                <Bot className="w-6 h-6 text-black" />
               </div>
+              <span className="text-2xl font-bold text-white tracking-tight">
+                Automate Hub
+              </span>
+            </Link>
+            <p className="text-gray-400 mb-6 max-w-md leading-relaxed text-sm">
+              Transforming businesses with cutting-edge AI automation solutions. 
+              Scale your operations, boost conversions, and unlock exponential growth.
+            </p>
+            <div className="flex space-x-3">
+              <a href="https://x.com/Automate_hub1" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group hover-pop-button">
+                <Twitter className="w-5 h-5 text-gray-400 group-hover:text-white" />
+              </a>
+              <a href="https://www.linkedin.com/in/ruben-germeshuys-bbb478385/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group hover-pop-button">
+                <Linkedin className="w-5 h-5 text-gray-400 group-hover:text-white" />
+              </a>
+              <button onClick={handleEmailClick} className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group hover-pop-button">
+                <Mail className="w-5 h-5 text-gray-400 group-hover:text-white" />
+              </button>
+              <button onClick={handlePhoneClick} className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-xl flex items-center justify-center transition-all duration-300 group hover-pop-button">
+                <Phone className="w-5 h-5 text-gray-400 group-hover:text-white" />
+              </button>
             </div>
-          </ScrollReveal>
+          </div>
 
-          {/* Mobile: Services and Company aligned with bottom links */}
-          <div className="flex flex-col md:contents gap-8 md:gap-0">
-            {/* Mobile: Services and Company side by side, aligned with bottom links */}
-            <div className="flex flex-row md:hidden gap-8">
-              {/* Services - aligned with Privacy Policy */}
-              <ScrollReveal delay={100}>
-                <div className="w-1/2">
-                  <nav aria-label="Services links">
-                  <h3 className="text-base font-bold text-white mb-4">Services</h3>
-                  <ul className="space-y-2">
-                    {services.map((service) => (
-                      <li key={service.path}>
-                        <button
-                          onClick={() => handleServiceClick(service.path)}
-                          className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text whitespace-nowrap"
-                          aria-label={`Navigate to ${service.name} service page`}
-                        >
-                          {service.name}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                  </nav>
-                </div>
-              </ScrollReveal>
+          {/* Services */}
+          <div>
+            <h3 className="text-base font-bold text-white mb-4">Services</h3>
+            <ul className="space-y-2">
+              {services.map((service) => (
+                <li key={service.path}>
+                  <button
+                    onClick={() => handleServiceClick(service.path)}
+                    className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text"
+                  >
+                    {service.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-              {/* Company - aligned with Cookie Policy */}
-              <ScrollReveal delay={200}>
-                <div className="w-1/2">
-                  <nav aria-label="Company links">
-                  <h3 className="text-base font-bold text-white mb-4">Company</h3>
-                  <ul className="space-y-2">
-                    <li><button onClick={handleAboutClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text whitespace-nowrap" aria-label="Navigate to about us page">About Us</button></li>
-                    <li><button onClick={handlePhoneClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text whitespace-nowrap" aria-label="Navigate to contact page">Contact</button></li>
-                  </ul>
-                  </nav>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            {/* Desktop: Services and Company in original layout */}
-            <div className="hidden md:contents">
-              {/* Services */}
-              <ScrollReveal delay={100}>
-                <div className="md:w-48">
-                  <nav aria-label="Services links">
-                  <h3 className="text-base font-bold text-white mb-4">Services</h3>
-                  <ul className="space-y-2">
-                    {services.map((service) => (
-                      <li key={service.path}>
-                        <button
-                          onClick={() => handleServiceClick(service.path)}
-                          className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text"
-                          aria-label={`Navigate to ${service.name} service page`}
-                        >
-                          {service.name}
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                  </nav>
-                </div>
-              </ScrollReveal>
-
-              {/* Company */}
-              <ScrollReveal delay={200}>
-                <div className="md:w-48">
-                  <nav aria-label="Company links">
-                  <h3 className="text-base font-bold text-white mb-4">Company</h3>
-                  <ul className="space-y-2">
-                    <li><button onClick={handleAboutClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text" aria-label="Navigate to about us page">About Us</button></li>
-                    <li><button onClick={handlePhoneClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text" aria-label="Navigate to contact page">Contact</button></li>
-                  </ul>
-                  </nav>
-                </div>
-              </ScrollReveal>
-            </div>
+          {/* Company */}
+          <div>
+            <h3 className="text-base font-bold text-white mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li><button onClick={handleAboutClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text">About Us</button></li>
+              <li><button onClick={handlePhoneClick} className="text-gray-400 hover:text-white transition-all duration-300 text-sm hover-pop-text">Contact</button></li>
+            </ul>
           </div>
         </div>
 
-        <ScrollReveal delay={300}>
-          <div className="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Automate Hub. All rights reserved.
-            </p>
-            <nav className="flex space-x-4 mt-3 md:mt-0" aria-label="Legal links">
-              <button onClick={handlePrivacyClick} className="text-gray-500 hover:text-white text-sm transition-colors" aria-label="View privacy policy">
-                Privacy Policy
-              </button>
-              <button onClick={handleTermsClick} className="text-gray-500 hover:text-white text-sm transition-all duration-300 hover-pop-text" aria-label="View terms of service">
-                Terms of Service
-              </button>
-              <button onClick={handleCookieClick} className="text-gray-500 hover:text-white text-sm transition-all duration-300 hover-pop-text" aria-label="View cookie policy">
-                Cookie Policy
-              </button>
-            </nav>
+        <div className="border-t border-white/10 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-500 text-sm">
+            © 2025 Automate Hub. All rights reserved.
+          </p>
+          <div className="flex space-x-4 mt-3 md:mt-0">
+            <button onClick={handlePrivacyClick} className="text-gray-500 hover:text-white text-sm transition-colors">
+              Privacy Policy
+            </button>
+            <button onClick={handleTermsClick} className="text-gray-500 hover:text-white text-sm transition-all duration-300 hover-pop-text">
+              Terms of Service
+            </button>
+            <button onClick={handleCookieClick} className="text-gray-500 hover:text-white text-sm transition-all duration-300 hover-pop-text">
+              Cookie Policy
+            </button>
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </footer>
   );

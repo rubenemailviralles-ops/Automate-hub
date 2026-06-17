@@ -1,7 +1,5 @@
 import React from 'react';
 import { ArrowRight, Play, Sparkles } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { trackButtonClick, trackCTAClick } from '../utils/analytics';
 
 const Hero = () => {
   return (
@@ -34,22 +32,14 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-20 animate-fade-in-up delay-400">
-            <Link 
-              to="/book-consultation"
-              onClick={() => trackCTAClick('Book Free Consultation', 'hero')}
-              className="group bg-white text-black hover:bg-gray-100 px-10 py-5 rounded-lg font-medium text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex items-center justify-center text-sophisticated"
-            >
-              Book Free Consultation
+            <button className="group bg-white text-black hover:bg-gray-100 px-10 py-5 rounded-lg font-medium text-lg transition-all duration-500 hover-pop-button flex items-center justify-center text-sophisticated">
+              Start Free Consultation
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              to="/contact"
-              onClick={() => trackCTAClick('Get Started', 'hero')}
-              className="group border border-white/20 hover:border-white/40 px-10 py-5 rounded-lg font-medium text-lg transition-all duration-300 hover:bg-white/5 hover:-translate-y-1 hover:shadow-xl flex items-center justify-center text-sophisticated"
-            >
-              Get Started
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            </button>
+            <button className="group border border-white/20 hover:border-white/40 px-10 py-5 rounded-lg font-medium text-lg transition-all duration-500 hover:bg-white/5 hover-pop-button flex items-center justify-center text-sophisticated">
+              <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+              Watch Demo
+            </button>
           </div>
 
           <div className="text-center max-w-3xl mx-auto">

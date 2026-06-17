@@ -1,22 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Send, Phone, Mail, MapPin, AlertCircle } from 'lucide-react';
-import { 
-  sanitizeFormData, 
-  validateEmail, 
-  validateRequired, 
-  validatePhone, 
-  validateMessage,
-  checkRateLimit,
-  type FormErrors 
-} from '../utils/validation';
-import {
-  detectBot,
-  isDisposableEmail,
-  logSecurityEvent,
-  performSecurityCheck
-} from '../utils/security';
-import { supabase } from '../lib/supabase';
+import { Send, Phone, Mail, MapPin } from 'lucide-react';
 
 const ContactForm = () => {
   const navigate = useNavigate();
@@ -27,98 +11,29 @@ const ContactForm = () => {
     company: '',
     phone: '',
     message: '',
-    budget: '',
-    honeypot: '' // Anti-bot honeypot field
+    budget: ''
   });
-  const [errors, setErrors] = useState<FormErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formStartTime] = useState(Date.now()); // Track when form was opened
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [e.target.name]: e.target.value
     });
-    // Clear error for this field when user types
-    if (errors[name]) {
-      setErrors({ ...errors, [name]: '' });
-    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    console.log('🔥 CONTACT FORM SUBMITTED! Form data:', formData);
-    
-    // COMPLETELY BYPASS ALL VALIDATION AND SECURITY
-    console.log('🔓 ALL CHECKS DISABLED - Direct submission');
-    
-    // Use form data directly without any validation or sanitization
-    const sanitizedData = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-      message: formData.message,
-      company: formData.company,
-      budget: formData.budget
-    };
-    
-    setIsSubmitting(true);
-    
-    try {
-      console.log('🚀 Submitting contact form to Supabase...', sanitizedData);
-      console.log('🔗 Supabase client:', supabase);
-      console.log('🔗 Supabase URL:', supabase.supabaseUrl);
-      
-      // Submit to Supabase
-      const { data, error } = await supabase
-        .from('contact_submissions')
-        .insert([
-          {
-            name: sanitizedData.name,
-            email: sanitizedData.email,
-            phone: sanitizedData.phone || null,
-            message: sanitizedData.message,
-            company: sanitizedData.company,
-            budget: sanitizedData.budget
-          }
-        ]);
-
-      console.log('📊 Supabase response:', { data, error });
-
-      if (error) {
-        console.error('❌ Supabase error:', error);
-        throw error;
-      }
-
-      console.log('✅ Contact form submitted to Supabase successfully');
-      alert('Thank you! We\'ll be in touch within 24 hours.');
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        message: '',
-        budget: '',
-        honeypot: ''
-      });
-    } catch (error) {
-      console.error('❌ Error submitting contact form:', error);
-      alert('There was an error sending your message. Please try again or contact us directly.');
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    alert('Thank you! We\'ll be in touch within 24 hours.');
   };
 
   const handleContactClick = () => {
-    // Only navigate if not already on contact page
-    if (location.pathname !== '/contact') {
+    if (location.pathname === '/contact') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
       navigate('/contact');
     }
-    // Don't scroll if already on contact page - prevents false triggers
   };
 
   return (
@@ -137,16 +52,12 @@ const ContactForm = () => {
 
             <div className="space-y-8">
               <div className="flex items-center space-x-4">
-                <a 
-                  href="tel:+27826442575" 
-                  className="w-14 h-14 bg-white rounded-xl flex items-center justify-center hover:bg-gray-100 transition-colors"
-                  aria-label="Call us"
-                >
+                <button onClick={handleContactClick} className="w-14 h-14 bg-white rounded-xl flex items-center justify-center hover:bg-gray-100 transition-colors">
                   <Phone className="w-6 h-6 text-black" />
-                </a>
+                </button>
                 <div>
                   <h4 className="text-lg font-medium text-white heading-sophisticated">Phone</h4>
-                  <a href="tel:+27826442575" className="text-gray-500 text-sophisticated hover:text-gray-400 transition-colors">27+ 82 644 2575</a>
+                  <p className="text-gray-500 text-sophisticated">27+ 82 644 2575</p>
                 </div>
               </div>
 
@@ -197,20 +108,11 @@ const ContactForm = () => {
                     id="name"
                     name="name"
                     required
-                    maxLength={100}
                     value={formData.name}
                     onChange={handleChange}
-                    className={`w-full px-5 py-4 bg-black border ${errors.name ? 'border-red-500' : 'border-white/20'} rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated`}
+                    className="w-full px-5 py-4 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated"
                     placeholder="John Doe"
-                    aria-invalid={!!errors.name}
-                    aria-describedby={errors.name ? 'name-error' : undefined}
                   />
-                  {errors.name && (
-                    <p id="name-error" className="mt-2 text-sm text-red-400 flex items-center">
-                      <AlertCircle className="w-4 h-4 mr-1" />
-                      {errors.name}
-                    </p>
-                  )}
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-400 mb-3 text-sophisticated">
@@ -221,20 +123,11 @@ const ContactForm = () => {
                     id="email"
                     name="email"
                     required
-                    maxLength={100}
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full px-5 py-4 bg-black border ${errors.email ? 'border-red-500' : 'border-white/20'} rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated`}
+                    className="w-full px-5 py-4 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated"
                     placeholder="john@company.com"
-                    aria-invalid={!!errors.email}
-                    aria-describedby={errors.email ? 'email-error' : undefined}
                   />
-                  {errors.email && (
-                    <p id="email-error" className="mt-2 text-sm text-red-400 flex items-center">
-                      <AlertCircle className="w-4 h-4 mr-1" />
-                      {errors.email}
-                    </p>
-                  )}
                 </div>
               </div>
 
@@ -248,20 +141,11 @@ const ContactForm = () => {
                     id="company"
                     name="company"
                     required
-                    maxLength={100}
                     value={formData.company}
                     onChange={handleChange}
-                    className={`w-full px-5 py-4 bg-black border ${errors.company ? 'border-red-500' : 'border-white/20'} rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated`}
+                    className="w-full px-5 py-4 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated"
                     placeholder="Your Company"
-                    aria-invalid={!!errors.company}
-                    aria-describedby={errors.company ? 'company-error' : undefined}
                   />
-                  {errors.company && (
-                    <p id="company-error" className="mt-2 text-sm text-red-400 flex items-center">
-                      <AlertCircle className="w-4 h-4 mr-1" />
-                      {errors.company}
-                    </p>
-                  )}
                 </div>
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-400 mb-3 text-sophisticated">
@@ -271,20 +155,11 @@ const ContactForm = () => {
                     type="tel"
                     id="phone"
                     name="phone"
-                    maxLength={20}
                     value={formData.phone}
                     onChange={handleChange}
-                    className={`w-full px-5 py-4 bg-black border ${errors.phone ? 'border-red-500' : 'border-white/20'} rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated`}
+                    className="w-full px-5 py-4 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all text-sophisticated"
                     placeholder="+1 (555) 123-4567"
-                    aria-invalid={!!errors.phone}
-                    aria-describedby={errors.phone ? 'phone-error' : undefined}
                   />
-                  {errors.phone && (
-                    <p id="phone-error" className="mt-2 text-sm text-red-400 flex items-center">
-                      <AlertCircle className="w-4 h-4 mr-1" />
-                      {errors.phone}
-                    </p>
-                  )}
                 </div>
               </div>
 
@@ -307,20 +182,6 @@ const ContactForm = () => {
                 </select>
               </div>
 
-              {/* Honeypot field - hidden from humans, visible to bots */}
-              <div className="hidden" aria-hidden="true">
-                <label htmlFor="website">Website (leave blank)</label>
-                <input
-                  type="text"
-                  id="website"
-                  name="honeypot"
-                  value={formData.honeypot}
-                  onChange={handleChange}
-                  tabIndex={-1}
-                  autoComplete="off"
-                />
-              </div>
-
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-400 mb-3 text-sophisticated">
                   Tell us about your goals *
@@ -330,29 +191,19 @@ const ContactForm = () => {
                   name="message"
                   required
                   rows={4}
-                  maxLength={2000}
                   value={formData.message}
                   onChange={handleChange}
-                  className={`w-full px-5 py-4 bg-black border ${errors.message ? 'border-red-500' : 'border-white/20'} rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all resize-none text-sophisticated`}
+                  className="w-full px-5 py-4 bg-black border border-white/20 rounded-xl text-white placeholder-gray-600 focus:border-white/40 focus:outline-none transition-all resize-none text-sophisticated"
                   placeholder="Describe your current challenges and what you'd like to achieve with AI automation..."
-                  aria-invalid={!!errors.message}
-                  aria-describedby={errors.message ? 'message-error' : undefined}
                 ></textarea>
-                {errors.message && (
-                  <p id="message-error" className="mt-2 text-sm text-red-400 flex items-center">
-                    <AlertCircle className="w-4 h-4 mr-1" />
-                    {errors.message}
-                  </p>
-                )}
               </div>
 
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className={`w-full ${isSubmitting ? 'bg-gray-400 cursor-not-allowed' : 'bg-white hover:bg-gray-100 hover:scale-105'} text-black px-8 py-5 rounded-xl font-medium text-lg transition-all duration-500 transform flex items-center justify-center text-sophisticated`}
+                className="w-full bg-white text-black hover:bg-gray-100 px-8 py-5 rounded-xl font-medium text-lg transition-all duration-500 transform hover:scale-105 flex items-center justify-center text-sophisticated"
               >
                 <Send className="mr-2 w-5 h-5" />
-                {isSubmitting ? 'Sending...' : 'Book My Free Consultation'}
+                Book My Free Consultation
               </button>
 
               <p className="text-sm text-gray-600 text-center text-sophisticated">

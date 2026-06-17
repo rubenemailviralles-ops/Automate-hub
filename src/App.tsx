@@ -16,6 +16,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import CookiePolicy from './pages/CookiePolicy';
 import ConsultationBooking from './pages/ConsultationBooking';
+import Admin from './pages/Admin';
 import Footer from './components/Footer';
 
 // Component to handle scrolling to top on route change
@@ -66,6 +67,7 @@ function App() {
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/book-consultation" element={<ConsultationBooking />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
         <Footer />
       </div>

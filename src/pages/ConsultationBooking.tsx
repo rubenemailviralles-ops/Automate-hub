@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Calendar, Send, CheckCircle, Globe, Database, Phone, Mail, ArrowLeft } from 'lucide-react';
+import { Calendar, Send, CheckCircle, Globe, Database, Phone, Mail, ArrowLeft, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { supabase } from '../lib/supabase';
 
 const ConsultationBooking = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const ConsultationBooking = () => {
   });
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const serviceOptions = [
     {
@@ -107,15 +109,20 @@ const ConsultationBooking = () => {
     }
 
     setIsSubmitting(true);
+    setSubmitStatus('idle');
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      console.log('Consultation booking submitted:', formData);
-      alert('Thank you! Your consultation has been booked. We\'ll contact you within 24 hours to confirm your appointment time.');
-      
-      // Reset form
+      const { error } = await supabase.from('consultations').insert({
+        full_name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        company_name: formData.companyName,
+        area_of_service: formData.areaOfService
+      });
+
+      if (error) throw error;
+
+      setSubmitStatus('success');
       setFormData({
         fullName: '',
         email: '',
@@ -123,11 +130,10 @@ const ConsultationBooking = () => {
         companyName: '',
         areaOfService: ''
       });
-      
-      // Scroll to top after successful submission
+
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch (error) {
-      alert('There was an error booking your consultation. Please try again or contact us directly.');
+    } catch {
+      setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
     }
@@ -386,6 +392,21 @@ const ConsultationBooking = () => {
                   </div>
                 )}
               </div>
+
+              {/* Submit Status */}
+              {submitStatus === 'success' && (
+                <div className="flex items-center justify-center space-x-2 p-4 bg-green-500/10 border border-green-500/30 rounded-xl">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span className="text-green-400">Consultation booked! We'll contact you within 24 hours.</span>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="flex items-center justify-center space-x-2 p-4 bg-red-500/10 border border-red-500/30 rounded-xl">
+                  <AlertCircle className="w-5 h-5 text-red-400" />
+                  <span className="text-red-400">Something went wrong. Please try again or contact us directly.</span>
+                </div>
+              )}
 
               {/* Submit Button */}
               <button

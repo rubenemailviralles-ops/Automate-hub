@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Send, Phone, Mail, MapPin } from 'lucide-react';
+import { Send, Phone, Mail, MapPin, CheckCircle, AlertCircle } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 const ContactForm = () => {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ const ContactForm = () => {
     message: '',
     budget: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -21,11 +24,31 @@ const ContactForm = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you! We\'ll be in touch within 24 hours.');
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const { error } = await supabase.from('contact_messages').insert({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || null,
+        business_name: formData.company || null,
+        message: formData.message,
+        budget: formData.budget || null,
+        source: 'cta'
+      });
+
+      if (error) throw error;
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', company: '', phone: '', message: '', budget: '' });
+    } catch {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleContactClick = () => {
@@ -200,11 +223,39 @@ const ContactForm = () => {
 
               <button
                 type="submit"
-                className="w-full bg-white text-black hover:bg-gray-100 px-8 py-5 rounded-xl font-medium text-lg transition-all duration-500 transform hover:scale-105 flex items-center justify-center text-sophisticated"
+                disabled={isSubmitting}
+                className={`w-full px-8 py-5 rounded-xl font-medium text-lg transition-all duration-500 flex items-center justify-center text-sophisticated ${
+                  isSubmitting
+                    ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
+                    : 'bg-white text-black hover:bg-gray-100 hover:scale-105'
+                }`}
               >
-                <Send className="mr-2 w-5 h-5" />
-                Book My Free Consultation
+                {isSubmitting ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-gray-400 border-t-transparent rounded-full animate-spin mr-2"></div>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 w-5 h-5" />
+                    Book My Free Consultation
+                  </>
+                )}
               </button>
+
+              {submitStatus === 'success' && (
+                <div className="flex items-center justify-center space-x-2 p-3 bg-green-500/10 border border-green-500/30 rounded-xl">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <span className="text-green-400">Message sent! We'll be in touch within 24 hours.</span>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="flex items-center justify-center space-x-2 p-3 bg-red-500/10 border border-red-500/30 rounded-xl">
+                  <AlertCircle className="w-5 h-5 text-red-400" />
+                  <span className="text-red-400">Something went wrong. Please try again.</span>
+                </div>
+              )}
 
               <p className="text-sm text-gray-600 text-center text-sophisticated">
                 We'll respond within 2 hours during business hours

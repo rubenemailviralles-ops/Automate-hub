@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Send, Phone, Mail } from 'lucide-react';
+import { Send, Phone, Mail, CheckCircle, AlertCircle } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ const Contact = () => {
     businessName: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -17,11 +20,30 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We\'ll get back to you within 24 hours.');
-    setFormData({ name: '', email: '', phone: '', businessName: '', message: '' });
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const { error } = await supabase.from('contact_messages').insert({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || null,
+        business_name: formData.businessName || null,
+        message: formData.message,
+        source: 'contact'
+      });
+
+      if (error) throw error;
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', phone: '', businessName: '', message: '' });
+    } catch {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -176,12 +198,40 @@ const Contact = () => {
                   ></textarea>
                 </div>
 
+                {submitStatus === 'success' && (
+                  <div className="flex items-center justify-center space-x-2 p-4 bg-green-500/10 border border-green-500/30 rounded-xl">
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <span className="text-green-400">Message sent! We'll get back to you within 24 hours.</span>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="flex items-center justify-center space-x-2 p-4 bg-red-500/10 border border-red-500/30 rounded-xl">
+                    <AlertCircle className="w-5 h-5 text-red-400" />
+                    <span className="text-red-400">Something went wrong. Please try again or email us directly.</span>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 hover-pop-button flex items-center justify-center shadow-2xl"
+                  disabled={isSubmitting}
+                  className={`w-full px-6 py-3 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center shadow-2xl ${
+                    isSubmitting
+                      ? 'bg-gray-600 text-gray-300 cursor-not-allowed'
+                      : 'bg-white text-black hover:bg-gray-100 hover-pop-button'
+                  }`}
                 >
-                  <Send className="mr-2 w-4 h-4" />
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-gray-400 border-t-transparent rounded-full animate-spin mr-2"></div>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="mr-2 w-4 h-4" />
+                      Send Message
+                    </>
+                  )}
                 </button>
 
                 <p className="text-xs text-gray-500 text-center">

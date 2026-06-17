@@ -128,6 +128,9 @@ const Footer = () => {
             <button onClick={handleCookieClick} className="text-gray-500 hover:text-white text-sm transition-all duration-300 hover-pop-text">
               Cookie Policy
             </button>
+            <Link to="/admin" className="text-gray-500 hover:text-white text-sm transition-all duration-300 hover-pop-text">
+              Admin
+            </Link>
           </div>
         </div>
       </div>

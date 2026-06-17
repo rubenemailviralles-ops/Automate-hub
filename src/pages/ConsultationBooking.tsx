@@ -14,6 +14,7 @@ const ConsultationBooking = () => {
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const serviceOptions = [
     {
@@ -132,8 +133,10 @@ const ConsultationBooking = () => {
       });
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } catch {
+    } catch (err: any) {
+      console.error('Consultation booking error:', err);
       setSubmitStatus('error');
+      setErrorMessage(err?.message || 'Unknown error occurred');
     } finally {
       setIsSubmitting(false);
     }
@@ -404,7 +407,7 @@ const ConsultationBooking = () => {
               {submitStatus === 'error' && (
                 <div className="flex items-center justify-center space-x-2 p-4 bg-red-500/10 border border-red-500/30 rounded-xl">
                   <AlertCircle className="w-5 h-5 text-red-400" />
-                  <span className="text-red-400">Something went wrong. Please try again or contact us directly.</span>
+                  <span className="text-red-400">{errorMessage || 'Something went wrong. Please try again or contact us directly.'}</span>
                 </div>
               )}
 

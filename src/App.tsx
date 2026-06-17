@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useMobileHover } from './hooks/useMobileHover';
 import { useChatbotPosition } from './hooks/useChatbotPosition';
 import { useRemoveBoltBranding } from './hooks/useRemoveBoltBranding';
